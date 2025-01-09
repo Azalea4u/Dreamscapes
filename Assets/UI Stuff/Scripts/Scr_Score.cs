@@ -10,8 +10,8 @@ public class Score : MonoBehaviour {
 		text.text = "Score: " + score;
 	}
 
-	public void ChangeScore(bool add, int amount) {
-		if (add) score += amount; else score -= amount;
+	public void ChangeScore(int amount) {
+		score += amount;
 		text.text = "Score: " + score;
 	}
 }

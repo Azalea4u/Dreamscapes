@@ -6,12 +6,10 @@ public class Scr_ItemBtn : MonoBehaviour {
     public string itemName;
     bool empty = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         
     }
 
-    // Update is called once per frame
     void Update() {
         
     }
