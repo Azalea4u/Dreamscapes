@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 1fc27664fb02eaa4aae4cb8da42d2d53
+guid: 4fa62ea4bd4470f43b6aa37c8524a8b7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3924601713935988630
-    second: DirtWithRocksTile_0
+      213: 4301844918096825189
+    second: hammer_0
+  - first:
+      213: -6030043224269349317
+    second: hammer_1
+  - first:
+      213: -8258728375015105676
+    second: hammer_2
+  - first:
+      213: -1159298483449069950
+    second: hammer_3
+  - first:
+      213: 1784401183296663280
+    second: hammer_4
+  - first:
+      213: 1632725881280823895
+    second: hammer_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DirtWithRocksTile_0
+      name: hammer_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 25
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +156,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6973b04277cf67630800000000000000
-      internalID: 3924601713935988630
+      spriteID: 56b0bfd292933bb30800000000000000
+      internalID: 4301844918096825189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hammer_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 2
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e9c25d2abf05ca0800000000000000
+      internalID: -6030043224269349317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hammer_2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47b19ceac4a136d80800000000000000
+      internalID: -8258728375015105676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hammer_3
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 0
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28e7e59eb2859efe0800000000000000
+      internalID: -1159298483449069950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hammer_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fe2f2b0c6773c810800000000000000
+      internalID: 1784401183296663280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hammer_5
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 0
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7528459d98b98a610800000000000000
+      internalID: 1632725881280823895
       vertices: []
       indices: 
       edges: []
@@ -161,7 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DirtWithRocksTile_0: 3924601713935988630
+      hammer_0: 4301844918096825189
+      hammer_1: -6030043224269349317
+      hammer_2: -8258728375015105676
+      hammer_3: -1159298483449069950
+      hammer_4: 1784401183296663280
+      hammer_5: 1632725881280823895
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
