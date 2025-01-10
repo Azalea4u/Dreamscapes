@@ -16,6 +16,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
     [SerializeField] private GameObject tilePrefab;
 	[SerializeField] private GameObject itemPrefab;
 	[SerializeField] private List<Sprite> depthSprites = new List<Sprite>();
+	[SerializeField] private List<SO_ArcheologyItem_Data> itemsData = new List<SO_ArcheologyItem_Data>();
 
 	[Header("Runtime Grid Values")]
    //[SerializeField] private List<SCR_ArcheologyTile> tileGrid = new List<SCR_ArcheologyTile>();
@@ -52,7 +53,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		for (int i = 0; i < itemAmount; i++)
 		{
 			SCR_ArcheologyItem item = Instantiate(itemPrefab, canvas.transform).GetComponent<SCR_ArcheologyItem>();
-			item.size = new Vector2Int(Random.Range(1,4), Random.Range(1, 4));
+			item.InitializeItemData(itemsData[Random.Range(0,itemsData.Count)]);
+			//item.size = new Vector2Int(Random.Range(1,4), Random.Range(1, 4));
 			item.position = generateRandomItemPosition(item);
 			int cycles = gridSize.x * gridSize.y;
 			while (itemOverlapCheck(item) && cycles > 0)
