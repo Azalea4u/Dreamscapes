@@ -4,8 +4,10 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
     [SerializeField] GameObject titleS;
     [SerializeField] GameObject playS;
     [SerializeField] GameObject pauseS;
+    [SerializeField] GameObject menuS;
 
 	bool pause = false;
+    bool menu = false;
 
 	void Start() {
         
@@ -37,4 +39,14 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
 			playS.SetActive(true);
 		}
 	}
+
+    public void MenuClick() {
+        menu = !menu;
+        if (menu) {
+            menuS.SetActive(true);
+            return;
+        }
+        menuS.SetActive(false);
+
+    }
 }
