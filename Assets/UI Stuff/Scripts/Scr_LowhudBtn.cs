@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Scr_LowhudBtn : MonoBehaviour {
     bool clicked = false;
-    GameObject[] gameObjects;
     public List<RectTransform> rects;
 
 	void Start() {
@@ -21,8 +20,8 @@ public class Scr_LowhudBtn : MonoBehaviour {
                 if (clicked) {
                     r.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
                 } else {
-                    r.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
-                    transform.parent.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
+                    r.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 35);
+                    transform.parent.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
                 }
 			}
 		}

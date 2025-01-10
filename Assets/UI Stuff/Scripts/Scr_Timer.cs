@@ -10,12 +10,13 @@ public class NewMonoBehaviourScript : MonoBehaviour {
     void Start() {
         text = GetComponentInChildren<TextMeshProUGUI>();
         text.text = "Time: " + timeAmount;
+        StartTime();
     }
 
     void Update() {
         if (runTime) {
             time -= Time.deltaTime;
-			text.text = "Time: " + timeAmount;
+			text.text = "Time: " + time;
 
 			if (time <= 0) { 
                 EndTime();
