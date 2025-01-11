@@ -744,6 +744,9 @@ MonoBehaviour:
   - {fileID: 12171635, guid: 73719129e032baf40bb353958d80e578, type: 3}
   - {fileID: 923936278, guid: 73719129e032baf40bb353958d80e578, type: 3}
   - {fileID: -1967810899, guid: 73719129e032baf40bb353958d80e578, type: 3}
+  itemsData:
+  - {fileID: 11400000, guid: d9c3bc25201521648b04fcfa82552f3d, type: 2}
+  - {fileID: 11400000, guid: 5f432d8959d913a47ba8b47ac0c10fcc, type: 2}
   items: []
   toolType: 0
 --- !u!4 &2142095182
