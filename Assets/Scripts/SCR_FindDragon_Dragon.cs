@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SCR_FindDragon_Dragon : MonoBehaviour
 {
     public Vector2 speed = Vector2.one;
     public edgeType edgeInteraction = edgeType.BOUNCE;
-	[SerializeField] private SpriteRenderer sprite;
+	[SerializeField] private Image sprite;
+	public bool isWanted = false;
 
     // helps with defining how the dragon should act when contacting an edge
     public enum edgeType
@@ -21,6 +23,11 @@ public class SCR_FindDragon_Dragon : MonoBehaviour
 
 	void Update()
     {
+		if (speed == Vector2.zero)
+		{
+			return;
+		}
+
         transform.Translate(new Vector3(speed.x, speed.y) * Time.deltaTime);
 
 		switch (edgeInteraction)
@@ -59,5 +66,10 @@ public class SCR_FindDragon_Dragon : MonoBehaviour
 	public void SetSprite(Sprite sprite)
 	{
 		this.sprite.sprite = sprite;
+	}
+
+	public void DragonPressed()
+	{
+		SCR_FindDragon_Manager.instance.DragonPressed(isWanted, this);
 	}
 }

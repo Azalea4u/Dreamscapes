@@ -31,7 +31,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     private void createDragonGroups()
     {
         int start = Random.Range(0,dragonSprites.Length);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
 			dragonGroup newgroup = new dragonGroup();
             newgroup.sprite = dragonSprites[(start + i)%dragonSprites.Length];
@@ -53,18 +53,50 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         foreach (var dragon in dragons)
         {
             dragon.transform.position = new Vector3(Random.Range(-gameBounds.x, gameBounds.x), Random.Range(-gameBounds.y, gameBounds.x), 0);
+            assignDragonGroup(dragon, Random.Range(1, dragonGroups.Count));
+		}
 
-            dragonGroup usedgroup = dragonGroups[Random.Range(0, dragonGroups.Count)];
-            if (usedgroup.copySpeed)
+        assignDragonGroup(dragons[0], 0);
+    }
+
+    private void assignDragonGroup(SCR_FindDragon_Dragon dragon, int group)
+    {
+		dragonGroup usedgroup = dragonGroups[group];
+		if (usedgroup.copySpeed)
+		{
+			dragon.speed = usedgroup.speed;
+		}
+		else
+		{
+			Vector2 s = usedgroup.speed;
+			dragon.speed = new Vector2(Random.Range(-s.x, s.x), Random.Range(-s.y, s.y));
+		}
+		dragon.SetSprite(usedgroup.sprite);
+		dragon.edgeInteraction = usedgroup.edgeType;
+        dragon.isWanted = (group == 0);
+	}
+
+    public void DragonPressed(bool isWanted, SCR_FindDragon_Dragon dragon)
+    {
+
+        if (isWanted)
+        {
+            foreach (var drag in dragons)
             {
-				dragon.speed = usedgroup.speed;
-			} else
-            {
-                Vector2 s = usedgroup.speed;
-                dragon.speed = new Vector2(Random.Range(-s.x, s.x), Random.Range(-s.y, s.y));
-			}
-            dragon.SetSprite(usedgroup.sprite);
-            dragon.edgeInteraction = usedgroup.edgeType;
+				drag.speed = Vector2.zero;
+				if (drag != dragon)
+                {
+					drag.transform.position = Vector3.one * 10;
+				}
+            }
+
+            // would put here stuff I want to happen after the dragon is found
+
+        }
+        else
+        {
+            dragon.speed = Vector2.zero;
+            dragon.transform.position = Vector3.one * 10;
         }
     }
 }
