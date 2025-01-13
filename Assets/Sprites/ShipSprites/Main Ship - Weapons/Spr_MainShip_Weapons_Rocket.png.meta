@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: 76f03eefcb4cc1042a61f616892694fc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3345790058438855198
+    second: Main Ship - Weapons - Rockets_0
+  - first:
+      213: 8937995616297251966
+    second: Main Ship - Weapons - Rockets_1
+  - first:
+      213: -556198812219035223
+    second: Main Ship - Weapons - Rockets_2
+  - first:
+      213: 8753380169875870745
+    second: Main Ship - Weapons - Rockets_3
+  - first:
+      213: -5764302514093591019
+    second: Main Ship - Weapons - Rockets_4
+  - first:
+      213: 1660565788399608844
+    second: Main Ship - Weapons - Rockets_5
+  - first:
+      213: -912230966904681296
+    second: Main Ship - Weapons - Rockets_6
+  - first:
+      213: 1917488445424223206
+    second: Main Ship - Weapons - Rockets_7
+  - first:
+      213: 7813042305531618055
+    second: Main Ship - Weapons - Rockets_8
+  - first:
+      213: -6749933113726274032
+    second: Main Ship - Weapons - Rockets_9
+  - first:
+      213: 8323391379056341606
+    second: Main Ship - Weapons - Rockets_10
+  - first:
+      213: -152411126512486079
+    second: Main Ship - Weapons - Rockets_11
+  - first:
+      213: -6394996706091363119
+    second: Main Ship - Weapons - Rockets_12
+  - first:
+      213: -3830428543737638551
+    second: Main Ship - Weapons - Rockets_13
+  - first:
+      213: -4384415196472985868
+    second: Main Ship - Weapons - Rockets_14
+  - first:
+      213: 3274805551240355700
+    second: Main Ship - Weapons - Rockets_15
+  - first:
+      213: -7429334886789708905
+    second: Main Ship - Weapons - Rockets_16
+  - first:
+      213: -2589431356343364276
+    second: Main Ship - Weapons - Rockets_17
+  - first:
+      213: -6196845991544212888
+    second: Main Ship - Weapons - Rockets_18
+  - first:
+      213: 5681253067673554626
+    second: Main Ship - Weapons - Rockets_19
+  - first:
+      213: -5555706093180461121
+    second: Main Ship - Weapons - Rockets_20
+  - first:
+      213: 5834367481579758283
+    second: Main Ship - Weapons - Rockets_21
+  - first:
+      213: -8315680943171530019
+    second: Main Ship - Weapons - Rockets_22
+  - first:
+      213: 1657886829840792495
+    second: Main Ship - Weapons - Rockets_23
+  - first:
+      213: -9056721572740767129
+    second: Main Ship - Weapons - Rockets_24
+  - first:
+      213: 1537562890184681773
+    second: Main Ship - Weapons - Rockets_25
+  - first:
+      213: -6310897234898367648
+    second: Main Ship - Weapons - Rockets_26
+  - first:
+      213: 5453689310762161676
+    second: Main Ship - Weapons - Rockets_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc4aceb74a27c441aa7135d7c935eef
+      internalID: -1235460527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7b2008998a5e6a4da43a2cf8ae82adb
+      internalID: 1863671938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94f6878df9a5ca04783a9eb18d9890c3
+      internalID: -1630734663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5b5084b1d12314880eef75837a63a6
+      internalID: 1837055284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c421aecec7afd4880afd3fbfe5cf49
+      internalID: 773566625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4312bcb4de03e42b245e272de3e740
+      internalID: -368801786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfde86fefa692894185d78d64a49a044
+      internalID: 996739769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb7339513f9c2a644b78f060bf7b9a58
+      internalID: -1480199712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 407b96ebb71a1234690b0c94512a612a
+      internalID: 1995133060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699d13fca83d2734187b46282f0187c4
+      internalID: 1031243955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6e59202013821468604f5aa4425b9b
+      internalID: 275939613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_11
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a715cb49327c6c3418be93629bdcfaa5
+      internalID: -485056363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644371b66ee64824f9771e0fbb4c2f01
+      internalID: 1102395856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_13
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ebee735b2a759b459d342afabe76090
+      internalID: -1822980165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_14
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4d746604d042c4988adb55240f667e
+      internalID: -550321456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_MainShip_Weapons_Rocket_15
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7574b5160178d734d8cd2804f07456ed
+      internalID: -381472763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d5edf469c002afa4e83bda5e26b03e50
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spr_MainShip_Weapons_Rocket_0: -1235460527
+      Spr_MainShip_Weapons_Rocket_1: 1863671938
+      Spr_MainShip_Weapons_Rocket_10: 275939613
+      Spr_MainShip_Weapons_Rocket_11: -485056363
+      Spr_MainShip_Weapons_Rocket_12: 1102395856
+      Spr_MainShip_Weapons_Rocket_13: -1822980165
+      Spr_MainShip_Weapons_Rocket_14: -550321456
+      Spr_MainShip_Weapons_Rocket_15: -381472763
+      Spr_MainShip_Weapons_Rocket_2: -1630734663
+      Spr_MainShip_Weapons_Rocket_3: 1837055284
+      Spr_MainShip_Weapons_Rocket_4: 773566625
+      Spr_MainShip_Weapons_Rocket_5: -368801786
+      Spr_MainShip_Weapons_Rocket_6: 996739769
+      Spr_MainShip_Weapons_Rocket_7: -1480199712
+      Spr_MainShip_Weapons_Rocket_8: 1995133060
+      Spr_MainShip_Weapons_Rocket_9: 1031243955
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
