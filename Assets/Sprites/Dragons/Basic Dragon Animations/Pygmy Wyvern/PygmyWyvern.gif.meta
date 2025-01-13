@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PygmyWyvern_0: -130419229118551058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

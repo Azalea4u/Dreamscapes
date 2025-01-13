@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fajrbackground_0: 3525353010420096136
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

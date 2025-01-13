@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MudWyvern_0: -3343358486081894350
+      MudWyvern_1: 3057418831786111023
+      MudWyvern_2: 8308361619522694980
+      MudWyvern_3: 989849761452880561
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

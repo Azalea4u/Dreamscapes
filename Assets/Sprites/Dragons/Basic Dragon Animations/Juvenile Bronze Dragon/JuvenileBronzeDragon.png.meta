@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      JuvenileBronzeDragon_0: 8099662797821947327
+      JuvenileBronzeDragon_1: -6382134136553724407
+      JuvenileBronzeDragon_2: 4370647542625349836
+      JuvenileBronzeDragon_3: 4097234850689879746
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

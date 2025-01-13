@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AdultGreenDragon_0: -7783847442460913374
+      AdultGreenDragon_1: -37773286161131695
+      AdultGreenDragon_2: 6698442581353497778
+      AdultGreenDragon_3: 6445113245382565423
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

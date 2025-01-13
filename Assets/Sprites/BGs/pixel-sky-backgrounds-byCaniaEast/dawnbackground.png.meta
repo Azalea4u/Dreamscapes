@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dawnbackground_0: 2657487837508552646
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

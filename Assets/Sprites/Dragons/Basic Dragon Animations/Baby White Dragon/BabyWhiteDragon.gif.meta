@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BabyWhiteDragon_0: 1792986494779787818
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

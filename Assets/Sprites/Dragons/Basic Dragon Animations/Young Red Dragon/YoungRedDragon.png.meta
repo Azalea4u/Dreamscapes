@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      YoungRedDragon_0: 5888406432073536776
+      YoungRedDragon_1: -4805695618127902027
+      YoungRedDragon_2: -6152926952394489884
+      YoungRedDragon_3: -4057954474555886318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
