@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -141,133 +141,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chiesel_0
+      name: SPR_chiesel_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 25
-        height: 13
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 81079eaa1451b3b40800000000000000
-      internalID: 5420949948255006744
+      spriteID: 4328b4fa8ae2cd84b81da8a2a6016821
+      internalID: 749051585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chiesel_1
+      name: SPR_chiesel_1
       rect:
         serializedVersion: 2
-        x: 26
-        y: 2
-        width: 18
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8bec4662e7c602030800000000000000
-      internalID: 3467891002141101752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: chiesel_2
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 1
-        width: 13
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6dbb9062029aa3310800000000000000
-      internalID: 1385605790912068566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: chiesel_3
-      rect:
-        serializedVersion: 2
-        x: 74
+        x: 25
         y: 0
         width: 25
-        height: 24
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7f446d0fe2d4b09c0800000000000000
-      internalID: -3959986583337810697
+      spriteID: c474bb48856791643b907146e3a1bb32
+      internalID: -591168539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chiesel_4
+      name: SPR_chiesel_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0811931c766d8a44594d30591e50bb7e
+      internalID: 1377906999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_chiesel_3
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe829b8203a1b774aa4786061dcd898f
+      internalID: -972781592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_chiesel_4
       rect:
         serializedVersion: 2
         x: 100
         y: 0
         width: 25
-        height: 18
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 59f369c4a6266ce60800000000000000
-      internalID: 7982175598251753365
+      spriteID: 85f64a21adba34f409b1bf7580761953
+      internalID: -212270934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chiesel_5
+      name: SPR_chiesel_5
       rect:
         serializedVersion: 2
         x: 125
         y: 0
         width: 25
-        height: 13
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 62860a5b7351b41d0800000000000000
-      internalID: -3365572967514740698
+      spriteID: 693c71a0db8ffa042a975eb0b8e70f14
+      internalID: -2064448086
       vertices: []
       indices: 
       edges: []
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c1966922adcad6441a469b50636f39b9
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chiesel_0: 5420949948255006744
-      chiesel_1: 3467891002141101752
-      chiesel_2: 1385605790912068566
-      chiesel_3: -3959986583337810697
-      chiesel_4: 7982175598251753365
-      chiesel_5: -3365572967514740698
+      SPR_chiesel_0: 749051585
+      SPR_chiesel_1: -591168539
+      SPR_chiesel_2: 1377906999
+      SPR_chiesel_3: -972781592
+      SPR_chiesel_4: -212270934
+      SPR_chiesel_5: -2064448086
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
