@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
     [SerializeField] GameObject titleS;
@@ -18,7 +19,8 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
     }
 
     public void PlayClick() {
-        playS.SetActive(true);
+        menuS.SetActive(true);
+        menu = true;
         titleS.SetActive(false);
     }
 
@@ -36,7 +38,7 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
         } else { 
             Time.timeScale = 1;
 			pauseS.SetActive(false);
-			playS.SetActive(true);
+            playS.SetActive(true);
 		}
 	}
 
@@ -44,9 +46,20 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
         menu = !menu;
         if (menu) {
             menuS.SetActive(true);
+            titleS.SetActive(false);
             return;
         }
         menuS.SetActive(false);
+        menu = false;
+        titleS.SetActive(true);
+    }
 
+    public void ArcheologyClick() {
+        SceneManager.LoadScene("SCN_ArcheologyMinigame");
+        Destroy(gameObject);
+    }
+
+    public void DragonClick() {
+        SceneManager.LoadScene("");
     }
 }
