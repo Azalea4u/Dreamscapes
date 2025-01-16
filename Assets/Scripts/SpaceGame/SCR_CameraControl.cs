@@ -29,9 +29,10 @@ public class SCR_CameraControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Camera movement
+        // Smooth camera movement
+        Vector3 velocity = Vector3.zero;
         Vector3 targetPos = SetPos(cameraTargetPos, transform.position.x, target.position.y, cameraZPosition);
-        transform.position = Vector3.Lerp(transform.position, targetPos, 0.2f);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 0.1f);
 
         if (!isRepositioning)
         {
