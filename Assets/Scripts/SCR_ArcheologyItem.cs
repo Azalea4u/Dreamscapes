@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SCR_ArcheologyItem : MonoBehaviour
 {
-	[SerializeField] private SpriteRenderer sprite;
+	[SerializeField] private SpriteRenderer visuals;
 	public Vector2Int size { get { return itemData.size; } }
 	public Vector2Int position = Vector2Int.zero;
 	private SO_ArcheologyItem_Data itemData;
@@ -13,25 +13,25 @@ public class SCR_ArcheologyItem : MonoBehaviour
 		itemData = data;
 	}
 
-	public void SetupItem()
+	public void SetupItem(Vector2 tileScale)
 	{
-		sprite.sprite = itemData.sprite;
-		sprite.transform.localScale = new Vector3(size.x, size.y, 1);
-		sprite.transform.position += new Vector3(((float)size.x - 1) / 2, -((float)size.y - 1) / 2, 0);
+		visuals.sprite = itemData.sprite;
+		visuals.transform.localScale = new Vector3(tileScale.x * size.x, tileScale.y * size.y, 1);
+		visuals.transform.position += new Vector3(((float)size.x - 1) / (2 / tileScale.x), -((float)size.y - 1) / (2 / tileScale.y), 0);
 	}
 
 	/// <summary>
-	/// A getter for the positions that the item covers
+	/// A getter for all the grid positions that the item covers
 	/// </summary>
 	/// <returns>A list of every position in the grid the item takes up</returns>
-	public List<Vector2Int> GetItemVolumePositions() {
+	public List<Vector2Int> GetItemGridPositions() {
 		List<Vector2Int> positions = new List<Vector2Int>();
 
-		if (itemData.Volume.Count > 0)
+		if (itemData.itemVolume.Count > 0)
 		{
-			for (int i = 0; i < itemData.Volume.Count; i++)
+			for (int i = 0; i < itemData.itemVolume.Count; i++)
 			{
-				positions.Add(itemData.Volume[i] + position);
+				positions.Add(itemData.itemVolume[i] + position);
 			}
 		}
 		else

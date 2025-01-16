@@ -1,26 +1,19 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SCR_ArcheologyTile : MonoBehaviour
 {
-	[SerializeField] private Image sprite;
+	[SerializeField] private SpriteRenderer visuals;
 	public Vector2Int position = Vector2Int.zero;
-	private int _depth = 6;
+	private int _layers = 6;
 	public bool hasItem = false;
-	public int depth { get { return _depth; } set { _depth = Mathf.Clamp(value,0,6); } }
-
-	// testing version of the function for being hit by a tool
-	public void TestHit(){
-        if (depth <= 0)
-        {
-			return;
-        }
-        SCR_ArcheologyGrid.Instance.HitGrid(position);
-	}
+	/// <summary>
+	/// How many layers are covering this tile
+	/// </summary>
+	public int layers { get { return _layers; } set { _layers = Mathf.Clamp(value,0,6); } }
 
 	// testing visual setup for the tile
 	public void ChangeSprite(Sprite newsprite)
 	{
-		sprite.sprite = newsprite;
+		visuals.sprite = newsprite;
 	}
 }
