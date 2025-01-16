@@ -15,5 +15,9 @@ public class SCR_ArcheologyTile : MonoBehaviour
 	public void ChangeSprite(Sprite newsprite)
 	{
 		visuals.sprite = newsprite;
+		if (layers == 0)
+		{
+			visuals.sortingOrder = -2;
+		}
 	}
 }
