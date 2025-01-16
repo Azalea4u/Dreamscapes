@@ -193,7 +193,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		SCR_ArcheologyTile tile;
 
 		for (int i = 0; i < checks.Length; i++) {
-			if (position.x + checks[i].x < gridSize.x && position.y + checks[i].y < gridSize.y && position.x + checks[i].x > 0 && position.y + checks[i].y > 0)
+			if (position.x + checks[i].x < gridSize.x && position.y + checks[i].y < gridSize.y && position.x + checks[i].x >= 0 && position.y + checks[i].y >= 0)
 			{
 				tile = tileGrid[position.x + checks[i].x, position.y + checks[i].y];
 				if (tile != null)
