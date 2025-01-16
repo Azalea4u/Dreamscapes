@@ -62,4 +62,8 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
     public void DragonClick() {
         SceneManager.LoadScene("");
     }
+
+    public void RocketClick() {
+        SceneManager.LoadScene("");
+    }
 }
