@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BabyGreenDragon_0: -3093311016152928949
+      BabyGreenDragon_1: 4559909323861468630
+      BabyGreenDragon_2: 7161729902109992009
+      BabyGreenDragon_3: -1166894210853208745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

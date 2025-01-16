@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AquaDrake_0: 712494740715072125
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ViridianDrake_0: 3167320212807113534
+      ViridianDrake_1: 946386715389180364
+      ViridianDrake_2: -6760508814313455473
+      ViridianDrake_3: 4328217106524485152
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

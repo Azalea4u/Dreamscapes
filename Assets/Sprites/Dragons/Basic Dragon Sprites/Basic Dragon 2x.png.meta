@@ -510,7 +510,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Basic Dragon 2x_0: -8275013693315621686
+      Basic Dragon 2x_1: 668475082936146360
+      Basic Dragon 2x_10: -4830396418019744176
+      Basic Dragon 2x_11: -1717946777428358570
+      Basic Dragon 2x_12: -5449561477434557855
+      Basic Dragon 2x_13: 78184205354911731
+      Basic Dragon 2x_14: -8572410566690630636
+      Basic Dragon 2x_2: 750000497210888241
+      Basic Dragon 2x_3: -1468727870440093146
+      Basic Dragon 2x_4: -2440289655101267107
+      Basic Dragon 2x_5: -2439383874559122560
+      Basic Dragon 2x_6: 782758228818987710
+      Basic Dragon 2x_7: 7243880751835113765
+      Basic Dragon 2x_8: 3135523750554161820
+      Basic Dragon 2x_9: 2320922875978545883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

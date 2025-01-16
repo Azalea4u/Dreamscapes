@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BabyCopperDragon_0: 750394772137567746
+      BabyCopperDragon_1: -2563886716853156687
+      BabyCopperDragon_2: -7197649511641305562
+      BabyCopperDragon_3: -8722935982194828671
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
