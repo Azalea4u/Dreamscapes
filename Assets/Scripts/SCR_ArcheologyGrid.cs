@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SCR_ArcheologyGrid : MonoBehaviour
 {
@@ -30,9 +31,10 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
+		// puts the grid in the middle of the screen
 		transform.position -= new Vector3(gridSize.x / (2.0f / tileSize.x), -gridSize.y / (2.0f / tileSize.y), 0.0f) - new Vector3(tileSize.x / 2.0f, -tileSize.y / 2.0f, 0);
 
-		// instantiate and fill out the grid tiles
+		// instantiate and fill out the grid tiles with tile prefabs
 		for (int ypos = 0; ypos < gridSize.y; ypos++)
         {
             for (int xpos = 0; xpos < gridSize.x; xpos++)
@@ -53,9 +55,12 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		{
 			SCR_ArcheologyItem item = Instantiate(itemPrefab, transform).GetComponent<SCR_ArcheologyItem>();
 
+			// item data is initialized first for the use of size and volume when positioning the item
 			item.InitializeItemData(itemsData[Random.Range(0,itemsData.Count)]);
 
 			item.position = generateRandomItemPosition(item);
+
+			// if the item position generated overlaps with another, generate another one
 			int cycles = gridSize.x * gridSize.y;
 			while (itemOverlapCheck(item) && cycles > 0)
 			{
@@ -70,6 +75,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			{
 				continue;
 			}
+
+			// item setup and list additioons should only happen after a viable spot is found
 			item.SetupItem(tileSize);
 			items.Add(item);
 			item.transform.position = tileGrid[item.position.x,item.position.y].transform.position;
@@ -79,21 +86,11 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		updatePlayer();
 	}
 
-	/// <summary>
-	/// using the given item's size and position, generates a random value that will fit within the grid
-	/// </summary>
-	/// <param name="item"></param>
-	/// <returns>Position within the grid</returns>
 	private Vector2Int generateRandomItemPosition(SCR_ArcheologyItem item)
 	{
 		return new Vector2Int(Random.Range(0, gridSize.x - (item.size.x - 1)), Random.Range(0, gridSize.y - (item.size.y - 1)));
 	}
 
-	/// <summary>
-	/// Check for if a given item is overlapping any others
-	/// If it is not overlapping any, the tiles it covers will be marked as having an item.
-	/// </summary>
-	/// <returns>Returns true if the item is overlapping another item, otherwise returns false</returns>
 	private bool itemOverlapCheck(SCR_ArcheologyItem item)
 	{
 		List<Vector2Int> itemVolume = item.GetItemGridPositions();
@@ -166,6 +163,9 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		updatePlayer();
 	}
 
+	/// <summary>
+	/// Update position of player visuals to be in line with player position
+	/// </summary>
 	private void updatePlayer()
 	{
 		player.transform.position = tileGrid[playerPosition.x, playerPosition.y].transform.position;
@@ -176,26 +176,25 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	/// </summary>
 	public void HitTile()
 	{
-		hitGrid(playerPosition);
-	}
+		Vector2Int hitPos = playerPosition;
 
-	private void hitGrid(Vector2Int position)
-    {
-		// Vectors for which tiles to check about the position pressed
+		// Vectors for which tiles to check about the hit position
 		// z value is how much tile damage it should deal
-		Vector3Int[] checks = { 
+		Vector3Int[] checks = {
 			new Vector3Int(0,0,2),
-			new Vector3Int(1,0,1), 
+			new Vector3Int(1,0,1),
 			new Vector3Int(0,1,1),
 			new Vector3Int(-1,0,1),
 			new Vector3Int(0,-1,1)
 		};
 		SCR_ArcheologyTile tile;
 
-		for (int i = 0; i < checks.Length; i++) {
-			if (position.x + checks[i].x < gridSize.x && position.y + checks[i].y < gridSize.y && position.x + checks[i].x >= 0 && position.y + checks[i].y >= 0)
+		for (int i = 0; i < checks.Length; i++)
+		{
+			// if the checked hit position is within the grid's bounds
+			if (hitPos.x + checks[i].x < gridSize.x && hitPos.y + checks[i].y < gridSize.y && hitPos.x + checks[i].x >= 0 && hitPos.y + checks[i].y >= 0)
 			{
-				tile = tileGrid[position.x + checks[i].x, position.y + checks[i].y];
+				tile = tileGrid[hitPos.x + checks[i].x, hitPos.y + checks[i].y];
 				if (tile != null)
 				{
 					tile.layers -= checks[i].z;
@@ -208,20 +207,14 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		checkItemsUncovered();
 	}
 
-	/// <summary>
-	/// Check items for if items in the grid are uncovered
-	/// removes items that are fully uncovered
-	/// </summary>
 	private void checkItemsUncovered()
 	{
-		// removes all null items in the items list
+		// removes null items from a list, because right now they are destroyed
 		items.RemoveAll(x => !x);
 
-		// loop through all items on the grid
 		foreach (var item in items)
 		{
 			bool uncovered = true;
-			// loop through all the grid positions the item covers
 			foreach(var pos in item.GetItemGridPositions())
 			{
 				if (tileGrid[pos.x, pos.y].layers > 0)
@@ -233,7 +226,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			
 			if (uncovered)
 			{
-				// this is where the item would be marked as gotten.
+				// Something would happen to the item once it is gotten
+				// that is currently not in the program so all it does for now is destroy the item
 				Destroy(item.gameObject);
 			}
 		}

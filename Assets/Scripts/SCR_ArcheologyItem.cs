@@ -8,11 +8,19 @@ public class SCR_ArcheologyItem : MonoBehaviour
 	public Vector2Int position = Vector2Int.zero;
 	private SO_ArcheologyItem_Data itemData;
 
+	/// <summary>
+	/// Initialize item data from scriptable object
+	/// </summary>
+	/// <param name="data">The item's data</param>
 	public void InitializeItemData(SO_ArcheologyItem_Data data)
 	{
 		itemData = data;
 	}
 
+	/// <summary>
+	/// Sets up the item to be properly displayed within the grid
+	/// </summary>
+	/// <param name="tileScale">Scaling for tiles for modifying screen space usage</param>
 	public void SetupItem(Vector2 tileScale)
 	{
 		visuals.sprite = itemData.sprite;
@@ -31,15 +39,18 @@ public class SCR_ArcheologyItem : MonoBehaviour
 		{
 			for (int i = 0; i < itemData.itemVolume.Count; i++)
 			{
+				// the position of the item should be added to the returned positions
+				// this correctly offsets the returned grid positions to the position of the item
 				positions.Add(itemData.itemVolume[i] + position);
 			}
 		}
-		else
+		else 
 		{
 			for (int iy = 0; iy < size.y; iy++)
 			{
 				for (int ix = 0; ix < size.x; ix++)
 				{
+					// same offset rule here as above
 					positions.Add(new Vector2Int(ix + position.x, iy + position.y));
 				}
 			}
@@ -47,5 +58,4 @@ public class SCR_ArcheologyItem : MonoBehaviour
 
 		return positions;
 	}
-
 }
