@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6228104cb9f674539bc6c7ed37df2f1e, type: 3}
+  m_Name: Tibet Parts
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 38061af5cfa4c474699e213d38996d16, type: 3}
+  - {fileID: 8300000, guid: bdd0dfea0627e4be88e5545c9613200b, type: 3}
+  - {fileID: 8300000, guid: f294a715f7523493488f45b9a76ccba2, type: 3}
+  - {fileID: 8300000, guid: e0a3762f86adf414d82570a3ae8475e4, type: 3}
+  - {fileID: 8300000, guid: 0840e79fcc6a84c95961fa29091854ae, type: 3}
+  partSet: 1

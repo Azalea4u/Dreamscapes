@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: aec8757db27414e7d8553f82168d9ed9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 35925
+  packageName: Dynamic Music Pack
+  packageVersion: 1.1
+  assetPath: Assets/Dynamic Music/Scripts/DemoScripts/ButtonManager.cs
+  uploadId: 460181
