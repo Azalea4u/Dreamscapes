@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &1111119 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4310384320528612947, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-  m_PrefabInstance: {fileID: 1066447629895569738}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a35de3a6d87b43489002fa0d03a790d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &665584382
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +264,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1627332659165762196, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407378660116858463, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3015937506620274334, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -354,62 +351,6 @@ PrefabInstance:
     - target: {fileID: 3015937506620274334, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1111119}
-    - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ArcheologyClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Scr_ScreenManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6810402153024888810, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6810402153024888810, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6810402153024888810, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1111119}
-    - target: {fileID: 6810402153024888810, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6810402153024888810, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DragonClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 6810402153024888810, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Scr_ScreenManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6810402153024888810, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8261580999691689065, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Name
