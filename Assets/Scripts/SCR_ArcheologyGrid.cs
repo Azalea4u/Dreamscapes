@@ -1,29 +1,29 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.SubsystemsImplementation;
 using UnityEngine.UIElements;
 
 public class SCR_ArcheologyGrid : MonoBehaviour
 {
     public static SCR_ArcheologyGrid Instance { get; private set; }
 
-	[Header("Grid Making")]
-    [SerializeField] private Vector2Int gridSize = Vector2Int.one;
-	[SerializeField] private int itemAmount = 3;
-    [SerializeField] private GameObject canvas;
-    [SerializeField] private GameObject tilePrefab;
-	[SerializeField] private GameObject itemPrefab;
+	[Header("Prefabs")]
+    [SerializeField] private Transform tilePrefab;
+	[SerializeField] private Transform itemPrefab;
 	[SerializeField] private List<Sprite> depthSprites = new List<Sprite>();
 	[SerializeField] private List<SO_ArcheologyItem_Data> itemsData = new List<SO_ArcheologyItem_Data>();
 
-	[Header("Runtime Grid Values")]
-   //[SerializeField] private List<SCR_ArcheologyTile> tileGrid = new List<SCR_ArcheologyTile>();
-	[SerializeField] private List<SCR_ArcheologyItem> items = new List<SCR_ArcheologyItem>();
-	[SerializeField] private int toolType;
-
+	[Header("Grid Making")]
 	[SerializeField] private SCR_ArcheologyTile[,] tileGrid;
+    [SerializeField] private Vector2Int gridSize = Vector2Int.one;
+	[SerializeField] private Vector2 tileSize = Vector2Int.one;
+	[SerializeField] private int itemAmount = 3;
+
+
+	[Header("Runtime Grid Values")]
+	[SerializeField] private List<SCR_ArcheologyItem> items = new List<SCR_ArcheologyItem>();
+	[SerializeField] private Transform player;
+	[SerializeField] private Vector2Int playerPosition;
+
 
     void Start()
     {
@@ -31,44 +31,40 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
+		// puts the grid in the middle of the screen
+		transform.position -= new Vector3(gridSize.x / (2.0f / tileSize.x), -gridSize.y / (2.0f / tileSize.y), 0.0f) - new Vector3(tileSize.x / 2.0f, -tileSize.y / 2.0f, 0);
+
+		// instantiate and fill out the grid tiles with tile prefabs
 		for (int ypos = 0; ypos < gridSize.y; ypos++)
         {
             for (int xpos = 0; xpos < gridSize.x; xpos++)
             {
-                SCR_ArcheologyTile tile = Instantiate(tilePrefab, canvas.transform).GetComponent<SCR_ArcheologyTile>();
+                SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
 				tileGrid[xpos, ypos] = tile;
-				//tileGrid.Add(tile);
-
-                //tile.position = tileGrid.Count;
 				tile.position.Set(xpos, ypos);
-				tile.depth = Random.Range(2, 7);
-                tile.ChangeSprite(depthSprites[tile.depth]);
+				tile.layers = Random.Range(1, 7);
+                tile.ChangeSprite(depthSprites[tile.layers]);
 
-				tile.transform.position = new Vector2(transform.position.x + xpos, transform.position.y - ypos);
+				tile.transform.localScale = tileSize;
+				tile.transform.position = new Vector2(transform.position.x + (tileSize.x * xpos), transform.position.y - (tileSize.y * ypos));
             }
         }
 
-		//Destroy(tileGrid[0, 0].gameObject);
-
+		// create items and place them in the grid
 		for (int i = 0; i < itemAmount; i++)
 		{
-			SCR_ArcheologyItem item = Instantiate(itemPrefab, canvas.transform).GetComponent<SCR_ArcheologyItem>();
+			SCR_ArcheologyItem item = Instantiate(itemPrefab, transform).GetComponent<SCR_ArcheologyItem>();
+
+			// item data is initialized first for the use of size and volume when positioning the item
 			item.InitializeItemData(itemsData[Random.Range(0,itemsData.Count)]);
-			//item.size = new Vector2Int(Random.Range(1,4), Random.Range(1, 4));
+
 			item.position = generateRandomItemPosition(item);
+
+			// if the item position generated overlaps with another, generate another one
 			int cycles = gridSize.x * gridSize.y;
 			while (itemOverlapCheck(item) && cycles > 0)
 			{
-				item.position.x += 1;
-				if (item.position.x + (item.size.x-1) >= gridSize.x)
-				{
-					item.position.x = 0;
-					item.position.y += 1;
-					if (item.position.y + (item.size.y - 1) >= gridSize.y)
-					{
-						item.position.Set(0, 0);
-					}
-				}
+				item.position = generateRandomItemPosition(item);
 				cycles--;
 				if (cycles <= 0)
 				{
@@ -79,219 +75,159 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			{
 				continue;
 			}
-			item.SetupItem();
+
+			// item setup and list additioons should only happen after a viable spot is found
+			item.SetupItem(tileSize);
 			items.Add(item);
 			item.transform.position = tileGrid[item.position.x,item.position.y].transform.position;
 		}
-	}
 
-	//private int vec2toGridPosition(Vector2Int pos)
-	//{
-	//	return pos.x + (gridSize.x * pos.y);
-	//}
+		playerPosition = gridSize / 2;
+		updatePlayer();
+	}
 
 	private Vector2Int generateRandomItemPosition(SCR_ArcheologyItem item)
 	{
-		Vector2Int randpos = new Vector2Int(Random.Range(0, gridSize.x - (item.size.x - 1)), Random.Range(0, gridSize.y - (item.size.y - 1)));
-		//Debug.Log(pos);
-		//gridPositionCheck check = checkGridPosition(pos, size);
-
-		//Debug.Log((check.up && check.down && check.left && check.right));
-		//while (!(check.up && check.down && check.left && check.right))
-		//{
-		//	pos = Random.Range(0, tileGrid.Count);
-		//	check = checkGridPosition(pos, size);
-		//}
-
-		return randpos;
+		return new Vector2Int(Random.Range(0, gridSize.x - (item.size.x - 1)), Random.Range(0, gridSize.y - (item.size.y - 1)));
 	}
 
-	/// <summary>
-	/// Check for if an item is overlapping any others when generating the board
-	/// </summary>
-	/// <returns>Returns true if the item is overlapping another item, otherwise returns false</returns>
 	private bool itemOverlapCheck(SCR_ArcheologyItem item)
 	{
-        foreach (var pos in item.GetItemVolumePositions())
+		List<Vector2Int> itemVolume = item.GetItemGridPositions();
+
+		foreach (var pos in itemVolume)
         {
-			//Debug.Log(item.name + " _ " + pos);
 			if (tileGrid[pos.x,pos.y].hasItem)
 			{
-				//Debug.Log("Item overlapped another");
 				return true;
 			}
 		}
 
-		foreach (var pos in item.GetItemVolumePositions())
+		foreach (var pos in itemVolume)
 		{
 			tileGrid[pos.x, pos.y].hasItem = true;
 		}
 
-		//Debug.Log("Item is not overlapping");
 		return false;
 	}
 
 	/// <summary>
-	/// Tiles will be null if the adjacent tile is off the grid
+	/// UI button function for moving the player up
 	/// </summary>
-	struct gridPositionCheck
+	public void MoveUp()
 	{
-		public SCR_ArcheologyTile upTile;
-		public SCR_ArcheologyTile downTile;
-		public SCR_ArcheologyTile leftTile;
-		public SCR_ArcheologyTile rightTile;
+		playerPosition.y -= 1;
+		if (playerPosition.y < 0)
+		{
+			playerPosition.y = gridSize.y - 1;
+		}
+		updatePlayer();
 	}
 
-	private gridPositionCheck checkAdjacentGridTiles(Vector2Int pos, Vector2Int size)
+	/// <summary>
+	/// UI button function for moving the player down
+	/// </summary>
+	public void MoveDown()
 	{
-		gridPositionCheck check = new gridPositionCheck();
-
-		// Above Tile Check
-		if (pos.y > 0)
+		playerPosition.y += 1;
+		if (playerPosition.y >= gridSize.y)
 		{
-			check.upTile = tileGrid[pos.x, pos.y - 1];
+			playerPosition.y = 0;
 		}
-
-		// Below Tile Check
-		if (pos.y < gridSize.y - 1)
-		{
-			check.downTile = tileGrid[pos.x, pos.y + 1];
-		}
-
-		// Right Tile Check
-		if (pos.x < gridSize.x - 1)
-		{
-			check.rightTile = tileGrid[pos.x + 1, pos.y];
-		}
-
-		// Left Tile Check
-		if (pos.x > 0)
-		{
-			check.leftTile = tileGrid[pos.x - 1, pos.y];
-		}
-
-		return check;
+		updatePlayer();
 	}
 
-	public void ChangeTool(int tool)
+	/// <summary>
+	/// UI button function for moving the player left
+	/// </summary>
+	public void MoveLeft()
 	{
-		// 0 = pick
-		// 1 = hammer
-		toolType = tool;
+		playerPosition.x -= 1;
+		if (playerPosition.x < 0)
+		{
+			playerPosition.x = gridSize.x - 1;
+		}
+		updatePlayer();
 	}
 
-	public void HitGrid(Vector2Int position)
-    {
-		SCR_ArcheologyTile tile = tileGrid[position.x, position.y];
-		gridPositionCheck check = checkAdjacentGridTiles(position, Vector2Int.zero);
-
-		tile.depth -= 2;
-		tile.ChangeSprite(depthSprites[tile.depth]);
-
-		switch (toolType)
+	/// <summary>
+	/// UI button function for moving the player right
+	/// </summary>
+	public void MoveRight()
+	{
+		playerPosition.x += 1;
+		if (playerPosition.x >= gridSize.x)
 		{
-			default:
-				if (check.upTile)
-				{
-					check.upTile.depth -= 1;
-					check.upTile.ChangeSprite(depthSprites[check.upTile.depth]);
-				}
+			playerPosition.x = 0;
+		}
+		updatePlayer();
+	}
 
-				if (check.downTile)
-				{
-					check.downTile.depth -= 1;
-					check.downTile.ChangeSprite(depthSprites[check.downTile.depth]);
-				}
+	/// <summary>
+	/// Update position of player visuals to be in line with player position
+	/// </summary>
+	private void updatePlayer()
+	{
+		player.transform.position = tileGrid[playerPosition.x, playerPosition.y].transform.position;
+	}
 
-				if (check.leftTile)
-				{
-					check.leftTile.depth -= 1;
-					check.leftTile.ChangeSprite(depthSprites[check.leftTile.depth]);
-				}
+	/// <summary>
+	/// Function for the mining UI button
+	/// </summary>
+	public void HitTile()
+	{
+		Vector2Int hitPos = playerPosition;
 
-				if (check.rightTile)
-				{
-					check.rightTile.depth -= 1;
-					check.rightTile.ChangeSprite(depthSprites[check.rightTile.depth]);
-				}
-				break;
-			case 1:
-				if (check.upTile)
-				{
-					check.upTile.depth -= 2;
-					check.upTile.ChangeSprite(depthSprites[check.upTile.depth]);
-				}
+		// Vectors for which tiles to check about the hit position
+		// z value is how much tile damage it should deal
+		Vector3Int[] checks = {
+			new Vector3Int(0,0,2),
+			new Vector3Int(1,0,1),
+			new Vector3Int(0,1,1),
+			new Vector3Int(-1,0,1),
+			new Vector3Int(0,-1,1)
+		};
+		SCR_ArcheologyTile tile;
 
-				if (check.downTile)
+		for (int i = 0; i < checks.Length; i++)
+		{
+			// if the checked hit position is within the grid's bounds
+			if (hitPos.x + checks[i].x < gridSize.x && hitPos.y + checks[i].y < gridSize.y && hitPos.x + checks[i].x >= 0 && hitPos.y + checks[i].y >= 0)
+			{
+				tile = tileGrid[hitPos.x + checks[i].x, hitPos.y + checks[i].y];
+				if (tile != null)
 				{
-					check.downTile.depth -= 2;
-					check.downTile.ChangeSprite(depthSprites[check.downTile.depth]);
+					tile.layers -= checks[i].z;
+					tile.ChangeSprite(depthSprites[tile.layers]);
 				}
-
-				if (check.leftTile)
-				{
-					check.leftTile.depth -= 2;
-					check.leftTile.ChangeSprite(depthSprites[check.leftTile.depth]);
-				}
-
-				if (check.rightTile)
-				{
-					check.rightTile.depth -= 2;
-					check.rightTile.ChangeSprite(depthSprites[check.rightTile.depth]);
-				}
-
-				if (check.upTile && check.rightTile)
-				{
-					tile = tileGrid[position.x + 1 , position.y - 1];
-					tile.depth -= 1;
-					tile.ChangeSprite(depthSprites[tile.depth]);
-				}
-
-				if (check.downTile && check.leftTile)
-				{
-					tile = tileGrid[position.x - 1, position.y + 1];
-					tile.depth -= 1;
-					tile.ChangeSprite(depthSprites[tile.depth]);
-				}
-
-				if (check.leftTile && check.upTile)
-				{
-					tile = tileGrid[position.x - 1, position.y - 1];
-					tile.depth -= 1;
-					tile.ChangeSprite(depthSprites[tile.depth]);
-				}
-
-				if (check.rightTile && check.downTile)
-				{
-					tile = tileGrid[position.x + 1, position.y + 1];
-					tile.depth -= 1;
-					tile.ChangeSprite(depthSprites[tile.depth]);
-				}
-				break;
+			}
 		}
 
+		// after breaking tiles, check for uncovered items
 		checkItemsUncovered();
 	}
 
 	private void checkItemsUncovered()
 	{
+		// removes null items from a list, because right now they are destroyed
 		items.RemoveAll(x => !x);
+
 		foreach (var item in items)
 		{
-			List<Vector2Int> volume = item.GetItemVolumePositions();
 			bool uncovered = true;
-			foreach(var pos in volume)
+			foreach(var pos in item.GetItemGridPositions())
 			{
-				if (tileGrid[pos.x, pos.y].depth > 0)
+				if (tileGrid[pos.x, pos.y].layers > 0)
 				{
 					uncovered = false;
 					break;
 				}
 			}
-				
+			
 			if (uncovered)
 			{
-				// this is where the item would be marked as gotten.
+				// Something would happen to the item once it is gotten
+				// that is currently not in the program so all it does for now is destroy the item
 				Destroy(item.gameObject);
 			}
 		}
