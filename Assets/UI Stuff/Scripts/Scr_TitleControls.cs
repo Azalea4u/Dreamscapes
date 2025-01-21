@@ -32,20 +32,20 @@ public class Scr_TitleControls : MonoBehaviour {
     }
 
     public void rightClick() {
-		//List<Button> newBtns = new List<Button>();
-		//for (int i = buttons.Length - 1; i >= 0; i--) {
-		//	if (i == 0) {
-		//		newBtns.Add(buttons[buttons.Length - 1]);
-		//		continue;
-		//	}
-		//	newBtns.Add(buttons[0]);
-		//}
-		//buttons = newBtns.ToArray();
+        List<Button> newBtns = new List<Button>();
+        for (int i = buttons.Length - 1; i >= 0; i--) {
+            if (i == 0) {
+                newBtns.Add(buttons[buttons.Length - 1]);
+                continue;
+            }
+            newBtns.Add(buttons[buttons.Length - (1 - i)]);
+        }
+        buttons = newBtns.ToArray();
 
-		//for (int i = 0; i < buttons.Length; i++) {
-		//	buttons[i].GetComponent<RectTransform>().anchoredPosition = btnTransforms[i];
-		//}
-	}
+        for (int i = 0; i < buttons.Length; i++) {
+            buttons[i].GetComponent<RectTransform>().anchoredPosition = btnTransforms[i];
+        }
+    }
 
     public void playClick() {
         buttons[0].onClick.Invoke();
