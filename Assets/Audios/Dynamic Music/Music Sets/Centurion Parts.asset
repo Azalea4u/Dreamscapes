@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6228104cb9f674539bc6c7ed37df2f1e, type: 3}
+  m_Name: Centurion Parts
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: cf4ce54f95840458c9098dd67388a0b7, type: 3}
+  - {fileID: 8300000, guid: a18d8e41aebe645ed84d7508c0b68227, type: 3}
+  - {fileID: 8300000, guid: 46c3e2886552a40569cd963de361c975, type: 3}
+  - {fileID: 8300000, guid: ca5a4a88766c64b04a031d488d689764, type: 3}
+  partSet: 1

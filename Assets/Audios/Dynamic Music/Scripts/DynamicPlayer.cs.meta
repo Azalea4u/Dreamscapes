@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 49f2e56bae82847478c3109d61281654
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 35925
+  packageName: Dynamic Music Pack
+  packageVersion: 1.1
+  assetPath: Assets/Dynamic Music/Scripts/DynamicPlayer.cs
+  uploadId: 460181

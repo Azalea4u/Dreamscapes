@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6228104cb9f674539bc6c7ed37df2f1e, type: 3}
+  m_Name: Wasteland Layers
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 0a308cdcda8404264b4405e80b6fe988, type: 3}
+  - {fileID: 8300000, guid: 837c60ca076df42d68aeb91922899bf8, type: 3}
+  - {fileID: 8300000, guid: 42bac8a536ae94abfb377c7f0411cdc9, type: 3}
+  partSet: 0
