@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
     [SerializeField] GameObject titleS;
@@ -49,4 +50,19 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
         menuS.SetActive(false);
 
     }
+
+    public void RocketClick() {
+        SceneManager.LoadScene("SpaceshipScene");
+        Destroy(gameObject);
+    }
+
+    public void ArcheologyClick() {
+		SceneManager.LoadScene("SCN_ArcheologyMinigame");
+		Destroy(gameObject);
+	}
+
+    public void DragonClick() {
+        SceneManager.LoadScene("");
+		Destroy(gameObject);
+	}
 }
