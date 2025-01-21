@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 02cfb45ef9ad04945ba314bbe9351412
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 35925
+  packageName: Dynamic Music Pack
+  packageVersion: 1.1
+  assetPath: Assets/Dynamic Music/Prefabs/DynamicPlayer.prefab
+  uploadId: 460181

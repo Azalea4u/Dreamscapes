@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 3dcef41377038db42acfe11a7d2c0902
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 257312
+  packageName: Universal Game Music | Free Collection Part 2
+  packageVersion: 1.0
+  assetPath: Assets/Universal Game Music Free Collection Part 2/Culture.wav
+  uploadId: 591155

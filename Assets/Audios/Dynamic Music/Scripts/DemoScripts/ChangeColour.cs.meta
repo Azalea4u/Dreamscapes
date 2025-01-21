@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3f554f0f9f23e4b18a591a58ba163539
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 35925
+  packageName: Dynamic Music Pack
+  packageVersion: 1.1
+  assetPath: Assets/Dynamic Music/Scripts/DemoScripts/ChangeColour.cs
+  uploadId: 460181

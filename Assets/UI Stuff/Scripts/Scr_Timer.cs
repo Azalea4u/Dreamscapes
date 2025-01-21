@@ -1,13 +1,11 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour {
     public float timeAmount = 0;
     float time = 0;
     bool runTime = false;
     TextMeshProUGUI text;
-    [SerializeField] string returnScene;
 
     void Start() {
         text = GetComponentInChildren<TextMeshProUGUI>();
@@ -34,6 +32,5 @@ public class NewMonoBehaviourScript : MonoBehaviour {
 
     public void EndTime() {
         runTime = false;
-        SceneManager.LoadScene(returnScene);
     }
 }
