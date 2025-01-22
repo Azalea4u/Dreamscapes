@@ -7,7 +7,21 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
     [SerializeField] private SCR_FindDragon_Dragon[] dragons;
     [SerializeField] private Sprite[] dragonSprites;
-    [SerializeField] public Vector2 gameBounds;
+    [SerializeField] private Vector2 _gamebounds;
+    
+    // using a vector 4 because the bound values of the walls could all be different
+    /// <summary>
+    /// x = left bound
+    /// y = top bound
+    /// z = right bound
+    /// w = bottom bound
+    /// </summary>
+    [SerializeField] public Vector4 gameBounds { 
+        get { 
+            return new Vector4(-_gamebounds.x + transform.position.x, _gamebounds.y + transform.position.y, _gamebounds.x + transform.position.x, -_gamebounds.y + transform.position.y); 
+        } 
+    }
+    
     //[SerializeField] private int difficulty;
 
     [SerializeField] private List<dragonGroup> dragonGroups = new List<dragonGroup>();
@@ -36,13 +50,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 			dragonGroup newgroup = new dragonGroup();
             newgroup.sprite = dragonSprites[(start + i)%dragonSprites.Length];
 			newgroup.copySpeed = (Random.Range(0, 2)==0);
-            if (newgroup.copySpeed)
-            {
-                newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(1.0f, 2.0f), (Random.Range(0, 2) * 2 - 1) * Random.Range(1.0f, 2.0f));
-            } else
-            {
-                newgroup.speed = new Vector2(Random.Range(1.0f, 2.0f), Random.Range(1.0f, 2.0f));
-			}
+			// (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
+		    newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(1.0f, 2.0f), (Random.Range(0, 2) * 2 - 1) * Random.Range(1.0f, 2.0f));
             newgroup.edgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
             dragonGroups.Add(newgroup);
 		}
@@ -52,7 +61,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     {
         foreach (var dragon in dragons)
         {
-            dragon.transform.position = new Vector3(Random.Range(-gameBounds.x, gameBounds.x), Random.Range(-gameBounds.y, gameBounds.x), 0);
+            dragon.transform.position = new Vector3(Random.Range(gameBounds.x, gameBounds.z), Random.Range(gameBounds.y, gameBounds.w), 0);
             assignDragonGroup(dragon, Random.Range(1, dragonGroups.Count));
 		}
 

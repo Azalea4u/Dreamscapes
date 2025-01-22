@@ -30,34 +30,36 @@ public class SCR_FindDragon_Dragon : MonoBehaviour
 
         transform.Translate(new Vector3(speed.x, speed.y) * Time.deltaTime);
 
+		Vector4 bounds = SCR_FindDragon_Manager.instance.gameBounds;
+
 		switch (edgeInteraction)
 		{
 			case edgeType.BOUNCE:
-				if (Mathf.Abs(transform.position.x) > SCR_FindDragon_Manager.instance.gameBounds.x)
+				if (transform.position.x < bounds.x || transform.position.x > bounds.z)
 				{
 					speed.x *= -1;
 				}
-				if (Mathf.Abs(transform.position.y) > SCR_FindDragon_Manager.instance.gameBounds.y)
+				if (transform.position.y < bounds.y || transform.position.y > bounds.w)
 				{
 					speed.y *= -1;
 				}
 				break;
 			case edgeType.SCROLL:
-				if (transform.position.x > SCR_FindDragon_Manager.instance.gameBounds.x)
+				if (transform.position.x < bounds.x)
 				{
-					transform.position -= new Vector3(SCR_FindDragon_Manager.instance.gameBounds.x * 2.0f, 0, 0);
+					transform.position += new Vector3(bounds.x * 2.0f, 0, 0);
 				}
-				if (transform.position.x < -SCR_FindDragon_Manager.instance.gameBounds.x)
+				if (transform.position.x > bounds.z)
 				{
-					transform.position += new Vector3(SCR_FindDragon_Manager.instance.gameBounds.x * 2.0f, 0, 0);
+					transform.position -= new Vector3(bounds.z * 2.0f, 0, 0);
 				}
-				if (transform.position.y > SCR_FindDragon_Manager.instance.gameBounds.y)
+				if (transform.position.y > bounds.y)
 				{
-					transform.position -= new Vector3(0, SCR_FindDragon_Manager.instance.gameBounds.y * 2.0f, 0);
+					transform.position -= new Vector3(0, bounds.y * 2.0f, 0);
 				}
-				if (transform.position.y < -SCR_FindDragon_Manager.instance.gameBounds.y)
+				if (transform.position.y < bounds.w)
 				{
-					transform.position += new Vector3(0, SCR_FindDragon_Manager.instance.gameBounds.y * 2.0f, 0);
+					transform.position += new Vector3(0, bounds.w * 2.0f, 0);
 				}
 				break;
 		}
