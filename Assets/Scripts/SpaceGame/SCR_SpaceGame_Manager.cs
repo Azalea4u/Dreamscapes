@@ -5,40 +5,42 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 {
     [SerializeField] private Transform spaceship;
     [SerializeField] private float shipPosition;
-    [SerializeField] private float shipSpeed;
+    [SerializeField] private float shipBounds;
+    [SerializeField] private float shipMovementSpeed;
+    [SerializeField] private float shipAscentSpeed;
     [SerializeField] private Transform MeanGuyTest;
-    [SerializeField] private float catchup;
+    [SerializeField] private int health = 3;
 
 	void Update()
     {
-        catchup = Mathf.Lerp(catchup, 0.0f, Time.deltaTime);
-        float ypos = -catchup;
-        spaceship.position = new Vector3(shipPosition, Mathf.Lerp(spaceship.position.y, ypos, Time.deltaTime), 0.0f);
-        MeanGuyTest.position -= new Vector3(0.0f, Time.deltaTime * (shipSpeed - catchup) , 0.0f);
-        if (MeanGuyTest.position.y <= -7)
+        transform.position = new Vector3(shipPosition, transform.position.y + (Time.deltaTime * shipAscentSpeed), 0.0f);
+
+        MeanGuyTest.position -= new Vector3(0.0f, Time.deltaTime * shipAscentSpeed, 0.0f);
+        if (MeanGuyTest.position.y <= transform.position.y - 7)
         {
-            MeanGuyTest.position = new Vector3(0.0f, 7.0f, 0.0f);
+            MeanGuyTest.position = new Vector3(Random.Range(-shipBounds, shipBounds), transform.position.y + 7.0f, 0.0f);
         }
     }
 
     public void MoveLeft()
     {
-        shipPosition -= shipSpeed * Time.deltaTime;
+        shipPosition -= shipMovementSpeed * Time.deltaTime;
+        shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
     }
 
 	public void MoveRight()
 	{
-		shipPosition += shipSpeed * Time.deltaTime;
+		shipPosition += shipMovementSpeed * Time.deltaTime;
+        shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        Debug.Log("Boombaby");
-        catchup += 10.0f;
+       // Debug.Log("Boombaby");
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-        Debug.Log("Goodbye");
+        //Debug.Log("Goodbye");
 	}
 }

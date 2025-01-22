@@ -24,7 +24,7 @@ public class SCR_CameraControl : MonoBehaviour
         // Initialize background colliders
         bg1Collider = bg1.GetComponent<BoxCollider2D>();
         bg2Collider = bg2.GetComponent<BoxCollider2D>();
-        size = bg1Collider.size.y;
+        size = bg1Collider.size.y * bg1.localScale.y;
         cameraZPosition = transform.position.z;
 
         // Position second background exactly one height above the first
@@ -41,22 +41,20 @@ public class SCR_CameraControl : MonoBehaviour
         // Handle infinite scrolling background
         if (!isRepositioning)
         {
-            float halfSize = size / 2;
-
             // Move bg1 above if camera moves above bg2
-            if (transform.position.y > bg2.position.y + halfSize)
+            if (transform.position.y > bg2.position.y)
             {
                 isRepositioning = true;
-                float newY = bg2.position.y + size * 2;
+                float newY = bg2.position.y + size;
                 RepositionBackground(bg1, newY);
                 SwitchBackground();
                 isRepositioning = false;
             }
             // Move bg2 below if camera moves below bg1
-            else if (transform.position.y < bg1.position.y - halfSize)
+            else if (transform.position.y < bg1.position.y)
             {
                 isRepositioning = true;
-                float newY = bg1.position.y - size * 2;
+                float newY = bg1.position.y - size;
                 RepositionBackground(bg2, newY);
                 SwitchBackground();
                 isRepositioning = false;
