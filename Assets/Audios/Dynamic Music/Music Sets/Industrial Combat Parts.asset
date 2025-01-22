@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6228104cb9f674539bc6c7ed37df2f1e, type: 3}
+  m_Name: Industrial Combat Parts
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 35df2c7237618436da866f591abd13f8, type: 3}
+  - {fileID: 8300000, guid: 6ff754bb59b2b475eb4acbe8ff8b3a5b, type: 3}
+  - {fileID: 8300000, guid: 21d655490549b46aa89205801d34ad6f, type: 3}
+  - {fileID: 8300000, guid: ac880038d602e4ea4a48351fc4666679, type: 3}
+  - {fileID: 8300000, guid: ecc95d1af22e54fa5b83c2fa991ef5c1, type: 3}
+  - {fileID: 8300000, guid: be19a7093d73c42e3bd061758d558833, type: 3}
+  - {fileID: 8300000, guid: e061c94ead3404fc7aabc741186d2ef5, type: 3}
+  - {fileID: 8300000, guid: f938c90000c2f497f837bf16a078d9d9, type: 3}
+  partSet: 1
