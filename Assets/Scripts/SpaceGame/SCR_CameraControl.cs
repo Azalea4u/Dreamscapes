@@ -19,7 +19,8 @@ public class SCR_CameraControl : MonoBehaviour
     private float cameraZPosition;
     private bool isRepositioning = false; // Prevents multiple reposition calls
 
-    void Start()
+
+	void Start()
     {
         // Initialize background colliders
         bg1Collider = bg1.GetComponent<BoxCollider2D>();
@@ -33,10 +34,10 @@ public class SCR_CameraControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Smoothly move the camera to follow the target
-        Vector3 velocity = Vector3.zero;
-        Vector3 targetPos = SetPos(cameraTargetPos, transform.position.x, target.position.y, cameraZPosition);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 0.1f);
+		// Smoothly move the camera to follow the target
+		Vector3 velocity = Vector3.zero;
+		Vector3 targetPos = SetPos(cameraTargetPos, transform.position.x, target.position.y, cameraZPosition);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 7.0f * Time.fixedDeltaTime);
 
         // Handle infinite scrolling background
         if (!isRepositioning)

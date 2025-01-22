@@ -11,11 +11,11 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
     [SerializeField] private Transform MeanGuyTest;
     [SerializeField] private int health = 3;
 
-	void Update()
+	void FixedUpdate()
     {
-        transform.position = new Vector3(shipPosition, transform.position.y + (Time.deltaTime * shipAscentSpeed), 0.0f);
+        transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * shipAscentSpeed), 0.0f);
 
-        MeanGuyTest.position -= new Vector3(0.0f, Time.deltaTime * shipAscentSpeed, 0.0f);
+        MeanGuyTest.position -= new Vector3(0.0f, Time.fixedDeltaTime * shipAscentSpeed, 0.0f);
         if (MeanGuyTest.position.y <= transform.position.y - 7)
         {
             MeanGuyTest.position = new Vector3(Random.Range(-shipBounds, shipBounds), transform.position.y + 7.0f, 0.0f);
@@ -24,13 +24,13 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
     public void MoveLeft()
     {
-        shipPosition -= shipMovementSpeed * Time.deltaTime;
+        shipPosition -= shipMovementSpeed * Time.fixedDeltaTime;
         shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
     }
 
 	public void MoveRight()
 	{
-		shipPosition += shipMovementSpeed * Time.deltaTime;
+		shipPosition += shipMovementSpeed * Time.fixedDeltaTime;
         shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
 	}
 
