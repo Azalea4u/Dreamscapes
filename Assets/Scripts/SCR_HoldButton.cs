@@ -26,13 +26,13 @@ public class SCR_HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		Debug.Log("Down");
+		//Debug.Log("Down");
 		held = true;
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
-		Debug.Log("Up");
+		//Debug.Log("Up");
 		held = false;
 	}
 }
