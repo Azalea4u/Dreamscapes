@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3b6b6e05774fd0c46aeaf33d3914a5ef
+guid: c4ee2dc9ba4b47742a6733d88b6a9dd7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1344713568967785903
-    second: DirtHoleTile_0
+      213: -6777272342625869972
+    second: DirtHoleTransparentMiddleTile_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,24 +109,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DirtHoleTile_0
+      name: DirtHoleTransparentMiddleTile_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1520705322e965de0800000000000000
-      internalID: -1344713568967785903
+      spriteID: c6f94bf36ba42f1a0800000000000000
+      internalID: -6777272342625869972
       vertices: []
       indices: 
       edges: []
@@ -151,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DirtHoleTile_0: -1344713568967785903
+      DirtHoleTransparentMiddleTile_0: -6777272342625869972
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
