@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TrippyDoor_0: 90900303668484573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

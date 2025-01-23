@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DwindlingDoor_0: 9000619809301406038
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

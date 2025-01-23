@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpaceDoor_0: 689752734850375674
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
