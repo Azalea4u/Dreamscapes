@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class SCR_ArcheologyGrid : MonoBehaviour
@@ -22,6 +23,10 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private List<SCR_ArcheologyItem> items = new List<SCR_ArcheologyItem>();
 	[SerializeField] private Transform player;
 	[SerializeField] private Vector2Int playerPosition;
+
+	[Header("Audio")]
+	[SerializeField] private AudioSource hitStoneSFX;
+	[SerializeField] private AudioSource collectSFX;
 
     void Start()
     {
@@ -175,6 +180,12 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	public void HitTile()
 	{
 		Vector2Int hitPos = playerPosition;
+
+		// Changes the pitch in SFX
+        float minPitch = -0.15f;
+		float maxPitch = 0.5f;
+        hitStoneSFX.pitch = Random.Range(minPitch, maxPitch);
+		hitStoneSFX.Play();
 
 		// Vectors for which tiles to check about the hit position
 		// z value is how much tile damage it should deal
