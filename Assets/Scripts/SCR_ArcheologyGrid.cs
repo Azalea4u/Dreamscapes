@@ -18,12 +18,10 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private Vector2 tileSize = Vector2Int.one;
 	[SerializeField] private int itemAmount = 3;
 
-
 	[Header("Runtime Grid Values")]
 	[SerializeField] private List<SCR_ArcheologyItem> items = new List<SCR_ArcheologyItem>();
 	[SerializeField] private Transform player;
 	[SerializeField] private Vector2Int playerPosition;
-
 
     void Start()
     {

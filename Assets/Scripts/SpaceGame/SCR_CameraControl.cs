@@ -19,12 +19,13 @@ public class SCR_CameraControl : MonoBehaviour
     private float cameraZPosition;
     private bool isRepositioning = false; // Prevents multiple reposition calls
 
-    void Start()
+
+	void Start()
     {
         // Initialize background colliders
         bg1Collider = bg1.GetComponent<BoxCollider2D>();
         bg2Collider = bg2.GetComponent<BoxCollider2D>();
-        size = bg1Collider.size.y;
+        size = bg1Collider.size.y * bg1.localScale.y;
         cameraZPosition = transform.position.z;
 
         // Position second background exactly one height above the first
@@ -33,30 +34,28 @@ public class SCR_CameraControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Smoothly move the camera to follow the target
-        Vector3 velocity = Vector3.zero;
-        Vector3 targetPos = SetPos(cameraTargetPos, transform.position.x, target.position.y, cameraZPosition);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 0.1f);
+		// Smoothly move the camera to follow the target
+		Vector3 velocity = Vector3.zero;
+		Vector3 targetPos = SetPos(cameraTargetPos, transform.position.x, target.position.y, cameraZPosition);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 7.0f * Time.fixedDeltaTime);
 
         // Handle infinite scrolling background
         if (!isRepositioning)
         {
-            float halfSize = size / 2;
-
             // Move bg1 above if camera moves above bg2
-            if (transform.position.y > bg2.position.y + halfSize)
+            if (transform.position.y > bg2.position.y)
             {
                 isRepositioning = true;
-                float newY = bg2.position.y + size * 2;
+                float newY = bg2.position.y + size;
                 RepositionBackground(bg1, newY);
                 SwitchBackground();
                 isRepositioning = false;
             }
             // Move bg2 below if camera moves below bg1
-            else if (transform.position.y < bg1.position.y - halfSize)
+            else if (transform.position.y < bg1.position.y)
             {
                 isRepositioning = true;
-                float newY = bg1.position.y - size * 2;
+                float newY = bg1.position.y - size;
                 RepositionBackground(bg2, newY);
                 SwitchBackground();
                 isRepositioning = false;
