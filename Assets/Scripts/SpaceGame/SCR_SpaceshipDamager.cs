@@ -1,9 +1,10 @@
 using UnityEngine;
-
 public class SCR_SpaceshipDamager : MonoBehaviour
 {
 	// speed of the object in a direction
 	[SerializeField] private Vector3 speed;
+	// if horizontal speed should move towards the center
+	[SerializeField] private bool towardsCenter;
 	// if the obstacle should damage the ship
 	public bool doesDamage;
 	// how much the obstacle slows down the movement of the ship
@@ -13,10 +14,28 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 	// instantaneous pushback from the obstacle
 	public float bounce;
 	// has obstacle already been hit
-	public bool beenHit = false;
+	public bool beenHit { get; private set; }
+
+	private void Start()
+	{
+        if (towardsCenter)
+        {
+			speed.x = Mathf.Abs(speed.x) * -Mathf.Sign(transform.position.x);
+			speed.y = Mathf.Abs(speed.y) * -1;
+        }
+    }
 
 	private void FixedUpdate()
 	{
 		transform.position += speed * Time.fixedDeltaTime;
+		if (transform.position.y <= SCR_SpaceGame_Manager.instance.transform.position.y - 7.0f)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	public void HitShip()
+	{
+		beenHit = true;
 	}
 }

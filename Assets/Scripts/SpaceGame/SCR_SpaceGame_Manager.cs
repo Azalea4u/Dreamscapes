@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class SCR_SpaceGame_Manager : MonoBehaviour
 {
+    public static SCR_SpaceGame_Manager instance { get; private set; }
+
     [SerializeField] private SpriteRenderer visuals;
     [SerializeField] private Sprite[] damageStates;
+    [SerializeField] private int health = 3;
     [SerializeField] private float shipPosition;
     [SerializeField] private float shipBounds;
     [SerializeField] private float shipMovementSpeed;
     [SerializeField] private float shipAscentSpeed;
 	[SerializeField] private float desiredAscentSpeed;
 	[SerializeField] private float usedAscentSpeed = 0;
-    [SerializeField] private SCR_SpaceshipDamager[] MeanGuysTest;
-    [SerializeField] private int health = 3;
+    [SerializeField] private SCR_SpaceshipDamager[] obstaclePrefabs;
+    [SerializeField] private float spawnTimer = 2.0f;
 
 	private void Start()
 	{
+        instance = this;
         desiredAscentSpeed = shipAscentSpeed;
         visuals.sprite = damageStates[health];
 	}
@@ -25,12 +29,17 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
         transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * usedAscentSpeed), 0.0f);
 
-        foreach (var meanguy in MeanGuysTest) {
-			if (meanguy.transform.position.y <= Camera.main.transform.position.y - 7)
-			{
-				meanguy.transform.position = new Vector3(Random.Range(-shipBounds, shipBounds), Camera.main.transform.position.y + 7.0f, 0.0f);
-				meanguy.beenHit = false;
-			}
+        spawnTimer -= Time.fixedDeltaTime;
+        if (spawnTimer <= 0)
+        {
+            spawnTimer = 2.0f;
+			SCR_SpaceshipDamager newob = Instantiate(obstaclePrefabs[Random.Range(0,obstaclePrefabs.Length)].gameObject).GetComponent<SCR_SpaceshipDamager>();
+			newob.transform.position = new Vector3(Random.Range(-shipBounds, shipBounds), Camera.main.transform.position.y + 7.0f, 0.0f);
+			//foreach (var obstacle in obstaclePrefabs)
+			//{
+			//	SCR_SpaceshipDamager newob = Instantiate(obstacle.gameObject, transform).GetComponent<SCR_SpaceshipDamager>();
+			//	newob.transform.position = new Vector3(Random.Range(-shipBounds, shipBounds), Camera.main.transform.position.y + 7.0f, 0.0f);
+			//}
 		}
 	}
 
@@ -75,7 +84,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
                     DamageShip();
                 }
             }
-            obstacle.beenHit = true;
+            obstacle.HitShip();
         }
 	}
 
