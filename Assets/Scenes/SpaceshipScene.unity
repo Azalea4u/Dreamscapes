@@ -186,7 +186,7 @@ MonoBehaviour:
   shipPosition: 0
   shipBounds: 2.4
   shipMovementSpeed: 1.5
-  shipAscentSpeed: 3
+  shipAscentSpeed: 4
   desiredAscentSpeed: 0
   usedAscentSpeed: 0
   obstaclePrefabs:
