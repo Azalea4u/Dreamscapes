@@ -2,23 +2,17 @@ using UnityEngine;
 
 public class Scr_Gun : MonoBehaviour {
     [SerializeField] int dmg;
+    [SerializeField] float lastAmount;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        int r = Random.Range(0, 2);
+        float r = Random.Range((float)-1.5, (float)1.5);
 
-        switch (r) {
-            case 1:
-                ]]
-break;
-             case 2:
-                break
-        }
+        Vector3 v = transform.position;
+        v.x = r;
+        transform.position = v;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
 
