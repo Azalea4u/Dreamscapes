@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4eebbfc46e7a49c40aa25c28842c7e6a
+guid: 33a603ec1c860e744bc79150b7e2c702
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6410442598547967069
-    second: orange_0
+      213: 3267209078268184784
+    second: tentacle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: orange_0
+      name: tentacle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 599
+        width: 728
+        height: 405
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a3348cab688907a0800000000000000
-      internalID: -6410442598547967069
+      spriteID: 0d84b15a855775d20800000000000000
+      internalID: 3267209078268184784
       vertices: []
       indices: 
       edges: []
