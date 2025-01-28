@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private SCR_FindDragon_Dragon[] dragons;
     [SerializeField] private Sprite[] dragonSprites;
     [SerializeField] private Vector2 _gamebounds;
+    [SerializeField] private SpriteRenderer wantedDragonVisual;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
@@ -42,16 +44,32 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		setupDragons();
 	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
+        {
+            resetGame();
+        }
+	}
+	private void resetGame()
+    {
+
+
+		createDragonGroups();
+		setupDragons();
+	}
+
     private void createDragonGroups()
     {
+        dragonGroups.Clear();
         int start = Random.Range(0,dragonSprites.Length);
         for (int i = 0; i < 4; i++)
         {
 			dragonGroup newgroup = new dragonGroup();
             newgroup.sprite = dragonSprites[(start + i)%dragonSprites.Length];
 			newgroup.copySpeed = (Random.Range(0, 2)==0);
-			// (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
-		    newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(1.0f, 2.0f), (Random.Range(0, 2) * 2 - 1) * Random.Range(1.0f, 2.0f));
+            // (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
+		    newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f));
             newgroup.edgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
             dragonGroups.Add(newgroup);
 		}
@@ -65,7 +83,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
             assignDragonGroup(dragon, Random.Range(1, dragonGroups.Count));
 		}
 
-        assignDragonGroup(dragons[0], 0);
+        assignDragonGroup(dragons[dragons.Length - 1], 0);
+        wantedDragonVisual.sprite = dragonGroups[0].sprite;
     }
 
     private void assignDragonGroup(SCR_FindDragon_Dragon dragon, int group)
@@ -80,9 +99,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 			Vector2 s = usedgroup.speed;
 			dragon.speed = new Vector2(Random.Range(-s.x, s.x), Random.Range(-s.y, s.y));
 		}
+        dragon.isWanted = (group == 0);
 		dragon.SetSprite(usedgroup.sprite);
 		dragon.edgeInteraction = usedgroup.edgeType;
-        dragon.isWanted = (group == 0);
 	}
 
     public void DragonPressed(bool isWanted, SCR_FindDragon_Dragon dragon)
@@ -100,12 +119,18 @@ public class SCR_FindDragon_Manager : MonoBehaviour
             }
 
             // would put here stuff I want to happen after the dragon is found
-
+            StartCoroutine(resetGameCoroutine());
         }
         else
         {
             dragon.speed = Vector2.zero;
             dragon.transform.position = Vector3.one * 10;
         }
+    }
+
+    IEnumerator resetGameCoroutine()
+    {
+        yield return new WaitForSeconds(2.0f);
+        resetGame();
     }
 }
