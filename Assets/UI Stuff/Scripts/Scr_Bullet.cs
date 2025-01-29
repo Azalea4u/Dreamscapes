@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Scr_Bullet : MonoBehaviour {
-    [SerializeField] Rigidbody2D rb;
+    Rigidbody2D rb;
 
     void Start() {
         transform.position = FindAnyObjectByType<Scr_OctoPlayer>().transform.position;
@@ -13,7 +13,7 @@ public class Scr_Bullet : MonoBehaviour {
         
     }
 
-	private void OnTriggerEnter(Collider other) {
+	private void OnTriggerEnter2D(Collider2D other) {
         if (other.GetComponents<Scr_OctoEnemy>().Length > 0) {
             other.GetComponent<Scr_OctoEnemy>().damage(10);
             Destroy(gameObject);

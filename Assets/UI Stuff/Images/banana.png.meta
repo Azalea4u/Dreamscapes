@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/UI Stuff/Images/orange.png.meta
-guid: 5a6fb93a3e4c3c3498c4512432f29fb0
+guid: 9c027a33415561f49aa439e1d3accb05
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6410442598547967069
-    second: orange_0
-========
-guid: 8ef12224f104fbe4ab4ac3d172e687ef
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -2047974463435063743
-    second: BoneSkull_0
->>>>>>>> main:Assets/Textures/Artifacts/BoneSkull.png.meta
+      213: -9182177788924653191
+    second: banana_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,56 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<<< HEAD:Assets/UI Stuff/Images/orange.png.meta
-========
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>>> main:Assets/Textures/Artifacts/BoneSkull.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/UI Stuff/Images/orange.png.meta
-      name: orange_0
+      name: banana_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 600
-        height: 599
-========
-      name: BoneSkull_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 6
-        width: 63
-        height: 52
->>>>>>>> main:Assets/Textures/Artifacts/BoneSkull.png.meta
+        x: 5
+        y: 99
+        width: 501
+        height: 315
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,13 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Assets/UI Stuff/Images/orange.png.meta
-      spriteID: 3a3348cab688907a0800000000000000
-      internalID: -6410442598547967069
-========
-      spriteID: 14eb1ed73122493e0800000000000000
-      internalID: -2047974463435063743
->>>>>>>> main:Assets/Textures/Artifacts/BoneSkull.png.meta
+      spriteID: 9711aa243f9529080800000000000000
+      internalID: -9182177788924653191
       vertices: []
       indices: 
       edges: []
@@ -187,12 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<<< HEAD:Assets/UI Stuff/Images/orange.png.meta
-    nameFileIdTable: {}
-========
     nameFileIdTable:
-      BoneSkull_0: -2047974463435063743
->>>>>>>> main:Assets/Textures/Artifacts/BoneSkull.png.meta
+      banana_0: -9182177788924653191
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
