@@ -11,10 +11,42 @@ public class Scr_OctoEnemy : MonoBehaviour {
     }
 
     void Update() {
-        
+        attackTimer -= Time.deltaTime;
+        if (attackTimer <= 0)
+        {
+            switch (Random.Range(0,3))
+            {
+                case 0:
+                    moveLeft();
+					attackTimer = 1.0f;
+					break;
+
+                case 1:
+                    moveRight();
+					attackTimer = 0.5f;
+					break;
+
+                case 2:
+                    gunAttack();
+                    attackTimer = 1.0f;
+                    break;
+            }
+        }
     }
 
-    public void damage(int d) {
+	public void moveLeft()
+	{
+		transform.Translate(new Vector3(-1, 0, 0));
+		if (transform.position.x <= -2) transform.position = new Vector3(2, 3, 0); ;
+	}
+
+	public void moveRight()
+	{
+		transform.Translate(new Vector3(1, 0, 0));
+		if (transform.position.x >= 2) transform.position = new Vector3(-2, 3, 0);
+	}
+
+	public void damage(int d) {
         health -= d;
         if (health <= 0) {
             Destroy(gameObject); 
@@ -23,6 +55,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
     }
 
     public void gunAttack() {
-        Instantiate(shootFab);
+        Instantiate(shootFab, transform.position, transform.rotation);
     }
 }

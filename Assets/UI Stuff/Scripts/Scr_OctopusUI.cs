@@ -15,10 +15,18 @@ public class Scr_OctopusUI : MonoBehaviour {
     }
 
     public void moveClick(bool left) {
+        if (player == null)
+        {
+            return;
+        }
         if (left) player.moveLeft(); else player.moveRight();
     }
 
     public void shootClick() {
-        player.shoot();
+		if (player == null)
+		{
+			return;
+		}
+		player.shoot();
     }
 }
