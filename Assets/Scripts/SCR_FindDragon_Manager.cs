@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SCR_FindDragon_Manager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private SCR_FindDragon_Dragon[] dragons;
     [SerializeField] private Sprite[] dragonSprites;
     [SerializeField] private Vector2 _gamebounds;
-    [SerializeField] private SpriteRenderer wantedDragonVisual;
+    [SerializeField] private Image wantedDragonVisual;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
