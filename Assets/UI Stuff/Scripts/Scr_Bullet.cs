@@ -14,6 +14,11 @@ public class Scr_Bullet : MonoBehaviour {
     }
 
 	private void OnTriggerEnter2D(Collider2D other) {
+
+        if (other.GetComponent<Scr_Bomb>())
+        {
+            Destroy(gameObject);
+        }
         if (other.GetComponents<Scr_OctoEnemy>().Length > 0) {
             other.GetComponent<Scr_OctoEnemy>().damage(10);
             Destroy(gameObject);
