@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 62e0b1e4e32d4504dace70cc993ba79d
+guid: 3cc451f85367e554bb8c3fee6254d2a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8934346258682770587
-    second: OrangeCloud_0
+      213: -4451465917636402641
+    second: PollyTentacles_0
+  - first:
+      213: -2412096384524742065
+    second: PollyTentacles_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,40 +112,49 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OrangeCloud_0
+      name: PollyTentacles_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 63
-        height: 52
+        y: 8
+        width: 991
+        height: 2027
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b947029069c2dfb70800000000000000
-      internalID: 8934346258682770587
+      spriteID: 54bbf9665ce154b44bf029887cb68440
+      internalID: 1459528839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PollyTentacles_1
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 46
+        width: 914
+        height: 1983
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5096c833fa961834bb15c535c9beaa8b
+      internalID: 972368981
       vertices: []
       indices: 
       edges: []
@@ -151,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4070db9767002514ea947ecc843a3125
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      OrangeCloud_0: 8934346258682770587
+      PollyTentacles_0: 1459528839
+      PollyTentacles_1: 972368981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

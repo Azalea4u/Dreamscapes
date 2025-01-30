@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class SRC_AudioManager : MonoBehaviour
 {
-    public static SRC_AudioManager Instance;
+    public static SRC_AudioManager instance;
     public AudioSource MusicSource;
     public AudioSource SfxSource;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
