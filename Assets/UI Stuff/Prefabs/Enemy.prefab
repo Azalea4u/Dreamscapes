@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  shootFab: {fileID: 743936042114075006, guid: 9bd72d8f9b0880a4c85efa8951dae929, type: 3}
+  attackTimer: 0
 --- !u!70 &5074649603084551580
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
