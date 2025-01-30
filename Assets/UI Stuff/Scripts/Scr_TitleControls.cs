@@ -50,4 +50,8 @@ public class Scr_TitleControls : MonoBehaviour {
     public void playClick() {
         buttons[0].onClick.Invoke();
     }
+
+	public void howClick() {
+		buttons[0].GetComponent<Scr_HowTo>();
+	}
 }
