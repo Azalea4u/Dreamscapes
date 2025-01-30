@@ -15,7 +15,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-            switch (Random.Range(0,3))
+            switch (Random.Range(0,4))
             {
                 case 0:
                     moveLeft();
@@ -29,9 +29,14 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
                 case 2:
                     gunAttack();
-                    attackTimer = 0.5f;
+                    attackTimer = 0.1f;
                     break;
-            }
+
+				case 3:
+					TentacleAttack();
+					attackTimer = 0.2f;
+					break;
+			}
         }
     }
 

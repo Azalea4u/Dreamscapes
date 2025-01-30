@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4455457413079870199}
   - component: {fileID: 3130592440056710728}
   - component: {fileID: 7788647575038040472}
-  - component: {fileID: 5074649603084551580}
+  - component: {fileID: 506603395507724121}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -103,9 +103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   shootFab: {fileID: 743936042114075006, guid: 9bd72d8f9b0880a4c85efa8951dae929, type: 3}
+  tentacleFab: {fileID: 6720024715618985727, guid: dcc6b032f0f9d1a4598b0bf4a694efa7, type: 3}
   attackTimer: 0
---- !u!70 &5074649603084551580
-CapsuleCollider2D:
+--- !u!61 &506603395507724121
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -139,5 +140,14 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 7, y: 4}
-  m_Direction: 1
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8, y: 4.5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 4.5}
+  m_EdgeRadius: 0
