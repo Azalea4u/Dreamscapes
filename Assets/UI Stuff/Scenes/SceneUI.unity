@@ -344,6 +344,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4310384320528612947, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: pauseS
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310384320528612947, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: titleS
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283052007013877901, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_text
+      value: 'Octopus
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 8261580999691689065, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Name
       value: UI
