@@ -354,6 +354,92 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &265502011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: tutorialText
+      value: Use the arrows to move Magus to the spot you want to mine. Magus will
+        mine in a plus shape around him. Try to uncover the artifacts!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997175332543922930, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 836.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997175332543922930, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.5389
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315709171038770864, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 836.3597
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315709171038770864, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.5389
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_fontSize
+      value: 122.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 122.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007001890841663511, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_Name
+      value: PF_Tutorial
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
 --- !u!1 &275563758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,3 +2491,4 @@ SceneRoots:
   - {fileID: 1948544113}
   - {fileID: 689521262}
   - {fileID: 1921055683}
+  - {fileID: 265502011}
