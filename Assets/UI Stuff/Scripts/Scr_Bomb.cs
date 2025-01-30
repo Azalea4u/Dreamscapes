@@ -6,7 +6,7 @@ public class Scr_Bomb : MonoBehaviour {
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-		rb.linearVelocityY = 3;
+		rb.linearVelocityY = -3;
 	}
 
     void Update() {
