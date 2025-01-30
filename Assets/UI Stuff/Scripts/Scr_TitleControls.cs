@@ -1,11 +1,15 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Scr_TitleControls : MonoBehaviour {
     [SerializeField] Button[] buttons;
     [SerializeField] Vector2[] btnTransforms;
+	[SerializeField] GameObject howPanel;
+	[SerializeField] TextMeshProUGUI howTitle;
+	[SerializeField] TextMeshProUGUI howMain;
 
     void Start() {
         
@@ -52,6 +56,8 @@ public class Scr_TitleControls : MonoBehaviour {
     }
 
 	public void howClick() {
-		buttons[0].GetComponent<Scr_HowTo>();
+		howPanel.SetActive(!howPanel.activeSelf);
+		howTitle.text = buttons[0].GetComponent<Scr_HowTo>().gameTitle;
+		howMain.text = buttons[0].GetComponent<Scr_HowTo>().gameHow;
 	}
 }
