@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 8865d5afd593442408282c0ce2ed4d3f
+guid: 3cc451f85367e554bb8c3fee6254d2a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3878318427658482658
-    second: SPR_Cloud_0
+      213: -4451465917636402641
+    second: PollyTentacles_0
+  - first:
+      213: -2412096384524742065
+    second: PollyTentacles_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,46 +100,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -152,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPR_Cloud_0
+      name: PollyTentacles_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 130
-        width: 740
-        height: 354
+        x: 0
+        y: 8
+        width: 991
+        height: 2027
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2e37f6ecf0e82d530800000000000000
-      internalID: 3878318427658482658
+      spriteID: 54bbf9665ce154b44bf029887cb68440
+      internalID: 1459528839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PollyTentacles_1
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 46
+        width: 914
+        height: 1983
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5096c833fa961834bb15c535c9beaa8b
+      internalID: 972368981
       vertices: []
       indices: 
       edges: []
@@ -177,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4070db9767002514ea947ecc843a3125
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SPR_Cloud_0: 3878318427658482658
+      PollyTentacles_0: 1459528839
+      PollyTentacles_1: 972368981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

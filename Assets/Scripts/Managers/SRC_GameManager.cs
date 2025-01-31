@@ -3,22 +3,23 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager instance;
 
     [Header("Game State")]
-    public bool IsGamePaused = false;
-    public float TotalPlayTime = 0.0f;
+    [SerializeField] private bool IsGamePaused = false;
+    [SerializeField] private float TotalPlayTime = 0.0f;
 
     [Header("Mini-Games Data")]
-    public string[] MiniGames_Scenes; // list of mini-games scenes
-    public int CurrentMiniGameIndex = 0;
+    [SerializeField] private string MainMenu;
+    [SerializeField] private string[] MiniGames_Scenes; // list of mini-games scenes
+    [SerializeField] private int CurrentMiniGameIndex = 0;
 
     private void Awake()
     {
         // Singleton Pattern
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject); // Keep the GameManager across scenes
         }
         else
@@ -35,13 +36,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Load_MainMenu()
+    {
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
+    }
+
     public void StartMiniGame(int index)
     {
         if (index >= 0 && index < MiniGames_Scenes.Length)
         {
             CurrentMiniGameIndex = index;
-            // Loading Screen
-            // Load Mini-Game Scene
         }
     }
 
@@ -69,5 +73,6 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         // return to main menu
+        Load_MainMenu();
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] int health = 100;
     [SerializeField] GameObject shootFab;
+    [SerializeField] GameObject tentacleFab;
     [SerializeField] float attackTimer;
 
     void Start() {
@@ -14,7 +15,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-            switch (Random.Range(0,3))
+            switch (Random.Range(0,4))
             {
                 case 0:
                     moveLeft();
@@ -28,9 +29,14 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
                 case 2:
                     gunAttack();
-                    attackTimer = 1.0f;
+                    attackTimer = 0.1f;
                     break;
-            }
+
+				case 3:
+					TentacleAttack();
+					attackTimer = 0.2f;
+					break;
+			}
         }
     }
 
@@ -53,6 +59,11 @@ public class Scr_OctoEnemy : MonoBehaviour {
             SceneManager.LoadScene("SceneUI");
         }
     }
+
+    public void TentacleAttack()
+    {
+		Instantiate(tentacleFab, transform.position, transform.rotation);
+	}
 
     public void gunAttack() {
         Instantiate(shootFab, transform.position, transform.rotation);

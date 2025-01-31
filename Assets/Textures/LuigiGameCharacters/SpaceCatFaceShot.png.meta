@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8865d5afd593442408282c0ce2ed4d3f
+guid: 77370cf5909bcca4398204d9aa48dd3a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3878318427658482658
-    second: SPR_Cloud_0
+      213: -8956275966173886161
+    second: SpaceCatFaceShot_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,32 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -152,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPR_Cloud_0
+      name: SpaceCatFaceShot_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 130
-        width: 740
-        height: 354
+        x: 170
+        y: 156
+        width: 1634
+        height: 1652
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2e37f6ecf0e82d530800000000000000
-      internalID: 3878318427658482658
+      spriteID: f2946dd067ae4b380800000000000000
+      internalID: -8956275966173886161
       vertices: []
       indices: 
       edges: []
@@ -187,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SPR_Cloud_0: 3878318427658482658
+      SpaceCatFaceShot_0: -8956275966173886161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
