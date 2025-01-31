@@ -10,14 +10,13 @@ public class Scr_TitleControls : MonoBehaviour {
 	[SerializeField] GameObject howPanel;
 	[SerializeField] TextMeshProUGUI howTitle;
 	[SerializeField] TextMeshProUGUI howMain;
+	[SerializeField] Image gameImg;
 
     void Start() {
-        
-    }
-
-    void Update() {
-        
-    }
+		gameImg.sprite = buttons[0].GetComponent<Scr_HowTo>().gameImg;
+		howTitle.text = "How to play " + buttons[0].GetComponent<Scr_HowTo>().gameTitle;
+		howMain.text = buttons[0].GetComponent<Scr_HowTo>().gameHow;
+	}
 
     public void leftClick() {
 		List<Button> newBtns = new List<Button>();
@@ -33,6 +32,8 @@ public class Scr_TitleControls : MonoBehaviour {
 		for (int i = 0; i < buttons.Length; i++) {
 			buttons[i].GetComponent<RectTransform>().anchoredPosition = btnTransforms[i];
 		}
+
+		gameImg.sprite = buttons[0].GetComponent<Scr_HowTo>().gameImg;
 	}
 
     public void rightClick() {
@@ -49,6 +50,8 @@ public class Scr_TitleControls : MonoBehaviour {
 		for (int i = 0; i < buttons.Length; i++) {
 			buttons[i].GetComponent<RectTransform>().anchoredPosition = btnTransforms[i];
 		}
+
+		gameImg.sprite = buttons[0].GetComponent<Scr_HowTo>().gameImg;
 	}
 
     public void playClick() {
@@ -57,7 +60,7 @@ public class Scr_TitleControls : MonoBehaviour {
 
 	public void howClick() {
 		howPanel.SetActive(!howPanel.activeSelf);
-		howTitle.text = buttons[0].GetComponent<Scr_HowTo>().gameTitle;
+		howTitle.text = "How to play " + buttons[0].GetComponent<Scr_HowTo>().gameTitle;
 		howMain.text = buttons[0].GetComponent<Scr_HowTo>().gameHow;
 	}
 }

@@ -15,7 +15,8 @@ public static class SCR_Loader {
         //Intro,
         SCN_ArcheologyMinigame,
         SCN_SpaceshipScene,
-        SCN_FindDragonLuigi
+        SCN_FindDragonLuigi,
+		Octopus
         //FirstFloor
     }
 

@@ -78,4 +78,9 @@ public class Scr_ScreenManager : MonoBehaviour {
         SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
         Destroy(gameObject);
 	}
+
+    public void OctopusClick() {
+        SCR_Loader.Load(SCR_Loader.scenes.Octopus);
+        Destroy(gameObject);
+    }
 }

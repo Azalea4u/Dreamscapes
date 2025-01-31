@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ffd2031a2048cc84e91d3c3909d10c7d
+guid: c5121e750d11cb64bbca530ebad986e9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3419006137658308139
-    second: PollyOutOfWater_0
+      213: -9158349384845336690
+    second: rocket_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PollyOutOfWater_0
+      name: rocket_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 231
-        width: 2046
-        height: 1608
+        y: 0
+        width: 980
+        height: 980
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b26f000b7ffb27f20800000000000000
-      internalID: 3419006137658308139
+      spriteID: e8f506be1c107e080800000000000000
+      internalID: -9158349384845336690
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      PollyOutOfWater_0: 3419006137658308139
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
