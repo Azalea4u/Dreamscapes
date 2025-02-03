@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,48 +7,67 @@ public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] GameObject shootFab;
     [SerializeField] GameObject tentacleFab;
     [SerializeField] float attackTimer;
+    [SerializeField] float moveTimer;
+	[SerializeField] bool[] spacesAvailable = new bool[5];
+	[SerializeField] int position = 2;
 
-    void Start() {
-        
-    }
+	GameObject tentacleRef;
 
-    void Update() {
-        attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
-        {
-            switch (Random.Range(0,4))
-            {
-                case 0:
-                    moveLeft();
-					attackTimer = 1.0f;
+
+
+	void Start() {
+		attackTimer = 1.0f;
+		moveTimer = 1.0f;
+	}
+
+	void Update() {
+		attackTimer -= Time.deltaTime;
+		moveTimer -= Time.deltaTime;
+
+		if (attackTimer <= 0)
+		{
+			if (tentacleRef != null || Random.Range(0,3) != 0) {
+				attackTimer = 1.1f;
+				gunAttack();
+			}	else { 
+				attackTimer = 0.7f;
+				TentacleAttack();
+			}
+		} else if (moveTimer <= 0) {
+			switch (Random.Range(0, 2))
+			{
+				case 0:
+					moveTimer = 2.0f;
+					moveLeft();
 					break;
 
-                case 1:
-                    moveRight();
-					attackTimer = 0.5f;
-					break;
-
-                case 2:
-                    gunAttack();
-                    attackTimer = 0.1f;
-                    break;
-
-				case 3:
-					TentacleAttack();
-					attackTimer = 0.2f;
+				case 1:
+					moveTimer = 1.5f;
+					moveRight();
 					break;
 			}
-        }
-    }
+			attackTimer += 0.5f;
+		}
+	}
 
 	public void moveLeft()
 	{
+		position -= 1;
+		if (position < 0)
+		{
+			position = spacesAvailable.Length - 1;
+		}
 		transform.Translate(new Vector3(-1, 0, 0));
-		if (transform.position.x <= -2) transform.position = new Vector3(2, 3, 0); ;
+		if (transform.position.x <= -2) transform.position = new Vector3(2, 3, 0);
 	}
 
 	public void moveRight()
 	{
+		position += 1;
+		if (position >= spacesAvailable.Length)
+		{
+			position = 0;
+		}
 		transform.Translate(new Vector3(1, 0, 0));
 		if (transform.position.x >= 2) transform.position = new Vector3(-2, 3, 0);
 	}
@@ -61,8 +81,8 @@ public class Scr_OctoEnemy : MonoBehaviour {
     }
 
     public void TentacleAttack()
-    {
-		Instantiate(tentacleFab, transform.position, transform.rotation);
+	{
+		tentacleRef = Instantiate(tentacleFab, transform.position, transform.rotation);
 	}
 
     public void gunAttack() {
