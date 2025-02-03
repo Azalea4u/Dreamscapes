@@ -138,7 +138,22 @@ MonoBehaviour:
   tentacleFab: {fileID: 6720024715618985727, guid: dcc6b032f0f9d1a4598b0bf4a694efa7, type: 3}
   attackTimer: 0
   moveTimer: 0
-  spacesAvailable: 0000000000
+  availableSpaces:
+  - somethingHereRef: {fileID: 0}
+    spacePosition: {x: -2, y: 3, z: 0}
+    wasTentacleHere: 0
+  - somethingHereRef: {fileID: 0}
+    spacePosition: {x: -1, y: 3, z: 0}
+    wasTentacleHere: 0
+  - somethingHereRef: {fileID: 0}
+    spacePosition: {x: 0, y: 3, z: 0}
+    wasTentacleHere: 0
+  - somethingHereRef: {fileID: 0}
+    spacePosition: {x: 1, y: 3, z: 0}
+    wasTentacleHere: 0
+  - somethingHereRef: {fileID: 0}
+    spacePosition: {x: 2, y: 3, z: 0}
+    wasTentacleHere: 0
   position: 2
 --- !u!61 &506603395507724121
 BoxCollider2D:

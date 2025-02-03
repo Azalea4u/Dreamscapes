@@ -2,18 +2,16 @@ using UnityEngine;
 
 public class Scr_Bomb : MonoBehaviour {
     [SerializeField] int dmg;
+	[SerializeField] float speed;
     Rigidbody2D rb;
-	[SerializeField] float deathTimer = 5.0f;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-		rb.linearVelocityY = -3;
-		deathTimer = 5.0f;
+		rb.linearVelocityY = -speed;
 	}
 
     void Update() {
-        deathTimer -= Time.deltaTime;
-		if (deathTimer <= 0)
+		if (transform.position.y <= -6.0f)
 		{
 			Destroy(gameObject);
 		}
