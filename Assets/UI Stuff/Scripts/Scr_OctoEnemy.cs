@@ -35,7 +35,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 		if (moveTimer <= 0)
 		{
-			moveTimer = 1.0f;
+			moveTimer = UnityEngine.Random.Range(0.5f, 1.5f);
 			if (availableSpaces[position].somethingHereRef == null)
 			{
 				if (availableSpaces[tentaclePos].somethingHereRef == null)
@@ -46,35 +46,26 @@ public class Scr_OctoEnemy : MonoBehaviour {
 					gunAttack();
 				}
 			}
-
-			spaces leftspace = getLeftSpace();
-			spaces rightspace = getRightSpace();
-
-			if (leftspace.somethingHereRef == null && rightspace.somethingHereRef == null)
+			else
 			{
-				if (UnityEngine.Random.Range(0, 2) == 0)
+				spaces leftspace = getLeftSpace();
+				spaces rightspace = getRightSpace();
+
+				if (leftspace.somethingHereRef == null && rightspace.somethingHereRef == null)
+				{
+					moveRandomLeftRight();
+				}
+				else if (leftspace.somethingHereRef == null)
 				{
 					moveLeft();
+				}
+				else if (rightspace.somethingHereRef == null)
+				{
+					moveRight();
 				}
 				else
 				{
-					moveRight();
-				}
-			}
-			else if (leftspace.somethingHereRef == null)
-			{
-				moveLeft();
-			} else if (rightspace.somethingHereRef == null)
-			{
-				moveRight();
-			} else
-			{
-				if (UnityEngine.Random.Range(0,2) == 0)
-				{
-					moveLeft();
-				} else
-				{
-					moveRight();
+					moveRandomLeftRight();
 				}
 			}
 		}
@@ -157,6 +148,18 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		//transform.Translate(new Vector3(1, 0, 0));
 		//if (transform.position.x >= 2) transform.position = new Vector3(-2, 3, 0);
 		transform.position = availableSpaces[position].spacePosition;
+	}
+
+	public void moveRandomLeftRight()
+	{
+		if (UnityEngine.Random.Range(0, 2) == 0)
+		{
+			moveLeft();
+		}
+		else
+		{
+			moveRight();
+		}
 	}
 
 	public void damage(int d) {
