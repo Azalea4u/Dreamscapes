@@ -308,26 +308,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PR_GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: MainMenu
-      value: SCN_MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: MiniGames_Scenes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: 'MiniGames_Scenes.Array.data[0]'
-      value: SCN_ArcheologyMinigame
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: 'MiniGames_Scenes.Array.data[1]'
-      value: SCN_FindDragonLuigi
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: 'MiniGames_Scenes.Array.data[2]'
-      value: SCN_SpaceshipScene
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
