@@ -7,7 +7,8 @@ public class SCR_Tutorial : MonoBehaviour {
 	[SerializeField] string tutorialText;
 
 	void Start() {
-		Time.timeScale = 0;
+		GameManager.instance.PauseGame(true);
+		//Time.timeScale = 0;
 		tutorialContainer.SetActive(true);
 		displayText(tutorialText);
 	}
@@ -18,6 +19,6 @@ public class SCR_Tutorial : MonoBehaviour {
 
 	public void close() {
 		tutorialContainer.SetActive(false);
-		Time.timeScale = 1.0f;
+		GameManager.instance.PauseGame(false);
 	}
 }
