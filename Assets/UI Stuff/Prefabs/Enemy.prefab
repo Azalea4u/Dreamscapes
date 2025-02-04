@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65, y: 1, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4455457413079870199}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -948236817906692719, guid: 273dde8dcaf3c5747a9eaceb3b961d00, type: 3}
+  m_Sprite: {fileID: 3419006137658308139, guid: ffd2031a2048cc84e91d3c3909d10c7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,20 +141,16 @@ MonoBehaviour:
   availableSpaces:
   - somethingHereRef: {fileID: 0}
     spacePosition: {x: -2, y: 3, z: 0}
-    wasTentacleHere: 0
   - somethingHereRef: {fileID: 0}
     spacePosition: {x: -1, y: 3, z: 0}
-    wasTentacleHere: 0
   - somethingHereRef: {fileID: 0}
     spacePosition: {x: 0, y: 3, z: 0}
-    wasTentacleHere: 0
   - somethingHereRef: {fileID: 0}
     spacePosition: {x: 1, y: 3, z: 0}
-    wasTentacleHere: 0
   - somethingHereRef: {fileID: 0}
     spacePosition: {x: 2, y: 3, z: 0}
-    wasTentacleHere: 0
   position: 2
+  tentaclePos: 0
 --- !u!61 &506603395507724121
 BoxCollider2D:
   m_ObjectHideFlags: 0

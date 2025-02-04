@@ -64,7 +64,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     {
         dragonGroups.Clear();
         int start = Random.Range(0,dragonSprites.Length);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
 			dragonGroup newgroup = new dragonGroup();
             newgroup.sprite = dragonSprites[(start + i)%dragonSprites.Length];
