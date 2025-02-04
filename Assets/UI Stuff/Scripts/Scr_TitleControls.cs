@@ -14,8 +14,6 @@ public class Scr_TitleControls : MonoBehaviour {
 
     void Start() {
 		gameImg.sprite = buttons[0].GetComponent<Scr_HowTo>().gameImg;
-		howTitle.text = "How to play " + buttons[0].GetComponent<Scr_HowTo>().gameTitle;
-		howMain.text = buttons[0].GetComponent<Scr_HowTo>().gameHow;
 	}
 
     public void leftClick() {
@@ -59,8 +57,6 @@ public class Scr_TitleControls : MonoBehaviour {
     }
 
 	public void howClick() {
-		howPanel.SetActive(!howPanel.activeSelf);
-		howTitle.text = "How to play " + buttons[0].GetComponent<Scr_HowTo>().gameTitle;
-		howMain.text = buttons[0].GetComponent<Scr_HowTo>().gameHow;
+
 	}
 }

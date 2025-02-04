@@ -63,7 +63,7 @@ public class Scr_ScreenManager : MonoBehaviour {
 
     public void RocketClick() {
         //SceneManager.LoadScene("SCN_SpaceshipScene");
-        SCR_Loader.Load(SCR_Loader.scenes.SpaceshipScene);
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
         Destroy(gameObject);
     }
 
