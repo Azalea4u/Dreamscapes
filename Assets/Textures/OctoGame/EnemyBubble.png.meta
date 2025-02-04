@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: aa756f127223ec44aaa4efead4ae69b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6148123466030635550
+    second: EnemyBubble_0
+  - first:
+      213: 1664301908530108836
+    second: EnemyBubble_1
+  - first:
+      213: -6446344981894843035
+    second: EnemyBubble_2
+  - first:
+      213: 6048401506419530291
+    second: EnemyBubble_3
+  - first:
+      213: 445284340926379579
+    second: EnemyBubble_4
+  - first:
+      213: -7126119423503882
+    second: EnemyBubble_5
+  - first:
+      213: 1452281553596593825
+    second: EnemyBubble_6
+  - first:
+      213: 998084561129208110
+    second: EnemyBubble_7
+  - first:
+      213: 8514844569590941020
+    second: EnemyBubble_8
+  - first:
+      213: -4150702915553015715
+    second: EnemyBubble_9
+  - first:
+      213: -8701630099480922151
+    second: EnemyBubble_10
+  - first:
+      213: 4824885175793964048
+    second: EnemyBubble_11
+  - first:
+      213: -966090126473828090
+    second: EnemyBubble_12
+  - first:
+      213: -7018017359879770448
+    second: EnemyBubble_13
+  - first:
+      213: 6469176525961407812
+    second: EnemyBubble_14
+  - first:
+      213: -5674460986493721814
+    second: EnemyBubble_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EnemyBubble_0
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 1135
+        width: 568
+        height: 467
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e52004284a7daaa0800000000000000
+      internalID: -6148123466030635550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_1
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 238
+        width: 1307
+        height: 1319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a911f894c9c81710800000000000000
+      internalID: 1664301908530108836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_2
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1481
+        width: 587
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5653986a46bf986a0800000000000000
+      internalID: -6446344981894843035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_3
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 1534
+        width: 843
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ad211df1d30f350800000000000000
+      internalID: 6048401506419530291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_4
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 973
+        width: 676
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b36f5f4bfb7fd2600800000000000000
+      internalID: 445284340926379579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_5
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1113
+        width: 138
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f1922705dea6eff0800000000000000
+      internalID: -7126119423503882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_6
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 89
+        width: 761
+        height: 1144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a63af3e06a872410800000000000000
+      internalID: 1452281553596593825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_7
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 828
+        width: 93
+        height: 417
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2978e9ce98e9dd00800000000000000
+      internalID: 998084561129208110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_8
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 632
+        width: 270
+        height: 845
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c55c120c50eca2670800000000000000
+      internalID: 8514844569590941020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_9
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 740
+        width: 31
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58c84e80bdb566c0800000000000000
+      internalID: -4150702915553015715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_10
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 183
+        width: 892
+        height: 607
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d7b79917899d3780800000000000000
+      internalID: -8701630099480922151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_11
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 348
+        width: 284
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0145f39018f65f240800000000000000
+      internalID: 4824885175793964048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_12
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 413
+        width: 162
+        height: 553
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 609e3860622c792f0800000000000000
+      internalID: -966090126473828090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_13
+      rect:
+        serializedVersion: 2
+        x: 1853
+        y: 769
+        width: 26
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0be67dce46efa9e90800000000000000
+      internalID: -7018017359879770448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_14
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 145
+        width: 436
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44da93376c127c950800000000000000
+      internalID: 6469176525961407812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyBubble_15
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 143
+        width: 492
+        height: 546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a23aa302cc34041b0800000000000000
+      internalID: -5674460986493721814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      EnemyBubble_0: -6148123466030635550
+      EnemyBubble_1: 1664301908530108836
+      EnemyBubble_10: -8701630099480922151
+      EnemyBubble_11: 4824885175793964048
+      EnemyBubble_12: -966090126473828090
+      EnemyBubble_13: -7018017359879770448
+      EnemyBubble_14: 6469176525961407812
+      EnemyBubble_15: -5674460986493721814
+      EnemyBubble_2: -6446344981894843035
+      EnemyBubble_3: 6048401506419530291
+      EnemyBubble_4: 445284340926379579
+      EnemyBubble_5: -7126119423503882
+      EnemyBubble_6: 1452281553596593825
+      EnemyBubble_7: 998084561129208110
+      EnemyBubble_8: 8514844569590941020
+      EnemyBubble_9: -4150702915553015715
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
