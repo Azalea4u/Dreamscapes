@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,50 +7,159 @@ public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] GameObject shootFab;
     [SerializeField] GameObject tentacleFab;
     [SerializeField] float attackTimer;
+    [SerializeField] float moveTimer;
+	[SerializeField] spaces[] availableSpaces = new spaces[5];
+	[SerializeField] int position = 2;
 
-    void Start() {
-        
-    }
+	[SerializeField] int tentaclePos = 0;
 
-    void Update() {
-        attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
-        {
-            switch (Random.Range(0,4))
-            {
-                case 0:
-                    moveLeft();
-					attackTimer = 1.0f;
-					break;
+	[Serializable] public struct spaces
+	{
+		public GameObject somethingHereRef;
+		public Vector3 spacePosition;
+	}
 
-                case 1:
-                    moveRight();
-					attackTimer = 0.5f;
-					break;
 
-                case 2:
-                    gunAttack();
-                    attackTimer = 0.1f;
-                    break;
+	void Start() {
+		attackTimer = 1.0f;
+		moveTimer = 1.0f;
 
-				case 3:
+		transform.position = availableSpaces[position].spacePosition;
+	}
+
+	void Update() {
+		//transform.position = Vector3.Lerp(transform.position, availableSpaces[position].spacePosition, Time.deltaTime);
+
+
+		moveTimer -= Time.deltaTime;
+
+		if (moveTimer <= 0)
+		{
+			moveTimer = UnityEngine.Random.Range(0.5f, 1.5f);
+			if (availableSpaces[position].somethingHereRef == null)
+			{
+				if (availableSpaces[tentaclePos].somethingHereRef == null)
+				{
 					TentacleAttack();
-					attackTimer = 0.2f;
-					break;
+				} else
+				{
+					gunAttack();
+				}
 			}
-        }
-    }
+			else
+			{
+				spaces leftspace = getLeftSpace();
+				spaces rightspace = getRightSpace();
+
+				if (leftspace.somethingHereRef == null && rightspace.somethingHereRef == null)
+				{
+					moveRandomLeftRight();
+				}
+				else if (leftspace.somethingHereRef == null)
+				{
+					moveLeft();
+				}
+				else if (rightspace.somethingHereRef == null)
+				{
+					moveRight();
+				}
+				else
+				{
+					moveRandomLeftRight();
+				}
+			}
+		}
+
+		//attackTimer -= Time.deltaTime;
+
+
+		//if (attackTimer <= 0)
+		//{
+		//	if (UnityEngine.Random.Range(0, 3) != 0)
+		//	{
+		//		attackTimer = 1.1f;
+		//		gunAttack();
+		//	}
+		//	else
+		//	{
+		//		attackTimer = 0.7f;
+		//		TentacleAttack();
+		//	}
+		//}
+		//else if (moveTimer <= 0)
+		//{
+		//	switch (UnityEngine.Random.Range(0, 2))
+		//	{
+		//		case 0:
+		//			moveTimer = 2.0f;
+		//			moveLeft();
+		//			break;
+
+		//		case 1:
+		//			moveTimer = 1.5f;
+		//			moveRight();
+		//			break;
+		//	}
+		//	attackTimer += 0.5f;
+		//}
+	}
+
+	public spaces getLeftSpace()
+	{
+		int pos = position - 1;
+		if (pos < 0)
+		{
+			pos = availableSpaces.Length - 1;
+		}
+
+		return availableSpaces[pos];
+	}
+
+	public spaces getRightSpace()
+	{
+		int pos = position + 1;
+		if (pos >= availableSpaces.Length)
+		{
+			pos = 0;
+		}
+
+		return availableSpaces[pos];
+	}
 
 	public void moveLeft()
 	{
-		transform.Translate(new Vector3(-1, 0, 0));
-		if (transform.position.x <= -2) transform.position = new Vector3(2, 3, 0); ;
+		position -= 1;
+		if (position < 0)
+		{
+			position = availableSpaces.Length - 1;
+		}
+		//transform.Translate(new Vector3(-1, 0, 0));
+		//if (transform.position.x <= -2) transform.position = new Vector3(2, 3, 0);
+		transform.position = availableSpaces[position].spacePosition;
 	}
 
 	public void moveRight()
 	{
-		transform.Translate(new Vector3(1, 0, 0));
-		if (transform.position.x >= 2) transform.position = new Vector3(-2, 3, 0);
+		position += 1;
+		if (position >= availableSpaces.Length)
+		{
+			position = 0;
+		}
+		//transform.Translate(new Vector3(1, 0, 0));
+		//if (transform.position.x >= 2) transform.position = new Vector3(-2, 3, 0);
+		transform.position = availableSpaces[position].spacePosition;
+	}
+
+	public void moveRandomLeftRight()
+	{
+		if (UnityEngine.Random.Range(0, 2) == 0)
+		{
+			moveLeft();
+		}
+		else
+		{
+			moveRight();
+		}
 	}
 
 	public void damage(int d) {
@@ -61,11 +171,12 @@ public class Scr_OctoEnemy : MonoBehaviour {
     }
 
     public void TentacleAttack()
-    {
-		Instantiate(tentacleFab, transform.position, transform.rotation);
+	{
+		tentaclePos = position;
+		availableSpaces[position].somethingHereRef = Instantiate(tentacleFab, transform.position, transform.rotation);
 	}
 
     public void gunAttack() {
-        Instantiate(shootFab, transform.position, transform.rotation);
+		availableSpaces[position].somethingHereRef = Instantiate(shootFab, transform.position, transform.rotation);
     }
 }
