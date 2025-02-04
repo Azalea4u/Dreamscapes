@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Octopus.unity
     guid: 14a41b9408f8b5741be40862eb087448
+  - enabled: 1
+    path: Assets/Scenes/SCN_SpaceshipScene.unity
+    guid: 578a9d0b6b3ded644968bac1c2ae5e25
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8676fe68bd91d7045939ca489e5060ca, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: cd5a68ba18090b548b923a38ac577dca, type: 2}

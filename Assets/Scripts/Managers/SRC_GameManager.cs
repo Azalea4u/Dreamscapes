@@ -70,6 +70,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game " + (IsGamePaused ? "Paused" : "Resumed"));
     }
 
+    public void PauseGame(bool pauseGame)
+    {
+        IsGamePaused = pauseGame;
+        Time.timeScale = IsGamePaused ? 0 : 1;
+        Debug.Log("Game " + (IsGamePaused ? "Paused" : "Resumed"));
+    }
+
     public void EndGame()
     {
         // return to main menu

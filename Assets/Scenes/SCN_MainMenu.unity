@@ -308,26 +308,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PR_GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: MainMenu
-      value: SCN_MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: MiniGames_Scenes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: 'MiniGames_Scenes.Array.data[0]'
-      value: SCN_ArcheologyMinigame
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: 'MiniGames_Scenes.Array.data[1]'
-      value: SCN_FindDragonLuigi
-      objectReference: {fileID: 0}
-    - target: {fileID: 7242639893421968606, guid: b90b0d66794d9dd4cb0fb45b5502fcbe, type: 3}
-      propertyPath: 'MiniGames_Scenes.Array.data[2]'
-      value: SCN_SpaceshipScene
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -421,29 +401,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8154179732006617057, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8261580999691689065, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8678457846459880831, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8678457846459880831, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8678457846459880831, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8678457846459880831, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Color.r
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
