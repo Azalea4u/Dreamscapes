@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 24747034}
   - component: {fileID: 24747033}
-  - component: {fileID: 24747032}
   m_Layer: 0
   m_Name: SpaceGameManager
   m_TagString: Untagged
@@ -137,33 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &24747032
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24747031}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &24747033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,23 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930d9e3395c2e8d44a79d20ec0c6ad09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visuals: {fileID: 985616888}
-  damageStates:
-  - {fileID: 21300000, guid: 86c79471403a838438643b0c26510797, type: 3}
-  - {fileID: 21300000, guid: 4311eb7fb63ee604996f04240d1d7e45, type: 3}
-  - {fileID: 21300000, guid: c4c34286c77179b4ea044c83787567b6, type: 3}
-  - {fileID: 21300000, guid: 2f3918882ac91a24292a286d8c8873c6, type: 3}
-  health: 3
-  shipPosition: 0
-  shipBounds: 2.4
-  shipMovementSpeed: 1.5
-  shipAscentSpeed: 4
-  desiredAscentSpeed: 0
-  usedAscentSpeed: 0
-  obstaclePrefabs:
-  - {fileID: 6968378462510633163, guid: 8617272e51925f44d9cbad25cca71c68, type: 3}
-  - {fileID: 698027657200988359, guid: 15a42458644f88f4bbbac2e87529c240, type: 3}
-  spawnTimer: 2
+  obstaclesToSpawn: []
+  spawnTimerLength: 2
 --- !u!4 &24747034
 Transform:
   m_ObjectHideFlags: 0
@@ -205,8 +162,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 985616886}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &302005176
@@ -738,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904a7c16926cc4c47b72f1285a6736ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 24747034}
+  target: {fileID: 985616886}
   bg1: {fileID: 443216371}
   bg2: {fileID: 610861403}
 --- !u!114 &519420034
@@ -1236,6 +1192,8 @@ GameObject:
   - component: {fileID: 985616886}
   - component: {fileID: 985616888}
   - component: {fileID: 985616887}
+  - component: {fileID: 985616889}
+  - component: {fileID: 985616890}
   m_Layer: 0
   m_Name: spaceship
   m_TagString: Untagged
@@ -1256,7 +1214,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 24747034}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &985616887
 BoxCollider2D:
@@ -1359,6 +1317,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &985616889
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985616885}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &985616890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985616885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a173acf43a0c30742a3ee828d32f8f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visuals: {fileID: 985616888}
+  damageStates:
+  - {fileID: 21300000, guid: 86c79471403a838438643b0c26510797, type: 3}
+  - {fileID: 21300000, guid: 4311eb7fb63ee604996f04240d1d7e45, type: 3}
+  - {fileID: 21300000, guid: c4c34286c77179b4ea044c83787567b6, type: 3}
+  - {fileID: 21300000, guid: 2f3918882ac91a24292a286d8c8873c6, type: 3}
+  health: 3
+  shipPosition: 0
+  shipBounds: 0
+  shipMovementSpeed: 0
+  shipAscentSpeed: 0
+  desiredAscentSpeed: 0
+  usedAscentSpeed: 0
 --- !u!1 &1134934430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,5 +1772,6 @@ SceneRoots:
   - {fileID: 610861403}
   - {fileID: 1871982736}
   - {fileID: 522470977}
+  - {fileID: 985616886}
   - {fileID: 24747034}
   - {fileID: 1631795699}
