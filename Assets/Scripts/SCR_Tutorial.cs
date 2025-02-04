@@ -20,5 +20,6 @@ public class SCR_Tutorial : MonoBehaviour {
 	public void close() {
 		tutorialContainer.SetActive(false);
 		GameManager.instance.PauseGame(false);
+		//Time.timeScale = 1;
 	}
 }

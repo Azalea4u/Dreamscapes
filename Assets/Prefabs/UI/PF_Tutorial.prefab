@@ -320,7 +320,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a056a495dfcf4c7498fe8b629a653ae0, type: 2}
-  m_sharedMaterial: {fileID: 1762842836554841032, guid: a056a495dfcf4c7498fe8b629a653ae0, type: 2}
+  m_sharedMaterial: {fileID: -1738568773208102018, guid: a056a495dfcf4c7498fe8b629a653ae0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_text: How to Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3b3764a49c44844ca471a5fca92de3a, type: 2}
-  m_sharedMaterial: {fileID: 993562840187222134, guid: d3b3764a49c44844ca471a5fca92de3a, type: 2}
+  m_sharedMaterial: {fileID: 475359402186628586, guid: d3b3764a49c44844ca471a5fca92de3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
