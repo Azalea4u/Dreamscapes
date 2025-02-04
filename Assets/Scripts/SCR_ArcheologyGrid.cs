@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class SCR_ArcheologyGrid : MonoBehaviour
 {
@@ -28,9 +31,15 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private AudioSource hitStoneSFX;
 	[SerializeField] private AudioSource collectSFX;
 
+	[Header("Pop-Up")]
+	[SerializeField] private GameObject Popup_Panel;
+	[SerializeField] private Image Artifact_IMG;
+	[SerializeField] private TextMeshProUGUI ArtifactName_TXT;
+
     void Start()
     {
 		Instance = this;
+		Popup_Panel.SetActive(false);
 
 		tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
@@ -114,10 +123,11 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		return false;
 	}
 
-	/// <summary>
-	/// UI button function for moving the player up
-	/// </summary>
-	public void MoveUp()
+    #region MOVEMENT_CONTROLS
+    /// <summary>
+    /// UI button function for moving the player up
+    /// </summary>
+    public void MoveUp()
 	{
 		playerPosition.y -= 1;
 		if (playerPosition.y < 0)
@@ -165,11 +175,12 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		}
 		updatePlayer();
 	}
+    #endregion
 
-	/// <summary>
-	/// Update position of player visuals to be in line with player position
-	/// </summary>
-	private void updatePlayer()
+    /// <summary>
+    /// Update position of player visuals to be in line with player position
+    /// </summary>
+    private void updatePlayer()
 	{
 		player.transform.position = tileGrid[playerPosition.x, playerPosition.y].transform.position;
 	}
@@ -236,9 +247,27 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			if (uncovered)
 			{
 				// Something would happen to the item once it is gotten
-				// that is currently not in the program so all it does for now is destroy the item
-				Destroy(item.gameObject);
-			}
+
+                StartCoroutine(RemoveItem(item));
+
+                // that is currently not in the program so all it does for now is destroy the item
+            }
 		}
 	}
+
+    private IEnumerator RemoveItem(SCR_ArcheologyItem item)
+    {		
+		// Pop-Up Panel
+        Artifact_IMG.sprite = item.GetSprite();
+		ArtifactName_TXT.text = item.GetItemName() + "!";
+		Popup_Panel.SetActive(true);
+
+        collectSFX.Play(); 
+        yield return new WaitForSeconds(1.0f);
+		Debug.Log("Wait done");
+
+		// Remove Items
+        Popup_Panel.SetActive(false);
+        Destroy(item.gameObject);
+    }
 }

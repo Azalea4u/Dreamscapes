@@ -58,4 +58,15 @@ public class SCR_ArcheologyItem : MonoBehaviour
 
 		return positions;
 	}
+
+    public Sprite GetSprite()
+    {
+        return itemData.sprite;
+    }
+
+    public string GetItemName()
+    {
+		return itemData.Name;
+    }
+
 }
