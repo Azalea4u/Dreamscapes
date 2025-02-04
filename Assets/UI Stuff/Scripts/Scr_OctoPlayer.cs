@@ -39,7 +39,7 @@ public class Scr_OctoPlayer : MonoBehaviour {
 	{
         Debug.Log(collision);
 
-		if (collision.GetComponent<Scr_Tentacle>())
+		if (collision.attachedRigidbody.GetComponent<Scr_Tentacle>())
         {
             if (lastMovedLeft)
             {

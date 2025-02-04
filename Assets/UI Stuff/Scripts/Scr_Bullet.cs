@@ -20,7 +20,7 @@ public class Scr_Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
         if (other.GetComponents<Scr_OctoEnemy>().Length > 0) {
-            other.GetComponent<Scr_OctoEnemy>().damage(10);
+            other.GetComponent<Scr_OctoEnemy>().damage(2);
             Destroy(gameObject);
         }
 	}
