@@ -11,14 +11,10 @@ public static class SCR_Loader {
 		// Add scenes by scene name such as:
 		SCN_MainMenu,
 		SCN_Loading,
-        //Title,
-        //Intro,
         SCN_ArcheologyMinigame,
         SCN_SpaceshipScene,
         SCN_FindDragonLuigi,
-		SpaceshipScene,
-		Octopus
-        //FirstFloor
+		SCN_OctopusShooter
     }
 
 	public static void Load(scenes targetScene) {
