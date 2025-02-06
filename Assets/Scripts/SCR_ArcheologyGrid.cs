@@ -246,16 +246,16 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			
 			if (uncovered)
 			{
-				// Something would happen to the item once it is gotten
+                // Something would happen to the item once it is gotten
 
-                StartCoroutine(RemoveItem(item));
+                RemoveItem(item);
 
                 // that is currently not in the program so all it does for now is destroy the item
             }
 		}
 	}
 
-    private IEnumerator RemoveItem(SCR_ArcheologyItem item)
+    private void RemoveItem(SCR_ArcheologyItem item)
     {		
 		// Pop-Up Panel
         Artifact_IMG.sprite = item.GetSprite();
@@ -263,11 +263,15 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		Popup_Panel.SetActive(true);
 
         collectSFX.Play(); 
-        yield return new WaitForSeconds(1.0f);
-		Debug.Log("Wait done");
-
-		// Remove Items
-        Popup_Panel.SetActive(false);
         Destroy(item.gameObject);
+		GameManager.instance.PauseGame(true);
+
+    }
+
+	public void ClosePopUp()
+	{
+        // Remove Items
+        Popup_Panel.SetActive(false);
+		GameManager.instance.PauseGame(false);
     }
 }
