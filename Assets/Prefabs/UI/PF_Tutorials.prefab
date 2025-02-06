@@ -534,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3411374115680629245}
   m_Layer: 0
-  m_Name: PF_Tutorial
+  m_Name: PF_Tutorials
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
