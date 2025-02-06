@@ -1,15 +1,26 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class SCR_SpaceGame_Manager : MonoBehaviour
 {
     public static SCR_SpaceGame_Manager instance { get; private set; }
 
+	[SerializeField] private GameObject spaceShip_Object;
 	[SerializeField] private SCR_SpaceGame_Ship spaceship;
     [SerializeField] private Obstacle[] obstaclesToSpawn;
     [SerializeField] private float spawnTimerLength = 2.0f;
 	private float spawnTimer;
+
+	[Header("Death State")]
+	[SerializeField] private Animator shipAnimator;
+	[SerializeField] private AudioSource explosion_SFX;
+	[SerializeField] private GameObject gameOver_Panel;
 
 	[Serializable] struct Obstacle
 	{
@@ -28,6 +39,10 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
 	void FixedUpdate()
     {
+        if (spaceShip_Object == null)
+        {
+			return;
+        }
 
 
         spawnTimer -= Time.fixedDeltaTime;
@@ -78,5 +93,21 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	public void ShipHasDied()
 	{
 		// handle the ship death and minigame ending here
+		shipAnimator.Play("Explosion");
+		StartCoroutine(ShowGameOverScreen());
 	}
+
+	private IEnumerator ShowGameOverScreen()
+	{
+        yield return new WaitForSeconds(0.75f);
+        Destroy(spaceShip_Object.gameObject);
+		yield return new WaitForSeconds(0.5f);
+		gameOver_Panel.SetActive(true);
+		GameManager.instance.PauseGame(true);
+	}
+
+	public void StartOver()
+	{
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
+    }
 }
