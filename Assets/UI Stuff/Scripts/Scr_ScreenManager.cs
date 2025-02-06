@@ -1,7 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
+public class Scr_ScreenManager : MonoBehaviour {
+
+    public static Scr_ScreenManager instance;
+
     [SerializeField] GameObject titleS;
     [SerializeField] GameObject playS;
     [SerializeField] GameObject pauseS;
@@ -11,7 +14,15 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
     bool menu = false;
 
 	void Start() {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update() {
@@ -48,21 +59,28 @@ public class Scr_ScreenManager : Singleton<Scr_ScreenManager> {
             return;
         }
         menuS.SetActive(false);
-
     }
 
     public void RocketClick() {
-        SceneManager.LoadScene("SpaceshipScene");
+        //SceneManager.LoadScene("SCN_SpaceshipScene");
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
         Destroy(gameObject);
     }
 
     public void ArcheologyClick() {
-		SceneManager.LoadScene("SCN_ArcheologyMinigame");
-		Destroy(gameObject);
+        //SceneManager.LoadScene("SCN_ArcheologyMinigame");
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
+        Destroy(gameObject);
 	}
 
     public void DragonClick() {
-        SceneManager.LoadScene("");
-		Destroy(gameObject);
+        //SceneManager.LoadScene("SCN_FindDragonLuigi");
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
+        Destroy(gameObject);
 	}
+
+    public void OctopusClick() {
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
+        Destroy(gameObject);
+    }
 }

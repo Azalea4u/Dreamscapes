@@ -3,22 +3,21 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager instance;
 
     [Header("Game State")]
-    public bool IsGamePaused = false;
-    public float TotalPlayTime = 0.0f;
+    [SerializeField] private bool IsGamePaused = false;
 
     [Header("Mini-Games Data")]
-    public string[] MiniGames_Scenes; // list of mini-games scenes
-    public int CurrentMiniGameIndex = 0;
+    [SerializeField] private string MainMenu;
+    [SerializeField] private string[] MiniGames_Scenes; // list of mini-games scenes
 
     private void Awake()
     {
         // Singleton Pattern
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject); // Keep the GameManager across scenes
         }
         else
@@ -27,41 +26,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Load_MainMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // Add Pause Button as well
-        {
-            TogglePause();
-        }
+        SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
     }
 
-    public void StartMiniGame(int index)
+    public void PauseGame(bool pauseGame)
     {
-        if (index >= 0 && index < MiniGames_Scenes.Length)
-        {
-            CurrentMiniGameIndex = index;
-            // Loading Screen
-            // Load Mini-Game Scene
-        }
-    }
-
-    public void NextMiniGame()
-    {
-        CurrentMiniGameIndex++;
-        if (CurrentMiniGameIndex < MiniGames_Scenes.Length)
-        {
-            StartMiniGame(CurrentMiniGameIndex);
-        }
-        else
-        {
-            Debug.Log("All mini-games completed!");
-            EndGame();
-        }
-    }
-
-    public void TogglePause()
-    {
-        IsGamePaused = !IsGamePaused;
+        IsGamePaused = pauseGame;
         Time.timeScale = IsGamePaused ? 0 : 1;
         Debug.Log("Game " + (IsGamePaused ? "Paused" : "Resumed"));
     }
@@ -69,5 +41,6 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         // return to main menu
+        Load_MainMenu();
     }
 }
