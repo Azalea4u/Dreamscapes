@@ -1,16 +1,21 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Scr_BoardSlot : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+public class Scr_BoardSlot : MonoBehaviour {
+    [SerializeField] Image slotImg;
+    [SerializeField] TextMeshProUGUI scoreTxt;
+
+    void Start() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
+
+    public void changeSlot(Image img, int score) {
+		slotImg = img;
+		scoreTxt.text = "" + score;
+	}
 }
