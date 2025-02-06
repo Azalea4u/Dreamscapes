@@ -12,10 +12,6 @@ public class Scr_TitleControls : MonoBehaviour {
 	[SerializeField] TextMeshProUGUI howMain;
 	[SerializeField] Image gameImg;
 
-	[Header("Audio")]
-	[SerializeField] AudioSource playerSFX;
-	[SerializeField] AudioSource arrowSFX;
-
     void Start() {
 		gameImg.sprite = buttons[0].GetComponent<Scr_HowTo>().gameImg;
 		howTitle.text = "How to play " + buttons[0].GetComponent<Scr_HowTo>().gameTitle;
