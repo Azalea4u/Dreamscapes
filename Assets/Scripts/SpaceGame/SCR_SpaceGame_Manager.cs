@@ -69,4 +69,14 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
 		return spawnables[UnityEngine.Random.Range(0, spawnables.Count)];
 	}
+
+	public SCR_SpaceGame_Ship GetSpaceship()
+	{
+		return spaceship;
+	}
+
+	public void ShipHasDied()
+	{
+		// handle the ship death and minigame ending here
+	}
 }
