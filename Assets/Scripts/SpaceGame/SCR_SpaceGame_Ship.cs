@@ -58,7 +58,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 		if (obstacle != null)
 		{
-			desiredAscentSpeed *= 1.0f - obstacle.slowDownAscent;
+			desiredAscentSpeed *= 1.0f - obstacle.slowDownMovement;
 			shipMovementSpeed *= 1.0f - obstacle.slowDownMovement;
 			if (!obstacle.beenHit)
 			{
@@ -79,7 +79,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 		if (obstacle != null)
 		{
-			desiredAscentSpeed /= 1.0f - obstacle.slowDownAscent;
+			desiredAscentSpeed /= 1.0f - obstacle.slowDownMovement;
 			shipMovementSpeed /= 1.0f - obstacle.slowDownMovement;
 		}
 	}
