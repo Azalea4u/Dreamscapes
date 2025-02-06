@@ -187,8 +187,7 @@ MonoBehaviour:
   speed: {x: 0, y: 1, z: 0}
   towardsCenter: 0
   doesDamage: 0
-  slowDownMovement: 0.5
-  slowDownAscent: 0.4
+  slowDownMovement: 0.2
   bounce: 1
 --- !u!61 &2489802626965228432
 BoxCollider2D:

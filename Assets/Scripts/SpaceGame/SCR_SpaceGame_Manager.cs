@@ -1,40 +1,47 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SCR_SpaceGame_Manager : MonoBehaviour
 {
     public static SCR_SpaceGame_Manager instance { get; private set; }
 
-    [SerializeField] private SpriteRenderer visuals;
-    [SerializeField] private Sprite[] damageStates;
-    [SerializeField] private int health = 3;
-    [SerializeField] private float shipPosition;
-    [SerializeField] private float shipBounds;
-    [SerializeField] private float shipMovementSpeed;
-    [SerializeField] private float shipAscentSpeed;
-	[SerializeField] private float desiredAscentSpeed;
-	[SerializeField] private float usedAscentSpeed = 0;
-    [SerializeField] private SCR_SpaceshipDamager[] obstaclePrefabs;
-    [SerializeField] private float spawnTimer = 2.0f;
+	[SerializeField] private SCR_SpaceGame_Ship spaceship;
+    [SerializeField] private Obstacle[] obstaclesToSpawn;
+    [SerializeField] private float spawnTimerLength = 2.0f;
+	private float spawnTimer;
+
+	[Serializable] struct Obstacle
+	{
+		public float startSpawningHeight;
+		public float stopSpawningHeight; // if the stop heigh it 0, then it will always spawn
+		public GameObject prefabToSpawn;
+		public float[] spawnPositions;
+		public float spawnTimeDelay;
+	}
 
 	private void Start()
 	{
         instance = this;
-        desiredAscentSpeed = shipAscentSpeed;
-        visuals.sprite = damageStates[health];
+		spawnTimer = spawnTimerLength;
 	}
 
 	void FixedUpdate()
     {
-        usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, desiredAscentSpeed, 3.0f * Time.fixedDeltaTime);
 
-        transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * usedAscentSpeed), 0.0f);
 
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)
         {
-            spawnTimer = 2.0f;
-			SCR_SpaceshipDamager newob = Instantiate(obstaclePrefabs[Random.Range(0,obstaclePrefabs.Length)].gameObject).GetComponent<SCR_SpaceshipDamager>();
-			newob.transform.position = new Vector3(Random.Range(-shipBounds, shipBounds), Camera.main.transform.position.y + 7.0f, 0.0f);
+
+			Obstacle tospawn = getObstacleToSpawn();
+
+			Vector3 spawnPosition = new Vector3(tospawn.spawnPositions[UnityEngine.Random.Range(0, tospawn.spawnPositions.Length)], Camera.main.transform.position.y + 10.0f, 0.0f);
+			Instantiate(tospawn.prefabToSpawn, spawnPosition, Quaternion.identity);
+
+            spawnTimer = spawnTimerLength + tospawn.spawnTimeDelay;
+			//SCR_SpaceshipDamager newob = Instantiate(obstaclePrefabs[Random.Range(0,obstaclePrefabs.Length)].gameObject).GetComponent<SCR_SpaceshipDamager>();
+			//newob.transform.position = new Vector3(Random.Range(-shipBounds, shipBounds), Camera.main.transform.position.y + 7.0f, 0.0f);
 			//foreach (var obstacle in obstaclePrefabs)
 			//{
 			//	SCR_SpaceshipDamager newob = Instantiate(obstacle.gameObject, transform).GetComponent<SCR_SpaceshipDamager>();
@@ -43,60 +50,23 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		}
 	}
 
-    public void MoveLeft()
-    {
-        shipPosition -= shipMovementSpeed * Time.fixedDeltaTime;
-        shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
-    }
-
-	public void MoveRight()
+	Obstacle getObstacleToSpawn()
 	{
-		shipPosition += shipMovementSpeed * Time.fixedDeltaTime;
-        shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
-	}
+		List<Obstacle> spawnables = new List<Obstacle>();
 
-    public void DamageShip()
-    {
-        health -= 1;
-		if (health < 0)
+		foreach (var obstacle in obstaclesToSpawn)
 		{
-            // test stuff for now
-            Debug.Log("Ship Has Died");
-            health = 0;
+			if (obstacle.startSpawningHeight <= spaceship.transform.position.y &&
+				(obstacle.stopSpawningHeight == 0 || obstacle.stopSpawningHeight > spaceship.transform.position.y))
+			{
+				spawnables.Add(obstacle);
+			}
 		}
-        visuals.sprite = damageStates[health];
-    }
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-        // Debug.Log("Boombaby");
-        SCR_SpaceshipDamager obstacle = collision.GetComponent< SCR_SpaceshipDamager>();
-
-        if (obstacle != null)
-        {
-            desiredAscentSpeed *= 1.0f - obstacle.slowDownAscent;
-            shipMovementSpeed *= 1.0f - obstacle.slowDownMovement;
-            if (!obstacle.beenHit)
-            {
-                usedAscentSpeed -= obstacle.bounce;
-                if (obstacle.doesDamage)
-                {
-                    DamageShip();
-                }
-            }
-            obstacle.HitShip();
-        }
-	}
-
-	private void OnTriggerExit2D(Collider2D collision)
-	{
-		//Debug.Log("Goodbye");
-		SCR_SpaceshipDamager obstacle = collision.GetComponent<SCR_SpaceshipDamager>();
-
-		if (obstacle != null)
-		{
-            desiredAscentSpeed /= 1.0f - obstacle.slowDownAscent;
-			shipMovementSpeed /= 1.0f - obstacle.slowDownMovement;
+		if (spawnables.Count == 0) {
+			return obstaclesToSpawn[0];
 		}
+
+		return spawnables[UnityEngine.Random.Range(0, spawnables.Count)];
 	}
 }
