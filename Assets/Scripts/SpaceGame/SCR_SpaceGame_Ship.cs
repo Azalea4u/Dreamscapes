@@ -44,8 +44,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		health -= 1;
 		if (health < 0)
 		{
-			// test stuff for now
-			Debug.Log("Ship Has Died");
+			SCR_SpaceGame_Manager.instance.ShipHasDied();
 			health = 0;
 		}
 		visuals.sprite = damageStates[health];
