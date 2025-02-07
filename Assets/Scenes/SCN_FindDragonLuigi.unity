@@ -2435,17 +2435,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b073d9a687475b4b9f516e779906343, type: 3}
---- !u!114 &852772351 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-  m_PrefabInstance: {fileID: 1607383240}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c433d2c54560d41b3a5bad3ad59d34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &855304510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3667,14 +3656,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: tutorialText
-      value: Tap the dragon shown in the top box among the other dragons!
-      objectReference: {fileID: 0}
-    - target: {fileID: 2408501563475295571, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 540
@@ -3713,38 +3694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5795432091230096538, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 852772351}
-    - target: {fileID: 5795432091230096538, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: close
-      objectReference: {fileID: 0}
-    - target: {fileID: 6174788179661677300, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d3b3764a49c44844ca471a5fca92de3a, type: 2}
-    - target: {fileID: 6174788179661677300, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 475359402186628586, guid: d3b3764a49c44844ca471a5fca92de3a, type: 2}
-    - target: {fileID: 6174788179661677300, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: a056a495dfcf4c7498fe8b629a653ae0, type: 2}
-    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -1738568773208102018, guid: a056a495dfcf4c7498fe8b629a653ae0, type: 2}
-    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
-      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007001890841663511, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}

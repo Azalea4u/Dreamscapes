@@ -1346,6 +1346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_PauseMenu_Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 478573092787131249, guid: 7e8dfea3aeb9fc24881c8d560e9e8acc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1547468083273538959, guid: 7e8dfea3aeb9fc24881c8d560e9e8acc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1806,6 +1810,10 @@ PrefabInstance:
     - target: {fileID: 9007001890841663511, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_Name
       value: PF_Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007001890841663511, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
