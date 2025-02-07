@@ -3296,7 +3296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc7401e9703c8f4a810aec362bcd935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 4345644856855120510, guid: 1a0418ecaf996f54da6c8a4d775b9aa2, type: 3}
+  tilePrefab: {fileID: 4345644856855120510, guid: 5ca41c2210ce4694e90688294caa0103, type: 3}
+  undertile: {fileID: 4345644856855120510, guid: 1a0418ecaf996f54da6c8a4d775b9aa2, type: 3}
   itemPrefab: {fileID: 2800464771822314399, guid: 5c5ba5b1180b2c0499a4d74279f6c8d7, type: 3}
   depthSprites:
   - {fileID: -4787314164636214755, guid: 8b5a54e4816764248ba7b5b075df1f80, type: 3}
@@ -3314,6 +3315,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a1f3f63933d07a4c8bed74171296d72, type: 2}
   - {fileID: 11400000, guid: f718494ad109a504ea49ec3a4538e606, type: 2}
   - {fileID: 11400000, guid: 1f51dbe6d39d7f744909ea467f5edc4e, type: 2}
+  highestSpots: []
   gridSize: {x: 7, y: 9}
   tileSize: {x: 0.75, y: 0.75}
   itemAmount: 4
