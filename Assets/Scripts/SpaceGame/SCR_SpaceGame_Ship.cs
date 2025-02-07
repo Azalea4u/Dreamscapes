@@ -10,7 +10,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	[SerializeField] private float shipAscentSpeed;
 	[SerializeField] private float shipMovementSpeed;
 	private float desiredAscentSpeed;
-	private float usedAscentSpeed = 0;
+	[SerializeField]private float usedAscentSpeed = 0;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -22,7 +22,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, desiredAscentSpeed, 3.0f * Time.fixedDeltaTime);
+		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
 
 		transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * usedAscentSpeed), 0.0f);
 

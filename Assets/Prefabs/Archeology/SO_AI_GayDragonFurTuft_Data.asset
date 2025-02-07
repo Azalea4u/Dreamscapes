@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Magus' Fur
   sprite: {fileID: 21300000, guid: 5d47a5429348e204a9ebad1b905b0371, type: 3}
+  points: 5
   size: {x: 2, y: 2}
   itemVolume: []

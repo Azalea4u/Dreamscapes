@@ -16,6 +16,8 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
     [SerializeField] private Obstacle[] obstaclesToSpawn;
     [SerializeField] private float spawnTimerLength = 2.0f;
 	private float spawnTimer;
+	[SerializeField] private int shipDistance;
+	public float difficultyScale = 1.0f;
 
 	[Header("Death State")]
 	[SerializeField] public Animator shipAnimator;
@@ -24,8 +26,8 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
 	[Serializable] struct Obstacle
 	{
-		public float startSpawningHeight;
-		public float stopSpawningHeight; // if the stop heigh it 0, then it will always spawn
+		public int startSpawningHeight;
+		public int stopSpawningHeight; // if the stop heigh it 0, then it will always spawn
 		public GameObject prefabToSpawn;
 		public float[] spawnPositions;
 		public float spawnTimeDelay;
@@ -48,20 +50,14 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)
         {
+			difficultyScale = Mathf.Clamp(1.0f + (0.05f * (shipDistance / 100)), 1.0f, 2.0f);
 
 			Obstacle tospawn = getObstacleToSpawn();
 
 			Vector3 spawnPosition = new Vector3(tospawn.spawnPositions[UnityEngine.Random.Range(0, tospawn.spawnPositions.Length)], Camera.main.transform.position.y + 10.0f, 0.0f);
 			Instantiate(tospawn.prefabToSpawn, spawnPosition, Quaternion.identity);
 
-            spawnTimer = spawnTimerLength + tospawn.spawnTimeDelay;
-			//SCR_SpaceshipDamager newob = Instantiate(obstaclePrefabs[Random.Range(0,obstaclePrefabs.Length)].gameObject).GetComponent<SCR_SpaceshipDamager>();
-			//newob.transform.position = new Vector3(Random.Range(-shipBounds, shipBounds), Camera.main.transform.position.y + 7.0f, 0.0f);
-			//foreach (var obstacle in obstaclePrefabs)
-			//{
-			//	SCR_SpaceshipDamager newob = Instantiate(obstacle.gameObject, transform).GetComponent<SCR_SpaceshipDamager>();
-			//	newob.transform.position = new Vector3(Random.Range(-shipBounds, shipBounds), Camera.main.transform.position.y + 7.0f, 0.0f);
-			//}
+            spawnTimer = (spawnTimerLength / difficultyScale) + tospawn.spawnTimeDelay;
 		}
 	}
 
@@ -71,8 +67,8 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
 		foreach (var obstacle in obstaclesToSpawn)
 		{
-			if (obstacle.startSpawningHeight <= spaceship.transform.position.y &&
-				(obstacle.stopSpawningHeight == 0 || obstacle.stopSpawningHeight > spaceship.transform.position.y))
+			if (obstacle.startSpawningHeight <= shipDistance &&
+				(obstacle.stopSpawningHeight == 0 || obstacle.stopSpawningHeight > shipDistance))
 			{
 				spawnables.Add(obstacle);
 			}
