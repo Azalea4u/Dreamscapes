@@ -6,7 +6,7 @@ public class SRC_AudioManager : MonoBehaviour
 
     [Header("Game States")]
     public AudioSource WinGame_SFX;
-    public AudioSource GameOver_SFX;
+    public AudioSource _GameOver_SFX;
 
     [Header("UI SFX")]
     public AudioSource Pause_SFX;
