@@ -39,12 +39,16 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private Image Artifact_IMG;
 	[SerializeField] private TextMeshProUGUI ArtifactName_TXT;
 
+	[Header("Game State")]
+	[SerializeField] private GameObject GameWin_Panel;
+
     void Start()
     {
 		Instance = this;
 		Popup_Panel.SetActive(false);
+        GameWin_Panel.SetActive(false);
 
-		tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
+        tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
 		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
 		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
@@ -104,6 +108,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		playerPosition = gridSize / 2;
 		updatePlayer();
+
 	}
 
 	private int GetTileDepth(int x, int y) {
@@ -301,6 +306,14 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		if (items.Count == 0)
 		{
 			// Do the win screen stuff
+			ShowGameWinScreen();
 		}
+    }
+
+    private void ShowGameWinScreen()
+    {
+        GameManager.instance.PauseGame(true);
+		SRC_AudioManager.instance.GameWon_SFX();
+        GameWin_Panel.SetActive(true);
     }
 }

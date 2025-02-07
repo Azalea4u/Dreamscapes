@@ -20,7 +20,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	public float difficultyScale = 1.0f;
 
 	[Header("Death State")]
-	[SerializeField] private Animator shipAnimator;
+	[SerializeField] public Animator shipAnimator;
 	[SerializeField] private AudioSource explosion_SFX;
 	[SerializeField] private GameObject gameOver_Panel;
 
@@ -37,6 +37,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	{
         instance = this;
 		spawnTimer = spawnTimerLength;
+		gameOver_Panel.SetActive(false);
 	}
 
 	void FixedUpdate()
@@ -46,9 +47,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 			return;
         }
 
-		shipDistance = (int)spaceship.transform.position.y;
-
-		spawnTimer -= Time.fixedDeltaTime;
+        spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)
         {
 			difficultyScale = Mathf.Clamp(1.0f + (0.05f * (shipDistance / 100)), 1.0f, 2.0f);
@@ -102,9 +101,4 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		gameOver_Panel.SetActive(true);
 		GameManager.instance.PauseGame(true);
 	}
-
-	public void StartOver()
-	{
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
-    }
 }

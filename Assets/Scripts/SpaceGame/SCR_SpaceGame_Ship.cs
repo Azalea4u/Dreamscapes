@@ -25,6 +25,8 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
 
 		transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * usedAscentSpeed), 0.0f);
+
+		SCR_SpaceGame_Manager.instance.shipAnimator.SetInteger("Health", health);
 	}
 
 	public void MoveLeft()
