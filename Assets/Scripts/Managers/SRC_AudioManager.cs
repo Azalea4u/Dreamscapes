@@ -41,7 +41,7 @@ public class SRC_AudioManager : MonoBehaviour
     {
         WinGame_SFX.Play();
     }
-
+    #endregion
 
     #region UI SFX
     public void PauseGame_SFX()
@@ -53,10 +53,12 @@ public class SRC_AudioManager : MonoBehaviour
     {
         Resume_SFX.Play();
     }
+
+    public void SetMute(bool mute)
+    {
+
+    }
     #endregion
 
-    #region BG_Music
-
-    #endregion
 
 }
