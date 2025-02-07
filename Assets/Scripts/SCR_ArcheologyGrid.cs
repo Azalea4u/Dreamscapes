@@ -28,6 +28,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private List<SCR_ArcheologyItem> items = new List<SCR_ArcheologyItem>();
 	[SerializeField] private Transform player;
 	[SerializeField] private Vector2Int playerPosition;
+	[SerializeField] private int points;
 
 	[Header("Audio")]
 	[SerializeField] private AudioSource hitStoneSFX;
@@ -38,12 +39,16 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private Image Artifact_IMG;
 	[SerializeField] private TextMeshProUGUI ArtifactName_TXT;
 
+	[Header("Game State")]
+	[SerializeField] private GameObject GameWin_Panel;
+
     void Start()
     {
 		Instance = this;
 		Popup_Panel.SetActive(false);
+        GameWin_Panel.SetActive(false);
 
-		tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
+        tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
 		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
 		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
@@ -60,7 +65,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 				SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
 				tileGrid[xpos, ypos] = tile;
 				tile.position.Set(xpos, ypos);
-				tile.layers = GetTileDepth( xpos, ypos);//Random.Range(1, 7);
+				tile.layers = Random.Range(1, 7); //GetTileDepth( xpos, ypos); //
 
 				tile.ChangeSprite(depthSprites[tile.layers]);
 
@@ -103,19 +108,22 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		playerPosition = gridSize / 2;
 		updatePlayer();
+
 	}
 
 	private int GetTileDepth(int x, int y) {
-		float weight = 0.0f;
+		Vector2Int usedSpot = highestSpots[0];
 		foreach (var spot in highestSpots)
 		{
-			weight += Vector2.Distance(new Vector2(x, y), spot);
+			if (Vector2Int.Distance(new Vector2Int(x, y), spot) < Vector2Int.Distance(new Vector2Int(x, y), usedSpot))
+			{
+				usedSpot = spot;
+			}
 		}
-		weight = weight / highestSpots.Count;
 
-		int toret = (int)(weight);
+		int toret = (int)Vector2Int.Distance(new Vector2Int(x, y), usedSpot);
 
-		return Mathf.Clamp(toret, 0, 7);
+		return 7 - Mathf.Clamp(toret, 0, 7);
 	}
 
 	private Vector2Int generateRandomItemPosition(SCR_ArcheologyItem item)
@@ -280,6 +288,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		ArtifactName_TXT.text = item.GetItemName() + "!";
 		Popup_Panel.SetActive(true);
 
+		points += item.GetPointValue();
         collectSFX.Play(); 
         Destroy(item.gameObject);
 		GameManager.instance.PauseGame(true);
@@ -297,6 +306,14 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		if (items.Count == 0)
 		{
 			// Do the win screen stuff
+			ShowGameWinScreen();
 		}
+    }
+
+    private void ShowGameWinScreen()
+    {
+        GameManager.instance.PauseGame(true);
+		SRC_AudioManager.instance.GameWon_SFX();
+        GameWin_Panel.SetActive(true);
     }
 }

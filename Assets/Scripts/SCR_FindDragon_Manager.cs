@@ -11,6 +11,10 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private Sprite[] dragonSprites;
     [SerializeField] private Vector2 _gamebounds;
     [SerializeField] private Image wantedDragonVisual;
+
+    [SerializeField] private bool useTimer = false;
+    [SerializeField] private float timeLeft = 15;
+    [SerializeField] private int dragonsFound = 0;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
@@ -43,14 +47,19 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		instance = this;
         createDragonGroups();
 		setupDragons();
+        useTimer = true;
 	}
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+        if (useTimer)
         {
-            resetGame();
-        }
+			timeLeft -= Time.deltaTime;
+			if (timeLeft <= 0)
+			{
+				EndGame();
+			}
+		}
 	}
 	private void resetGame()
     {
@@ -120,18 +129,29 @@ public class SCR_FindDragon_Manager : MonoBehaviour
             }
 
             // would put here stuff I want to happen after the dragon is found
-            StartCoroutine(resetGameCoroutine());
+            dragonsFound += 1;
+            timeLeft += 1;
+            useTimer = false;
+			StartCoroutine(resetGameCoroutine());
         }
         else
         {
             dragon.speed = Vector2.zero;
             dragon.transform.position = Vector3.one * 10;
-        }
+			timeLeft -= 0.5f;
+		}
     }
 
     IEnumerator resetGameCoroutine()
     {
         yield return new WaitForSeconds(2.0f);
         resetGame();
+        useTimer = true;
+
+	}
+
+	private void EndGame()
+    {
+        // Do whatever here to make the game end
     }
 }

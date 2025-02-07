@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +14,10 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	[SerializeField] int tentaclePos = 0;
 
-	[Serializable] public struct spaces
+    [Header("Game States")]
+    [SerializeField] private GameObject GameWin_Panel;
+
+    [Serializable] public struct spaces
 	{
 		public GameObject somethingHereRef;
 		public Vector3 spacePosition;
@@ -21,6 +25,8 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 
 	void Start() {
+		GameWin_Panel.SetActive(false);
+
 		attackTimer = 1.0f;
 		moveTimer = 1.0f;
 
@@ -162,14 +168,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		}
 	}
 
-	public void damage(int d) {
-        health -= d;
-        if (health <= 0) {
-            Destroy(gameObject); 
-            SceneManager.LoadScene("SceneUI");
-        }
-    }
-
     public void TentacleAttack()
 	{
 		tentaclePos = position;
@@ -178,5 +176,25 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
     public void gunAttack() {
 		availableSpaces[position].somethingHereRef = Instantiate(shootFab, transform.position, transform.rotation);
+    }
+
+	public void damage(int d) {
+        health -= d;
+        if (health <= 0) {
+			GameWin();
+        }
+    }
+
+	private void GameWin()
+	{
+        Destroy(gameObject);
+		StartCoroutine(ShowScreen());
+    }
+
+    private IEnumerator ShowScreen()
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        GameWin_Panel.SetActive(true);
     }
 }
