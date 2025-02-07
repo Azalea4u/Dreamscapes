@@ -35,6 +35,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	{
         instance = this;
 		spawnTimer = spawnTimerLength;
+		gameOver_Panel.SetActive(false);
 	}
 
 	void FixedUpdate()
@@ -105,9 +106,4 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		gameOver_Panel.SetActive(true);
 		GameManager.instance.PauseGame(true);
 	}
-
-	public void StartOver()
-	{
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
-    }
 }
