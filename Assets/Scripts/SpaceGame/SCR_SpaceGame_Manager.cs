@@ -18,7 +18,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	private float spawnTimer;
 
 	[Header("Death State")]
-	[SerializeField] private Animator shipAnimator;
+	[SerializeField] public Animator shipAnimator;
 	[SerializeField] private AudioSource explosion_SFX;
 	[SerializeField] private GameObject gameOver_Panel;
 
@@ -44,7 +44,6 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
         {
 			return;
         }
-
 
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)

@@ -1547,7 +1547,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4311eb7fb63ee604996f04240d1d7e45, type: 3}
   - {fileID: 21300000, guid: c4c34286c77179b4ea044c83787567b6, type: 3}
   - {fileID: 21300000, guid: 2f3918882ac91a24292a286d8c8873c6, type: 3}
-  health: 1
+  health: 3
   shipBounds: 2.5
   shipAscentSpeed: 4
   shipMovementSpeed: 1.5
@@ -2176,14 +2176,14 @@ PrefabInstance:
     - target: {fileID: 7512948996185707853, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 24747033}
+      objectReference: {fileID: 1612675973}
     - target: {fileID: 7512948996185707853, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartOver
+      value: StartOver_Spaceship
       objectReference: {fileID: 0}
     - target: {fileID: 7512948996185707853, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SCR_SpaceGame_Manager, Assembly-CSharp
+      value: SCR_TogglePauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8035607890821743695, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
       propertyPath: m_AnchorMax.y

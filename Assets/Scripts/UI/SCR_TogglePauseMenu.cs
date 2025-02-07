@@ -38,7 +38,7 @@ public class SCR_TogglePauseMenu : MonoBehaviour
         SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
     }
 
-    public void StartOver_ARcheology()
+    public void StartOver_Archeology()
     {
         SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
     }
