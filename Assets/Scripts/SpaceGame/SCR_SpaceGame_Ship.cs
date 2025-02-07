@@ -42,10 +42,10 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	public void DamageShip()
 	{
 		health -= 1;
-		if (health < 0)
+		if (health <= 0)
 		{
-			SCR_SpaceGame_Manager.instance.ShipHasDied();
 			health = 0;
+			SCR_SpaceGame_Manager.instance.ShipHasDied();
 		}
 		visuals.sprite = damageStates[health];
 	}
