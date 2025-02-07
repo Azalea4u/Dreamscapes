@@ -35,4 +35,9 @@ public class SRC_AudioManager : MonoBehaviour
         MusicSource.volume = volume;
         SfxSource.volume = volume;
     }
+
+    public void SetMute(bool mute)
+    {
+
+    }
 }
