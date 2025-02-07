@@ -34,6 +34,11 @@ public class SCR_CameraControl : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (target == null)
+        {
+            return;
+        }
+
 		// Smoothly move the camera to follow the target
 		Vector3 velocity = Vector3.zero;
 		Vector3 targetPos = SetPos(cameraTargetPos, transform.position.x, target.position.y, cameraZPosition);
