@@ -23,7 +23,6 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
-    #region Game States
     public void PauseGame_SFX()
     {
         Pause_SFX.Play();
@@ -39,11 +38,11 @@ public class SRC_AudioManager : MonoBehaviour
         WinGame_SFX.Play();
     }
 
-    public void GameLost_SFX()
+    public void GameOver_SFX()
     {
-        GameOver_SFX.Play();
+        WinGame_SFX.Play();
     }
-    #endregion
+
 
 
 }
