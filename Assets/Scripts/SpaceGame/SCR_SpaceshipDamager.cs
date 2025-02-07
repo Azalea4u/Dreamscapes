@@ -30,7 +30,7 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 			//speed.y = Mathf.Abs(speed.y) * -1;
         }
 
-		usedSpeed = speed;
+		usedSpeed = speed * SCR_SpaceGame_Manager.instance.difficultyScale;
     }
 
 	private void FixedUpdate()

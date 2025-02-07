@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: a Cactus
   sprite: {fileID: 21300000, guid: 55dc6af8454780b49a653897135b97f1, type: 3}
+  points: 8
   size: {x: 3, y: 3}
   itemVolume:
-  - {x: 0, y: 0}
   - {x: 1, y: 0}
   - {x: 2, y: 0}
   - {x: 1, y: 1}

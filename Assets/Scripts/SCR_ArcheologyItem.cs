@@ -69,4 +69,9 @@ public class SCR_ArcheologyItem : MonoBehaviour
 		return itemData.Name;
     }
 
+	public int GetPointValue()
+	{
+		return itemData.points;
+	}
+
 }

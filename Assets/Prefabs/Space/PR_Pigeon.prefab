@@ -48,10 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 1, y: -2, z: 0}
-  towardsCenter: 1
+  usedSpeed: {x: 0, y: 0, z: 0}
+  faceTowardsCenter: 1
+  moveTowardsPlayer: 0
+  moveSpeed: 0
   doesDamage: 1
   slowDownMovement: 0
-  slowDownAscent: 0
   bounce: 2
 --- !u!61 &166274999399084194
 BoxCollider2D:
