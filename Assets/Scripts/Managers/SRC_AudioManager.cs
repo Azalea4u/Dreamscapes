@@ -3,8 +3,12 @@ using UnityEngine;
 public class SRC_AudioManager : MonoBehaviour
 {
     public static SRC_AudioManager instance;
-    public AudioSource MusicSource;
-    public AudioSource SfxSource;
+
+    [Header("Game States")]
+    public AudioSource WinGame_SFX;
+    public AudioSource GameOver_SFX;
+    public AudioSource Pause_SFX;
+    public AudioSource Resume_SFX;
 
     private void Awake()
     {
@@ -19,20 +23,26 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PauseGame_SFX()
     {
-        SfxSource.PlayOneShot(clip);
+        Pause_SFX.Play();
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void ResumeGame_SFX()
     {
-        MusicSource.clip = clip;
-        MusicSource.Play();
+        Resume_SFX.Play();
     }
 
-    public void SetVolume(float volume)
+    public void GameWon_SFX()
     {
-        MusicSource.volume = volume;
-        SfxSource.volume = volume;
+        WinGame_SFX.Play();
     }
+
+    public void GameOver_SFX()
+    {
+        WinGame_SFX.Play();
+    }
+
+
+
 }
