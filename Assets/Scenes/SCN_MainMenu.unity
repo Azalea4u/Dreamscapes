@@ -707,6 +707,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.75
       objectReference: {fileID: 0}
+    - target: {fileID: 2726190567703172941, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: gameImg
+      value: 
+      objectReference: {fileID: 8848155099765042505, guid: 8120005330e08c54ab1c150377665f06, type: 3}
     - target: {fileID: 2976451401306761783, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_IsActive
       value: 1
