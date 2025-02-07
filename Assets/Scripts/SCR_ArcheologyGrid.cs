@@ -12,12 +12,14 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 	[Header("Prefabs")]
     [SerializeField] private Transform tilePrefab;
+	[SerializeField] private Transform undertile;
 	[SerializeField] private Transform itemPrefab;
 	[SerializeField] private List<Sprite> depthSprites = new List<Sprite>();
 	[SerializeField] private List<SO_ArcheologyItem_Data> itemsData = new List<SO_ArcheologyItem_Data>();
 
 	[Header("Grid Making")]
 	[SerializeField] private SCR_ArcheologyTile[,] tileGrid;
+	[SerializeField] private List<Vector2Int> highestSpots = new List<Vector2Int>();
     [SerializeField] private Vector2Int gridSize = Vector2Int.one;
 	[SerializeField] private Vector2 tileSize = Vector2Int.one;
 	[SerializeField] private int itemAmount = 3;
@@ -43,6 +45,10 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
+		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
+		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
+		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
+
 		// puts the grid in the middle of the screen
 		transform.position -= new Vector3(gridSize.x / (2.0f / tileSize.x), -gridSize.y / (2.0f / tileSize.y), 0.0f) - new Vector3(tileSize.x / 2.0f, -tileSize.y / 2.0f, 0);
 
@@ -51,11 +57,12 @@ public class SCR_ArcheologyGrid : MonoBehaviour
         {
             for (int xpos = 0; xpos < gridSize.x; xpos++)
             {
-                SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
+				SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
 				tileGrid[xpos, ypos] = tile;
 				tile.position.Set(xpos, ypos);
-				tile.layers = Random.Range(1, 7);
-                tile.ChangeSprite(depthSprites[tile.layers]);
+				tile.layers = GetTileDepth( xpos, ypos);//Random.Range(1, 7);
+
+				tile.ChangeSprite(depthSprites[tile.layers]);
 
 				tile.transform.localScale = tileSize;
 				tile.transform.position = new Vector2(transform.position.x + (tileSize.x * xpos), transform.position.y - (tileSize.y * ypos));
@@ -96,6 +103,19 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		playerPosition = gridSize / 2;
 		updatePlayer();
+	}
+
+	private int GetTileDepth(int x, int y) {
+		float weight = 0.0f;
+		foreach (var spot in highestSpots)
+		{
+			weight += Vector2.Distance(new Vector2(x, y), spot);
+		}
+		weight = weight / highestSpots.Count;
+
+		int toret = (int)(weight);
+
+		return Mathf.Clamp(toret, 0, 7);
 	}
 
 	private Vector2Int generateRandomItemPosition(SCR_ArcheologyItem item)
@@ -249,8 +269,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
                 // Something would happen to the item once it is gotten
 
                 RemoveItem(item);
-
-                // that is currently not in the program so all it does for now is destroy the item
             }
 		}
 	}
@@ -266,12 +284,19 @@ public class SCR_ArcheologyGrid : MonoBehaviour
         Destroy(item.gameObject);
 		GameManager.instance.PauseGame(true);
 
-    }
+		items.RemoveAll(x => !x);
+	}
 
 	public void ClosePopUp()
 	{
         // Remove Items
         Popup_Panel.SetActive(false);
 		GameManager.instance.PauseGame(false);
+
+		// check for if all the items are gone
+		if (items.Count == 0)
+		{
+			// Do the win screen stuff
+		}
     }
 }
