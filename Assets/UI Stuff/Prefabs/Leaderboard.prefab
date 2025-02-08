@@ -628,6 +628,15 @@ MonoBehaviour:
   - {fileID: 1366874505265956313}
   - {fileID: 9144594798874657390}
   - {fileID: 1714448439790996079}
+  sprites:
+  - {fileID: 8718134881037263569, guid: 4848d546638218c409010fc7136c478b, type: 3}
+  - {fileID: -948236817906692719, guid: 273dde8dcaf3c5747a9eaceb3b961d00, type: 3}
+  - {fileID: 8499288694338918384, guid: d9c437999f3481841a49f75307b59638, type: 3}
+  - {fileID: 701754251433407687, guid: 992ceedbc0d1a4243bac6544829bc92c, type: 3}
+  - {fileID: 1409830513793316728, guid: bb593d53a2c4c944cab1c3dd31a7e25b, type: 3}
+  info: {fileID: 0}
+  saveSlots:
+    slot: []
 --- !u!1 &1402599242568492992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,8 +1019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13419d8f6ddff1543a966bf5a7481bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotImg: {fileID: 0}
-  scoreTxt: {fileID: 0}
+  slotImg: {fileID: 36996644416946249}
+  scoreTxt: {fileID: 4404360070231725638}
 --- !u!1 &2902014925657634172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1140,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5537929244066952153}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: createClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5537929244066952153}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3144421999506659749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1272,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7394975079465705092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: createClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7394975079465705092}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3581474257723404007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,8 +1376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13419d8f6ddff1543a966bf5a7481bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotImg: {fileID: 0}
-  scoreTxt: {fileID: 0}
+  slotImg: {fileID: 2009020888145199188}
+  scoreTxt: {fileID: 1426440776392452168}
 --- !u!1 &3635137891317271847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,7 +1934,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6101422516315354970}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: createClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6101422516315354970}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5421784507419894806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,8 +2038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13419d8f6ddff1543a966bf5a7481bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotImg: {fileID: 0}
-  scoreTxt: {fileID: 0}
+  slotImg: {fileID: 2923265485198099399}
+  scoreTxt: {fileID: 3679956262382975250}
 --- !u!1 &5788534448422360483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,8 +2267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13419d8f6ddff1543a966bf5a7481bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotImg: {fileID: 0}
-  scoreTxt: {fileID: 0}
+  slotImg: {fileID: 7671883341497456470}
+  scoreTxt: {fileID: 3110454729420584388}
 --- !u!1 &5951551268162958484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,8 +2496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13419d8f6ddff1543a966bf5a7481bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotImg: {fileID: 0}
-  scoreTxt: {fileID: 0}
+  slotImg: {fileID: 5725316719391951784}
+  scoreTxt: {fileID: 1762428560890604851}
 --- !u!1 &6142913050825195453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,7 +3105,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4149685946232913634}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: createClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4149685946232913634}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6935950164106265572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,7 +3374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8066620139660751789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: continueClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7417574070827610953
 GameObject:
   m_ObjectHideFlags: 0
