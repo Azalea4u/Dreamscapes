@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +11,12 @@ public class Scr_OctoPlayer : MonoBehaviour {
     [SerializeField] int health = 5;
     bool lastMovedLeft = false;
 
+    [Header("Game States")]
+    [SerializeField] private GameObject GameOver_Panel;
+
     void Start() {
+        GameOver_Panel.SetActive(false);
+
         FindAnyObjectByType<Scr_OctopusUI>().setPlayer();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -54,8 +60,20 @@ public class Scr_OctoPlayer : MonoBehaviour {
 	public void damage(int d) {
         health -= d;
         if (health <= 0) {
-            Destroy(gameObject);
-            SceneManager.LoadScene("SceneUI");
+            GameOver();
         }
+    }
+
+    private void GameOver()
+    {
+        Destroy(gameObject);
+        StartCoroutine(ShowScreen());
+    }
+
+    private IEnumerator ShowScreen()
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        GameOver_Panel.SetActive(true);
     }
 }

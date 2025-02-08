@@ -6,7 +6,7 @@ public class SO_ArcheologyItem_Data : ScriptableObject
 {
 	public string Name;
 	public Sprite sprite;
-
+	public int points;
 	public Vector2Int size = Vector2Int.one;
 
 	/// <summary>

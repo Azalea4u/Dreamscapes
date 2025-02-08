@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialContainer: {fileID: 9007001890841663511}
-  tutorialText: Use the arrow buttons to move the spaceship and avoid obstacles.
+  tutorialText: Use the arrows to move Magus to the spot you want to mine. Magus
+    will mine in a plus shape around him. Try to uncover the artifacts!
 --- !u!114 &2607537599707596885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,10 +225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -286,8 +287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.860901, y: -278.09}
-  m_SizeDelta: {x: 835.7158, y: 865.83}
+  m_AnchoredPosition: {x: 4.5389, y: -278.09}
+  m_SizeDelta: {x: 836.3597, y: 865.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &116643372873683842
 CanvasRenderer:
@@ -319,8 +320,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a056a495dfcf4c7498fe8b629a653ae0, type: 2}
-  m_sharedMaterial: {fileID: -1738568773208102018, guid: a056a495dfcf4c7498fe8b629a653ae0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -344,8 +345,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 164.4
-  m_fontSizeBase: 164.4
+  m_fontSize: 122.88
+  m_fontSizeBase: 122.88
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -422,8 +423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.860901, y: 287.7251}
-  m_SizeDelta: {x: 835.7158, y: 265.794}
+  m_AnchoredPosition: {x: 4.5389, y: 287.7251}
+  m_SizeDelta: {x: 836.36, y: 265.794}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &173788297401084644
 CanvasRenderer:
@@ -455,8 +456,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: How to Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d3b3764a49c44844ca471a5fca92de3a, type: 2}
-  m_sharedMaterial: {fileID: 475359402186628586, guid: d3b3764a49c44844ca471a5fca92de3a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 906d1127dbfaed949a2093e49bc20932, type: 2}
+  m_sharedMaterial: {fileID: 4155498874043491227, guid: 906d1127dbfaed949a2093e49bc20932, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
