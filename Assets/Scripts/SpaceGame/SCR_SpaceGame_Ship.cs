@@ -5,7 +5,8 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	[SerializeField] private SpriteRenderer visuals;
 	[SerializeField] private Sprite[] damageStates;
 	[SerializeField] private int health = 3;
-	private float shipPosition;
+	[SerializeField] private float shipPosition;
+	[SerializeField] private float shipVelocity;
 	[SerializeField] private float shipBounds;
 	[SerializeField] private float shipAscentSpeed;
 	[SerializeField] private float shipMovementSpeed;
@@ -22,7 +23,20 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+		if (health <= 0)
+		{
+			return;
+		}
+
 		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
+
+		shipVelocity = Mathf.Clamp(shipVelocity, -shipMovementSpeed, shipMovementSpeed);
+		shipVelocity = Mathf.Lerp(shipVelocity, 0.0f, Time.deltaTime * 5.0f);
+
+		shipPosition += shipVelocity * Time.deltaTime;
+		shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
+
+		visuals.transform.rotation = Quaternion.Euler(0,0,shipVelocity/shipMovementSpeed * -45.0f);
 
 		transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * usedAscentSpeed), 0.0f);
 
@@ -31,14 +45,12 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 	public void MoveLeft()
 	{
-		shipPosition -= shipMovementSpeed * Time.deltaTime;
-		shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
+		shipVelocity -= shipMovementSpeed * Time.deltaTime * 5.0f;
 	}
 
 	public void MoveRight()
 	{
-		shipPosition += shipMovementSpeed * Time.deltaTime;
-		shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
+		shipVelocity += shipMovementSpeed * Time.deltaTime * 5.0f;
 	}
 
 	public void DamageShip()
@@ -47,6 +59,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		if (health <= 0)
 		{
 			health = 0;
+			visuals.transform.rotation = Quaternion.identity;
 			SCR_SpaceGame_Manager.instance.ShipHasDied();
 		}
 		visuals.sprite = damageStates[health];
@@ -64,6 +77,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 			if (!obstacle.beenHit)
 			{
 				usedAscentSpeed -= obstacle.bounce;
+				shipVelocity *= -1.0f;
 				if (obstacle.doesDamage)
 				{
 					DamageShip();
