@@ -7,7 +7,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] int health = 100;
     [SerializeField] GameObject shootFab;
     [SerializeField] GameObject tentacleFab;
-    [SerializeField] float attackTimer;
     [SerializeField] float moveTimer;
 	[SerializeField] spaces[] availableSpaces = new spaces[5];
 	[SerializeField] int position = 2;
@@ -27,7 +26,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	void Start() {
 		GameWin_Panel.SetActive(false);
 
-		attackTimer = 1.0f;
 		moveTimer = 1.0f;
 
 		transform.position = availableSpaces[position].spacePosition;
