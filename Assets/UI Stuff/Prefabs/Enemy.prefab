@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: c92402df227234140a3ed02701da0a43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   - somethingHereRef: {fileID: 0}
     spacePosition: {x: 2, y: 3, z: 0}
   position: 2
+  spriteRenderer: {fileID: 7113618380879262263}
   tentaclePos: 0
   GameWin_Panel: {fileID: 1992189469908244687, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
 --- !u!61 &506603395507724121

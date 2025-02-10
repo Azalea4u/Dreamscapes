@@ -11,7 +11,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] float moveTimer;
 	[SerializeField] spaces[] availableSpaces = new spaces[5];
 	[SerializeField] int position = 2;
-
+	[SerializeField] SpriteRenderer spriteRenderer;
 	[SerializeField] int tentaclePos = 0;
 
     [Header("Game States")]
@@ -35,7 +35,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	void Update() {
 		//transform.position = Vector3.Lerp(transform.position, availableSpaces[position].spacePosition, Time.deltaTime);
-
+		spriteRenderer.material.SetFloat("_Strength", 1.0f - (float)health / 100.0f);
 
 		moveTimer -= Time.deltaTime;
 
