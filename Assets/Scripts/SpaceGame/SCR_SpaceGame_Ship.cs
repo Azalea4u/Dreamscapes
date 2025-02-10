@@ -31,13 +31,13 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 	public void MoveLeft()
 	{
-		shipPosition -= shipMovementSpeed * Time.fixedDeltaTime;
+		shipPosition -= shipMovementSpeed * Time.deltaTime;
 		shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
 	}
 
 	public void MoveRight()
 	{
-		shipPosition += shipMovementSpeed * Time.fixedDeltaTime;
+		shipPosition += shipMovementSpeed * Time.deltaTime;
 		shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
 	}
 
