@@ -1550,9 +1550,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c4c34286c77179b4ea044c83787567b6, type: 3}
   - {fileID: 21300000, guid: 2f3918882ac91a24292a286d8c8873c6, type: 3}
   health: 3
+  shipPosition: 0
+  shipVelocity: 0
   shipBounds: 2.5
   shipAscentSpeed: 4
-  shipMovementSpeed: 2.5
+  shipMovementSpeed: 3
   usedAscentSpeed: 0
 --- !u!1001 &1612675972
 PrefabInstance:
