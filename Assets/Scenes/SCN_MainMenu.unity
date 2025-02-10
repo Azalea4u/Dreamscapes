@@ -1159,6 +1159,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -13.554901
       objectReference: {fileID: 0}
+    - target: {fileID: 8936570242418888273, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936570242418888273, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936570242418888273, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936570242418888273, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1920
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5508150711353731322, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}

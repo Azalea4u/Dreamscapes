@@ -1556,7 +1556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1992189469908244687, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2423425376471047297, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1718,6 +1718,22 @@ PrefabInstance:
 --- !u!224 &474230508 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6913168368116316834, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
+  m_PrefabInstance: {fileID: 474230507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &474230509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
+  m_PrefabInstance: {fileID: 474230507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &474230510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1992189469908244687, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
   m_PrefabInstance: {fileID: 474230507}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &474865365
@@ -3277,6 +3293,11 @@ MonoBehaviour:
   - {fileID: -8956275966173886161, guid: 77370cf5909bcca4398204d9aa48dd3a, type: 3}
   _gamebounds: {x: 1.56, y: 1.84}
   wantedDragonVisual: {fileID: 99798663}
+  useTimer: 0
+  timeLeft: 15
+  dragonsFound: 0
+  WinScreen_Panel: {fileID: 474230510}
+  findDragon_TXT: {fileID: 474230509}
 --- !u!4 &1257304468
 Transform:
   m_ObjectHideFlags: 0
