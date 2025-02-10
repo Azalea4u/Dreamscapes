@@ -7,11 +7,10 @@ public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] int health = 100;
     [SerializeField] GameObject shootFab;
     [SerializeField] GameObject tentacleFab;
-    [SerializeField] float attackTimer;
     [SerializeField] float moveTimer;
 	[SerializeField] spaces[] availableSpaces = new spaces[5];
 	[SerializeField] int position = 2;
-
+	[SerializeField] SpriteRenderer spriteRenderer;
 	[SerializeField] int tentaclePos = 0;
 
     [Header("Game States")]
@@ -27,7 +26,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	void Start() {
 		GameWin_Panel.SetActive(false);
 
-		attackTimer = 1.0f;
 		moveTimer = 1.0f;
 
 		transform.position = availableSpaces[position].spacePosition;
@@ -35,7 +33,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	void Update() {
 		//transform.position = Vector3.Lerp(transform.position, availableSpaces[position].spacePosition, Time.deltaTime);
-
+		spriteRenderer.material.SetFloat("_Strength", 1.0f - (float)health / 100.0f);
 
 		moveTimer -= Time.deltaTime;
 
@@ -187,8 +185,11 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	private void GameWin()
 	{
+        GameWin_Panel.SetActive(true);
         Destroy(gameObject);
-		StartCoroutine(ShowScreen());
+
+       // StartCoroutine(ShowScreen());
+       // StartCoroutine(ShowScreen());
     }
 
     private IEnumerator ShowScreen()
