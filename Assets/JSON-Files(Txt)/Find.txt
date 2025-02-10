@@ -1,5 +1,5 @@
 {
-	"slots": [
+	"slot": [
 		{
 			"image": "???",
 			"score": 0
