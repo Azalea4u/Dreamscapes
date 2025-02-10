@@ -26,9 +26,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicate GameManager
         }
-
-        // Unity does not like to make fullscreen games go into a given aspect ratio, so this forces it to.
-		Screen.SetResolution(1080, 1920, true);
     }
 
     private void Update()
