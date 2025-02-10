@@ -151,6 +151,7 @@ MonoBehaviour:
     spacePosition: {x: 2, y: 3, z: 0}
   position: 2
   tentaclePos: 0
+  GameWin_Panel: {fileID: 1992189469908244687, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
 --- !u!61 &506603395507724121
 BoxCollider2D:
   m_ObjectHideFlags: 0

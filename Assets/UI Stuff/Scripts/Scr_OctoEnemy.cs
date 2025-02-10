@@ -187,8 +187,11 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	private void GameWin()
 	{
+        GameWin_Panel.SetActive(true);
         Destroy(gameObject);
-		StartCoroutine(ShowScreen());
+
+       // StartCoroutine(ShowScreen());
+       // StartCoroutine(ShowScreen());
     }
 
     private IEnumerator ShowScreen()

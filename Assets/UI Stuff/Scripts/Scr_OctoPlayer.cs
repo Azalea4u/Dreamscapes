@@ -66,6 +66,8 @@ public class Scr_OctoPlayer : MonoBehaviour {
 
     private void GameOver()
     {
+        GameOver_Panel.SetActive(true);
+
         Destroy(gameObject);
         StartCoroutine(ShowScreen());
     }
