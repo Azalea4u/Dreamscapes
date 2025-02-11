@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bb593d53a2c4c944cab1c3dd31a7e25b
+guid: aa71aaa08298f2e4aa16568d0672085f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1409830513793316728
-    second: question_0
+      213: 8745255731171541632
+    second: OctopusBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: question_0
+      name: OctopusBG_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 225
-        height: 225
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8773828f169b09310800000000000000
-      internalID: 1409830513793316728
+      spriteID: 082cd6ec0c36d5970800000000000000
+      internalID: 8745255731171541632
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      question_0: 1409830513793316728
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
