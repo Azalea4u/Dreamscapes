@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PollyTentacles 1_0: 7670216087497605864
+      PollyTentacles 1_1: 704848649969099868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

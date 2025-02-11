@@ -52,8 +52,9 @@ public class Scr_LeaderBoard : MonoBehaviour {
             }
         }
 
+        //these are just tests do not uncomment them
         //loser();
-        highScore();
+        //highScore();
     }
 
     void Update() {

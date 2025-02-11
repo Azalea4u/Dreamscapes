@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OctopusIcon_0: 4297371052753105299
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Scr_ScreenManager : MonoBehaviour {
-
     public static Scr_ScreenManager instance;
 
     [SerializeField] GameObject titleS;
@@ -62,19 +61,16 @@ public class Scr_ScreenManager : MonoBehaviour {
     }
 
     public void RocketClick() {
-        //SceneManager.LoadScene("SCN_SpaceshipScene");
         SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
         Destroy(gameObject);
     }
 
     public void ArcheologyClick() {
-        //SceneManager.LoadScene("SCN_ArcheologyMinigame");
         SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
         Destroy(gameObject);
 	}
 
     public void DragonClick() {
-        //SceneManager.LoadScene("SCN_FindDragonLuigi");
         SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
         Destroy(gameObject);
 	}
