@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,5 +52,10 @@ public class GameManager : MonoBehaviour
     {
         // return to main menu
         Load_MainMenu();
+    }
+
+    public IEnumerator WaitOnLoading()
+    {
+        yield return new WaitForSeconds(.05f);
     }
 }
