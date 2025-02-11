@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,9 +31,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // Add Pause Button as well
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();
+            Application.Quit();
         }
     }
 
