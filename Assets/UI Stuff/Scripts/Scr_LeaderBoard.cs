@@ -10,7 +10,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] Scr_BoardSlot[] slots;
     [SerializeField] Sprite[] sprites;
 
-    int newScore;
+    int newScore = 9;
     float time = 5;
     bool countDown = false;
 
@@ -35,22 +35,25 @@ public class Scr_LeaderBoard : MonoBehaviour {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
             switch (saveSlots.slot[i].i) {
                 case "finn":
-					slots[i].slotImg.sprite = sprites[0];
-					break;
+                    slots[i].slotImg.sprite = sprites[0];
+                    break;
                 case "jake":
-					slots[i].slotImg.sprite = sprites[1];
-					break;
+                    slots[i].slotImg.sprite = sprites[1];
+                    break;
                 case "bmo":
-					slots[i].slotImg.sprite = sprites[2];
-					break;
+                    slots[i].slotImg.sprite = sprites[2];
+                    break;
                 case "bubblegum":
-					slots[i].slotImg.sprite = sprites[3];
-					break;
-                case "???":
-					slots[i].slotImg.sprite = sprites[4];
-					break;
+                    slots[i].slotImg.sprite = sprites[3];
+                    break;
+                default:
+                    slots[i].slotImg.sprite = sprites[4];
+                    break;
             }
         }
+
+        //loser();
+        highScore();
     }
 
     void Update() {
@@ -69,27 +72,27 @@ public class Scr_LeaderBoard : MonoBehaviour {
         for (int i = 0; i < slots.Length; i++) {
             saveSlots.slot[i].s = int.Parse(slots[i].scoreTxt.text);
 
-   //         switch (slots[i].slotImg.sprite) {
-   //             case sprites[0]:
-   //                 saveSlots.slot[i].i = "finn";
-   //                 break;
-			//	case sprites[1]:
-			//		saveSlots.slot[i].i = "jake";
-			//		break;
-			//	case sprites[2]:
-			//		saveSlots.slot[i].i = "bmo";
-			//		break;
-			//	case sprites[3]:
-			//		saveSlots.slot[i].i = "bubblegum";
-			//		break;
-			//	case sprites[4]:
-			//		saveSlots.slot[i].i = "???";
-			//		break;
-			//}
+            switch (slots[i].slotImg.sprite.name) {
+                case "finn_0":
+                    saveSlots.slot[i].i = "finn";
+                    break;
+                case "jake_0":
+                    saveSlots.slot[i].i = "jake";
+                    break;
+                case "bmo_0":
+                    saveSlots.slot[i].i = "bmo";
+                    break;
+                case "bubblegum_0":
+                    saveSlots.slot[i].i = "bubblegum";
+                    break;
+                case "question_0":
+                    saveSlots.slot[i].i = "???";
+                    break;
+            }
         }
 
-        //info. = JsonUtility.ToJson(saveSlots);
-
+        File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
+		
 		SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
 	}
 
