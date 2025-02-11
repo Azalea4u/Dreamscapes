@@ -1,0 +1,24 @@
+{
+	"slot": [
+		{
+			"image": "???",
+			"score": 0
+		},
+		{
+			"image": "???",
+			"score": 0
+		},
+		{
+			"image": "???",
+			"score": 0
+		},
+		{
+			"image": "???",
+			"score": 0
+		},
+		{
+			"image": "???",
+			"score": 0
+		}
+	]
+}
