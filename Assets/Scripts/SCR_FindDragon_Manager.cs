@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,10 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private bool useTimer = false;
     [SerializeField] private float timeLeft = 15;
     [SerializeField] private int dragonsFound = 0;
+
+    [Header("Game State")]
+    [SerializeField] private GameObject WinScreen_Panel;
+    [SerializeField] private TextMeshProUGUI findDragon_TXT;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
@@ -45,6 +50,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	private void Start()
 	{
 		instance = this;
+
+        WinScreen_Panel.SetActive(false);
+
         createDragonGroups();
 		setupDragons();
         useTimer = true;
@@ -153,5 +161,10 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	private void EndGame()
     {
         // Do whatever here to make the game end
+        findDragon_TXT.text = "You found " + dragonsFound + "!";
+        WinScreen_Panel.SetActive(true);
+
     }
+
+
 }
