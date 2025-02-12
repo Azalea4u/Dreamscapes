@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -33,7 +34,10 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		public float spawnTimeDelay;
 	}
 
-	private void Start()
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI distance_TXT;
+
+    private void Start()
 	{
         instance = this;
 		spawnTimer = spawnTimerLength;
@@ -46,6 +50,8 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
         {
 			return;
         }
+
+		UpdateDistanceText();
 
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)
@@ -101,4 +107,10 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		gameOver_Panel.SetActive(true);
 		GameManager.instance.PauseGame(true);
 	}
+
+	private void UpdateDistanceText()
+	{
+        shipDistance = (int)spaceShip_Object.transform.position.y;
+		distance_TXT.text = shipDistance.ToString();
+    }
 }
