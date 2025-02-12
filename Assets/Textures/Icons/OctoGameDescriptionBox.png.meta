@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OctoGameDescriptionBox_0: -6419050928779028216
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

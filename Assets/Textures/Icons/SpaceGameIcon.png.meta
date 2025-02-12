@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpaceGameIcon_0: 5857474440058044730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

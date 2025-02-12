@@ -73,8 +73,6 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	}
 	private void resetGame()
     {
-
-
 		createDragonGroups();
 		setupDragons();
 	}
@@ -140,7 +138,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
             // would put here stuff I want to happen after the dragon is found
             dragonsFound += 1;
-            timeLeft += 1;
+            timeLeft += 2;
             useTimer = false;
 			StartCoroutine(resetGameCoroutine());
         }
@@ -157,16 +155,16 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         resetGame();
         useTimer = true;
-
 	}
 
 	private void EndGame()
     {
         // Do whatever here to make the game end
-        findDragon_TXT.text = "You found " + dragonsFound + "!";
-        WinScreen_Panel.SetActive(true);
+        //findDragon_TXT.text = "You found " + dragonsFound + "!";
+        //WinScreen_Panel.SetActive(true);
 
+        //leaderboard stuff
+        LeaderBoardUI.SetActive(true);
+        LeaderBoardUI.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
     }
-
-
 }

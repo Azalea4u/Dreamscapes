@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ArcheoGameIcon_0: -1161900257817460288
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

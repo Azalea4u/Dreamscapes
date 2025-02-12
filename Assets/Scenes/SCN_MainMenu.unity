@@ -360,30 +360,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 267553626734209300, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: gameImg
-      value: 
-      objectReference: {fileID: 5857474440058044730, guid: 3451006c9089ec14788f27fd625a31e4, type: 3}
-    - target: {fileID: 1471480335640457213, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471480335640457213, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2340338500261597623, guid: 7973193953e94e1449512a85da548fb6, type: 3}
-    - target: {fileID: 1681006936631583724, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1681006936631583724, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1161900257817460288, guid: d065cca3754eac94a9d417495cafe6b7, type: 3}
-    - target: {fileID: 2726190567703172941, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: gameImg
-      value: 
-      objectReference: {fileID: -1161900257817460288, guid: d065cca3754eac94a9d417495cafe6b7, type: 3}
     - target: {fileID: 3015937506620274334, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -464,30 +440,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3499099414480270636, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: gameImg
-      value: 
-      objectReference: {fileID: -2340338500261597623, guid: 7973193953e94e1449512a85da548fb6, type: 3}
-    - target: {fileID: 4342048197728718543, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342048197728718543, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -6242554322480655991, guid: 2146f535006ca0c4898312e392ca719b, type: 3}
-    - target: {fileID: 7324976579774342175, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324976579774342175, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5857474440058044730, guid: 3451006c9089ec14788f27fd625a31e4, type: 3}
-    - target: {fileID: 7996946705844024197, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      propertyPath: gameImg
-      value: 
-      objectReference: {fileID: -6242554322480655991, guid: 2146f535006ca0c4898312e392ca719b, type: 3}
     - target: {fileID: 8261580999691689065, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Name
       value: UI
