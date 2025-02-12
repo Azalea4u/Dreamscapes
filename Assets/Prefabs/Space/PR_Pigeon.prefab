@@ -53,8 +53,10 @@ MonoBehaviour:
   moveTowardsPlayer: 0
   moveSpeed: 0
   doesDamage: 1
+  birdSlowdown: 1
   slowDownMovement: 0
   bounce: 2
+  destroyOnHit: 1
 --- !u!61 &166274999399084194
 BoxCollider2D:
   m_ObjectHideFlags: 0
