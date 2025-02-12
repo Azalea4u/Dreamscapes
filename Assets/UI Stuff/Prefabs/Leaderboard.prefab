@@ -565,7 +565,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!114 &2527756861375958962
 MonoBehaviour:
@@ -635,8 +635,6 @@ MonoBehaviour:
   - {fileID: 701754251433407687, guid: 992ceedbc0d1a4243bac6544829bc92c, type: 3}
   - {fileID: 1409830513793316728, guid: bb593d53a2c4c944cab1c3dd31a7e25b, type: 3}
   info: {fileID: 0}
-  saveSlots:
-    slot: []
 --- !u!1 &1402599242568492992
 GameObject:
   m_ObjectHideFlags: 0
