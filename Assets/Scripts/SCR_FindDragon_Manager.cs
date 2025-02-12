@@ -20,6 +20,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [Header("Game State")]
     [SerializeField] private GameObject WinScreen_Panel;
     [SerializeField] private TextMeshProUGUI findDragon_TXT;
+    [SerializeField] private GameObject LeaderBoardUI;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
@@ -52,6 +53,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		instance = this;
 
         WinScreen_Panel.SetActive(false);
+        LeaderBoardUI.SetActive(false);
 
         createDragonGroups();
 		setupDragons();
@@ -146,7 +148,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         {
             dragon.speed = Vector2.zero;
             dragon.transform.position = Vector3.one * 10;
-			timeLeft -= 0.5f;
+			//timeLeft -= 0.5f;
 		}
     }
 
