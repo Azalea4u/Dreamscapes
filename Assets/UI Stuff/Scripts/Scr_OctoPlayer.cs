@@ -1,15 +1,13 @@
 using System.Collections;
-using System.Diagnostics.Tracing;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class Scr_OctoPlayer : MonoBehaviour {
     [SerializeField] GameObject projPrefab;
     Rigidbody2D rb;
-
-    [SerializeField] int health = 5;
+    public int position = 2;
     bool lastMovedLeft = false;
+	[SerializeField] float shootDelay = 0.5f;
+	float shootTimer;
 
     [Header("Game States")]
     [SerializeField] private GameObject GameOver_Panel;
@@ -21,47 +19,71 @@ public class Scr_OctoPlayer : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update() {
-        
-    }
+	private void Update()
+	{
+		shootTimer -= Time.deltaTime;
+		if (shootTimer <= 0)
+		{
+			shootTimer = shootDelay;
+			shoot();
+		}
+	}
 
-    public void moveLeft() {
+	public void moveLeft() {
         lastMovedLeft = true;
+        position -= 1;
         rb.transform.Translate(new Vector3(-1, 0, 0));
-        if (rb.position.x <= -2) transform.position = new Vector3(2, -3, 0); ;
+        if (rb.position.x <= -2) rb.transform.Translate(new Vector3(1, 0, 0));
+
+		Collider2D[] collisions = Physics2D.OverlapPointAll(rb.transform.position);
+
+        foreach (var collision in collisions)
+        {
+			if (collision.attachedRigidbody.GetComponent<Scr_Tentacle>())
+			{
+				moveRight();
+                return;
+			}
+		}
 	}
 
     public void moveRight() {
 		lastMovedLeft = false;
+        position += 1;
         rb.transform.Translate(new Vector3(1, 0, 0));
-		if (rb.position.x >= 2) transform.position = new Vector3(-2, -3, 0);
-	}
+		if (rb.position.x >= 2) rb.transform.Translate(new Vector3(-1, 0, 0));
 
-    public void shoot() { 
-        Instantiate(projPrefab);
-    }
+		Collider2D[] collisions = Physics2D.OverlapPointAll(rb.transform.position);
+
+		foreach (var collision in collisions)
+		{
+			if (collision.attachedRigidbody.GetComponent<Scr_Tentacle>())
+			{
+				moveLeft();
+				return;
+			}
+		}
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        Debug.Log(collision);
+		Debug.Log(collision);
 
 		if (collision.attachedRigidbody.GetComponent<Scr_Tentacle>())
-        {
-            if (lastMovedLeft)
-            {
-                moveRight();
-            } else
-            {
-                moveLeft();
-            }
-        }
+		{
+			if (lastMovedLeft)
+			{
+				moveRight();
+			}
+			else
+			{
+				moveLeft();
+			}
+		}
 	}
 
-	public void damage(int d) {
-        health -= d;
-        if (health <= 0) {
-            GameOver();
-        }
+	public void shoot() { 
+        Instantiate(projPrefab);
     }
 
     private void GameOver()
