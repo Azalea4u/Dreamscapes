@@ -28,10 +28,22 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 			return;
 		}
 
+		for (int i = 0; i < Input.touchCount; i++)
+		{
+			Vector3 touchpos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+			if (touchpos.x < 0)
+			{
+				MoveLeft();
+			} else
+			{
+				MoveRight();
+			}
+		}
+
 		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
 
-		shipVelocity = Mathf.Clamp(shipVelocity, -shipMovementSpeed, shipMovementSpeed);
 		shipVelocity = Mathf.Lerp(shipVelocity, 0.0f, Time.deltaTime * 5.0f);
+		shipVelocity = Mathf.Clamp(shipVelocity, -shipMovementSpeed * 0.9f, shipMovementSpeed * 0.9f);
 
 		shipPosition += shipVelocity * Time.deltaTime;
 		shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
@@ -59,15 +71,18 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		if (health <= 0)
 		{
 			health = 0;
-			visuals.transform.rotation = Quaternion.identity;
-			SCR_SpaceGame_Manager.instance.ShipHasDied();
 		}
 		visuals.sprite = damageStates[health];
 	}
 
+	public void ShipDeath()
+	{
+		visuals.transform.rotation = Quaternion.identity;
+		SCR_SpaceGame_Manager.instance.ShipHasDied();
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		// Debug.Log("Boombaby");
 		SCR_SpaceshipDamager obstacle = collision.GetComponent<SCR_SpaceshipDamager>();
 
 		if (obstacle != null)
@@ -89,7 +104,6 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		//Debug.Log("Goodbye");
 		SCR_SpaceshipDamager obstacle = collision.GetComponent<SCR_SpaceshipDamager>();
 
 		if (obstacle != null)
