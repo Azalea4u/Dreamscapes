@@ -2593,14 +2593,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1636404722}
     m_Modifications:
-    - target: {fileID: 299285364697687426, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 139.30002
-      objectReference: {fileID: 0}
-    - target: {fileID: 299285364697687426, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 51.64999
-      objectReference: {fileID: 0}
     - target: {fileID: 3324358198073576448, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
       propertyPath: m_Name
       value: PF_Timer
@@ -2636,14 +2628,6 @@ PrefabInstance:
     - target: {fileID: 7123340564243525081, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1750.8192
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123340564243525081, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123340564243525081, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7123340564243525081, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2693,14 +2677,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7690947034218670132, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 7690947034218670132, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2711,6 +2687,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7123340564243525081, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
   m_PrefabInstance: {fileID: 671824876}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &671824878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7690947034218670132, guid: c794b20a01e920b4689e7ac5c86d5b99, type: 3}
+  m_PrefabInstance: {fileID: 671824876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &682873201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3975,10 +3962,11 @@ MonoBehaviour:
   _gamebounds: {x: 1.56, y: 1.72}
   wantedDragonVisual: {fileID: 99798663}
   useTimer: 0
-  timeLeft: 15
+  timeLeft: 30
   dragonsFound: 0
   WinScreen_Panel: {fileID: 474230510}
   findDragon_TXT: {fileID: 474230509}
+  Timer_TXT: {fileID: 671824878}
 --- !u!4 &1257304468
 Transform:
   m_ObjectHideFlags: 0

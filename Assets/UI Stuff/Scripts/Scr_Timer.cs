@@ -5,7 +5,7 @@ public class NewMonoBehaviourScript : MonoBehaviour {
     public float timeAmount = 0;
     float time = 0;
     bool runTime = false;
-    TextMeshProUGUI text;
+    public TextMeshProUGUI text;
 
     void Start() {
         text = GetComponentInChildren<TextMeshProUGUI>();
