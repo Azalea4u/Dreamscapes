@@ -2,9 +2,16 @@ using UnityEngine;
 
 public class SCR_SpaceGame_Ship : MonoBehaviour
 {
+	[Header("Ship Visual Stuff")]
 	[SerializeField] private SpriteRenderer visuals;
 	[SerializeField] private Sprite[] damageStates;
 	[SerializeField] private int health = 3;
+	[SerializeField] private GameObject[] birdVisuals;
+	[SerializeField] private int birds = 0;
+	[SerializeField] private float birdTimerLength = 5.0f;
+	private float birdTimer;
+
+	[Header("Ship Movement")]
 	[SerializeField] private float shipPosition;
 	[SerializeField] private float shipVelocity;
 	[SerializeField] private float shipBounds;
@@ -18,14 +25,28 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	{
 		desiredAscentSpeed = shipAscentSpeed;
 		visuals.sprite = damageStates[health];
-	}
+        foreach (var bird in birdVisuals)
+        {
+			bird.SetActive(false);
+        }
+    }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 		if (health <= 0)
 		{
 			return;
+		}
+
+		if (birds > 0)
+		{
+			birdTimer -= Time.deltaTime;
+			if (birdTimer <= 0.0f)
+			{
+				birdTimer = birdTimerLength;
+				RemoveBird();
+			}
 		}
 
 		for (int i = 0; i < Input.touchCount; i++)
@@ -40,7 +61,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 			}
 		}
 
-		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
+		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, (1.0f - (((float)birds/3.0f) * 0.5f)) * desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
 
 		shipVelocity = Mathf.Lerp(shipVelocity, 0.0f, Time.deltaTime * 5.0f);
 		shipVelocity = Mathf.Clamp(shipVelocity, -shipMovementSpeed * 0.9f, shipMovementSpeed * 0.9f);
@@ -50,7 +71,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 		visuals.transform.rotation = Quaternion.Euler(0,0,shipVelocity/shipMovementSpeed * -45.0f);
 
-		transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * usedAscentSpeed), 0.0f);
+		transform.position = new Vector3(shipPosition, transform.position.y + (Time.deltaTime * usedAscentSpeed), 0.0f);
 
 		SCR_SpaceGame_Manager.instance.shipAnimator.SetInteger("Health", health);
 	}
@@ -75,6 +96,18 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		visuals.sprite = damageStates[health];
 	}
 
+	public void AddBird()
+	{
+		birds = Mathf.Clamp(birds + 1,0,3);
+		birdVisuals[birds - 1].SetActive(true);
+	}
+
+	public void RemoveBird()
+	{
+		birdVisuals[birds - 1].SetActive(false);
+		birds = Mathf.Clamp(birds - 1, 0, 3);
+	}
+
 	public void ShipDeath()
 	{
 		visuals.transform.rotation = Quaternion.identity;
@@ -93,6 +126,11 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 			{
 				usedAscentSpeed -= obstacle.bounce;
 				shipVelocity *= -1.0f;
+				if (obstacle.birdSlowdown)
+				{
+					birdTimer = birdTimerLength;
+					AddBird();
+				}
 				if (obstacle.doesDamage)
 				{
 					DamageShip();
