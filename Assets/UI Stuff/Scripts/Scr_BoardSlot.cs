@@ -7,7 +7,7 @@ public class Scr_BoardSlot : MonoBehaviour {
     public TextMeshProUGUI scoreTxt;
 
     public void changeSlot(Image img, int score) {
-		slotImg = img;
+		slotImg.sprite = img.sprite;
 		scoreTxt.text = "" + score;
 	}
 }

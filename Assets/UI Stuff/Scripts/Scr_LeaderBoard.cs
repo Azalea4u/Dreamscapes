@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEditor;
 
 public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] GameObject createPanel;
@@ -10,8 +11,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] Scr_BoardSlot[] slots;
     [SerializeField] Sprite[] sprites;
 
-    int newScore = 9;
-    float time = 5;
+    int newScore;
+    float time = 3;
     bool countDown = false;
 
     //good luck =)
@@ -64,7 +65,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
                 loserpanel.SetActive(false);
                 continueBtn.SetActive(true);
                 countDown = false;
-                time = 5;
+                time = 3;
             }
         }
     }
@@ -93,7 +94,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
         }
 
         File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
-		
+		AssetDatabase.Refresh();
+
 		SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
 	}
 
@@ -104,14 +106,17 @@ public class Scr_LeaderBoard : MonoBehaviour {
         continueBtn.SetActive(true);
     }
 
-    void createSlot(Image img, int score) {
-		for (int i = 0; i < slots.Length; i++) {
-			Scr_BoardSlot tempSlot;
-			if (int.Parse(slots[i].scoreTxt.text) < score) {
-				tempSlot = slots[i];
-				slots[i].slotImg = img;
-				slots[i].scoreTxt.text = "" + score;
-                createSlot(tempSlot.slotImg, int.Parse(tempSlot.scoreTxt.text));
+    void createSlot(Image img, int score, int index = 0) {
+        //index; doesn't work so I just do this
+		for (index = index; index < slots.Length; index++) {
+            Image tempImg;
+            int tempScore;
+			if (int.Parse(slots[index].scoreTxt.text) < score) {
+                tempImg = slots[index].slotImg;
+                tempScore = int.Parse(slots[index].scoreTxt.text);
+                slots[index].changeSlot(img, score);
+                createSlot(tempImg, tempScore, index + 1);
+                return;
 			}
 		}
 	}
