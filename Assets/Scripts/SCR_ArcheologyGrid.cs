@@ -36,6 +36,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 	[Header("Pop-Up")]
 	[SerializeField] private GameObject Popup_Panel;
+	[SerializeField] private GameObject TurnOffPopup_BTN;
 	[SerializeField] private Image Artifact_IMG;
 	[SerializeField] private TextMeshProUGUI ArtifactName_TXT;
 
@@ -287,16 +288,26 @@ public class SCR_ArcheologyGrid : MonoBehaviour
         Artifact_IMG.sprite = item.GetSprite();
 		ArtifactName_TXT.text = item.GetItemName() + "!";
 		Popup_Panel.SetActive(true);
+        collectSFX.Play(); 
+
+		TurnOffPopup_BTN.SetActive(false);
+		StartCoroutine(StopInput());
 
 		points += item.GetPointValue();
-        collectSFX.Play(); 
         Destroy(item.gameObject);
-		GameManager.instance.PauseGame(true);
 
 		items.RemoveAll(x => !x);
 	}
 
-	public void ClosePopUp()
+	private IEnumerator StopInput()
+	{
+		yield return new WaitForSeconds(0.5f);
+		Debug.Log("Can now remove popup");
+		TurnOffPopup_BTN.SetActive(true);
+        GameManager.instance.PauseGame(true);
+    }
+
+    public void ClosePopUp()
 	{
         // Remove Items
         Popup_Panel.SetActive(false);
