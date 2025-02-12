@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Diamond-blue_0: 9128373136922990206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

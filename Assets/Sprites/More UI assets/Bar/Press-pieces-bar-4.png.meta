@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Press-pieces-bar-4_0: 303202139949492468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

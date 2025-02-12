@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grass-cell-phone_0: 3175363295111182639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

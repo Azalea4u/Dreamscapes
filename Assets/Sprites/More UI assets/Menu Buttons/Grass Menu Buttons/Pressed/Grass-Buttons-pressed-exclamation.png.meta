@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grass-Buttons-pressed-exclamation_0: 8284738843754128185
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

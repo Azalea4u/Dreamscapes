@@ -2038,17 +2038,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5315709171038770864, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.5389
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315709171038770864, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -414
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174788179661677300, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ac5bb2d425696154cbb0cf7433b9aa01, type: 2}
+    - target: {fileID: 6174788179661677300, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6712579904639845405, guid: ac5bb2d425696154cbb0cf7433b9aa01, type: 2}
+    - target: {fileID: 6174788179661677300, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_text
-      value: 
+      value: "Save Polly from the darkness by sending her rainbow bubbles. \nBe careful
+        of her arms and the darkness bubbles though!"
       objectReference: {fileID: 0}
     - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_fontSize
-      value: 130.8
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d77c8a5b8ec54d42800070b9dc16cd0, type: 2}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_fontSizeBase
-      value: 130.8
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6605057173348030670, guid: 2d77c8a5b8ec54d42800070b9dc16cd0, type: 2}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441407930711049995, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9007001890841663511, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_Name

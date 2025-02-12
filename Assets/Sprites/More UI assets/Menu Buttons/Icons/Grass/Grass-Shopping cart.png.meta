@@ -210,7 +210,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grass-Shopping cart_0: 8978548551969593525
+      Grass-Shopping cart_1: -2800041754220042616
+      Grass-Shopping cart_2: -6092703508756183947
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

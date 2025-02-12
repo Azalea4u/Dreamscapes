@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grass-Buttons-megaphone_0: -9082283118235669247
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grass-Buttons-pressed-house_0: -5443330449083362782
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

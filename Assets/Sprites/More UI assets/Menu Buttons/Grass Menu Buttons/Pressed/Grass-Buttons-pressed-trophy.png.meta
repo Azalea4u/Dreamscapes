@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grass-Buttons-pressed-trophy_0: 1056922273097165702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

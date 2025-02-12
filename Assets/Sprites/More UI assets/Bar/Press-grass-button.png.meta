@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Press-grass-button_0: 6006291594537604259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

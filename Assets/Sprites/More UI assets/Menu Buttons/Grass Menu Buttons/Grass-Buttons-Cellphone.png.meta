@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grass-Buttons-Cellphone_0: 3184784760735441435
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

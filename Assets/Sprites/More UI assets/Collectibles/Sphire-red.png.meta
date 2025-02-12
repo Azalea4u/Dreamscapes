@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sphire-red_0: -5560260102893365808
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
