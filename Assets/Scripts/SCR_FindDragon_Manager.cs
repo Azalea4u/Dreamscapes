@@ -19,7 +19,10 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
     [Header("Game State")]
     [SerializeField] private GameObject WinScreen_Panel;
+    [SerializeField] private Button StartOver_BTN;
+    [SerializeField] private Button Exit_BTN;
     [SerializeField] private TextMeshProUGUI findDragon_TXT;
+    [SerializeField] private TextMeshProUGUI Score_TXT;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
@@ -68,7 +71,10 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 				EndGame();
 			}
 		}
+
+        Score_TXT.text = "Found \n" + dragonsFound;
 	}
+
 	private void resetGame()
     {
 
@@ -163,7 +169,20 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         // Do whatever here to make the game end
         findDragon_TXT.text = "You found " + dragonsFound + "!";
         WinScreen_Panel.SetActive(true);
+        StartOver_BTN.interactable = false;
+        Exit_BTN.interactable = false;
 
+        StartCoroutine(WaitBeforeInput());
+
+    }
+
+    private IEnumerator WaitBeforeInput()
+    {
+        yield return new WaitForSeconds(0.5f);
+        StartOver_BTN.interactable = true;
+        Exit_BTN.interactable = true;
+
+        GameManager.instance.PauseGame(true);
     }
 
 

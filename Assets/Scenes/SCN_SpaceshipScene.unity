@@ -201,6 +201,8 @@ MonoBehaviour:
   shipAnimator: {fileID: 166821050}
   explosion_SFX: {fileID: 0}
   gameOver_Panel: {fileID: 201795849}
+  StartOver_BTN: {fileID: 7036368810734461086}
+  Exit_BTN: {fileID: 7036368810734461085}
   distance_TXT: {fileID: 1615382362416989292}
 --- !u!4 &24747034
 Transform:
@@ -2120,7 +2122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8061455360481835097, guid: 9beb688ad1f7f654592fa9d5af7fb5c7, type: 3}
+  m_Sprite: {fileID: -7909549254043492498, guid: 9beb688ad1f7f654592fa9d5af7fb5c7, type: 3}
   m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2639,6 +2641,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
+--- !u!114 &7036368810734461085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6611956795467298880, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
+  m_PrefabInstance: {fileID: 7036368810734461084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7036368810734461086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7512948996185707853, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
+  m_PrefabInstance: {fileID: 7036368810734461084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7619573386004979916
 Transform:
   m_ObjectHideFlags: 0
