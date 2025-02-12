@@ -21,6 +21,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private GameObject WinScreen_Panel;
     [SerializeField] private TextMeshProUGUI findDragon_TXT;
     [SerializeField] private GameObject LeaderBoardUI;
+    [SerializeField] public TextMeshProUGUI Timer_TXT;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
@@ -65,6 +66,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         if (useTimer)
         {
 			timeLeft -= Time.deltaTime;
+            Timer_TXT.text = "Timer: " + (int)timeLeft;
 			if (timeLeft <= 0)
 			{
 				EndGame();
@@ -160,8 +162,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	private void EndGame()
     {
         // Do whatever here to make the game end
-        //findDragon_TXT.text = "You found " + dragonsFound + "!";
-        //WinScreen_Panel.SetActive(true);
+        useTimer = false;
+        findDragon_TXT.text = "You found " + dragonsFound + "!";
+        WinScreen_Panel.SetActive(true);
 
         //leaderboard stuff
         LeaderBoardUI.SetActive(true);
