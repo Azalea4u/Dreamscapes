@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class Scr_Bomb : MonoBehaviour {
-    [SerializeField] int dmg;
 	[SerializeField] float speed;
     Rigidbody2D rb;
 
@@ -19,7 +18,7 @@ public class Scr_Bomb : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.GetComponent<Scr_OctoPlayer>()) {
-			collision.gameObject.GetComponent<Scr_OctoPlayer>().damage(dmg);
+			Scr_OctoEnemy.instance.damage(-10);
 			Destroy(gameObject);
 		}
 	}

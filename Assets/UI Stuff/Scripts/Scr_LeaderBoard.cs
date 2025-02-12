@@ -7,6 +7,7 @@ using UnityEditor;
 public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] GameObject createPanel;
     [SerializeField] GameObject continueBtn;
+    [SerializeField] GameObject againBtn;
     [SerializeField] GameObject loserpanel;
     [SerializeField] Scr_BoardSlot[] slots;
     [SerializeField] Sprite[] sprites;
@@ -64,9 +65,27 @@ public class Scr_LeaderBoard : MonoBehaviour {
             if (time <= 0) {
                 loserpanel.SetActive(false);
                 continueBtn.SetActive(true);
+                againBtn.SetActive(true);
                 countDown = false;
                 time = 3;
             }
+        }
+    }
+
+    public void againClick() {
+        switch (info.name) {
+            case "Archeology":
+                SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
+                break;
+            case "Find":
+				SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
+				break;
+            case "Octopus":
+				SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
+				break;
+            case "Rocket":
+				SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
+				break;
         }
     }
 
@@ -104,10 +123,11 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
         createPanel.SetActive(false);
         continueBtn.SetActive(true);
+        againBtn.SetActive(true);
     }
 
     void createSlot(Image img, int score, int index = 0) {
-        //index; doesn't work so I just do this
+        //index; doesn't work so I just do this, there's proably a better way...
 		for (index = index; index < slots.Length; index++) {
             Image tempImg;
             int tempScore;

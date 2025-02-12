@@ -20,6 +20,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [Header("Game State")]
     [SerializeField] private GameObject WinScreen_Panel;
     [SerializeField] private TextMeshProUGUI findDragon_TXT;
+    [SerializeField] private GameObject LeaderBoardUI;
     [SerializeField] public TextMeshProUGUI Timer_TXT;
     
     // using a vector 4 because the bound values of the walls could all be different
@@ -53,6 +54,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		instance = this;
 
         WinScreen_Panel.SetActive(false);
+        LeaderBoardUI.SetActive(false);
 
         createDragonGroups();
 		setupDragons();
@@ -73,8 +75,6 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	}
 	private void resetGame()
     {
-
-
 		createDragonGroups();
 		setupDragons();
 	}
@@ -140,7 +140,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
             // would put here stuff I want to happen after the dragon is found
             dragonsFound += 1;
-            timeLeft += 1;
+            timeLeft += 2;
             useTimer = false;
 			StartCoroutine(resetGameCoroutine());
         }
@@ -148,7 +148,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         {
             dragon.speed = Vector2.zero;
             dragon.transform.position = Vector3.one * 10;
-			timeLeft -= 0.5f;
+			//timeLeft -= 0.5f;
 		}
     }
 
@@ -157,7 +157,6 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         resetGame();
         useTimer = true;
-
 	}
 
 	private void EndGame()
@@ -167,7 +166,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         findDragon_TXT.text = "You found " + dragonsFound + "!";
         WinScreen_Panel.SetActive(true);
 
+        //leaderboard stuff
+        LeaderBoardUI.SetActive(true);
+        LeaderBoardUI.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
     }
-
-
 }
