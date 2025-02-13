@@ -1635,6 +1635,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
+--- !u!1 &649242496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1233208824997034105, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
+  m_PrefabInstance: {fileID: 649242495}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &704951741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2288,6 +2293,7 @@ MonoBehaviour:
   Exit_BTN: {fileID: 2050411961}
   findDragon_TXT: {fileID: 474230509}
   Score_TXT: {fileID: 1471020526}
+  leaderBoard: {fileID: 649242496}
 --- !u!4 &1257304468
 Transform:
   m_ObjectHideFlags: 0
@@ -2850,8 +2856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialContainer: {fileID: 1543374268}
-  Pause_BTN: {fileID: 0}
-  Tutorial_BTN: {fileID: 0}
+  Pause_BTN: {fileID: 34305276}
+  Tutorial_BTN: {fileID: 1708548460}
 --- !u!222 &1585193248
 CanvasRenderer:
   m_ObjectHideFlags: 0
