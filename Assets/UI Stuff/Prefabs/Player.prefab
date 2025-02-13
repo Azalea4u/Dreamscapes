@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projPrefab: {fileID: 4105820575108179870, guid: 489103cd185e4214488488768e313620, type: 3}
-  position: 2
   health: 5
   GameOver_Panel: {fileID: 1992189469908244687, guid: 416e01c58bec1044d946c602bc3148f5, type: 3}
 --- !u!50 &-1508398090873984935
