@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SCN_FindDragonLuigi.unity
     guid: 19b315da663dbf046a553c0f243307df
   - enabled: 1
-    path: Assets/Scenes/SCN_OctopusShooter_.unity
+    path: Assets/Scenes/SCN_OctopusShooter.unity
     guid: 14a41b9408f8b5741be40862eb087448
   - enabled: 1
     path: Assets/Scenes/SCN_SpaceshipScene.unity

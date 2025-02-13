@@ -981,6 +981,7 @@ RectTransform:
   - {fileID: 600131178}
   - {fileID: 201795850}
   - {fileID: 1818290758686103468}
+  - {fileID: 1086416817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1563,6 +1564,21 @@ MonoBehaviour:
   shipAscentSpeed: 4
   shipMovementSpeed: 3
   usedAscentSpeed: 0
+--- !u!224 &1086416817 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8460842662136059847, guid: 7e8dfea3aeb9fc24881c8d560e9e8acc, type: 3}
+  m_PrefabInstance: {fileID: 1612675972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1195252939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 432343219452970639, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+  m_PrefabInstance: {fileID: 2144293360588577988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1493832203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5196727413503009034, guid: 839bc07399b727841ac2e6f9f2c42487, type: 3}
+  m_PrefabInstance: {fileID: 600131177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1530596552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1829,7 +1845,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e8dfea3aeb9fc24881c8d560e9e8acc, type: 3}
---- !u!114 &1612675973 stripped
+--- !u!114 &1612675973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1842,7 +1858,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu_UI: {fileID: 0}
-  Pause_BTN: {fileID: 0}
 --- !u!1 &1631795696
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,6 +2549,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: Pause_BTN
+      value: 
+      objectReference: {fileID: 1493832203}
+    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: Tutorial_BTN
+      value: 
+      objectReference: {fileID: 1195252939}
     - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 540
@@ -2972,3 +2995,4 @@ SceneRoots:
   - {fileID: 24747034}
   - {fileID: 1631795699}
   - {fileID: 2144293360588577988}
+  - {fileID: 1530596552}

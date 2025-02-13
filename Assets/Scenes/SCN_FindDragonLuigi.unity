@@ -176,6 +176,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b073d9a687475b4b9f516e779906343, type: 3}
+--- !u!1 &34305276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5196727413503009034, guid: 839bc07399b727841ac2e6f9f2c42487, type: 3}
+  m_PrefabInstance: {fileID: 146968160169016358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &62079376
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +656,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b073d9a687475b4b9f516e779906343, type: 3}
+--- !u!1 &132118836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 432343219452970639, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+  m_PrefabInstance: {fileID: 1607383240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &174335411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2083068665285424789, guid: 3b073d9a687475b4b9f516e779906343, type: 3}
@@ -3982,9 +3992,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 484181707}
-  m_Father: {fileID: 1607383241}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4092,7 +4101,7 @@ MonoBehaviour:
   tutorialContainer: {fileID: 1543374268}
   tutorialText: Find the character you see on the top  When you find it, tap it before
     it disappears!
-  Pause_BTN: {fileID: 146968160169016359}
+  Pause_BTN: {fileID: 0}
   Tutorial_BTN: {fileID: 0}
 --- !u!222 &1585193248
 CanvasRenderer:
@@ -4256,6 +4265,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: Pause_BTN
+      value: 
+      objectReference: {fileID: 34305276}
+    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: Tutorial_BTN
+      value: 
+      objectReference: {fileID: 132118836}
     - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 540
@@ -4407,7 +4424,6 @@ RectTransform:
   - {fileID: 403303995}
   - {fileID: 474230508}
   - {fileID: 97816297}
-  - {fileID: 671824877}
   - {fileID: 555592644}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5879,3 +5895,4 @@ SceneRoots:
   - {fileID: 1607383240}
   - {fileID: 2032439537}
   - {fileID: 649242495}
+  - {fileID: 1585193244}

@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SCR_Tutorial : MonoBehaviour {
 	[SerializeField] GameObject tutorialContainer;
@@ -11,33 +11,37 @@ public class SCR_Tutorial : MonoBehaviour {
 	[SerializeField] private GameObject Pause_BTN;
 	[SerializeField] private GameObject Tutorial_BTN;
 
-	void Start() {
-		Pause_BTN.SetActive(false);
-		Tutorial_BTN.SetActive(false);
-
-		WaitToClose();
-
-		GameManager.instance.PauseGame(true);
-		//Time.timeScale = 0;
-		tutorialContainer.SetActive(true);
-		displayText(tutorialText);
+	void Start()
+	{
+		StartCoroutine(WaitToClose());
 	}
 
-	private void displayText(string text) {
+	private void displayText(string text)
+	{
 		tutorialContainer.GetComponentInChildren<TextMeshProUGUI>().text = text;
 	}
 
-	public void close() {
+	public void close()
+	{
 		tutorialContainer.SetActive(false);
-		GameManager.instance.PauseGame(false);
-		//Time.timeScale = 1;
+        Pause_BTN.GetComponent<Button>().interactable = true;
+        GameManager.instance.PauseGame(false);
 	}
 
 	private IEnumerator WaitToClose()
 	{
-		yield return new WaitForSeconds(0.5f);
-		Tutorial_BTN.SetActive(true);
-	}
+        Pause_BTN.GetComponent<Button>().interactable = false;
+		Tutorial_BTN.GetComponent<Button>().interactable = false;
+
+        tutorialContainer.SetActive(true);
+        displayText(tutorialText);
+
+        yield return new WaitForSeconds(0.5f);
+
+        Tutorial_BTN.GetComponent<Button>().interactable = true;
+
+        GameManager.instance.PauseGame(true);
+    }
 
 
 }
