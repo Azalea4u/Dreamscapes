@@ -38,6 +38,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private GameObject Popup_Panel;
 	[SerializeField] private Image Artifact_IMG;
 	[SerializeField] private TextMeshProUGUI ArtifactName_TXT;
+	[SerializeField] private Button ClosePopup_BTN;
 
 	[Header("Game State")]
 	[SerializeField] private GameObject GameWin_Panel;
@@ -275,7 +276,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			if (uncovered)
 			{
                 // Something would happen to the item once it is gotten
-
                 RemoveItem(item);
             }
 		}
@@ -288,15 +288,27 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		ArtifactName_TXT.text = item.GetItemName() + "!";
 		Popup_Panel.SetActive(true);
 
+		StartCoroutine(WaitToClose());
+
 		points += item.GetPointValue();
         collectSFX.Play(); 
         Destroy(item.gameObject);
-		GameManager.instance.PauseGame(true);
 
 		items.RemoveAll(x => !x);
+
 	}
 
-	public void ClosePopUp()
+	private IEnumerator WaitToClose()
+	{
+        ClosePopup_BTN.interactable = false;
+
+        yield return new WaitForSeconds(0.5f);
+		ClosePopup_BTN.interactable = true;
+
+        GameManager.instance.PauseGame(true);
+    }
+
+    public void ClosePopUp()
 	{
         // Remove Items
         Popup_Panel.SetActive(false);
@@ -312,8 +324,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
     private void ShowGameWinScreen()
     {
-        GameManager.instance.PauseGame(true);
-		SRC_AudioManager.instance.GameWon_SFX();
         GameWin_Panel.SetActive(true);
+		//SRC_AudioManager.instance.GameWon_SFX();
+        GameManager.instance.PauseGame(true);
     }
 }
