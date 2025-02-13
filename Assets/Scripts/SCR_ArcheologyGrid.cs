@@ -30,7 +30,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private Vector2Int playerPosition;
 	[SerializeField] private int points;
 	[SerializeField] private float time;
-	[SerializeField] private bool running;
+	[SerializeField] private bool running = false;
 	[SerializeField] private TextMeshProUGUI ScoreTXT;
 	[SerializeField] private TextMeshProUGUI TimeTXT;
 
@@ -55,7 +55,10 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		Popup_Panel.SetActive(false);
         GameWin_Panel.SetActive(false);
         GameOver_Panel.SetActive(false);
+		TimeTXT.text = "" + (int)time;
+		ScoreTXT.text = "Score " + (int)points;
 		running = true;
+		
 
         tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
@@ -117,17 +120,17 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		playerPosition = gridSize / 2;
 		updatePlayer();
-
-	}
+    }
     private void Update()
     {
-		while (running)
+		if (running)
 		{ 
 			time -= Time.deltaTime;
 			TimeTXT.text = "" + (int)time;
 
-			if (time == 0)
+			if (time <= 0.0f)
 			{
+				running = false;
 				TimeTXT.text = "0";
 				ShowGameOverScreen();
 			}
@@ -357,7 +360,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	private void ShowGameOverScreen()
 	{
 		running = false;
-        GameWin_Panel.SetActive(true);
+        GameOver_Panel.SetActive(true);
 		//SRC_AudioManager.instance.GameWon_SFX();
         GameManager.instance.PauseGame(true);
     }

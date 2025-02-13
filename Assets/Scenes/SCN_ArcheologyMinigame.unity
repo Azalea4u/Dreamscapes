@@ -1048,7 +1048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.7199707, y: 30.799988}
+  m_AnchoredPosition: {x: 0.7199707, y: 30.800049}
   m_SizeDelta: {x: 400, y: 350}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &275563761
@@ -4375,7 +4375,7 @@ MonoBehaviour:
   player: {fileID: 1948544113}
   playerPosition: {x: 0, y: 0}
   points: 0
-  time: 20
+  time: 100
   running: 0
   ScoreTXT: {fileID: 1056094462}
   TimeTXT: {fileID: 69850240}
