@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialContainer: {fileID: 9007001890841663511}
-  tutorialText: 'Use the arrows to move the ship to avoid obstacles and get as high
-    as possible! '
+  tutorialText: Use the arrows to move Magus to the spot you want to mine. Magus
+    will mine in a plus shape around him. Try to uncover the artifacts!
 --- !u!114 &2607537599707596885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.5389, y: -366.2}
+  m_AnchoredPosition: {x: 4.5389, y: -278.09}
   m_SizeDelta: {x: 836.3597, y: 865.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &116643372873683842
@@ -318,10 +318,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: test
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fc92f375ab9fecc47a4ac411288cfdf0, type: 2}
-  m_sharedMaterial: {fileID: 3219613044600846, guid: fc92f375ab9fecc47a4ac411288cfdf0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a02720e3da6ff684fb1e2315b49524f8, type: 2}
+  m_sharedMaterial: {fileID: -6503666695959306824, guid: a02720e3da6ff684fb1e2315b49524f8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -345,8 +345,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 122
-  m_fontSizeBase: 122
+  m_fontSize: 122.88
+  m_fontSizeBase: 122.88
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -423,7 +423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.5389, y: 235.21}
+  m_AnchoredPosition: {x: 4.5389, y: 287.7251}
   m_SizeDelta: {x: 836.36, y: 265.794}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &173788297401084644
@@ -456,8 +456,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: How to Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fc92f375ab9fecc47a4ac411288cfdf0, type: 2}
-  m_sharedMaterial: {fileID: 3219613044600846, guid: fc92f375ab9fecc47a4ac411288cfdf0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 906d1127dbfaed949a2093e49bc20932, type: 2}
+  m_sharedMaterial: {fileID: 1115916738006411411, guid: 906d1127dbfaed949a2093e49bc20932, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -29,7 +29,6 @@ public class SCR_Tutorial : MonoBehaviour {
 
 	public void close() {
 		tutorialContainer.SetActive(false);
-		Pause_BTN.SetActive(true);
 		GameManager.instance.PauseGame(false);
 		//Time.timeScale = 1;
 	}

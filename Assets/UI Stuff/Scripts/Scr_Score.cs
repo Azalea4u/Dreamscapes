@@ -7,11 +7,11 @@ public class Score : MonoBehaviour {
 
 	void Start() {
 		text = GetComponentInChildren<TextMeshProUGUI>();
-		text.text = "Score \n" + score;
+		text.text = "Score: " + score;
 	}
 
 	public void ChangeScore(int amount) {
 		score += amount;
-		text.text = "Score \n" + score;
+		text.text = "Score: " + score;
 	}
 }

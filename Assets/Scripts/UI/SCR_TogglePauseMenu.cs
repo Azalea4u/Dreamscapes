@@ -4,20 +4,17 @@ public class SCR_TogglePauseMenu : MonoBehaviour
 {
     public static SCR_TogglePauseMenu instance;
 
-    [SerializeField] private GameObject PauseMenu_UI;
-    [SerializeField] private GameObject Pause_BTN;
+    [SerializeField] GameObject PauseMenu_UI;
 
     public void Open_PauseMenu()
     {
         PauseMenu_UI.SetActive(true);
-        Pause_BTN.SetActive(false);
         GameManager.instance.PauseGame(true);
     }
 
     public void Close_PauseMenu()
     {
         PauseMenu_UI.SetActive(false);
-        Pause_BTN.SetActive(true);
         GameManager.instance.PauseGame(false);
     }
     

@@ -21,9 +21,7 @@ public static class SCR_Loader {
 		SCR_Loader.TargetScene = targetScene;
 
 		SceneManager.LoadScene(SCR_Loader.scenes.SCN_Loading.ToString());
-		GameManager.instance.WaitOnLoading();
 	}
-
 
 	public static void LoaderCallback() {
 		SceneManager.LoadScene(SCR_Loader.TargetScene.ToString());
