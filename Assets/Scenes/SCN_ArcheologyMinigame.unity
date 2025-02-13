@@ -4184,6 +4184,7 @@ MonoBehaviour:
   Popup_Panel: {fileID: 680799349}
   Artifact_IMG: {fileID: 1469320824}
   ArtifactName_TXT: {fileID: 1680352372}
+  ClosePopup_BTN: {fileID: 149524679}
   GameWin_Panel: {fileID: 709076711}
 --- !u!4 &2142095182
 Transform:
