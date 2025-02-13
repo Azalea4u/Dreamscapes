@@ -15,6 +15,7 @@ public class SCR_Tutorial : MonoBehaviour {
 		StartCoroutine(WaitToClose());
 	}
 
+	// Attached to the Tutorial_BTN's OnClick to close Tutorial gameobject
 	public void close()
 	{
 		tutorialContainer.SetActive(false);
@@ -22,6 +23,7 @@ public class SCR_Tutorial : MonoBehaviour {
         GameManager.instance.PauseGame(false);
 	}
 
+	// To prevent the screen to close when someone is spamming the screen
 	private IEnumerator WaitToClose()
 	{
         Pause_BTN.GetComponent<Button>().interactable = false;

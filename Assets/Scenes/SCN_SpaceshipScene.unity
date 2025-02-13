@@ -1117,8 +1117,8 @@ RectTransform:
   - {fileID: 791297616}
   - {fileID: 302005177}
   - {fileID: 600131178}
-  - {fileID: 201795850}
   - {fileID: 1818290758686103468}
+  - {fileID: 201795850}
   - {fileID: 1086416817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1138,7 +1138,7 @@ PrefabInstance:
     - target: {fileID: 4890987156142886167, guid: 839bc07399b727841ac2e6f9f2c42487, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1612675973}
+      objectReference: {fileID: 1612675974}
     - target: {fileID: 4890987156142886167, guid: 839bc07399b727841ac2e6f9f2c42487, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Open_PauseMenu
@@ -1849,7 +1849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialContainer: {fileID: 2144293360588577989}
-  tutorialText: Use the Arrows to dodge the flying objects!
   Pause_BTN: {fileID: 1493832203}
   Tutorial_BTN: {fileID: 1051240115}
 --- !u!224 &1086416817 stripped
@@ -2141,6 +2140,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu_UI: {fileID: 0}
+--- !u!114 &1612675974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5064792457667115716, guid: 7e8dfea3aeb9fc24881c8d560e9e8acc, type: 3}
+  m_PrefabInstance: {fileID: 1612675972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b827c7b11a6b34fa92d05a037a2c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1631795696
 GameObject:
   m_ObjectHideFlags: 0

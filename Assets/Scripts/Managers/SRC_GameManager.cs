@@ -31,16 +31,11 @@ public class GameManager : MonoBehaviour
         SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
     }
 
+    // Pauses the Game from any script
     public void PauseGame(bool pauseGame)
     {
         IsGamePaused = pauseGame;
         Time.timeScale = IsGamePaused ? 0 : 1;
         Debug.Log("Game " + (IsGamePaused ? "Paused" : "Resumed"));
-    }
-
-    public void EndGame()
-    {
-        // return to main menu
-        Load_MainMenu();
     }
 }
