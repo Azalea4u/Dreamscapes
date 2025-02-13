@@ -1718,7 +1718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.5389404, y: -452.29993}
+  m_AnchoredPosition: {x: 4.5389404, y: -373.84}
   m_SizeDelta: {x: 850, y: 865.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1395392652
@@ -1741,7 +1741,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hit Polly \nwith your bubbles \nto purify her!"
+  m_text: "Hit Polly \nwith your bubbles \nto purify her!\n\nUse the arrows to dodge
+    incoming attacks!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b190b42e5604aa847b12759f88f3deac, type: 2}
   m_sharedMaterial: {fileID: -1726708647821169234, guid: b190b42e5604aa847b12759f88f3deac, type: 2}
@@ -2871,7 +2872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialContainer: {fileID: 0}
-  tutorialText: Hit Polly  with your bubbles  to purify her!
   Pause_BTN: {fileID: 1797181835}
   Tutorial_BTN: {fileID: 1964593827}
 --- !u!1 &2068112667
