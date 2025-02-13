@@ -152,7 +152,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         {
             dragon.speed = Vector2.zero;
             dragon.transform.position = Vector3.one * 10;
-			timeLeft -= 0.5f;
+			//timeLeft -= 0.5f;
 		}
     }
 
