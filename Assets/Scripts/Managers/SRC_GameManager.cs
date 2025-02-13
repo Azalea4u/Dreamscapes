@@ -1,5 +1,3 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,14 +26,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-    }
-
     public void Load_MainMenu()
     {
         SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
@@ -52,10 +42,5 @@ public class GameManager : MonoBehaviour
     {
         // return to main menu
         Load_MainMenu();
-    }
-
-    public IEnumerator WaitOnLoading()
-    {
-        yield return new WaitForSeconds(.05f);
     }
 }

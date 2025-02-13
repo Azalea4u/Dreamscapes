@@ -10,6 +10,6 @@ public class SCR_LoaderCallback : MonoBehaviour {
 			IsFirstUpdate = false;
 
 			SCR_Loader.LoaderCallback();
-        }
-    }
+		}
+	}
 }
