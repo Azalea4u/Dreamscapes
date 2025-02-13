@@ -4357,7 +4357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Find the character shown above admist all of the other people!!
+  m_text: Find the character shown above amidst all of the other people!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b190b42e5604aa847b12759f88f3deac, type: 2}
   m_sharedMaterial: {fileID: -1726708647821169234, guid: b190b42e5604aa847b12759f88f3deac, type: 2}
@@ -5149,7 +5149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c433d2c54560d41b3a5bad3ad59d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialContainer: {fileID: 0}
+  tutorialContainer: {fileID: 1543374268}
   Pause_BTN: {fileID: 34305276}
   Tutorial_BTN: {fileID: 1708548460}
 --- !u!1 &1730552301
