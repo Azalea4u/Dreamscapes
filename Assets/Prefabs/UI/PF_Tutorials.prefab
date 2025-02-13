@@ -60,8 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialContainer: {fileID: 9007001890841663511}
-  tutorialText: Use the arrows to move Magus to the spot you want to mine. Magus
-    will mine in a plus shape around him. Try to uncover the artifacts!
   Pause_BTN: {fileID: 0}
   Tutorial_BTN: {fileID: 432343219452970639}
 --- !u!114 &2607537599707596885
