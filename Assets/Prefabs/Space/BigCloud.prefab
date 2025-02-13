@@ -185,10 +185,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 1, z: 0}
-  towardsCenter: 0
+  usedSpeed: {x: 0, y: 0, z: 0}
+  faceTowardsCenter: 0
+  moveTowardsPlayer: 0
+  moveSpeed: 0
   doesDamage: 0
-  slowDownMovement: 0.2
+  birdSlowdown: 0
+  slowDownMovement: 0.22
   bounce: 1
+  destroyOnHit: 0
 --- !u!61 &2489802626965228432
 BoxCollider2D:
   m_ObjectHideFlags: 0

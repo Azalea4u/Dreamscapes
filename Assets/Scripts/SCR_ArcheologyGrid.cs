@@ -29,10 +29,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private Transform player;
 	[SerializeField] private Vector2Int playerPosition;
 	[SerializeField] private int points;
-	[SerializeField] private TextMeshProUGUI TextScore;
-	[SerializeField] private float timeValue;
-	[SerializeField] private TextMeshProUGUI TextTimer;
-	private bool running = true;
 
 	[Header("Audio")]
 	[SerializeField] private AudioSource hitStoneSFX;
@@ -40,13 +36,11 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 	[Header("Pop-Up")]
 	[SerializeField] private GameObject Popup_Panel;
-	[SerializeField] private GameObject TurnOffPopup_BTN;
 	[SerializeField] private Image Artifact_IMG;
 	[SerializeField] private TextMeshProUGUI ArtifactName_TXT;
 
 	[Header("Game State")]
 	[SerializeField] private GameObject GameWin_Panel;
-	[SerializeField] private GameObject GameTimeOut_Panel;
 
     void Start()
     {
@@ -116,20 +110,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		updatePlayer();
 
 	}
-	void Update()
-	{
-		if (running)
-		{
-			timeValue -= Time.deltaTime;
-			TextTimer.text = "Timer: " + (int)timeValue;
-
-			if (timeValue <= 0)
-			{
-				running = false;
-				ShowGameTimeOutScreen();
-			}
-		}
-    }
 
 	private int GetTileDepth(int x, int y) {
 		Vector2Int usedSpot = highestSpots[0];
@@ -304,56 +284,36 @@ public class SCR_ArcheologyGrid : MonoBehaviour
     private void RemoveItem(SCR_ArcheologyItem item)
     {		
 		// Pop-Up Panel
-		running = false;
         Artifact_IMG.sprite = item.GetSprite();
 		ArtifactName_TXT.text = item.GetItemName() + "!";
 		Popup_Panel.SetActive(true);
-        collectSFX.Play(); 
-
-		TurnOffPopup_BTN.SetActive(false);
-		StartCoroutine(StopInput());
 
 		points += item.GetPointValue();
-		TextScore.text = "Score: " + (int)points;
-		items.Remove(item);
+        collectSFX.Play(); 
         Destroy(item.gameObject);
+		GameManager.instance.PauseGame(true);
 
-		
+		items.RemoveAll(x => !x);
 	}
 
-	private IEnumerator StopInput()
-	{
-		yield return new WaitForSeconds(0.5f);
-		Debug.Log("Can now remove popup");
-		TurnOffPopup_BTN.SetActive(true);
-        GameManager.instance.PauseGame(true);
-    }
-
-    public void ClosePopUp()
+	public void ClosePopUp()
 	{
         // Remove Items
         Popup_Panel.SetActive(false);
-        // check for if all the items are gone
-        if (items.Count == 0)
+		GameManager.instance.PauseGame(false);
+
+		// check for if all the items are gone
+		if (items.Count == 0)
 		{
 			// Do the win screen stuff
-			running = false;
 			ShowGameWinScreen();
 		}
-		running = true;
-		GameManager.instance.PauseGame(false);
     }
 
     private void ShowGameWinScreen()
     {
-        GameWin_Panel.SetActive(true);
         GameManager.instance.PauseGame(true);
 		SRC_AudioManager.instance.GameWon_SFX();
-    }
-
-    private void ShowGameTimeOutScreen()
-    {
-        GameTimeOut_Panel.SetActive(true);
-        GameManager.instance.PauseGame(true);
+        GameWin_Panel.SetActive(true);
     }
 }
