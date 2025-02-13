@@ -29,6 +29,11 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private Transform player;
 	[SerializeField] private Vector2Int playerPosition;
 	[SerializeField] private int points;
+	[SerializeField] private float time;
+	[SerializeField] private bool running;
+	[SerializeField] private TextMeshProUGUI ScoreTXT;
+	[SerializeField] private TextMeshProUGUI TimeTXT;
+
 
 	[Header("Audio")]
 	[SerializeField] private AudioSource hitStoneSFX;
@@ -42,12 +47,15 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 	[Header("Game State")]
 	[SerializeField] private GameObject GameWin_Panel;
+	[SerializeField] private GameObject GameOver_Panel;
 
     void Start()
     {
 		Instance = this;
 		Popup_Panel.SetActive(false);
         GameWin_Panel.SetActive(false);
+        GameOver_Panel.SetActive(false);
+		running = true;
 
         tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
@@ -111,8 +119,21 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		updatePlayer();
 
 	}
+    private void Update()
+    {
+		while (running)
+		{ 
+			time -= Time.deltaTime;
+			TimeTXT.text = "" + (int)time;
 
-	private int GetTileDepth(int x, int y) {
+			if (time == 0)
+			{
+				TimeTXT.text = "0";
+				ShowGameOverScreen();
+			}
+		}
+    }
+    private int GetTileDepth(int x, int y) {
 		Vector2Int usedSpot = highestSpots[0];
 		foreach (var spot in highestSpots)
 		{
@@ -287,14 +308,16 @@ public class SCR_ArcheologyGrid : MonoBehaviour
         Artifact_IMG.sprite = item.GetSprite();
 		ArtifactName_TXT.text = item.GetItemName() + "!";
 		Popup_Panel.SetActive(true);
+		running = false;
 
 		StartCoroutine(WaitToClose());
 
 		points += item.GetPointValue();
+		ScoreTXT.text = "Score " + points;
         collectSFX.Play(); 
-        Destroy(item.gameObject);
 
-		items.RemoveAll(x => !x);
+		items.Remove(item);
+        Destroy(item.gameObject);
 
 	}
 
@@ -310,9 +333,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
     public void ClosePopUp()
 	{
-        // Remove Items
-        Popup_Panel.SetActive(false);
-		GameManager.instance.PauseGame(false);
 
 		// check for if all the items are gone
 		if (items.Count == 0)
@@ -320,10 +340,23 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			// Do the win screen stuff
 			ShowGameWinScreen();
 		}
+		// Remove Items
+		running = true;
+        Popup_Panel.SetActive(false);
+		GameManager.instance.PauseGame(false);
     }
 
     private void ShowGameWinScreen()
     {
+		running = false;
+        GameWin_Panel.SetActive(true);
+		//SRC_AudioManager.instance.GameWon_SFX();
+        GameManager.instance.PauseGame(true);
+    }
+	
+	private void ShowGameOverScreen()
+	{
+		running = false;
         GameWin_Panel.SetActive(true);
 		//SRC_AudioManager.instance.GameWon_SFX();
         GameManager.instance.PauseGame(true);
