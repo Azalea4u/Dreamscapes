@@ -605,6 +605,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: Pause_BTN
+      value: 
+      objectReference: {fileID: 735946889}
+    - target: {fileID: 476505693313261312, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+      propertyPath: Tutorial_BTN
+      value: 
+      objectReference: {fileID: 265502012}
     - target: {fileID: 3411374115680629245, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 540
@@ -658,6 +666,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+--- !u!1 &265502012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 432343219452970639, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+  m_PrefabInstance: {fileID: 265502011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &275563758
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,8 +701,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 854098768}
+  m_Children: []
   m_Father: {fileID: 519007597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3153,6 +3165,7 @@ GameObject:
   - component: {fileID: 1951310474}
   - component: {fileID: 1951310476}
   - component: {fileID: 1951310475}
+  - component: {fileID: 1971808754}
   m_Layer: 5
   m_Name: TimerTxt
   m_TagString: Untagged
@@ -3271,32 +3284,13 @@ MonoBehaviour:
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1951310476
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &1971808753
-MonoBehaviour:
+CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971808749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c433d2c54560d41b3a5bad3ad59d34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorialContainer: {fileID: 1928638255}
-  tutorialText: ' Dig up as many artifacts as you can!  Use arrows to move!'
-  Pause_BTN: {fileID: 735946889}
-  Tutorial_BTN: {fileID: 0}
+  m_GameObject: {fileID: 1951310473}
+  m_CullTransparentMesh: 1
 --- !u!222 &1971808754
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3952,3 +3946,4 @@ SceneRoots:
   - {fileID: 689521262}
   - {fileID: 1921055683}
   - {fileID: 265502011}
+  - {fileID: 1702953911}
