@@ -275,7 +275,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			if (uncovered)
 			{
                 // Something would happen to the item once it is gotten
-
                 RemoveItem(item);
             }
 		}
@@ -291,9 +290,9 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		points += item.GetPointValue();
         collectSFX.Play(); 
         Destroy(item.gameObject);
-		GameManager.instance.PauseGame(true);
 
 		items.RemoveAll(x => !x);
+		GameManager.instance.PauseGame(true);
 	}
 
 	public void ClosePopUp()

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SCR_Tutorial : MonoBehaviour {
 	[SerializeField] GameObject tutorialContainer;
-	[SerializeField] string tutorialText;
 
 	[Header("Pause")]
 	[SerializeField] private GameObject Pause_BTN;
@@ -14,11 +13,6 @@ public class SCR_Tutorial : MonoBehaviour {
 	void Start()
 	{
 		StartCoroutine(WaitToClose());
-	}
-
-	private void displayText(string text)
-	{
-		tutorialContainer.GetComponentInChildren<TextMeshProUGUI>().text = text;
 	}
 
 	public void close()
@@ -34,7 +28,6 @@ public class SCR_Tutorial : MonoBehaviour {
 		Tutorial_BTN.GetComponent<Button>().interactable = false;
 
         tutorialContainer.SetActive(true);
-        displayText(tutorialText);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -42,6 +35,4 @@ public class SCR_Tutorial : MonoBehaviour {
 
         GameManager.instance.PauseGame(true);
     }
-
-
 }
