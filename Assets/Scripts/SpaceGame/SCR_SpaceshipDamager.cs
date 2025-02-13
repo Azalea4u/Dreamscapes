@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem.Controls;
 public class SCR_SpaceshipDamager : MonoBehaviour
 {
 	// speed of the object in a direction
@@ -13,8 +13,6 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 	[SerializeField] private float moveSpeed;
 	// if the obstacle should damage the ship
 	public bool doesDamage;
-	// if the object should add a bird to slow down the ship
-	public bool birdSlowdown;
 	// how much the obstacle slows down the movement of the ship
 	[Range(0.0f,0.95f)]public float slowDownMovement;
 	// how much the obstacle slows down the ascent of the ship
@@ -23,8 +21,6 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 	public float bounce;
 	// has obstacle already been hit
 	public bool beenHit { get; private set; }
-	// if obstacle should destroy itself after hiting the ship
-	public bool destroyOnHit;
 
 	private void Start()
 	{
@@ -54,10 +50,5 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 	public void HitShip()
 	{
 		beenHit = true;
-
-		if (destroyOnHit)
-		{
-			Destroy(gameObject);
-		}
 	}
 }

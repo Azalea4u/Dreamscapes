@@ -1,16 +1,12 @@
-using System.Collections;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Scr_Tentacle : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] Animator anims;
-    [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] GameObject water;
-    [SerializeField] SpriteRenderer waterRenderer;
 
-	void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anims.Play("TentacleAttack");

@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Scr_OctoEnemy : MonoBehaviour {
-	public static Scr_OctoEnemy instance { get; private set; }
-
-	[SerializeField] Scr_OctoPlayer player;
     [SerializeField] int health = 100;
     [SerializeField] GameObject shootFab;
     [SerializeField] GameObject tentacleFab;
@@ -14,7 +11,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	[SerializeField] spaces[] availableSpaces = new spaces[5];
 	[SerializeField] int position = 2;
 	[SerializeField] SpriteRenderer spriteRenderer;
-	[SerializeField] Scr_Tentacle tentacleRef;
+	[SerializeField] int tentaclePos = 0;
 
     [Header("Game States")]
     [SerializeField] private GameObject GameWin_Panel;
@@ -34,19 +31,12 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		moveTimer = 1.0f;
 
 		transform.position = availableSpaces[position].spacePosition;
-
-		player = FindFirstObjectByType<Scr_OctoPlayer>();
 	}
 
 	void Update()
 	{
 		//transform.position = Vector3.Lerp(transform.position, availableSpaces[position].spacePosition, Time.deltaTime);
 		spriteRenderer.material.SetFloat("_Strength", 1.0f - (float)health / 100.0f);
-		if (tentacleRef != null)
-		{
-			tentacleRef.UpdateGreyscale(1.0f - (float)health / 100.0f);
-		}
-
 
 		moveTimer -= Time.deltaTime;
 
@@ -55,7 +45,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 			moveTimer = UnityEngine.Random.Range(0.5f, 1.5f);
 			if (availableSpaces[position].somethingHereRef == null)
 			{
-				if (tentacleRef == null)
+				if (availableSpaces[tentaclePos].somethingHereRef == null)
 				{
 					TentacleAttack();
 				} else
@@ -86,6 +76,39 @@ public class Scr_OctoEnemy : MonoBehaviour {
 				}
 			}
 		}
+
+		//attackTimer -= Time.deltaTime;
+
+
+		//if (attackTimer <= 0)
+		//{
+		//	if (UnityEngine.Random.Range(0, 3) != 0)
+		//	{
+		//		attackTimer = 1.1f;
+		//		gunAttack();
+		//	}
+		//	else
+		//	{
+		//		attackTimer = 0.7f;
+		//		TentacleAttack();
+		//	}
+		//}
+		//else if (moveTimer <= 0)
+		//{
+		//	switch (UnityEngine.Random.Range(0, 2))
+		//	{
+		//		case 0:
+		//			moveTimer = 2.0f;
+		//			moveLeft();
+		//			break;
+
+		//		case 1:
+		//			moveTimer = 1.5f;
+		//			moveRight();
+		//			break;
+		//	}
+		//	attackTimer += 0.5f;
+		//}
 	}
 
 	public spaces getLeftSpace()
@@ -93,7 +116,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		int pos = position - 1;
 		if (pos < 0)
 		{
-			return availableSpaces[position];
+			pos = availableSpaces.Length - 1;
 		}
 
 		return availableSpaces[pos];
@@ -104,7 +127,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		int pos = position + 1;
 		if (pos >= availableSpaces.Length)
 		{
-			return availableSpaces[position];
+			pos = 0;
 		}
 
 		return availableSpaces[pos];
@@ -115,20 +138,22 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		position -= 1;
 		if (position < 0)
 		{
-			position = 0;
+			position = availableSpaces.Length - 1;
 		}
-
+		//transform.Translate(new Vector3(-1, 0, 0));
+		//if (transform.position.x <= -2) transform.position = new Vector3(2, 3, 0);
 		transform.position = availableSpaces[position].spacePosition;
 	}
 
 	public void moveRight()
 	{
 		position += 1;
-		if (position > availableSpaces.Length - 1)
+		if (position >= availableSpaces.Length)
 		{
-			position = availableSpaces.Length - 1;
+			position = 0;
 		}
-
+		//transform.Translate(new Vector3(1, 0, 0));
+		//if (transform.position.x >= 2) transform.position = new Vector3(-2, 3, 0);
 		transform.position = availableSpaces[position].spacePosition;
 	}
 
@@ -146,8 +171,8 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
     public void TentacleAttack()
 	{
+		tentaclePos = position;
 		availableSpaces[position].somethingHereRef = Instantiate(tentacleFab, transform.position, transform.rotation);
-		tentacleRef = availableSpaces[position].somethingHereRef.GetComponent<Scr_Tentacle>();
 	}
 
     public void gunAttack() {
@@ -157,31 +182,10 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	public void damage(int d)
 	{
         health -= d;
-		health = Mathf.Clamp(health, 0, 100);
-        if (d > 0)
-        {
-			damageFlicker();
-			if (tentacleRef != null)
-			{
-				tentacleRef.DamageFlicker();
-			}
-		}
-		if (health <= 0) {
+        if (health <= 0) {
 			GameWin();
         }
     }
-	
-	private void damageFlicker()
-	{
-		spriteRenderer.material.SetInt("_Flash", 1);
-		StartCoroutine(Flicker());
-	}
-
-	private IEnumerator Flicker()
-	{
-		yield return new WaitForSeconds(Time.deltaTime * 6);
-		spriteRenderer.material.SetInt("_Flash", 0);
-	}
 
 	private void GameWin()
 	{
