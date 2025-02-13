@@ -31,17 +31,21 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // FIXED UPDATE STAYS AS FIXED UPDATE
+	// PREVENTS SHIP FROM JITTERING!!!!
+	// MAKE SURE YOU REMEMBER THAT, MAX!!!
+    void FixedUpdate()
     {
-		if (health <= 0)
+        SCR_SpaceGame_Manager.instance.shipAnimator.SetInteger("Health", health);
+
+        if (health <= 0)
 		{
 			return;
 		}
 
 		if (birds > 0)
 		{
-			birdTimer -= Time.deltaTime;
+			birdTimer -= Time.fixedDeltaTime;
 			if (birdTimer <= 0.0f)
 			{
 				birdTimer = birdTimerLength;
@@ -63,17 +67,16 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, (1.0f - (((float)birds/3.0f) * 0.5f)) * desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
 
-		shipVelocity = Mathf.Lerp(shipVelocity, 0.0f, Time.deltaTime * 5.0f);
+		shipVelocity = Mathf.Lerp(shipVelocity, 0.0f, Time.fixedDeltaTime * 5.0f);
 		shipVelocity = Mathf.Clamp(shipVelocity, -shipMovementSpeed * 0.9f, shipMovementSpeed * 0.9f);
 
-		shipPosition += shipVelocity * Time.deltaTime;
+		shipPosition += shipVelocity * Time.fixedDeltaTime;
 		shipPosition = Mathf.Clamp(shipPosition, -shipBounds, shipBounds);
 
 		visuals.transform.rotation = Quaternion.Euler(0,0,shipVelocity/shipMovementSpeed * -45.0f);
 
-		transform.position = new Vector3(shipPosition, transform.position.y + (Time.deltaTime * usedAscentSpeed), 0.0f);
+		transform.position = new Vector3(shipPosition, transform.position.y + (Time.fixedDeltaTime * usedAscentSpeed), 0.0f);
 
-		SCR_SpaceGame_Manager.instance.shipAnimator.SetInteger("Health", health);
 	}
 
 	public void MoveLeft()
