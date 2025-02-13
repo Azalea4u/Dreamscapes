@@ -34,6 +34,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
     // FIXED UPDATE STAYS AS FIXED UPDATE
 	// PREVENTS SHIP FROM JITTERING!!!!
 	// MAKE SURE YOU REMEMBER THAT, MAX!!!
+	// ok - max
     void FixedUpdate()
     {
         SCR_SpaceGame_Manager.instance.shipAnimator.SetInteger("Health", health);
