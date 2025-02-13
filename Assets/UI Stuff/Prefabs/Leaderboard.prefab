@@ -678,6 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createPanel: {fileID: 6219776153375777550}
   continueBtn: {fileID: 7012849908185507223}
+  againBtn: {fileID: 524394467875689154}
   loserpanel: {fileID: 687271890089206402}
   slots:
   - {fileID: 7974172803380197979}
