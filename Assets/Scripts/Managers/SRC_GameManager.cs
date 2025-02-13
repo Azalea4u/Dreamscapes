@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,5 +38,10 @@ public class GameManager : MonoBehaviour
         IsGamePaused = pauseGame;
         Time.timeScale = IsGamePaused ? 0 : 1;
         Debug.Log("Game " + (IsGamePaused ? "Paused" : "Resumed"));
+    }
+
+    public IEnumerator Add_WaitTime(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

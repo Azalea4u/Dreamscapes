@@ -354,7 +354,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		running = false;
         GameWin_Panel.SetActive(true);
 		//SRC_AudioManager.instance.GameWon_SFX();
-        GameManager.instance.PauseGame(true);
+        //GameManager.instance.PauseGame(true);
     }
 	
 	private void ShowGameOverScreen()

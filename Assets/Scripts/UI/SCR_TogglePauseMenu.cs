@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SCR_TogglePauseMenu : MonoBehaviour
 {
