@@ -18,7 +18,7 @@ public class Scr_Gun : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.GetComponent<Scr_OctoPlayer>()) {
-            collision.gameObject.GetComponent<Scr_OctoPlayer>().damage(dmg);
+            return;
 		}
 	}
 }
