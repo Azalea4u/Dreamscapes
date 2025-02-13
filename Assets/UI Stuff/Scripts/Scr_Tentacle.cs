@@ -16,11 +16,6 @@ public class Scr_Tentacle : MonoBehaviour
         anims.Play("TentacleAttack");
     }
 
-    void Update()
-    {
-//        water.transform.Rotate(Vector3.forward, 30 * Time.deltaTime);
-    }
-
     public void UpdateGreyscale( float value)
     {
         spriteRenderer.material.SetFloat("_Strength", value);

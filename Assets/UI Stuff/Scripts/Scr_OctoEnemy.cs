@@ -25,8 +25,8 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		public Vector3 spacePosition;
 	}
 
-
-	void Start() {
+	void Start()
+	{
 		instance = this;
 
 		GameWin_Panel.SetActive(false);
@@ -38,7 +38,8 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		player = FindFirstObjectByType<Scr_OctoPlayer>();
 	}
 
-	void Update() {
+	void Update()
+	{
 		//transform.position = Vector3.Lerp(transform.position, availableSpaces[position].spacePosition, Time.deltaTime);
 		spriteRenderer.material.SetFloat("_Strength", 1.0f - (float)health / 100.0f);
 		if (tentacleRef != null)
@@ -153,7 +154,8 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		availableSpaces[position].somethingHereRef = Instantiate(shootFab, transform.position, transform.rotation);
     }
 
-	public void damage(int d) {
+	public void damage(int d)
+	{
         health -= d;
 		health = Mathf.Clamp(health, 0, 100);
         if (d > 0)
@@ -186,7 +188,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
         GameWin_Panel.SetActive(true);
         Destroy(gameObject);
 
-       // StartCoroutine(ShowScreen());
        // StartCoroutine(ShowScreen());
     }
 

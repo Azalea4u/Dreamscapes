@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class Scr_OctoPlayer : MonoBehaviour {
+public class Scr_OctoPlayer : MonoBehaviour
+{
     [SerializeField] GameObject projPrefab;
     Rigidbody2D rb;
     public int position = 2;
@@ -12,7 +13,8 @@ public class Scr_OctoPlayer : MonoBehaviour {
     [Header("Game States")]
     [SerializeField] private GameObject GameOver_Panel;
 
-    void Start() {
+    void Start()
+	{
         GameOver_Panel.SetActive(false);
 
         FindAnyObjectByType<Scr_OctopusUI>().setPlayer();
@@ -29,7 +31,8 @@ public class Scr_OctoPlayer : MonoBehaviour {
 		}
 	}
 
-	public void moveLeft() {
+	public void moveLeft()
+	{
         lastMovedLeft = true;
         position -= 1;
         rb.transform.Translate(new Vector3(-1, 0, 0));
@@ -47,7 +50,8 @@ public class Scr_OctoPlayer : MonoBehaviour {
 		}
 	}
 
-    public void moveRight() {
+    public void moveRight()
+	{
 		lastMovedLeft = false;
         position += 1;
         rb.transform.Translate(new Vector3(1, 0, 0));
@@ -82,7 +86,8 @@ public class Scr_OctoPlayer : MonoBehaviour {
 		}
 	}
 
-	public void shoot() { 
+	public void shoot()
+	{ 
         Instantiate(projPrefab);
     }
 
