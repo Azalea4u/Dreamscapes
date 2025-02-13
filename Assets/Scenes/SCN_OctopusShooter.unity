@@ -2556,6 +2556,11 @@ PrefabInstance:
       addedObject: {fileID: 1964593828}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+--- !u!1 &1834257499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9007001890841663511, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
+  m_PrefabInstance: {fileID: 1834257498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1834257500 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3732523688950029785, guid: a5dddd76e4be37649aaa4cd18ad6374d, type: 3}
@@ -2871,7 +2876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c433d2c54560d41b3a5bad3ad59d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialContainer: {fileID: 0}
+  tutorialContainer: {fileID: 1834257499}
   Pause_BTN: {fileID: 1797181835}
   Tutorial_BTN: {fileID: 1964593827}
 --- !u!1 &2068112667
