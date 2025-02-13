@@ -326,6 +326,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
     {
         GameWin_Panel.SetActive(true);
 		//SRC_AudioManager.instance.GameWon_SFX();
-        GameManager.instance.PauseGame(true);
+        //GameManager.instance.PauseGame(true);
     }
 }
