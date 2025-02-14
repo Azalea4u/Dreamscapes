@@ -25,6 +25,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private Button Exit_BTN;
     [SerializeField] private TextMeshProUGUI findDragon_TXT;
     [SerializeField] private TextMeshProUGUI Score_TXT;
+    [SerializeField] private TextMeshProUGUI Timer_TXT;
     [SerializeField] private GameObject leaderBoard;
     
     // using a vector 4 because the bound values of the walls could all be different
@@ -87,6 +88,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         if (useTimer)
         {
 			timeLeft -= Time.deltaTime;
+            Timer_TXT.text = "" + (int)timeLeft;
 			if (timeLeft <= 0)
 			{
 				EndGame();
