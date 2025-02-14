@@ -35,20 +35,26 @@ public class Scr_LeaderBoard : MonoBehaviour {
         for (int i = 0; i < slots.Length; i++) {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
             switch (saveSlots.slot[i].i) {
-                case "finn":
+                case "cute":
                     slots[i].slotImg.sprite = sprites[0];
                     break;
-                case "jake":
+                case "dwindling":
                     slots[i].slotImg.sprite = sprites[1];
                     break;
-                case "bmo":
+                case "paint":
                     slots[i].slotImg.sprite = sprites[2];
                     break;
-                case "bubblegum":
+                case "space":
                     slots[i].slotImg.sprite = sprites[3];
                     break;
-                default:
-                    slots[i].slotImg.sprite = sprites[4];
+				case "trippy":
+					slots[i].slotImg.sprite = sprites[4];
+					break;
+				case "vintage":
+					slots[i].slotImg.sprite = sprites[5];
+					break;
+				default:
+                    slots[i].slotImg.sprite = sprites[6];
                     break;
             }
         }
@@ -70,21 +76,27 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			saveSlots.slot[i].s = int.Parse(slots[i].scoreTxt.text);
 
 			switch (slots[i].slotImg.sprite.name) {
-				case "finn_0":
-					saveSlots.slot[i].i = "finn";
+				case "CuteDoor_0":
+					saveSlots.slot[i].i = "cute";
 					break;
-				case "jake_0":
-					saveSlots.slot[i].i = "jake";
+				case "DwindlingDoor_0":
+					saveSlots.slot[i].i = "dwindling";
 					break;
-				case "bmo_0":
-					saveSlots.slot[i].i = "bmo";
+				case "PaintDoor_0":
+					saveSlots.slot[i].i = "paint";
 					break;
-				case "bubblegum_0":
-					saveSlots.slot[i].i = "bubblegum";
+				case "SpaceDoor_0":
+					saveSlots.slot[i].i = "space";
 					break;
-				case "question_0":
-					saveSlots.slot[i].i = "???";
+				case "TrippyDoor_0":
+					saveSlots.slot[i].i = "trippy";
 					break;
+				case "Vintage_0":
+					saveSlots.slot[i].i = "vintage";
+					break;
+                case "question_0":
+                    saveSlots.slot[i].i = "???";
+                    break;
 			}
 		}
 
@@ -135,20 +147,23 @@ public class Scr_LeaderBoard : MonoBehaviour {
                 tempImg = slots[index].slotImg;
 
 				switch (slots[index].slotImg.sprite.name) {
-					case "finn_0":
+					case "CuteDoor_0":
 						tempImg.sprite = sprites[0];
 						break;
-					case "jake_0":
+					case "DwindlingDoor_0":
 						tempImg.sprite = sprites[1];
 						break;
-					case "bmo_0":
+					case "PaintDoor_0":
 						tempImg.sprite = sprites[2];
 						break;
-					case "bubblegum_0":
+					case "SpaceDoor_0":
 						tempImg.sprite = sprites[3];
 						break;
-					case "question_0":
+					case "TrippyDoor_0":
 						tempImg.sprite = sprites[4];
+						break;
+					case "Vintage_0":
+						tempImg.sprite = sprites[5];
 						break;
 				}
 
