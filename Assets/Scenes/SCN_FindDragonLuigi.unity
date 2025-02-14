@@ -1742,7 +1742,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1736611664}
   - {fileID: 1448576157}
   - {fileID: 2083893383}
   - {fileID: 1599936934}
@@ -1763,6 +1762,7 @@ Transform:
   - {fileID: 1827290460}
   - {fileID: 467019473}
   - {fileID: 1356794153}
+  - {fileID: 1736611664}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1020289816
@@ -2285,6 +2285,8 @@ MonoBehaviour:
   - {fileID: -8956275966173886161, guid: 77370cf5909bcca4398204d9aa48dd3a, type: 3}
   _gamebounds: {x: 1.56, y: 1.84}
   wantedDragonVisual: {fileID: 99798663}
+  spawnGrid: []
+  spawnGridAvailable: []
   useTimer: 0
   timeLeft: 15
   dragonsFound: 0
@@ -4302,6 +4304,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 954512755}
     m_Modifications:
+    - target: {fileID: 701749348842938815, guid: 3b073d9a687475b4b9f516e779906343, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 1840790903497593907, guid: 3b073d9a687475b4b9f516e779906343, type: 3}
       propertyPath: m_Name
       value: PF_Dragon
@@ -4365,3 +4371,4 @@ SceneRoots:
   - {fileID: 1607383240}
   - {fileID: 2032439537}
   - {fileID: 649242495}
+  - {fileID: 1585193244}
