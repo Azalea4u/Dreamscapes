@@ -21,8 +21,9 @@ public class SCR_TogglePauseMenu : MonoBehaviour
     
     public void Load_MainMenu()
     {
+		GameManager.instance.PauseGame(false);
         SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
-    }
+	}
 
     public void StartOver_Spaceship()
     {
