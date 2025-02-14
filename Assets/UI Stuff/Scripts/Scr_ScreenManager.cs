@@ -63,27 +63,23 @@ public class Scr_ScreenManager : MonoBehaviour {
     {
         GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_SpaceshipScene, "Spaceship_Music");
-        Destroy(gameObject);
     }
 
     public void ArcheologyClick()
     {
         GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_ArcheologyMinigame, "Arch_Music");
-        Destroy(gameObject);
 	}
 
     public void DragonClick()
     {
         GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_FindDragonLuigi, "Finding_Music");
-        Destroy(gameObject);
 	}
 
     public void OctopusClick()
     {
         GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_OctopusShooter, "Octopus_Music");
-        Destroy(gameObject);
     }
 }
