@@ -7,11 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("Game State")]
-    [SerializeField] private bool IsGamePaused = false;
-
-    [Header("Mini-Games Data")]
-    [SerializeField] private string MainMenu;
-
+    [SerializeField] public bool IsGamePaused = false;
 
     private void Awake()
     {
@@ -25,11 +21,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicate GameManager
         }
-    }
-
-    public void Load_MainMenu()
-    {
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
     }
 
     // Pauses the Game from any script

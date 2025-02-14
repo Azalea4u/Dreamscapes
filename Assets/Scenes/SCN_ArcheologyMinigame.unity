@@ -4414,7 +4414,7 @@ MonoBehaviour:
   player: {fileID: 1948544113}
   playerPosition: {x: 0, y: 0}
   points: 0
-  time: 100
+  time: 1
   running: 0
   ScoreTXT: {fileID: 1056094462}
   TimeTXT: {fileID: 69850240}

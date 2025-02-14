@@ -27,21 +27,25 @@ public class SCR_TogglePauseMenu : MonoBehaviour
 
     public void StartOver_Spaceship()
     {
+        GameManager.instance.PauseGame(false);
         SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
     }
     
     public void StartOver_Octopus()
     {
+        GameManager.instance.PauseGame(false);
         SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
     }
 
     public void StartOver_FindDragon()
     {
+        GameManager.instance.PauseGame(false);
         SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
     }
 
     public void StartOver_Archeology()
     {
+        GameManager.instance.PauseGame(false);
         SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
     }
 }

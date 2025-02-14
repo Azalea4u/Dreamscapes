@@ -58,7 +58,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		TimeTXT.text = "" + (int)time;
 		ScoreTXT.text = "Score " + (int)points;
 		running = true;
-		
 
         tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
 
@@ -121,6 +120,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		playerPosition = gridSize / 2;
 		updatePlayer();
     }
+
     private void Update()
     {
 		if (running)
@@ -136,6 +136,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			}
 		}
     }
+
     private int GetTileDepth(int x, int y) {
 		Vector2Int usedSpot = highestSpots[0];
 		foreach (var spot in highestSpots)
@@ -353,7 +354,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
     {
 		running = false;
         GameWin_Panel.SetActive(true);
-		//SRC_AudioManager.instance.GameWon_SFX();
+		//SRC_AudioManager.instance.Play_GameWon();
         //GameManager.instance.PauseGame(true);
     }
 	
@@ -361,7 +362,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	{
 		running = false;
         GameOver_Panel.SetActive(true);
-		//SRC_AudioManager.instance.GameWon_SFX();
+
+        //SRC_AudioManager.instance.Play_GameWon();
         GameManager.instance.PauseGame(true);
     }
 }

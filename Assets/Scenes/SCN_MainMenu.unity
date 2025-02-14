@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &195141349
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 195141350}
-  m_Layer: 0
-  m_Name: PR_AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &195141350
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195141349}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 57.136833, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665584382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1326,67 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1502905448}
   m_SourcePrefab: {fileID: 100100000, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+--- !u!1001 &6043538989560016057
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 57.136833
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314647607747522658, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191902535019944688, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: m_Name
+      value: PR_AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547753628100596325, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
+      propertyPath: Music_Audios.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c1f83baa75518446a6db7b859feed93, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8b12fab2a574b54a9a3ed60ad35f8c9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1364,4 +1394,4 @@ SceneRoots:
   - {fileID: 665584385}
   - {fileID: 1066447629895569738}
   - {fileID: 1960696884}
-  - {fileID: 195141350}
+  - {fileID: 6043538989560016057}

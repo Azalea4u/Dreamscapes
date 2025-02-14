@@ -1,22 +1,12 @@
+using System;
 using UnityEngine;
 
 public class SRC_AudioManager : MonoBehaviour
 {
     public static SRC_AudioManager instance;
 
-    [Header("Game States")]
-    public AudioSource WinGame_SFX;
-    public AudioSource _GameOver_SFX;
-
-    [Header("UI SFX")]
-    public AudioSource Pause_SFX;
-    public AudioSource Resume_SFX;
-
-    [Header("Background Music")]
-    public AudioSource Archeology_BG;
-    public AudioSource Spaceship_BG;
-    public AudioSource FindingCharacter_BG;
-    public AudioSource Octopus_BG;
+    public SCR_Sound[] Music_Audios, SFX_Audios;
+    public AudioSource Music_Source, SFX_Source;
 
     private void Awake()
     {
@@ -31,34 +21,39 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
-    #region Game States
-    public void GameWon_SFX()
+    private void Start()
     {
-        WinGame_SFX.Play();
+        // play when loading MainMenu Scene
+        PlayMusic("MainTheme_Music");
     }
 
-    public void GameOver_SFX()
+    public void PlayMusic(string name)
     {
-        WinGame_SFX.Play();
-    }
-    #endregion
+        SCR_Sound sound = Array.Find(Music_Audios, x => x.Name == name);
 
-    #region UI SFX
-    public void PauseGame_SFX()
-    {
-        Pause_SFX.Play();
-    }
-
-    public void ResumeGame_SFX()
-    {
-        Resume_SFX.Play();
+        if (sound == null)
+        {
+            Debug.Log(sound + " not found");
+        }
+        else
+        {
+            Music_Source.clip = sound.clip;
+            Music_Source.Play();
+        }
     }
 
-    public void SetMute(bool mute)
+    public void PlaySFX(string name)
     {
+        SCR_Sound sound = Array.Find(SFX_Audios, x => x.Name == name);
 
+        if (sound == null)
+        {
+            Debug.Log(sound + " not found");
+        }
+        else
+        {
+            SFX_Source.clip = sound.clip;
+            SFX_Source.Play();
+        }
     }
-    #endregion
-
-
 }
