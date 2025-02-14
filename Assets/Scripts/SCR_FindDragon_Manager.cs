@@ -12,6 +12,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private Sprite[] dragonSprites;
     [SerializeField] private Vector2 _gamebounds;
     [SerializeField] private Image wantedDragonVisual;
+    [SerializeField] private List<Vector2> spawnGrid;
+	[SerializeField] private List<Vector2> spawnGridAvailable;
 
     [SerializeField] private bool useTimer = false;
     [SerializeField] private float timeLeft = 15;
@@ -37,10 +39,14 @@ public class SCR_FindDragon_Manager : MonoBehaviour
             return new Vector4(-_gamebounds.x + transform.position.x, _gamebounds.y + transform.position.y, _gamebounds.x + transform.position.x, -_gamebounds.y + transform.position.y); 
         } 
     }
-    
-    //[SerializeField] private int difficulty;
 
     [SerializeField] private List<dragonGroup> dragonGroups = new List<dragonGroup>();
+
+    public enum spawnPattern
+    {
+        RANDOM = 0,
+        GRID = 1
+    }
 
     // helper struct for organizing groups of dragons
     public struct dragonGroup
@@ -48,6 +54,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         public Sprite sprite;
         public Vector2 speed;
         public bool copySpeed;
+        public spawnPattern pattern;
         public SCR_FindDragon_Dragon.edgeType edgeType;
     }
 
@@ -56,11 +63,23 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		instance = this;
 
         WinScreen_Panel.SetActive(false);
-        leaderBoard.SetActive(false);
+        //leaderBoard.SetActive(false);
 
-        createDragonGroups();
-		setupDragons();
+        // create the grid of spawn positions within the bounds of the game
+        int gridDensity = 6;
+		Vector4 bounds = gameBounds;
+		for (int x = 1; x < gridDensity; x++)
+        {
+            for (int y = 1; y < gridDensity; y++)
+            {
+                spawnGrid.Add(new Vector2(Mathf.Lerp(bounds.x, bounds.z, (float)x / gridDensity),
+                                          Mathf.Lerp(bounds.y, bounds.w, (float)y / gridDensity)));
+			}
+        }
+
         useTimer = true;
+
+        resetGame();
 	}
 
 	private void Update()
@@ -79,7 +98,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
 	private void resetGame()
     {
-
+        spawnGridAvailable = new List<Vector2>(spawnGrid);
 
 		createDragonGroups();
 		setupDragons();
@@ -95,28 +114,45 @@ public class SCR_FindDragon_Manager : MonoBehaviour
             newgroup.sprite = dragonSprites[(start + i)%dragonSprites.Length];
 			newgroup.copySpeed = (Random.Range(0, 2)==0);
             // (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
-		    newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f));
+            newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f));
             newgroup.edgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
-            dragonGroups.Add(newgroup);
+            newgroup.pattern = (spawnPattern)Random.Range(0, 2);
+
+			dragonGroups.Add(newgroup);
 		}
     }
 
 	private void setupDragons()
     {
-        foreach (var dragon in dragons)
+		Vector4 bounds = gameBounds;
+		foreach (var dragon in dragons)
         {
-            dragon.transform.position = new Vector3(Random.Range(gameBounds.x, gameBounds.z), Random.Range(gameBounds.y, gameBounds.w), 0);
-            assignDragonGroup(dragon, Random.Range(1, dragonGroups.Count));
+            int selectedGroup = Random.Range(1, dragonGroups.Count);
+            int gridpos = Random.Range(0, spawnGridAvailable.Count);
+
+            switch (dragonGroups[selectedGroup].pattern)
+            {
+				case spawnPattern.RANDOM:
+                    dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
+					break;
+
+				case spawnPattern.GRID:
+					dragon.transform.position = (Vector3)spawnGridAvailable[gridpos];
+					spawnGridAvailable.RemoveAt(gridpos);
+					break;
+            }
+
+            assignDragonGroup(dragon, selectedGroup);
 		}
 
-        assignDragonGroup(dragons[dragons.Length - 1], 0);
+        assignDragonGroup(dragons[0], 0);
         wantedDragonVisual.sprite = dragonGroups[0].sprite;
     }
 
     private void assignDragonGroup(SCR_FindDragon_Dragon dragon, int group)
     {
 		dragonGroup usedgroup = dragonGroups[group];
-		if (usedgroup.copySpeed)
+		if (usedgroup.copySpeed || usedgroup.pattern == spawnPattern.GRID)
 		{
 			dragon.speed = usedgroup.speed;
 		}
@@ -125,19 +161,20 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 			Vector2 s = usedgroup.speed;
 			dragon.speed = new Vector2(Random.Range(-s.x, s.x), Random.Range(-s.y, s.y));
 		}
-        dragon.isWanted = (group == 0);
+        dragon.SetWanted(group == 0);
 		dragon.SetSprite(usedgroup.sprite);
 		dragon.edgeInteraction = usedgroup.edgeType;
+        dragon.active = true;
 	}
 
     public void DragonPressed(bool isWanted, SCR_FindDragon_Dragon dragon)
     {
-
         if (isWanted)
         {
             foreach (var drag in dragons)
             {
 				drag.speed = Vector2.zero;
+				drag.active = false;
 				if (drag != dragon)
                 {
 					drag.transform.position = Vector3.one * 10;
@@ -152,6 +189,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         }
         else
         {
+            dragon.active = false;
             dragon.speed = Vector2.zero;
             dragon.transform.position = Vector3.one * 10;
 			//timeLeft -= 0.5f;
@@ -168,17 +206,16 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
 	private void EndGame()
     {
+        useTimer = false;
+
         // Do whatever here to make the game end
         findDragon_TXT.text = "You found " + dragonsFound + "!";
         //WinScreen_Panel.SetActive(true);
         leaderBoard.SetActive(true);
         leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
-        useTimer = false;
         StartOver_BTN.interactable = false;
         Exit_BTN.interactable = false;
-
         StartCoroutine(WaitBeforeInput());
-
     }
 
     private IEnumerator WaitBeforeInput()
