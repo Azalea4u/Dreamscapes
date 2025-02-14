@@ -9,12 +9,15 @@ public class SCR_TogglePauseMenu : MonoBehaviour
 
     public void Open_PauseMenu()
     {
+        SRC_AudioManager.instance.PlaySFX("Pause_SFX");
         PauseMenu_UI.SetActive(true);
         GameManager.instance.PauseGame(true);
     }
 
     public void Close_PauseMenu()
     {
+        SRC_AudioManager.instance.PlaySFX("Resume_SFX");
+
         PauseMenu_UI.SetActive(false);
         GameManager.instance.PauseGame(false);
     }
@@ -22,30 +25,26 @@ public class SCR_TogglePauseMenu : MonoBehaviour
     public void Load_MainMenu()
     {
 		GameManager.instance.PauseGame(false);
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
-	}
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
+    }
 
     public void StartOver_Spaceship()
     {
-        GameManager.instance.PauseGame(false);
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
+        Scr_ScreenManager.instance.RocketClick();
     }
     
     public void StartOver_Octopus()
     {
-        GameManager.instance.PauseGame(false);
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
+        Scr_ScreenManager.instance.OctopusClick();
     }
 
     public void StartOver_FindDragon()
     {
-        GameManager.instance.PauseGame(false);
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
+        Scr_ScreenManager.instance.DragonClick();
     }
 
     public void StartOver_Archeology()
     {
-        GameManager.instance.PauseGame(false);
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
+        Scr_ScreenManager.instance.ArcheologyClick();
     }
 }

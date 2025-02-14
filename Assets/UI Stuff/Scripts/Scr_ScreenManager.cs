@@ -23,22 +23,20 @@ public class Scr_ScreenManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-    void Update() {
-        
-    }
-
-    public void PlayClick() {
+    public void PlayClick()
+    {
         playS.SetActive(true);
         titleS.SetActive(false);
     }
 
-    public void QuitClick() {
+    public void QuitClick()
+    {
         pauseS.SetActive(false);
         titleS.SetActive(true);
     }
 
-    public void PauseClick() {
+    public void PauseClick()
+    {
 		pause = !pause;
         if (pause) {
             Time.timeScale = 0;
@@ -51,7 +49,8 @@ public class Scr_ScreenManager : MonoBehaviour {
 		}
 	}
 
-    public void MenuClick() {
+    public void MenuClick()
+    {
         menu = !menu;
         if (menu) {
             menuS.SetActive(true);
@@ -60,23 +59,31 @@ public class Scr_ScreenManager : MonoBehaviour {
         menuS.SetActive(false);
     }
 
-    public void RocketClick() {
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
+    public void RocketClick()
+    {
+        GameManager.instance.PauseGame(false);
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_SpaceshipScene, "Spaceship_Music");
         Destroy(gameObject);
     }
 
-    public void ArcheologyClick() {
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
+    public void ArcheologyClick()
+    {
+        GameManager.instance.PauseGame(false);
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_ArcheologyMinigame, "Arch_Music");
         Destroy(gameObject);
 	}
 
-    public void DragonClick() {
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
+    public void DragonClick()
+    {
+        GameManager.instance.PauseGame(false);
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_FindDragonLuigi, "Finding_Music");
         Destroy(gameObject);
 	}
 
-    public void OctopusClick() {
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
+    public void OctopusClick()
+    {
+        GameManager.instance.PauseGame(false);
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_OctopusShooter, "Octopus_Music");
         Destroy(gameObject);
     }
 }

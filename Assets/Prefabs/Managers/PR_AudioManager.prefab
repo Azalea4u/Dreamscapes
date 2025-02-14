@@ -305,16 +305,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Music_Audios:
-  - Name: MainMenu_Theme
-    clip: {fileID: 0}
-  - Name: Arch_Theme
+  - Name: MainTheme_Music
+    clip: {fileID: 8300000, guid: 0c1f83baa75518446a6db7b859feed93, type: 3}
+  - Name: Arch_Music
     clip: {fileID: 8300000, guid: 214f485232df8c647a6b0344a4266d6b, type: 3}
-  - Name: Octopus_Theme
-    clip: {fileID: 0}
-  - Name: Finding_Theme
-    clip: {fileID: 0}
-  - Name: Spaceship_Theme
-    clip: {fileID: 0}
+  - Name: Octopus_Music
+    clip: {fileID: 8300000, guid: affdc7ae77da3ff44b1e534c46886b99, type: 3}
+  - Name: Finding_Music
+    clip: {fileID: 8300000, guid: 8b4a523cfa3f64c4f8388c7d3e8d8bf5, type: 3}
+  - Name: Spaceship_Music
+    clip: {fileID: 8300000, guid: 4611a45a0fe8eb740a57d2ea2f06d5e5, type: 3}
   SFX_Audios:
   - Name: Resume_SFX
     clip: {fileID: 8300000, guid: efc0e526dc7b6e5488622cc74795a975, type: 3}
@@ -328,3 +328,4 @@ MonoBehaviour:
     clip: {fileID: 0}
   Music_Source: {fileID: 4221065898889794239}
   SFX_Source: {fileID: 2373388707611496920}
+  fadeDuration: 1.5

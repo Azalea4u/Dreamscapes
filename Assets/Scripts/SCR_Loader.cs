@@ -23,7 +23,13 @@ public static class SCR_Loader {
 		SceneManager.LoadScene(SCR_Loader.scenes.SCN_Loading.ToString());
 	}
 
-	public static void LoaderCallback() {
-		SceneManager.LoadScene(SCR_Loader.TargetScene.ToString());
-	}
+    public static void ContinueToTargetScene()
+    {
+        SceneManager.LoadScene(TargetScene.ToString());
+
+        if (SRC_AudioManager.instance != null)
+        {
+            SRC_AudioManager.instance.OnSceneLoaded();
+        }
+    }
 }

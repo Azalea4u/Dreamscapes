@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SRC_AudioManager : MonoBehaviour
 {
@@ -7,6 +9,11 @@ public class SRC_AudioManager : MonoBehaviour
 
     public SCR_Sound[] Music_Audios, SFX_Audios;
     public AudioSource Music_Source, SFX_Source;
+
+    public float fadeDuration = 0.75f; // Adjust as needed
+
+    private string nextMusicName = "";
+    private bool isFading = false;
 
     private void Awake()
     {
@@ -33,7 +40,7 @@ public class SRC_AudioManager : MonoBehaviour
 
         if (sound == null)
         {
-            Debug.Log(sound + " not found");
+            Debug.Log("Sound not found");
         }
         else
         {
@@ -48,12 +55,65 @@ public class SRC_AudioManager : MonoBehaviour
 
         if (sound == null)
         {
-            Debug.Log(sound + " not found");
+            Debug.Log("Sound not found");
         }
         else
         {
             SFX_Source.clip = sound.clip;
             SFX_Source.Play();
         }
+    }
+
+    public void ChangeSceneWithMusic(SCR_Loader.scenes targetScene, string newMusic)
+    {
+        if (!isFading)
+        {
+            nextMusicName = newMusic;
+            isFading = true;
+            SCR_Loader.Load(targetScene);
+        }
+    }
+
+    public void OnLoadingScreenShown()
+    {
+        StartCoroutine(FadeOutMusic());
+    }
+
+    private IEnumerator FadeOutMusic()
+    {
+        float startVolume = Music_Source.volume;
+        while (Music_Source.volume > 0)
+        {
+            Music_Source.volume -= startVolume * Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+
+        Music_Source.Stop();
+        Music_Source.volume = startVolume; // Reset volume for next music
+
+        SCR_Loader.ContinueToTargetScene(); // Now load the actual scene
+    }
+
+    public void OnSceneLoaded()
+    {
+        if (!string.IsNullOrEmpty(nextMusicName))
+        {
+            StartCoroutine(FadeInMusic(nextMusicName));
+        }
+    }
+
+    private IEnumerator FadeInMusic(string musicName)
+    {
+        PlayMusic(musicName);
+        Music_Source.volume = 0;
+        float targetVolume = 1.0f;
+
+        while (Music_Source.volume < targetVolume)
+        {
+            Music_Source.volume += targetVolume * Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+
+        isFading = false; // Reset flag after fade-in completes
     }
 }
