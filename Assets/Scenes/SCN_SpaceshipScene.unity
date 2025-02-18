@@ -536,7 +536,6 @@ GameObject:
   - component: {fileID: 302005180}
   - component: {fileID: 302005179}
   - component: {fileID: 302005181}
-  - component: {fileID: 302005178}
   m_Layer: 5
   m_Name: RightButton2
   m_TagString: Untagged
@@ -563,33 +562,6 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &302005178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 302005176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80dec154aa79d6a46bd91d90c2556c4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHold:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 985616890}
-        m_TargetAssemblyTypeName: SCR_SpaceGame_Ship, Assembly-CSharp
-        m_MethodName: MoveRight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &302005179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,7 +1443,6 @@ GameObject:
   - component: {fileID: 791297619}
   - component: {fileID: 791297618}
   - component: {fileID: 791297620}
-  - component: {fileID: 791297617}
   m_Layer: 5
   m_Name: LeftButton2
   m_TagString: Untagged
@@ -1498,33 +1469,6 @@ RectTransform:
   m_AnchoredPosition: {x: -300, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &791297617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791297615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80dec154aa79d6a46bd91d90c2556c4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHold:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 985616890}
-        m_TargetAssemblyTypeName: SCR_SpaceGame_Ship, Assembly-CSharp
-        m_MethodName: MoveLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &791297618
 MonoBehaviour:
   m_ObjectHideFlags: 0
