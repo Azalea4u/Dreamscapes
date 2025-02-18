@@ -96,6 +96,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		if (health <= 0)
 		{
 			health = 0;
+			ShipDeath();
 		}
 		visuals.sprite = damageStates[health];
 	}
