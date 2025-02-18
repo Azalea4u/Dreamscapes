@@ -101,7 +101,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		}
 
 		File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
-		AssetDatabase.Refresh();
+		//AssetDatabase.Refresh();
 	}
 
     public void continueClick() {
