@@ -12,7 +12,8 @@ public class Scr_ScreenManager : MonoBehaviour {
 	bool pause = false;
     bool menu = false;
 
-	void Start() {
+	private void Awake()
+    {
         if (instance == null)
         {
             instance = this;
@@ -23,6 +24,7 @@ public class Scr_ScreenManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
     public void PlayClick()
     {
         playS.SetActive(true);

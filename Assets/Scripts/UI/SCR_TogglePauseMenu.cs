@@ -24,7 +24,7 @@ public class SCR_TogglePauseMenu : MonoBehaviour
     
     public void Load_MainMenu()
     {
-		GameManager.instance.PauseGame(false);
+        GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
     }
 

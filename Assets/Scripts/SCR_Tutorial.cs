@@ -31,7 +31,7 @@ public class SCR_Tutorial : MonoBehaviour {
         Pause_BTN.GetComponent<Button>().interactable = false;
 		Tutorial_BTN.GetComponent<Button>().interactable = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         Tutorial_BTN.GetComponent<Button>().interactable = true;
 
