@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -7,15 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("Game State")]
-    [SerializeField] private bool IsGamePaused = false;
-
-    [Header("Mini-Games Data")]
-    [SerializeField] private string MainMenu;
-
+    [SerializeField] public bool IsGamePaused = false;
 
     private void Awake()
     {
-        // Singleton Pattern
         if (instance == null)
         {
             instance = this;
@@ -27,9 +23,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Load_MainMenu()
+    private void Update()
     {
-        SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
+        if (SceneManager.GetActiveScene().name == "SCN_MainMenu")
+        {
+            PauseGame(false);
+        }
     }
 
     // Pauses the Game from any script
@@ -37,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         IsGamePaused = pauseGame;
         Time.timeScale = IsGamePaused ? 0 : 1;
-        Debug.Log("Game " + (IsGamePaused ? "Paused" : "Resumed"));
+        //Debug.Log("Game " + (IsGamePaused ? "Paused" : "Resumed"));
     }
 
     public IEnumerator Add_WaitTime(float time)

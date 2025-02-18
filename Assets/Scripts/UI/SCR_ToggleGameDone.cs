@@ -12,7 +12,7 @@ public class SCR_ToggleGameDone : MonoBehaviour
         if (this.gameObject.activeSelf)
         {
             AddWait_GameDone();
-            GameManager.instance.PauseGame(true);
+            //GameManager.instance.PauseGame(true);
         }
     }
 
@@ -25,5 +25,10 @@ public class SCR_ToggleGameDone : MonoBehaviour
 
         StartOver_BTN.interactable = true;
         ExitToMenu_BTN.interactable = true;
+    }
+
+    public void ExitGame_Click()
+    {
+        Scr_ScreenManager.instance.MenuClick();
     }
 }
