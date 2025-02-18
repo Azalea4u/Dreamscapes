@@ -43,6 +43,13 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
     [SerializeField] private List<dragonGroup> dragonGroups = new List<dragonGroup>();
 
+    public enum difficultyScale
+    {
+        FIRST,
+		SCALING,
+        RANDOM
+    }
+
     public enum spawnPattern
     {
         RANDOM = 0,
@@ -78,7 +85,12 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 			}
         }
 
-        useTimer = true;
+		foreach (var drag in dragons)
+		{
+            drag.DeactivateDragon();
+		}
+
+		useTimer = true;
 
         resetGame();
 	}
@@ -106,6 +118,20 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		setupDragons();
 	}
 
+    private difficultyScale getCurrentDifficulty()
+    {
+        if (dragonsFound == 0)
+        {
+			return difficultyScale.FIRST;
+		} else if (dragonsFound < dragons.Length)
+        {
+			return difficultyScale.SCALING;
+		} else
+        {
+            return difficultyScale.RANDOM;
+        }
+    }
+
     private void createDragonGroups()
     {
         dragonGroups.Clear();
@@ -113,12 +139,22 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
 			dragonGroup newgroup = new dragonGroup();
-            newgroup.sprite = dragonSprites[(start + i)%dragonSprites.Length];
-			newgroup.copySpeed = (Random.Range(0, 2)==0);
-            // (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
-            newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.5f, 1.0f));
-            newgroup.edgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
-            newgroup.pattern = (spawnPattern)Random.Range(0, 2);
+
+            if (getCurrentDifficulty() == difficultyScale.FIRST)
+            {
+				newgroup.sprite = dragonSprites[(start + i) % dragonSprites.Length];
+            } else
+            {
+				newgroup.pattern = (spawnPattern)Random.Range(0, 2);
+				newgroup.sprite = dragonSprites[(start + i) % dragonSprites.Length];
+				newgroup.copySpeed = (Random.Range(0, 2) == 0);
+				// (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
+				if (newgroup.pattern == spawnPattern.RANDOM)
+				{
+					newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f));
+				}
+				newgroup.edgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
+			}
 
 			dragonGroups.Add(newgroup);
 		}
@@ -127,20 +163,56 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	private void setupDragons()
     {
 		Vector4 bounds = gameBounds;
-		foreach (var dragon in dragons)
+		for (int i = 0; i < Mathf.Min(dragonsFound + 3, dragons.Length); i++)
         {
+            SCR_FindDragon_Dragon dragon = dragons[i];
             int selectedGroup = Random.Range(1, dragonGroups.Count);
             int gridpos = Random.Range(0, spawnGridAvailable.Count);
 
-            switch (dragonGroups[selectedGroup].pattern)
-            {
-				case spawnPattern.RANDOM:
-                    dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
-					break;
 
-				case spawnPattern.GRID:
-					dragon.transform.position = (Vector3)spawnGridAvailable[gridpos];
-					spawnGridAvailable.RemoveAt(gridpos);
+            switch (getCurrentDifficulty())
+            {
+                case difficultyScale.FIRST:
+					selectedGroup = i;
+
+					switch (i)
+					{
+						case 0:
+							dragon.transform.position = transform.position + new Vector3(0, -1.0f, 0);
+							break;
+						case 1:
+							dragon.transform.position = transform.position + new Vector3(-1.0f, 0.5f, 0);
+							break;
+						case 2:
+							dragon.transform.position = transform.position + new Vector3(1.0f, 0.5f, 0);
+							break;
+					}
+					break;
+                case difficultyScale.SCALING:
+					switch (dragonGroups[selectedGroup].pattern)
+					{
+						case spawnPattern.RANDOM:
+							dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
+							break;
+
+						case spawnPattern.GRID:
+							dragon.transform.position = (Vector3)spawnGridAvailable[gridpos];
+							spawnGridAvailable.RemoveAt(gridpos);
+							break;
+					}
+					break;
+                case difficultyScale.RANDOM:
+					switch (dragonGroups[selectedGroup].pattern)
+					{
+						case spawnPattern.RANDOM:
+							dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
+							break;
+
+						case spawnPattern.GRID:
+							dragon.transform.position = (Vector3)spawnGridAvailable[gridpos];
+							spawnGridAvailable.RemoveAt(gridpos);
+							break;
+					}
 					break;
             }
 
@@ -166,36 +238,25 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         dragon.SetWanted(group == 0);
 		dragon.SetSprite(usedgroup.sprite);
 		dragon.edgeInteraction = usedgroup.edgeType;
-        dragon.active = true;
+        dragon.ActivateDragon();
 	}
 
     public void DragonPressed(bool isWanted, SCR_FindDragon_Dragon dragon)
     {
+        dragon.DeactivateDragon();
         if (isWanted)
         {
             foreach (var drag in dragons)
             {
-				drag.speed = Vector2.zero;
-				drag.active = false;
-				if (drag != dragon)
-                {
-					drag.transform.position = Vector3.one * 10;
-				}
-            }
+				drag.DeactivateDragon();
+			}
 
             // would put here stuff I want to happen after the dragon is found
             dragonsFound += 1;
-            timeLeft += 1;
+            timeLeft += 3;
             useTimer = false;
 			StartCoroutine(resetGameCoroutine());
         }
-        else
-        {
-            dragon.active = false;
-            dragon.speed = Vector2.zero;
-            dragon.transform.position = Vector3.one * 10;
-			//timeLeft -= 0.5f;
-		}
     }
 
     IEnumerator resetGameCoroutine()
@@ -203,7 +264,6 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         resetGame();
         useTimer = true;
-
 	}
 
 	private void EndGame()
