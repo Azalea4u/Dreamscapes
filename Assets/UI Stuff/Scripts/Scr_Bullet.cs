@@ -10,8 +10,11 @@ public class Scr_Bullet : MonoBehaviour {
     }
 
     void Update() {
-        
-    }
+		if (transform.position.y >= 6.0f)
+		{
+			Destroy(gameObject);
+		}
+	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
 

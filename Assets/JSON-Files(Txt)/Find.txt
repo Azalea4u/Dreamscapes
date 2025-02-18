@@ -1,1 +1,2 @@
-{"slot":[{"i":"space","s":16},{"i":"space","s":13},{"i":"paint","s":5},{"i":"paint","s":2},{"i":"???","s":0}]}
+
+{"slot":[{"i":"space","s":16},{"i":"space","s":16},{"i":"paint","s":15},{"i":"paint","s":13},{"i":"paint","s":12}]}
