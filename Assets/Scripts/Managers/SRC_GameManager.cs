@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
         {
             PauseGame(false);
         }
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     // Pauses the Game from any script

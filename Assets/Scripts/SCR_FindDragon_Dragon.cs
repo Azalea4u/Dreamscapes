@@ -83,7 +83,20 @@ public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
 		this.sprite.sprite = sprite;
 	}
 
+	public void DeactivateDragon()
+	{
+		active = false;
+		speed = Vector2.zero;
+		if (!isWanted)
+		{
+			transform.position = Vector3.one * 10;
+		}
+	}
 
+	public void ActivateDragon()
+	{
+		active = true;
+	}
 
 	public void SetWanted(bool wanted)
 	{

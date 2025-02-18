@@ -76,7 +76,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 				SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
 				tileGrid[xpos, ypos] = tile;
 				tile.position.Set(xpos, ypos);
-				tile.layers = Random.Range(1, 7); //GetTileDepth( xpos, ypos); //
+				tile.layers = Mathf.Min(Random.Range(1, 7), 2); //GetTileDepth( xpos, ypos); //
 
 				tile.ChangeSprite(depthSprites[tile.layers]);
 
@@ -256,10 +256,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		// z value is how much tile damage it should deal
 		Vector3Int[] checks = {
 			new Vector3Int(0,0,2),
-			new Vector3Int(1,0,1),
-			new Vector3Int(0,1,1),
-			new Vector3Int(-1,0,1),
-			new Vector3Int(0,-1,1)
 		};
 		SCR_ArcheologyTile tile;
 
