@@ -71,7 +71,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		instance = this;
 
         WinScreen_Panel.SetActive(false);
-        //leaderBoard.SetActive(false);
+        leaderBoard.SetActive(false);
 
         // create the grid of spawn positions within the bounds of the game
         int gridDensity = 6;
@@ -272,9 +272,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
         // Do whatever here to make the game end
         findDragon_TXT.text = "You found " + dragonsFound + "!";
-        //WinScreen_Panel.SetActive(true);
-        leaderBoard.SetActive(true);
-        leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
+        WinScreen_Panel.SetActive(true);
+        //leaderBoard.SetActive(true);
+        //leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
         StartOver_BTN.interactable = false;
         Exit_BTN.interactable = false;
         StartCoroutine(WaitBeforeInput());
