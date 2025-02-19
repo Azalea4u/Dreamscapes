@@ -8,11 +8,14 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	[SerializeField] Scr_OctoPlayer player;
     [SerializeField] int health = 100;
+	[SerializeField] int _health;
     [SerializeField] GameObject shootFab;
     [SerializeField] GameObject tentacleFab;
     [SerializeField] float moveTimer;
+	float timeSpentMoving;
 	[SerializeField] spaces[] availableSpaces = new spaces[5];
 	[SerializeField] int position = 2;
+	int prevPos;
 	[SerializeField] SpriteRenderer spriteRenderer;
 	[SerializeField] Scr_Tentacle tentacleRef;
 
@@ -29,6 +32,9 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	void Start() {
 		instance = this;
 
+		_health = health;
+		prevPos = position;
+
 		GameWin_Panel.SetActive(false);
 
 		moveTimer = 1.0f;
@@ -39,19 +45,28 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	}
 
 	void Update() {
-		//transform.position = Vector3.Lerp(transform.position, availableSpaces[position].spacePosition, Time.deltaTime);
-		spriteRenderer.material.SetFloat("_Strength", 1.0f - (float)health / 100.0f);
-		if (tentacleRef != null)
+		if (_health <= 0)
 		{
-			tentacleRef.UpdateGreyscale(1.0f - (float)health / 100.0f);
+			return;
 		}
 
+		spriteRenderer.material.SetFloat("_Strength", GetHealthPercent());
+		if (tentacleRef != null)
+		{
+			tentacleRef.UpdateGreyscale(GetHealthPercent());
+		}
 
 		moveTimer -= Time.deltaTime;
 
+		transform.position = Vector3.Lerp(availableSpaces[position].spacePosition, availableSpaces[prevPos].spacePosition, Mathf.Clamp01((moveTimer - (timeSpentMoving * 0.25f)) / (timeSpentMoving - (timeSpentMoving * 0.25f))));
+
 		if (moveTimer <= 0)
 		{
+			prevPos = position;
+
 			moveTimer = UnityEngine.Random.Range(0.5f, 1.5f);
+			timeSpentMoving = moveTimer;
+
 			if (availableSpaces[position].somethingHereRef == null)
 			{
 				if (tentacleRef == null)
@@ -117,7 +132,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 			position = 0;
 		}
 
-		transform.position = availableSpaces[position].spacePosition;
+		//transform.position = availableSpaces[position].spacePosition;
 	}
 
 	public void moveRight()
@@ -128,7 +143,12 @@ public class Scr_OctoEnemy : MonoBehaviour {
 			position = availableSpaces.Length - 1;
 		}
 
-		transform.position = availableSpaces[position].spacePosition;
+		//transform.position = availableSpaces[position].spacePosition;
+	}
+
+	public float GetHealthPercent()
+	{
+		return 1.0f - Mathf.Sqrt((float)_health / health);
 	}
 
 	public void moveRandomLeftRight()
@@ -154,8 +174,8 @@ public class Scr_OctoEnemy : MonoBehaviour {
     }
 
 	public void damage(int d) {
-        health -= d;
-		health = Mathf.Clamp(health, 0, 100);
+        _health -= d;
+		_health = Mathf.Clamp(_health, 0, health);
         if (d > 0)
         {
 			damageFlicker();
@@ -164,7 +184,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 				tentacleRef.DamageFlicker();
 			}
 		}
-		if (health <= 0) {
+		if (_health <= 0) {
 			GameWin();
         }
     }
@@ -184,7 +204,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	private void GameWin()
 	{
         GameWin_Panel.SetActive(true);
-        Destroy(gameObject);
+        //Destroy(gameObject);
 
        // StartCoroutine(ShowScreen());
        // StartCoroutine(ShowScreen());
