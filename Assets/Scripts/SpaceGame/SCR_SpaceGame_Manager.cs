@@ -99,6 +99,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	{
 		// handle the ship death and minigame ending here
 		shipAnimator.Play("Explosion");
+		explosion_SFX.Play();
 		StartCoroutine(ShowGameOverScreen());
 	}
 
