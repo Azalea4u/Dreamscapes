@@ -23,12 +23,22 @@ public class Scr_OctoPlayer : MonoBehaviour {
 
 	private void Update()
 	{
+		if (Scr_OctoEnemy.instance.GetHealthPercent() >= 1.0f)
+		{
+			return;
+		}
+
+		transform.position = Vector3.Lerp(transform.position, getDesiredPosition(), Time.deltaTime * 10);
+		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, (transform.position.x - getDesiredPosition().x) * 30), Time.deltaTime * 10);
+
 		shootTimer -= Time.deltaTime;
 		if (shootTimer <= 0)
 		{
 			shootTimer = shootDelay;
 			shoot();
 		}
+
+		CheckTentacleOverlap();
 	}
 
 	public void moveLeft() {
@@ -40,10 +50,6 @@ public class Scr_OctoPlayer : MonoBehaviour {
 		}
 
         lastMovedLeft = true;
-
-        rb.transform.Translate(new Vector3(-1, 0, 0));
-
-		CheckTentacleOverlap();
 	}
 
     public void moveRight() {
@@ -55,15 +61,16 @@ public class Scr_OctoPlayer : MonoBehaviour {
 		}
 
 		lastMovedLeft = false;
+	}
 
-		rb.transform.Translate(new Vector3(1, 0, 0));
-
-		CheckTentacleOverlap();
+	private Vector3 getDesiredPosition()
+	{
+		return new Vector3(position, transform.position.y, 0);
 	}
 
 	private void CheckTentacleOverlap()
 	{
-		Collider2D[] collisions = Physics2D.OverlapPointAll(rb.transform.position);
+		Collider2D[] collisions = Physics2D.OverlapPointAll(getDesiredPosition());
 
 		foreach (var collision in collisions)
 		{
@@ -78,23 +85,6 @@ public class Scr_OctoPlayer : MonoBehaviour {
 					moveLeft();
 				}
 				return;
-			}
-		}
-	}
-
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		Debug.Log(collision);
-
-		if (collision.attachedRigidbody.GetComponent<Scr_Tentacle>())
-		{
-			if (lastMovedLeft)
-			{
-				moveRight();
-			}
-			else
-			{
-				moveLeft();
 			}
 		}
 	}
