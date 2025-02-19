@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Scr_Bomb : MonoBehaviour {
 	[SerializeField] float speed;
+	[SerializeField] Transform visuals;
     Rigidbody2D rb;
 
     void Start() {
@@ -14,6 +15,7 @@ public class Scr_Bomb : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+		visuals.Rotate(Vector3.forward, Time.deltaTime * 100);
     }
 
 	private void OnTriggerEnter2D(Collider2D collision) {
