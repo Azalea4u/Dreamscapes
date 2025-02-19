@@ -16,7 +16,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     int newScore;
 
-    //good luck >=)
+    //good luck =(
     [SerializeField] string fileName;
 
     [System.Serializable]
@@ -135,7 +135,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		againBtn.SetActive(true);
 	}
 
-    public void createClick(Image img) {
+    public void createClick(Sprite img) {
         createSlot(img, newScore);
 
         createPanel.SetActive(false);
@@ -143,15 +143,17 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		againBtn.SetActive(true);
 	}
 
-    //fix this, just this, well proably some save stuff
-    void createSlot(Image img, int score, int index = 0) {
+    //might need to change this if leaderboard dosn't do unique stuff...
+    //oh yeah keyboard...
+    void createSlot(Sprite img, int score, int index = 0) {
         //index; doesn't work so I just do this, theres probably an easier way...
 		for (index = index; index < slots.Length; index++) {
-            Image tempImg;
+            Sprite tempSprite;
             int tempScore;
 
 			if (int.Parse(slots[index].scoreTxt.text) < score) {
-                tempImg = slots[index].slotImg;
+                tempSprite = slots[index].slotImg.sprite;
+				tempScore = int.Parse(slots[index].scoreTxt.text);
 
 				switch (slots[index].slotImg.sprite.name) {
 					case "CuteDoor_0":
@@ -174,9 +176,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 						break;
 				}
 
-				tempScore = int.Parse(slots[index].scoreTxt.text);
-                slots[index].changeSlot(img.sprite, score);
-                createSlot(tempImg, tempScore, index + 1);
+                createSlot(tempSprite, tempScore, index + 1);
                 return;
 			}
 		}
