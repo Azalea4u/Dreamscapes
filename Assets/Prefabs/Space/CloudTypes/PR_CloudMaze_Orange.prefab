@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 8214932567459131359}
   - component: {fileID: 5151915617583992988}
   - component: {fileID: 3671999404899389206}
+  - component: {fileID: 8366194719639030629}
   m_Layer: 0
   m_Name: PR_CloudMaze_Orange
   m_TagString: Untagged
@@ -323,10 +324,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 1, z: 0}
-  towardsCenter: 0
+  usedSpeed: {x: 0, y: 0, z: 0}
+  faceTowardsCenter: 0
+  moveTowardsPlayer: 0
+  moveSpeed: 0
   doesDamage: 0
+  birdSlowdown: 0
   slowDownMovement: 0.2
   bounce: 1
+  destroyOnHit: 0
 --- !u!60 &8214932567459131359
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -374,14 +380,19 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -2.1886199, y: 0.8210159}
-      - {x: -2.511332, y: 1.3398793}
+      - {x: -2.395382, y: 1.3656459}
+      - {x: -3.297508, y: 1.3474284}
       - {x: -3.8523252, y: 0.8455579}
-      - {x: -4.8879943, y: 1.3192136}
-      - {x: -4.9761205, y: 0.6325902}
-      - {x: -5.582125, y: 0.1445334}
-      - {x: -5.110277, y: -0.46430683}
+      - {x: -4.0972157, y: 1.2004769}
+      - {x: -5.0425944, y: 1.3578637}
+      - {x: -5.0663037, y: 0.57461524}
+      - {x: -5.67875, y: 0.43440843}
+      - {x: -5.6081376, y: -0.3075978}
+      - {x: -5.1231604, y: -0.68976516}
       - {x: -3.986957, y: -0.2857742}
+      - {x: -3.735163, y: -0.5858073}
       - {x: -2.7826872, y: -0.525784}
+      - {x: -2.5430045, y: 0.028446198}
       - {x: -2.8253832, y: 0.43175083}
   m_UseDelaunayMesh: 0
 --- !u!60 &5151915617583992988
@@ -430,19 +441,26 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 4.9660172, y: 0.7734137}
-      - {x: 4.139913, y: 0.4761991}
-      - {x: 3.484873, y: 0.10071051}
-      - {x: 3.1156201, y: 0.46013153}
-      - {x: 2.2022693, y: 0.6016909}
-      - {x: 2.2115514, y: -0.17113823}
-      - {x: 2.4928539, y: -0.49499166}
-      - {x: 2.5304296, y: -1.4823778}
-      - {x: 3.031432, y: -1.6185192}
+    - - {x: 5.0883827, y: 0.8401584}
+      - {x: 4.7425184, y: 0.79926467}
+      - {x: 4.5118656, y: 0.56285965}
+      - {x: 4.1844096, y: 0.6541852}
+      - {x: 3.5126832, y: 0.23420009}
+      - {x: 3.132306, y: 0.54356253}
+      - {x: 2.741822, y: 0.38432845}
+      - {x: 2.307948, y: 0.72405636}
+      - {x: 2.082589, y: 0.40273607}
+      - {x: 2.1503687, y: -0.12664187}
+      - {x: 2.4149852, y: -0.52836406}
+      - {x: 2.4297874, y: -1.0812604}
+      - {x: 2.3468814, y: -1.4601295}
+      - {x: 2.884391, y: -1.8075719}
       - {x: 3.858971, y: -1.6492742}
-      - {x: 3.3068209, y: -0.45969558}
-      - {x: 4.593436, y: -0.37586638}
-      - {x: 5.0107284, y: -0.10639113}
+      - {x: 3.9988935, y: -1.171415}
+      - {x: 3.62903, y: -0.932596}
+      - {x: 3.3902519, y: -0.5208781}
+      - {x: 4.7102394, y: -0.37586638}
+      - {x: 5.1831527, y: -0.061894447}
   m_UseDelaunayMesh: 0
 --- !u!60 &3671999404899389206
 PolygonCollider2D:
@@ -491,16 +509,83 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 2.0932803, y: 3.098872}
-      - {x: 1.5355707, y: 3.7198293}
+      - {x: 1.5882366, y: 3.8602717}
+      - {x: 1.1607054, y: 3.5265539}
       - {x: 0.9223958, y: 3.6153152}
-      - {x: -0.45317268, y: 4.2666206}
-      - {x: -0.72827506, y: 3.6208959}
-      - {x: -1.5080812, y: 3.6983712}
-      - {x: -1.4765621, y: 2.832479}
-      - {x: 0.13917929, y: 2.3820739}
+      - {x: 0.24649385, y: 4.1887836}
+      - {x: -0.09112823, y: 4.08253}
+      - {x: -0.47072792, y: 4.4129148}
+      - {x: -0.6933573, y: 4.1291227}
+      - {x: -0.67625797, y: 3.736657}
+      - {x: -1.0325665, y: 3.6033406}
+      - {x: -1.4038303, y: 3.833049}
+      - {x: -1.7070409, y: 3.8037026}
+      - {x: -1.7465141, y: 3.0159853}
+      - {x: -1.4180446, y: 2.639371}
+      - {x: -0.7178972, y: 2.480609}
+      - {x: -0.42702162, y: 2.2348404}
+      - {x: 0.11577225, y: 2.3469634}
+      - {x: 0.4872229, y: 2.3053398}
       - {x: 0.8763147, y: 2.7645094}
-      - {x: 2.7497969, y: 1.9666665}
+      - {x: 2.7556484, y: 1.8496311}
+      - {x: 3.5231388, y: 2.1580193}
+      - {x: 3.9698353, y: 2.369239}
       - {x: 4.0288534, y: 2.9053192}
+  m_UseDelaunayMesh: 0
+--- !u!60 &8366194719639030629
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069148099198239731}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.6198815, y: -0.19593355}
+      - {x: 0.18392265, y: -0.01943016}
+      - {x: -0.041508436, y: -0.2836303}
+      - {x: -0.42855942, y: -0.22063327}
+      - {x: -0.8947037, y: -0.63019764}
+      - {x: -0.8194581, y: -1.2097487}
+      - {x: 0.1870538, y: -1.2410556}
+      - {x: 0.63798535, y: -0.9057004}
   m_UseDelaunayMesh: 0
 --- !u!1 &2742488288574335312
 GameObject:

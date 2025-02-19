@@ -12,22 +12,22 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 	[Header("Prefabs")]
     [SerializeField] private Transform tilePrefab;
-	[SerializeField] private Transform undertile;
 	[SerializeField] private Transform itemPrefab;
 	[SerializeField] private List<Sprite> depthSprites = new List<Sprite>();
 	[SerializeField] private List<SO_ArcheologyItem_Data> itemsData = new List<SO_ArcheologyItem_Data>();
 
 	[Header("Grid Making")]
 	[SerializeField] private SCR_ArcheologyTile[,] tileGrid;
-	[SerializeField] private List<Vector2Int> highestSpots = new List<Vector2Int>();
     [SerializeField] private Vector2Int gridSize = Vector2Int.one;
 	[SerializeField] private Vector2 tileSize = Vector2Int.one;
 	[SerializeField] private int itemAmount = 3;
 
 	[Header("Runtime Grid Values")]
 	[SerializeField] private List<SCR_ArcheologyItem> items = new List<SCR_ArcheologyItem>();
+	[SerializeField] private SCR_Archeology_Tool tool;
 	[SerializeField] private Transform player;
 	[SerializeField] private Vector2Int playerPosition;
+	[SerializeField] private Vector2Int minePosition;
 	[SerializeField] private int points;
 	[SerializeField] private float time;
 	[SerializeField] private bool running = false;
@@ -60,10 +60,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		running = true;
 
         tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
-
-		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
-		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
-		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
 
 		// puts the grid in the middle of the screen
 		transform.position -= new Vector3(gridSize.x / (2.0f / tileSize.x), -gridSize.y / (2.0f / tileSize.y), 0.0f) - new Vector3(tileSize.x / 2.0f, -tileSize.y / 2.0f, 0);
@@ -137,20 +133,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		}
     }
 
-    private int GetTileDepth(int x, int y) {
-		Vector2Int usedSpot = highestSpots[0];
-		foreach (var spot in highestSpots)
-		{
-			if (Vector2Int.Distance(new Vector2Int(x, y), spot) < Vector2Int.Distance(new Vector2Int(x, y), usedSpot))
-			{
-				usedSpot = spot;
-			}
-		}
-
-		int toret = (int)Vector2Int.Distance(new Vector2Int(x, y), usedSpot);
-
-		return 7 - Mathf.Clamp(toret, 0, 7);
-	}
 
 	private Vector2Int generateRandomItemPosition(SCR_ArcheologyItem item)
 	{
@@ -242,20 +224,30 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	/// <summary>
 	/// Function for the mining UI button
 	/// </summary>
+	public void MineTile()
+	{
+		minePosition = playerPosition;
+
+		Debug.Log(minePosition);
+
+		tool.StartMining(tileGrid[minePosition.x, minePosition.y].transform.position);
+	}
+	
+	/// <summary>
+	/// Function to be called when the pickaxe hits the tile
+	/// </summary>
 	public void HitTile()
 	{
-		Vector2Int hitPos = playerPosition;
-
-		// Changes the pitch in SFX
-        float minPitch = -0.15f;
-		float maxPitch = 0.5f;
-        hitStoneSFX.pitch = Random.Range(minPitch, maxPitch);
-		hitStoneSFX.Play();
+		Vector2Int hitPos = minePosition;
 
 		// Vectors for which tiles to check about the hit position
 		// z value is how much tile damage it should deal
 		Vector3Int[] checks = {
 			new Vector3Int(0,0,2),
+			new Vector3Int(1,0,1),
+			new Vector3Int(0,1,1),
+			new Vector3Int(-1,0,1),
+			new Vector3Int(0,-1,1)
 		};
 		SCR_ArcheologyTile tile;
 
@@ -276,6 +268,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		// after breaking tiles, check for uncovered items
 		checkItemsUncovered();
 	}
+
+	
 
 	private void checkItemsUncovered()
 	{
