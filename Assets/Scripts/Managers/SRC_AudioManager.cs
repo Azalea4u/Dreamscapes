@@ -50,7 +50,6 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
-
     public void PlaySFX(string name)
     {
         SCR_Sound sound = Array.Find(SFX_Audios, x => x.Name == name);
