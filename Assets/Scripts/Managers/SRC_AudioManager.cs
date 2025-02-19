@@ -45,6 +45,7 @@ public class SRC_AudioManager : MonoBehaviour
         else
         {
             Music_Source.clip = sound.clip;
+            Music_Source.loop = true;
             Music_Source.Play();
         }
     }
