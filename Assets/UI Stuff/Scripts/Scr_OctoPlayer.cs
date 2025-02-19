@@ -23,7 +23,13 @@ public class Scr_OctoPlayer : MonoBehaviour {
 
 	private void Update()
 	{
+		if (Scr_OctoEnemy.instance.GetHealthPercent() >= 1.0f)
+		{
+			return;
+		}
+
 		transform.position = Vector3.Lerp(transform.position, getDesiredPosition(), Time.deltaTime * 10);
+		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, (transform.position.x - getDesiredPosition().x) * 30), Time.deltaTime * 10);
 
 		shootTimer -= Time.deltaTime;
 		if (shootTimer <= 0)
