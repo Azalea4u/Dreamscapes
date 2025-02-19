@@ -9,7 +9,9 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	[SerializeField] private GameObject[] birdVisuals;
 	[SerializeField] private int birds = 0;
 	[SerializeField] private float birdTimerLength = 5.0f;
-	private float birdTimer;
+    [SerializeField] private AudioSource hitCloud_SFX;
+
+    private float birdTimer;
 
 	[Header("Ship Movement")]
 	[SerializeField] private float shipPosition;
@@ -127,7 +129,14 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		{
 			desiredAscentSpeed *= 1.0f - obstacle.slowDownMovement;
 			shipMovementSpeed *= 1.0f - obstacle.slowDownMovement;
-			if (!obstacle.beenHit)
+
+
+            if (!obstacle.birdSlowdown && !obstacle.doesDamage)
+            {
+                hitCloud_SFX.Play();
+            }
+
+            if (!obstacle.beenHit)
 			{
 				usedAscentSpeed -= obstacle.bounce;
 				shipVelocity *= -1.0f;

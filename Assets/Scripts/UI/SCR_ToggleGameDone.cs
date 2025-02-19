@@ -26,9 +26,4 @@ public class SCR_ToggleGameDone : MonoBehaviour
         StartOver_BTN.interactable = true;
         ExitToMenu_BTN.interactable = true;
     }
-
-    public void ExitGame_Click()
-    {
-        Scr_ScreenManager.instance.MenuClick();
-    }
 }
