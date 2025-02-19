@@ -153,10 +153,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 1, z: 0}
-  towardsCenter: 0
+  usedSpeed: {x: 0, y: 0, z: 0}
+  faceTowardsCenter: 0
+  moveTowardsPlayer: 0
+  moveSpeed: 0
   doesDamage: 0
+  birdSlowdown: 0
   slowDownMovement: 0.2
   bounce: 1
+  destroyOnHit: 0
 --- !u!60 &5949028962906681760
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -204,8 +209,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -1.9071019, y: 0.7167671}
+      - {x: -3.0126364, y: 1.0721378}
       - {x: -3.4529474, y: 0.8188362}
-      - {x: -3.769435, y: -0.11037505}
+      - {x: -3.7037563, y: 0.40585825}
+      - {x: -4.026423, y: 0.03141153}
+      - {x: -3.7013075, y: -0.1868999}
+      - {x: -3.2556078, y: -0.1788937}
       - {x: -2.4428077, y: -0.3275211}
       - {x: -1.5508347, y: -0.021421254}
   m_UseDelaunayMesh: 0
@@ -243,8 +252,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.69, y: 1.69}
-  m_Radius: 0.38198632
+  m_Offset: {x: 0.7152462, y: 1.69}
+  m_Radius: 0.40723288
 --- !u!58 &4903831511899163863
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -315,8 +324,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2.34, y: 3.4}
-  m_Radius: 0.34
+  m_Offset: {x: 2.3978667, y: 3.4}
+  m_Radius: 0.39786673
 --- !u!60 &5376363649055107248
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -363,10 +372,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.663146, y: 0.9811175}
-      - {x: 2.5610316, y: 0.88492334}
-      - {x: 1.6403136, y: -0.100934625}
+    - - {x: 3.5645838, y: 1.0890665}
+      - {x: 2.5281775, y: 0.9600184}
+      - {x: 1.4807366, y: -0.11501497}
+      - {x: 1.7787114, y: -0.22529471}
       - {x: 2.9669418, y: -0.25199282}
+      - {x: 4.293634, y: -0.2717566}
       - {x: 4.8596706, y: 0.06354803}
   m_UseDelaunayMesh: 0
 --- !u!60 &1852969883290066797
@@ -416,11 +427,15 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.9818743, y: 4.3610306}
-      - {x: 0.31727898, y: 4.020062}
-      - {x: -0.16744536, y: 4.0099277}
-      - {x: -0.35175776, y: 3.5150065}
-      - {x: 0.23341012, y: 3.4428837}
-      - {x: 0.9654287, y: 3.751034}
+      - {x: 0.6473472, y: 4.334475}
+      - {x: 0.36151958, y: 4.08626}
+      - {x: 0.13615131, y: 4.083063}
+      - {x: -0.24225926, y: 3.9823647}
+      - {x: -0.5328859, y: 3.5268192}
+      - {x: -0.16706523, y: 3.3913853}
+      - {x: 0.42912686, y: 3.4517798}
+      - {x: 0.76373136, y: 3.6854632}
+      - {x: 1.2100742, y: 3.6976569}
       - {x: 1.3853464, y: 3.981604}
   m_UseDelaunayMesh: 0
 --- !u!1 &1406909048052455241

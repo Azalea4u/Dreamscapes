@@ -39,6 +39,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI distance_TXT;
+	[SerializeField] private AudioSource hitCloud_SFX;
 
     private void Start()
 	{

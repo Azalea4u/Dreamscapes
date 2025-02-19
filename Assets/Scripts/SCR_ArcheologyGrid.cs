@@ -246,12 +246,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	{
 		Vector2Int hitPos = playerPosition;
 
-		// Changes the pitch in SFX
-        float minPitch = -0.15f;
-		float maxPitch = 0.5f;
-        hitStoneSFX.pitch = Random.Range(minPitch, maxPitch);
-		hitStoneSFX.Play();
-
 		// Vectors for which tiles to check about the hit position
 		// z value is how much tile damage it should deal
 		Vector3Int[] checks = {
