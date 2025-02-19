@@ -18,6 +18,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     //good luck =(
     [SerializeField] string fileName;
+    string filePath;
 
     [System.Serializable]
     class slotSlot {
@@ -32,10 +33,17 @@ public class Scr_LeaderBoard : MonoBehaviour {
     slotList saveSlots = new slotList();
 
     void Start() {
-        //print(Application.streamingAssetsPath);
-        print(Application.persistentDataPath);
-        
-        saveSlots = JsonUtility.FromJson<slotList>(Application.dataPath + "/StreamingAssets/" + fileName + ".txt");
+        filePath = Path.Combine(Application.persistentDataPath, "JSON-Files(Txt)", fileName + ".txt");
+		//print(Application.streamingAssetsPath);
+		//print(Application.persistentDataPath);
+
+		using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
+            using (StreamReader read = new StreamReader(stream)) {
+                saveSlots = JsonUtility.FromJson<slotList>(read.ReadToEnd());
+            }
+        }
+
+        //saveSlots = JsonUtility.FromJson<slotList>(Application.dataPath + "/StreamingAssets/" + fileName + ".txt");
 
         for (int i = 0; i < slots.Length; i++) {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
@@ -98,7 +106,14 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			}
 		}
 
-        File.WriteAllText(Application.dataPath + "/StreamingAssets/" + fileName + ".txt", JsonUtility.ToJson(saveSlots));
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        using (FileStream stream = new FileStream(filePath, FileMode.Create)) {
+            using (StreamWriter write = new StreamWriter(stream)) {
+                write.Write(JsonUtility.ToJson(saveSlots, true));
+            }
+        }
+
+        //File.WriteAllText(Application.dataPath + "/StreamingAssets/" + fileName + ".txt", JsonUtility.ToJson(saveSlots));
 		//File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
 		//AssetDatabase.Refresh();
 	}
