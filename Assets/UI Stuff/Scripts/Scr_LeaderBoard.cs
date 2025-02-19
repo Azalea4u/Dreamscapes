@@ -33,7 +33,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
     slotList saveSlots = new slotList();
 
     void Start() {
-        filePath = Path.Combine(Application.persistentDataPath, "JSON-Files(Txt)", fileName + ".txt");
+		filePath = Path.Combine(Application.persistentDataPath, "JSON-Files(Txt)", fileName + ".txt");
+		Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 		//print(Application.streamingAssetsPath);
 		//print(Application.persistentDataPath);
 
@@ -106,7 +107,6 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			}
 		}
 
-        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
         using (FileStream stream = new FileStream(filePath, FileMode.Create)) {
             using (StreamWriter write = new StreamWriter(stream)) {
                 write.Write(JsonUtility.ToJson(saveSlots, true));
