@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 128123877959457166, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1233208824997034105, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
       propertyPath: m_Name
       value: Leaderboard
@@ -209,10 +213,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4107062972736237430, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219776153375777550, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

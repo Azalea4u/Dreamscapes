@@ -9,6 +9,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] GameObject createPanel;
     [SerializeField] GameObject continueBtn;
     [SerializeField] GameObject againBtn;
+    [SerializeField] GameObject loserBtn;
     [SerializeField] GameObject loserpanel;
     [SerializeField] Scr_BoardSlot[] slots;
     [SerializeField] Sprite[] sprites;
@@ -16,7 +17,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
     int newScore;
 
     //good luck >=)
-    [SerializeField] TextAsset info;
+    [SerializeField] string fileName;
+
     [System.Serializable]
     class slotSlot {
         public string i;
@@ -30,7 +32,10 @@ public class Scr_LeaderBoard : MonoBehaviour {
     slotList saveSlots = new slotList();
 
     void Start() {
-        saveSlots = JsonUtility.FromJson<slotList>(info.text);
+        //print(Application.streamingAssetsPath);
+        print(Application.persistentDataPath);
+        
+        saveSlots = JsonUtility.FromJson<slotList>(Application.dataPath + "/StreamingAssets/" + fileName + ".txt");
 
         for (int i = 0; i < slots.Length; i++) {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
@@ -64,13 +69,6 @@ public class Scr_LeaderBoard : MonoBehaviour {
         //highScore();
     }
 
-	IEnumerator loserCoroutine() {
-		yield return new WaitForSeconds(3);
-		loserpanel.SetActive(false);
-		continueBtn.SetActive(true);
-		againBtn.SetActive(true);
-	}
-
 	void saveStuff() {
 		for (int i = 0; i < slots.Length; i++) {
 			saveSlots.slot[i].s = int.Parse(slots[i].scoreTxt.text);
@@ -100,7 +98,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			}
 		}
 
-		File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
+        File.WriteAllText(Application.dataPath + "/StreamingAssets/" + fileName + ".txt", JsonUtility.ToJson(saveSlots));
+		//File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
 		//AssetDatabase.Refresh();
 	}
 
@@ -113,7 +112,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     public void againClick() {
         saveStuff();
 
-        switch (info.name) {
+        switch (fileName) {
             case "Archeology":
 				SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
 				break;
@@ -129,6 +128,13 @@ public class Scr_LeaderBoard : MonoBehaviour {
         }
     }
 
+    public void loserQuitClick() {
+		loserpanel.SetActive(false);
+        loserBtn.SetActive(false);
+		continueBtn.SetActive(true);
+		againBtn.SetActive(true);
+	}
+
     public void createClick(Image img) {
         createSlot(img, newScore);
 
@@ -137,6 +143,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		againBtn.SetActive(true);
 	}
 
+    //fix this, just this, well proably some save stuff
     void createSlot(Image img, int score, int index = 0) {
         //index; doesn't work so I just do this, theres probably an easier way...
 		for (index = index; index < slots.Length; index++) {
@@ -148,27 +155,27 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
 				switch (slots[index].slotImg.sprite.name) {
 					case "CuteDoor_0":
-						tempImg.sprite = sprites[0];
+                        slots[index].changeSlot(sprites[0], score);
 						break;
 					case "DwindlingDoor_0":
-						tempImg.sprite = sprites[1];
+						slots[index].changeSlot(sprites[1], score);
 						break;
 					case "PaintDoor_0":
-						tempImg.sprite = sprites[2];
+						slots[index].changeSlot(sprites[2], score);
 						break;
 					case "SpaceDoor_0":
-						tempImg.sprite = sprites[3];
+						slots[index].changeSlot(sprites[3], score);
 						break;
 					case "TrippyDoor_0":
-						tempImg.sprite = sprites[4];
+						slots[index].changeSlot(sprites[4], score);
 						break;
 					case "Vintage_0":
-						tempImg.sprite = sprites[5];
+						slots[index].changeSlot(sprites[5], score);
 						break;
 				}
 
 				tempScore = int.Parse(slots[index].scoreTxt.text);
-                slots[index].changeSlot(img, score);
+                slots[index].changeSlot(img.sprite, score);
                 createSlot(tempImg, tempScore, index + 1);
                 return;
 			}
@@ -184,7 +191,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     void loser() {
         loserpanel.SetActive(true);
         loserpanel.GetComponentInChildren<TextMeshProUGUI>().text = "Your score: " + newScore;
-        StartCoroutine(loserCoroutine());
+        loserBtn.SetActive(true);
     }
 
     public void endGame(int score) {
