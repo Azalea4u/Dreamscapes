@@ -85,7 +85,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!1 &1069148099198239731
 GameObject:
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 6968378462510633163}
   - component: {fileID: 2489802626965228432}
   m_Layer: 0
-  m_Name: BigCloud
+  m_Name: PR_BigCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,12 +188,15 @@ MonoBehaviour:
   usedSpeed: {x: 0, y: 0, z: 0}
   faceTowardsCenter: 0
   moveTowardsPlayer: 0
+  moveWith: {fileID: 0}
+  moveTowards: {fileID: 0}
   moveSpeed: 0
   doesDamage: 0
   birdSlowdown: 0
   slowDownMovement: 0.22
   bounce: 1
   destroyOnHit: 0
+  destroyHeight: 0
 --- !u!61 &2489802626965228432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -325,7 +328,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!1 &5239993972984516451
 GameObject:
@@ -412,7 +415,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!1 &6573445003956805919
 GameObject:
@@ -499,7 +502,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!1 &8094011478240184775
 GameObject:
@@ -586,5 +589,5 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0

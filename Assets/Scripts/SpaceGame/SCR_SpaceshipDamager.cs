@@ -29,6 +29,7 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 	public bool beenHit { get; private set; }
 	// if obstacle should destroy itself after hiting the ship
 	public bool destroyOnHit;
+	public float destroyHeight;
 
 	private void Start()
 	{
@@ -43,6 +44,11 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (SCR_SpaceGame_Manager.instance.GetSpaceship() == null)
+		{
+			return;
+		}
+
 		if (moveTowards != null)
 		{
 			usedSpeed = Vector3.RotateTowards(usedSpeed, (moveTowards.position - transform.position).normalized * speed.magnitude, moveSpeed * Time.fixedDeltaTime, speed.magnitude);
@@ -57,7 +63,8 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 		{
 			transform.position += moveWith.GetSpeed() * Time.fixedDeltaTime;
 		}
-		if (transform.position.y <= Camera.main.transform.position.y - 7.0f)
+
+		if (transform.position.y + destroyHeight <= Camera.main.transform.position.y - 7.0f)
 		{
 			Destroy(gameObject);
 		}
@@ -76,5 +83,11 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y + destroyHeight), 0.1f);
 	}
 }

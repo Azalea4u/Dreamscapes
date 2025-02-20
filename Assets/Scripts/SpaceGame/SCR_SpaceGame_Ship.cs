@@ -4,6 +4,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 {
 	[Header("Ship Visual Stuff")]
 	[SerializeField] private SpriteRenderer visuals;
+	[SerializeField] private SpriteMask cloudMask;
 	[SerializeField] private Sprite[] damageStates;
 	[SerializeField] private int health = 3;
 	[SerializeField] private GameObject[] birdVisuals;
@@ -65,6 +66,15 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 				MoveRight();
 			}
 		}
+
+		if (desiredAscentSpeed < shipAscentSpeed)
+		{
+			cloudMask.alphaCutoff -= Time.deltaTime;
+		} else
+		{
+			cloudMask.alphaCutoff += Time.deltaTime;
+		}
+		cloudMask.alphaCutoff = Mathf.Clamp(cloudMask.alphaCutoff, 0.02f, 1.0f);
 
 		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, (1.0f - (((float)birds/3.0f) * 0.5f)) * desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
 

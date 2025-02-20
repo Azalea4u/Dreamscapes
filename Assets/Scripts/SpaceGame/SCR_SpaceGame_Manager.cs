@@ -20,6 +20,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	private float spawnTimer;
 	[SerializeField] private int shipDistance;
 	public float difficultyScale = 1.0f;
+	private int prevSpawnIndex;
 
 	[Header("Death State")]
 	[SerializeField] public Animator shipAnimator;
@@ -63,7 +64,14 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
 			Obstacle tospawn = getObstacleToSpawn();
 
-			Vector3 spawnPosition = new Vector3(tospawn.spawnPositions[UnityEngine.Random.Range(0, tospawn.spawnPositions.Length)], Camera.main.transform.position.y + 10.0f, 0.0f);
+			int spawnIndex = UnityEngine.Random.Range(0, tospawn.spawnPositions.Length);
+			if (spawnIndex == prevSpawnIndex)
+			{
+				return;
+			}
+			prevSpawnIndex = spawnIndex;
+
+			Vector3 spawnPosition = new Vector3(tospawn.spawnPositions[spawnIndex], Camera.main.transform.position.y + 10.0f, 0.0f);
 			Instantiate(tospawn.prefabToSpawn, spawnPosition, Quaternion.identity);
 
             spawnTimer = (spawnTimerLength / difficultyScale) + tospawn.spawnTimeDelay;

@@ -171,29 +171,31 @@ MonoBehaviour:
     stopSpawningHeight: 600
     prefabToSpawn: {fileID: 1199473770017651000, guid: 5f1f882d476f97f4e8d24ea52410310e, type: 3}
     spawnPositions:
-    - -2
-    - 1.5
+    - -3
+    - 2
+    - -0.25
     spawnTimeDelay: 0
   - startSpawningHeight: 500
     stopSpawningHeight: 900
     prefabToSpawn: {fileID: 1069148099198239731, guid: 889feadb80cc76e44a63059e8e17591b, type: 3}
     spawnPositions:
     - -1.5
-    - 1.75
+    - 1
     spawnTimeDelay: 0
   - startSpawningHeight: 800
     stopSpawningHeight: 1200
     prefabToSpawn: {fileID: 1069148099198239731, guid: 4af8ee7185763604cb8cd0d497f5189e, type: 3}
     spawnPositions:
-    - -3.5
-    - 3
+    - -2.5
+    - 2.5
+    - 0
     spawnTimeDelay: 0
   - startSpawningHeight: 1100
     stopSpawningHeight: 0
     prefabToSpawn: {fileID: 1069148099198239731, guid: 4c1c258168f8d604cb0a9e48712a8201, type: 3}
     spawnPositions:
     - -1.75
-    - 2.5
+    - 0.8
     spawnTimeDelay: 0
   - startSpawningHeight: 200
     stopSpawningHeight: 800
@@ -214,7 +216,7 @@ MonoBehaviour:
     - -1
     spawnTimeDelay: 0
   - startSpawningHeight: 500
-    stopSpawningHeight: 0
+    stopSpawningHeight: 1
     prefabToSpawn: {fileID: 708400507639630161, guid: 358ec5d132d64b642b214c65960f655b, type: 3}
     spawnPositions:
     - -2.5
@@ -230,6 +232,13 @@ MonoBehaviour:
     - -2.5
     - 2.5
     spawnTimeDelay: 0
+  - startSpawningHeight: 500
+    stopSpawningHeight: 0
+    prefabToSpawn: {fileID: 7790432612140343660, guid: 22672cf79f9137e42b26c0b603cc4c82, type: 3}
+    spawnPositions:
+    - -3.5
+    - 3.5
+    spawnTimeDelay: -0.2
   spawnTimerLength: 2
   shipDistance: 0
   difficultyScale: 1
@@ -316,7 +325,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 2f3918882ac91a24292a286d8c8873c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -386,7 +395,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1860258362}
   m_Father: {fileID: 985616886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &166821050
@@ -1678,7 +1688,7 @@ MonoBehaviour:
   shipPosition: 0
   shipVelocity: 0
   shipBounds: 2.5
-  shipAscentSpeed: 4
+  shipAscentSpeed: 5
   shipMovementSpeed: 3
   usedAscentSpeed: 0
 --- !u!1 &1051240115
@@ -2293,7 +2303,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -4
   m_Sprite: {fileID: -1824869177, guid: 7165fb07ba198ff4d99d6ff448626abe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2461,6 +2471,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1860258361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860258362}
+  - component: {fileID: 1860258363}
+  m_Layer: 0
+  m_Name: SpaceshipThroughClouds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860258362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860258361}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 166821049}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!331 &1860258363
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860258361}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 2f3918882ac91a24292a286d8c8873c6, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
+  m_MaskSource: 0
 --- !u!1 &1871982734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,7 +2796,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -4
   m_Sprite: {fileID: -1824869177, guid: 7165fb07ba198ff4d99d6ff448626abe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -3081,7 +3178,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -4
   m_Sprite: {fileID: -1824869177, guid: 7165fb07ba198ff4d99d6ff448626abe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
