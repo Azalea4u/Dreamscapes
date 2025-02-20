@@ -347,6 +347,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
     private void ShowGameWinScreen()
     {
 		running = false;
+		GameManager.instance.PauseGame(true);
 		leaderboard.SetActive(true);
 		leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)overallTime);
         //GameWin_Panel.SetActive(true);

@@ -288,6 +288,4 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
         GameManager.instance.PauseGame(true);
     }
-
-
 }
