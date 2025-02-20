@@ -209,6 +209,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
     }
 
     public void endGame(int score) {
+        Start();
+
         newScore = score;
         foreach (Scr_BoardSlot slot in slots) {
             if (int.Parse(slot.scoreTxt.text) < score) {

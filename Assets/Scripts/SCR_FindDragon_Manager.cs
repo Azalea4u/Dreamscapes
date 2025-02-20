@@ -253,7 +253,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
             // would put here stuff I want to happen after the dragon is found
             dragonsFound += 1;
-            timeLeft += 3;
+            timeLeft += 2;
             useTimer = false;
 			StartCoroutine(resetGameCoroutine());
         }
@@ -272,9 +272,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
         // Do whatever here to make the game end
         findDragon_TXT.text = "You found " + dragonsFound + "!";
-        WinScreen_Panel.SetActive(true);
-        //leaderBoard.SetActive(true);
-        //leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
+        //WinScreen_Panel.SetActive(true);
+        leaderBoard.SetActive(true);
+        leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
         StartOver_BTN.interactable = false;
         Exit_BTN.interactable = false;
         StartCoroutine(WaitBeforeInput());
