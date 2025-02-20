@@ -9,6 +9,10 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 	[SerializeField] private bool faceTowardsCenter;
 	// if the obstacle should move towards the player
 	[SerializeField] private bool moveTowardsPlayer;
+	// moves with another spacehsip damager
+	[SerializeField] private SCR_SpaceshipDamager moveWith;
+	// an object to move towards instead of the player
+	[SerializeField] private Transform moveTowards;
 	// speed that obstacle should move towards the player
 	[SerializeField] private float moveSpeed;
 	// if the obstacle should damage the ship
@@ -39,16 +43,29 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (moveTowardsPlayer)
+		if (moveTowards != null)
+		{
+			usedSpeed = Vector3.RotateTowards(usedSpeed, (moveTowards.position - transform.position).normalized * speed.magnitude, moveSpeed * Time.fixedDeltaTime, speed.magnitude);
+		}
+		else if (moveTowardsPlayer)
 		{
 			usedSpeed = Vector3.RotateTowards(usedSpeed, (SCR_SpaceGame_Manager.instance.GetSpaceship().transform.position - transform.position).normalized * speed.magnitude, moveSpeed * Time.fixedDeltaTime, speed.magnitude);
 		}
 
 		transform.position += usedSpeed * Time.fixedDeltaTime;
+		if (moveWith != null)
+		{
+			transform.position += moveWith.GetSpeed() * Time.fixedDeltaTime;
+		}
 		if (transform.position.y <= Camera.main.transform.position.y - 7.0f)
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	public Vector3 GetSpeed()
+	{
+		return speed;
 	}
 
 	public void HitShip()

@@ -52,7 +52,7 @@ MonoBehaviour:
   faceTowardsCenter: 1
   moveTowardsPlayer: 0
   moveSpeed: 0
-  doesDamage: 1
+  doesDamage: 0
   birdSlowdown: 1
   slowDownMovement: 0
   bounce: 2

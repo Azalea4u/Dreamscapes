@@ -105,6 +105,10 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	{
 		birds = Mathf.Clamp(birds + 1,0,3);
 		birdVisuals[birds - 1].SetActive(true);
+		if (birds == 3)
+		{
+			DamageShip();		
+		}
 	}
 
 	public void RemoveBird()

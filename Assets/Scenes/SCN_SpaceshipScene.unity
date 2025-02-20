@@ -159,7 +159,7 @@ MonoBehaviour:
     - -1
     - 1
     - 2
-    spawnTimeDelay: 0
+    spawnTimeDelay: -0.2
   - startSpawningHeight: 0
     stopSpawningHeight: 300
     prefabToSpawn: {fileID: 1069148099198239731, guid: 8617272e51925f44d9cbad25cca71c68, type: 3}
@@ -167,32 +167,67 @@ MonoBehaviour:
     - -1.5
     - 1.5
     spawnTimeDelay: 0
-  - startSpawningHeight: 299
+  - startSpawningHeight: 200
     stopSpawningHeight: 600
     prefabToSpawn: {fileID: 1199473770017651000, guid: 5f1f882d476f97f4e8d24ea52410310e, type: 3}
     spawnPositions:
     - -2
     - 1.5
     spawnTimeDelay: 0
-  - startSpawningHeight: 599
+  - startSpawningHeight: 500
     stopSpawningHeight: 900
     prefabToSpawn: {fileID: 1069148099198239731, guid: 889feadb80cc76e44a63059e8e17591b, type: 3}
     spawnPositions:
     - -1.5
     - 1.75
     spawnTimeDelay: 0
-  - startSpawningHeight: 899
+  - startSpawningHeight: 800
     stopSpawningHeight: 1200
     prefabToSpawn: {fileID: 1069148099198239731, guid: 4af8ee7185763604cb8cd0d497f5189e, type: 3}
     spawnPositions:
     - -3.5
     - 3
     spawnTimeDelay: 0
-  - startSpawningHeight: 1199
+  - startSpawningHeight: 1100
     stopSpawningHeight: 0
     prefabToSpawn: {fileID: 1069148099198239731, guid: 4c1c258168f8d604cb0a9e48712a8201, type: 3}
     spawnPositions:
     - -1.75
+    - 2.5
+    spawnTimeDelay: 0
+  - startSpawningHeight: 200
+    stopSpawningHeight: 800
+    prefabToSpawn: {fileID: 708400507639630161, guid: 358ec5d132d64b642b214c65960f655b, type: 3}
+    spawnPositions:
+    - 0
+    - 2
+    - -2
+    spawnTimeDelay: 0
+  - startSpawningHeight: 0
+    stopSpawningHeight: 600
+    prefabToSpawn: {fileID: 708400507639630161, guid: cb3268eea998d3d48a6c5d5debdc6a3c, type: 3}
+    spawnPositions:
+    - -2.5
+    - 2.5
+    - 1
+    - 0
+    - -1
+    spawnTimeDelay: 0
+  - startSpawningHeight: 500
+    stopSpawningHeight: 0
+    prefabToSpawn: {fileID: 708400507639630161, guid: 358ec5d132d64b642b214c65960f655b, type: 3}
+    spawnPositions:
+    - -2.5
+    - 2.5
+    - 1
+    - 0
+    - -1
+    spawnTimeDelay: -0.2
+  - startSpawningHeight: 900
+    stopSpawningHeight: 0
+    prefabToSpawn: {fileID: 2006241274663464787, guid: 22c3b7ebbd387924cb408ff5c5fc0602, type: 3}
+    spawnPositions:
+    - -2.5
     - 2.5
     spawnTimeDelay: 0
   spawnTimerLength: 2

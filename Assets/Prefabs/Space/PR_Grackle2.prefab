@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2688038394559754060}
   - component: {fileID: 992341763930194075}
   m_Layer: 0
-  m_Name: PR_Grackle
+  m_Name: PR_Grackle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,8 +50,8 @@ MonoBehaviour:
   speed: {x: 0, y: -1, z: 0}
   usedSpeed: {x: 0, y: 0, z: 0}
   faceTowardsCenter: 0
-  moveTowardsPlayer: 0
-  moveSpeed: 0
+  moveTowardsPlayer: 1
+  moveSpeed: 1
   doesDamage: 1
   birdSlowdown: 0
   slowDownMovement: 0
