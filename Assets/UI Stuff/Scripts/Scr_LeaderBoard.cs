@@ -121,12 +121,14 @@ public class Scr_LeaderBoard : MonoBehaviour {
     public void continueClick() {
         saveStuff();
 
+        GameManager.instance.PauseGame(false);
 		SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
 	}
 
     public void againClick() {
         saveStuff();
 
+        GameManager.instance.PauseGame(false);
         switch (fileName) {
             case "Archeology":
 				SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
@@ -150,8 +152,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		againBtn.SetActive(true);
 	}
 
-    public void createClick(Sprite img) {
-        createSlot(img, newScore);
+    public void createClick(Image img) {
+        createSlot(img.sprite, newScore);
 
         createPanel.SetActive(false);
         continueBtn.SetActive(true);
@@ -169,26 +171,28 @@ public class Scr_LeaderBoard : MonoBehaviour {
                 tempSprite = slots[index].slotImg.sprite;
 				tempScore = int.Parse(slots[index].scoreTxt.text);
 
-				switch (slots[index].slotImg.sprite.name) {
-					case "CuteDoor_0":
-                        slots[index].changeSlot(sprites[0], score);
-						break;
-					case "DwindlingDoor_0":
-						slots[index].changeSlot(sprites[1], score);
-						break;
-					case "PaintDoor_0":
-						slots[index].changeSlot(sprites[2], score);
-						break;
-					case "SpaceDoor_0":
-						slots[index].changeSlot(sprites[3], score);
-						break;
-					case "TrippyDoor_0":
-						slots[index].changeSlot(sprites[4], score);
-						break;
-					case "Vintage_0":
-						slots[index].changeSlot(sprites[5], score);
-						break;
-				}
+                //switch (slots[index].slotImg.sprite.name) {
+                //	case "CuteDoor_0":
+                //      slots[index].changeSlot(sprites[0], score);
+                //		break;
+                //	case "DwindlingDoor_0":
+                //		slots[index].changeSlot(sprites[1], score);
+                //		break;
+                //	case "PaintDoor_0":
+                //		slots[index].changeSlot(sprites[2], score);
+                //		break;
+                //	case "SpaceDoor_0":
+                //		slots[index].changeSlot(sprites[3], score);
+                //		break;
+                //	case "TrippyDoor_0":
+                //		slots[index].changeSlot(sprites[4], score);
+                //		break;
+                //	case "Vintage_0":
+                //		slots[index].changeSlot(sprites[5], score);
+                //		break;
+                //}
+
+                slots[index].changeSlot(img, score);
 
                 createSlot(tempSprite, tempScore, index + 1);
                 return;

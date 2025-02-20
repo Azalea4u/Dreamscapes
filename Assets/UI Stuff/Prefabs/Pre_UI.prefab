@@ -723,9 +723,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scr_ScreenManager, Assembly-CSharp
-        m_MethodName: OctopusClick
+      - m_Target: {fileID: 1434358672307754890}
+        m_TargetAssemblyTypeName: SCR_MainMenuBTN, Assembly-CSharp
+        m_MethodName: Octopus_BTN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1404,9 +1404,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scr_ScreenManager, Assembly-CSharp
-        m_MethodName: ArcheologyClick
+      - m_Target: {fileID: 1434358672307754890}
+        m_TargetAssemblyTypeName: SCR_MainMenuBTN, Assembly-CSharp
+        m_MethodName: Archeology_BTN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1712,9 +1712,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scr_ScreenManager, Assembly-CSharp
-        m_MethodName: RocketClick
+      - m_Target: {fileID: 1434358672307754890}
+        m_TargetAssemblyTypeName: SCR_MainMenuBTN, Assembly-CSharp
+        m_MethodName: SpaceShip_BTN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2007,9 +2007,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scr_ScreenManager, Assembly-CSharp
-        m_MethodName: DragonClick
+      - m_Target: {fileID: 1434358672307754890}
+        m_TargetAssemblyTypeName: SCR_MainMenuBTN, Assembly-CSharp
+        m_MethodName: Finding_BTN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
