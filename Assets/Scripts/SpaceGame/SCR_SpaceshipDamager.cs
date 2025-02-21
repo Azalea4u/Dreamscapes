@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SCR_SpaceshipDamager : MonoBehaviour
@@ -57,7 +58,14 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 
 		if (destroyOnHit)
 		{
+			StartCoroutine(WaitForCollide());
 			Destroy(gameObject);
 		}
+	}
+
+	private IEnumerator WaitForCollide()
+	{
+		yield return new WaitForSeconds(0.25f);
+
 	}
 }
