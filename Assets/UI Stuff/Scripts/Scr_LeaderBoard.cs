@@ -120,27 +120,26 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     public void continueClick() {
         saveStuff();
-
+        
         GameManager.instance.PauseGame(false);
-		SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
 	}
 
     public void againClick() {
         saveStuff();
 
-        GameManager.instance.PauseGame(false);
         switch (fileName) {
             case "Archeology":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
+                Scr_ScreenManager.instance.ArcheologyClick();
 				break;
             case "Find":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
+                Scr_ScreenManager.instance.DragonClick();
 				break;
             case "Octopus":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
+                Scr_ScreenManager.instance.OctopusClick();
 				break;
             case "Rocket":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
+                Scr_ScreenManager.instance.RocketClick();
 				break;
         }
     }
