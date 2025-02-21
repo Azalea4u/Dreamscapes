@@ -48,6 +48,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[Header("Game State")]
 	[SerializeField] private GameObject GameWin_Panel;
 	[SerializeField] private GameObject GameOver_Panel;
+	[SerializeField] private GameObject leaderboard;
 
     void Start()
     {
@@ -55,6 +56,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		Popup_Panel.SetActive(false);
         GameWin_Panel.SetActive(false);
         GameOver_Panel.SetActive(false);
+		leaderboard.SetActive(false);
 		TimeTXT.text = "" + (int)time;
 		ScoreTXT.text = "Score " + (int)points;
 		running = true;
@@ -343,7 +345,10 @@ public class SCR_ArcheologyGrid : MonoBehaviour
     private void ShowGameWinScreen()
     {
 		running = false;
-        GameWin_Panel.SetActive(true);
+		GameManager.instance.PauseGame(true);
+		leaderboard.SetActive(true);
+		leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)time);
+        //GameWin_Panel.SetActive(true);
 		//SRC_AudioManager.instance.Play_GameWon();
         //GameManager.instance.PauseGame(true);
     }

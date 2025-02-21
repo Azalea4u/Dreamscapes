@@ -1,1 +1,0 @@
-{"slot":[{"i":"space","s":11},{"i":"vintage","s":11},{"i":"cute","s":10},{"i":"dwindling","s":10},{"i":"paint","s":10}]}
