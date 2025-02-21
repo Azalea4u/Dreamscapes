@@ -4,7 +4,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 {
 	[Header("Ship Visual Stuff")]
 	[SerializeField] private SpriteRenderer visuals;
-	[SerializeField] private SpriteMask cloudMask;
+	[SerializeField] private SpriteRenderer withinCloudsVisuals;
 	[SerializeField] private Sprite[] damageStates;
 	[SerializeField] private int health = 3;
 	[SerializeField] private GameObject[] birdVisuals;
@@ -26,7 +26,8 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	{
 		desiredAscentSpeed = shipAscentSpeed;
 		visuals.sprite = damageStates[health];
-        foreach (var bird in birdVisuals)
+		withinCloudsVisuals.sprite = damageStates[health];
+		foreach (var bird in birdVisuals)
         {
 			bird.SetActive(false);
         }
@@ -67,15 +68,6 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 			}
 		}
 
-		if (desiredAscentSpeed < shipAscentSpeed)
-		{
-			cloudMask.alphaCutoff -= Time.deltaTime;
-		} else
-		{
-			cloudMask.alphaCutoff += Time.deltaTime;
-		}
-		cloudMask.alphaCutoff = Mathf.Clamp(cloudMask.alphaCutoff, 0.02f, 1.0f);
-
 		usedAscentSpeed = Mathf.Lerp(usedAscentSpeed, (1.0f - (((float)birds/3.0f) * 0.5f)) * desiredAscentSpeed * SCR_SpaceGame_Manager.instance.difficultyScale, 3.0f * Time.fixedDeltaTime);
 
 		shipVelocity = Mathf.Lerp(shipVelocity, 0.0f, Time.fixedDeltaTime * 5.0f);
@@ -107,7 +99,13 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		{
 			health = 0;
 			ShipDeath();
+			withinCloudsVisuals.gameObject.SetActive(false);
+			foreach(var bird in birdVisuals)
+			{
+				bird.SetActive(false);
+			}
 		}
+		withinCloudsVisuals.sprite = damageStates[health];
 		visuals.sprite = damageStates[health];
 	}
 

@@ -193,7 +193,7 @@ MonoBehaviour:
   moveSpeed: 0
   doesDamage: 0
   birdSlowdown: 0
-  slowDownMovement: 0.22
+  slowDownMovement: 0.2
   bounce: 1
   destroyOnHit: 0
   destroyHeight: 0
