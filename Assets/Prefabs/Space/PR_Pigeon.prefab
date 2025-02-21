@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5655581810529284559
 Transform:
@@ -56,6 +56,7 @@ MonoBehaviour:
   doesDamage: 1
   birdSlowdown: 1
   slowDownMovement: 0
+  collide_SFX: {fileID: 0}
   bounce: 2
   destroyOnHit: 1
 --- !u!61 &166274999399084194
@@ -191,16 +192,16 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
-  m_Resource: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a1a34c18e4d1c4447979d1483730dfee, type: 3}
+  m_Resource: {fileID: 8300000, guid: a1a34c18e4d1c4447979d1483730dfee, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.58
+  m_Volume: 0.61
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 133
+  Priority: 142
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

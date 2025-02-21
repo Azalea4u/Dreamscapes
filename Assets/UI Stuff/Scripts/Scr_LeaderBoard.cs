@@ -139,7 +139,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     void createSlot(Image img, int score, int index = 0) {
         //index; doesn't work so I just do this, theres probably an easier way...
-		for (index = index; index < slots.Length; index++) {
+		for (index = 0; index < slots.Length; index++) {
             Image tempImg;
             int tempScore;
 
