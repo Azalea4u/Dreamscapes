@@ -49,7 +49,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private GameObject GameWin_Panel;
 	[SerializeField] private GameObject GameOver_Panel;
 	[SerializeField] private GameObject leaderboard;
-	private float overallTime;
 
     void Start()
     {
@@ -125,7 +124,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		if (running)
 		{ 
 			time -= Time.deltaTime;
-			overallTime += Time.deltaTime;
 			TimeTXT.text = "" + (int)time;
 
 			if (time <= 0.0f)
@@ -349,7 +347,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		running = false;
 		GameManager.instance.PauseGame(true);
 		leaderboard.SetActive(true);
-		leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)overallTime);
+		leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)time);
         //GameWin_Panel.SetActive(true);
 		//SRC_AudioManager.instance.Play_GameWon();
         //GameManager.instance.PauseGame(true);
