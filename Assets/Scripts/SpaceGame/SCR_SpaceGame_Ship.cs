@@ -10,6 +10,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	[SerializeField] private int birds = 0;
 	[SerializeField] private float birdTimerLength = 5.0f;
     [SerializeField] private AudioSource hitCloud_SFX;
+	[SerializeField] private AudioSource collideBird_SFX;
 
     private float birdTimer;
 
@@ -105,6 +106,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 	public void AddBird()
 	{
+		collideBird_SFX.Play();
 		birds = Mathf.Clamp(birds + 1,0,3);
 		birdVisuals[birds - 1].SetActive(true);
 	}
