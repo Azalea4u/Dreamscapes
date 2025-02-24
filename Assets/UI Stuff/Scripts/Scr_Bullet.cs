@@ -16,26 +16,24 @@ public class Scr_Bullet : MonoBehaviour {
 		if (transform.position.y >= 6.0f)
 		{
             Destroy(gameObject);
-            ps.Play();
+            Instantiate(ps, visuals.position, Quaternion.identity);
         }
 		visuals.Rotate(Vector3.forward, Time.deltaTime * -100);
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) 
     {
-        ps.Play();
         if (other.GetComponent<Scr_Bomb>())
         {
-            Instantiate(ps,other.transform);
             Destroy(gameObject);
-            ps.Play();
+            //Instantiate(ps, other.transform);
         }
         if (other.GetComponents<Scr_OctoEnemy>().Length > 0) {
 
             other.GetComponent<Scr_OctoEnemy>().damage(1);
             
             Destroy(gameObject);
-            ps.Play();
+            Instantiate(ps, other.transform);
         }
 	}
 }
