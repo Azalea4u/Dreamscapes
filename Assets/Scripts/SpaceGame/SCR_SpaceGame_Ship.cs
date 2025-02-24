@@ -4,6 +4,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 {
 	[Header("Ship Visual Stuff")]
 	[SerializeField] private SpriteRenderer visuals;
+	[SerializeField] private SpriteRenderer withinCloudsVisuals;
 	[SerializeField] private Sprite[] damageStates;
 	[SerializeField] private int health = 3;
 	[SerializeField] private GameObject[] birdVisuals;
@@ -28,7 +29,8 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	{
 		desiredAscentSpeed = shipAscentSpeed;
 		visuals.sprite = damageStates[health];
-        foreach (var bird in birdVisuals)
+		withinCloudsVisuals.sprite = damageStates[health];
+		foreach (var bird in birdVisuals)
         {
 			bird.SetActive(false);
         }
@@ -100,7 +102,13 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		{
 			health = 0;
 			ShipDeath();
+			withinCloudsVisuals.gameObject.SetActive(false);
+			foreach(var bird in birdVisuals)
+			{
+				bird.SetActive(false);
+			}
 		}
+		withinCloudsVisuals.sprite = damageStates[health];
 		visuals.sprite = damageStates[health];
 	}
 
@@ -109,6 +117,10 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		collideBird_SFX.Play();
 		birds = Mathf.Clamp(birds + 1,0,3);
 		birdVisuals[birds - 1].SetActive(true);
+		if (birds == 3)
+		{
+			DamageShip();		
+		}
 	}
 
 	public void RemoveBird()
