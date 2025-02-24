@@ -16,7 +16,7 @@ public class Scr_Bullet : MonoBehaviour {
 		if (transform.position.y >= 6.0f)
 		{
             Destroy(gameObject);
-            Instantiate(ps, visuals.position, Quaternion.identity);
+            //Instantiate(ps, visuals.position, Quaternion.identity);
         }
 		visuals.Rotate(Vector3.forward, Time.deltaTime * -100);
 	}
@@ -26,7 +26,7 @@ public class Scr_Bullet : MonoBehaviour {
         if (other.GetComponent<Scr_Bomb>())
         {
             Destroy(gameObject);
-            //Instantiate(ps, other.transform);
+            Instantiate(ps, other.transform);
         }
         if (other.GetComponents<Scr_OctoEnemy>().Length > 0) {
 
