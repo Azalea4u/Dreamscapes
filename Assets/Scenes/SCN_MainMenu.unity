@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: DreamWare
-  stringAnimationDuration: 2.5
+  stringAnimationDuration: 2
   animatedText: {fileID: 921685204}
   sizeCurve:
     serializedVersion: 2
@@ -172,7 +172,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
-  sizeScale: 85
+  sizeScale: 90
   charAnimationDuration: 0.6
 --- !u!1 &665584382
 GameObject:
@@ -641,6 +641,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 665584387}
+    - target: {fileID: 7794341758510518980, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e2402f771f3988409a8d8b97fbc0ac6, type: 2}
+    - target: {fileID: 7794341758510518980, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6304692374356517980, guid: 9e2402f771f3988409a8d8b97fbc0ac6, type: 2}
+    - target: {fileID: 7794341758510518980, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8261580999691689065, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Name
       value: UI
