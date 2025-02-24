@@ -9,14 +9,17 @@ public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] GameObject createPanel;
     [SerializeField] GameObject continueBtn;
     [SerializeField] GameObject againBtn;
+    [SerializeField] GameObject loserBtn;
     [SerializeField] GameObject loserpanel;
     [SerializeField] Scr_BoardSlot[] slots;
     [SerializeField] Sprite[] sprites;
 
     int newScore;
 
-    //good luck >=)
-    [SerializeField] TextAsset info;
+    //good luck
+    [SerializeField] string fileName;
+    string filePath;
+
     [System.Serializable]
     class slotSlot {
         public string i;
@@ -30,7 +33,18 @@ public class Scr_LeaderBoard : MonoBehaviour {
     slotList saveSlots = new slotList();
 
     void Start() {
-        saveSlots = JsonUtility.FromJson<slotList>(info.text);
+		filePath = Path.Combine(Application.persistentDataPath, "JSON-Files(Txt)", fileName + ".txt");
+		Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+		//print(Application.streamingAssetsPath);
+		//print(Application.persistentDataPath);
+
+		using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
+            using (StreamReader read = new StreamReader(stream)) {
+                saveSlots = JsonUtility.FromJson<slotList>(read.ReadToEnd());
+            }
+        }
+
+        //saveSlots = JsonUtility.FromJson<slotList>(Application.dataPath + "/StreamingAssets/" + fileName + ".txt");
 
         for (int i = 0; i < slots.Length; i++) {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
@@ -59,17 +73,10 @@ public class Scr_LeaderBoard : MonoBehaviour {
             }
         }
 
-        //these are just tests do not uncomment them >=(
+        //these are just tests do not uncomment them
         //loser();
         //highScore();
     }
-
-	IEnumerator loserCoroutine() {
-		yield return new WaitForSeconds(3);
-		loserpanel.SetActive(false);
-		continueBtn.SetActive(true);
-		againBtn.SetActive(true);
-	}
 
 	void saveStuff() {
 		for (int i = 0; i < slots.Length; i++) {
@@ -100,76 +107,105 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			}
 		}
 
-		File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
+        using (FileStream stream = new FileStream(filePath, FileMode.Create)) {
+            using (StreamWriter write = new StreamWriter(stream)) {
+                write.Write(JsonUtility.ToJson(saveSlots, true));
+            }
+        }
+
+        //File.WriteAllText(Application.dataPath + "/StreamingAssets/" + fileName + ".txt", JsonUtility.ToJson(saveSlots));
+		//File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
 		//AssetDatabase.Refresh();
 	}
 
     public void continueClick() {
         saveStuff();
-
-		SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
+        
+        GameManager.instance.PauseGame(false);
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
 	}
 
     public void againClick() {
         saveStuff();
 
-        switch (info.name) {
+        switch (fileName) {
             case "Archeology":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
+                Scr_ScreenManager.instance.ArcheologyClick();
 				break;
             case "Find":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
+                Scr_ScreenManager.instance.DragonClick();
 				break;
             case "Octopus":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
+                Scr_ScreenManager.instance.OctopusClick();
 				break;
             case "Rocket":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
+                Scr_ScreenManager.instance.RocketClick();
 				break;
         }
     }
 
+    public void loserQuitClick() {
+		loserpanel.SetActive(false);
+        loserBtn.SetActive(false);
+		continueBtn.SetActive(true);
+		againBtn.SetActive(true);
+	}
+
     public void createClick(Image img) {
-        createSlot(img, newScore);
+        createSlot(img.sprite, newScore);
 
         createPanel.SetActive(false);
         continueBtn.SetActive(true);
 		againBtn.SetActive(true);
 	}
 
-    void createSlot(Image img, int score, int index = 0) {
+    //oh yeah keyboard...
+    public void letterClick(TextMeshProUGUI letter) {
+        switch (letter.text) {
+            case "Enter":
+                break;
+            case "Backspace":
+                break;
+            default:
+                break;
+        }
+    }
+
+    //leaderboard sorting is here
+    void createSlot(Sprite img, int score, int index = 0) {
         //index; doesn't work so I just do this, theres probably an easier way...
 		for (index = index; index < slots.Length; index++) {
-            Image tempImg;
+            Sprite tempSprite;
             int tempScore;
 
 			if (int.Parse(slots[index].scoreTxt.text) < score) {
-                tempImg = slots[index].slotImg;
-
-				switch (slots[index].slotImg.sprite.name) {
-					case "CuteDoor_0":
-						tempImg.sprite = sprites[0];
-						break;
-					case "DwindlingDoor_0":
-						tempImg.sprite = sprites[1];
-						break;
-					case "PaintDoor_0":
-						tempImg.sprite = sprites[2];
-						break;
-					case "SpaceDoor_0":
-						tempImg.sprite = sprites[3];
-						break;
-					case "TrippyDoor_0":
-						tempImg.sprite = sprites[4];
-						break;
-					case "Vintage_0":
-						tempImg.sprite = sprites[5];
-						break;
-				}
-
+                tempSprite = slots[index].slotImg.sprite;
 				tempScore = int.Parse(slots[index].scoreTxt.text);
-                slots[index].changeSlot(img, score);
-                createSlot(tempImg, tempScore, index + 1);
+
+                switch (img.name) {
+                    case "CuteDoor_0":
+                        slots[index].changeSlot(sprites[0], score);
+                        break;
+                    case "DwindlingDoor_0":
+                        slots[index].changeSlot(sprites[1], score);
+                        break;
+                    case "PaintDoor_0":
+                        slots[index].changeSlot(sprites[2], score);
+                        break;
+                    case "SpaceDoor_0":
+                        slots[index].changeSlot(sprites[3], score);
+                        break;
+                    case "TrippyDoor_0":
+                        slots[index].changeSlot(sprites[4], score);
+                        break;
+                    case "Vintage_0":
+                        slots[index].changeSlot(sprites[5], score);
+                        break;
+                }
+
+                //slots[index].changeSlot(img, score);
+
+                createSlot(tempSprite, tempScore, index + 1);
                 return;
 			}
 		}
@@ -184,10 +220,12 @@ public class Scr_LeaderBoard : MonoBehaviour {
     void loser() {
         loserpanel.SetActive(true);
         loserpanel.GetComponentInChildren<TextMeshProUGUI>().text = "Your score: " + newScore;
-        StartCoroutine(loserCoroutine());
+        loserBtn.SetActive(true);
     }
 
     public void endGame(int score) {
+        Start();
+
         newScore = score;
         foreach (Scr_BoardSlot slot in slots) {
             if (int.Parse(slot.scoreTxt.text) < score) {

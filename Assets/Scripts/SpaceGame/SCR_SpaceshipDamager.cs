@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SCR_SpaceshipDamager : MonoBehaviour
@@ -81,6 +82,7 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 
 		if (destroyOnHit)
 		{
+			StartCoroutine(WaitForCollide());
 			Destroy(gameObject);
 		}
 	}
@@ -89,5 +91,10 @@ public class SCR_SpaceshipDamager : MonoBehaviour
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y + destroyHeight), 0.1f);
+	}
+	private IEnumerator WaitForCollide()
+	{
+		yield return new WaitForSeconds(0.25f);
+
 	}
 }

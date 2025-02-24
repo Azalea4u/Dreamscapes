@@ -27,6 +27,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Score_TXT;
     [SerializeField] private TextMeshProUGUI Timer_TXT;
     [SerializeField] private GameObject leaderBoard;
+    [SerializeField] private AudioSource foundCharacter_SFX;
+    [SerializeField] private AudioSource newRound_SFX;
     
     // using a vector 4 because the bound values of the walls could all be different
     /// <summary>
@@ -252,8 +254,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 			}
 
             // would put here stuff I want to happen after the dragon is found
+            foundCharacter_SFX.Play();
             dragonsFound += 1;
-            timeLeft += 3;
+            timeLeft += 2;
             useTimer = false;
 			StartCoroutine(resetGameCoroutine());
         }
@@ -262,6 +265,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     IEnumerator resetGameCoroutine()
     {
         yield return new WaitForSeconds(2.0f);
+        newRound_SFX.Play();
         resetGame();
         useTimer = true;
 	}
@@ -272,9 +276,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
         // Do whatever here to make the game end
         findDragon_TXT.text = "You found " + dragonsFound + "!";
-        WinScreen_Panel.SetActive(true);
-        //leaderBoard.SetActive(true);
-        //leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
+        //WinScreen_Panel.SetActive(true);
+        leaderBoard.SetActive(true);
+        leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
         StartOver_BTN.interactable = false;
         Exit_BTN.interactable = false;
         StartCoroutine(WaitBeforeInput());
@@ -288,6 +292,4 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
         GameManager.instance.PauseGame(true);
     }
-
-
 }
