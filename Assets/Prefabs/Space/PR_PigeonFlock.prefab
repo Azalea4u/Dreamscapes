@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62943797004812723}
+  - component: {fileID: 8494582950385602576}
   m_Layer: 0
   m_Name: PR_PigeonFlock
   m_TagString: Untagged
@@ -35,6 +36,31 @@ Transform:
   - {fileID: 6719496911532869808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8494582950385602576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006241274663464787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7a7bbb0d248264cad781f00009d9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 1, y: 0, z: 0}
+  usedSpeed: {x: 0, y: 0, z: 0}
+  faceTowardsCenter: 1
+  moveTowardsPlayer: 0
+  moveWith: {fileID: 0}
+  moveTowards: {fileID: 0}
+  moveSpeed: 0
+  doesDamage: 0
+  birdSlowdown: 0
+  slowDownMovement: 0
+  bounce: 0
+  destroyOnHit: 0
+  destroyHeight: 20
 --- !u!1001 &1386224024501254527
 PrefabInstance:
   m_ObjectHideFlags: 0
