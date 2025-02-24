@@ -16,7 +16,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     int newScore;
 
-    //good luck =(
+    //good luck
     [SerializeField] string fileName;
     string filePath;
 
@@ -73,7 +73,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
             }
         }
 
-        //these are just tests do not uncomment them >=(
+        //these are just tests do not uncomment them
         //loser();
         //highScore();
     }
@@ -120,27 +120,26 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     public void continueClick() {
         saveStuff();
-
+        
         GameManager.instance.PauseGame(false);
-		SCR_Loader.Load(SCR_Loader.scenes.SCN_MainMenu);
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
 	}
 
     public void againClick() {
         saveStuff();
 
-        GameManager.instance.PauseGame(false);
         switch (fileName) {
             case "Archeology":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_ArcheologyMinigame);
+                Scr_ScreenManager.instance.ArcheologyClick();
 				break;
             case "Find":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_FindDragonLuigi);
+                Scr_ScreenManager.instance.DragonClick();
 				break;
             case "Octopus":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_OctopusShooter);
+                Scr_ScreenManager.instance.OctopusClick();
 				break;
             case "Rocket":
-				SCR_Loader.Load(SCR_Loader.scenes.SCN_SpaceshipScene);
+                Scr_ScreenManager.instance.RocketClick();
 				break;
         }
     }
@@ -161,6 +160,18 @@ public class Scr_LeaderBoard : MonoBehaviour {
 	}
 
     //oh yeah keyboard...
+    public void letterClick(TextMeshProUGUI letter) {
+        switch (letter.text) {
+            case "Enter":
+                break;
+            case "Backspace":
+                break;
+            default:
+                break;
+        }
+    }
+
+    //leaderboard sorting is here
     void createSlot(Sprite img, int score, int index = 0) {
         //index; doesn't work so I just do this, theres probably an easier way...
 		for (index = index; index < slots.Length; index++) {
@@ -171,28 +182,28 @@ public class Scr_LeaderBoard : MonoBehaviour {
                 tempSprite = slots[index].slotImg.sprite;
 				tempScore = int.Parse(slots[index].scoreTxt.text);
 
-                //switch (slots[index].slotImg.sprite.name) {
-                //	case "CuteDoor_0":
-                //      slots[index].changeSlot(sprites[0], score);
-                //		break;
-                //	case "DwindlingDoor_0":
-                //		slots[index].changeSlot(sprites[1], score);
-                //		break;
-                //	case "PaintDoor_0":
-                //		slots[index].changeSlot(sprites[2], score);
-                //		break;
-                //	case "SpaceDoor_0":
-                //		slots[index].changeSlot(sprites[3], score);
-                //		break;
-                //	case "TrippyDoor_0":
-                //		slots[index].changeSlot(sprites[4], score);
-                //		break;
-                //	case "Vintage_0":
-                //		slots[index].changeSlot(sprites[5], score);
-                //		break;
-                //}
+                switch (img.name) {
+                    case "CuteDoor_0":
+                        slots[index].changeSlot(sprites[0], score);
+                        break;
+                    case "DwindlingDoor_0":
+                        slots[index].changeSlot(sprites[1], score);
+                        break;
+                    case "PaintDoor_0":
+                        slots[index].changeSlot(sprites[2], score);
+                        break;
+                    case "SpaceDoor_0":
+                        slots[index].changeSlot(sprites[3], score);
+                        break;
+                    case "TrippyDoor_0":
+                        slots[index].changeSlot(sprites[4], score);
+                        break;
+                    case "Vintage_0":
+                        slots[index].changeSlot(sprites[5], score);
+                        break;
+                }
 
-                slots[index].changeSlot(img, score);
+                //slots[index].changeSlot(img, score);
 
                 createSlot(tempSprite, tempScore, index + 1);
                 return;

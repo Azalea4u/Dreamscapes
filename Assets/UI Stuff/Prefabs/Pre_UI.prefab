@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7471442689020008601}
   - component: {fileID: 7324976579774342175}
   - component: {fileID: 5303630748354015082}
-  - component: {fileID: 267553626734209300}
   m_Layer: 5
   m_Name: RocketBtn
   m_TagString: Untagged
@@ -158,22 +157,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &267553626734209300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397157272950506939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5e94a29f61c4843bbd21ec6812e443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTitle: Rocket
-  gameHow: Use the arrow keys to move left and right. Avoid obstacles to get to the
-    top.
-  gameImg: {fileID: 5857474440058044730, guid: 3451006c9089ec14788f27fd625a31e4, type: 3}
 --- !u!1 &1445902897470730265
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +169,6 @@ GameObject:
   - component: {fileID: 6057491011058259672}
   - component: {fileID: 1681006936631583724}
   - component: {fileID: 6529043071045486217}
-  - component: {fileID: 2726190567703172941}
   m_Layer: 5
   m_Name: ArcheologyBtn
   m_TagString: Untagged
@@ -332,21 +314,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2726190567703172941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445902897470730265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5e94a29f61c4843bbd21ec6812e443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTitle: Archeology
-  gameHow: 
-  gameImg: {fileID: -1161900257817460288, guid: d065cca3754eac94a9d417495cafe6b7, type: 3}
 --- !u!1 &1722368429815830192
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +662,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1146845818073371520}
+  m_TargetGraphic: {fileID: 4342048197728718543}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1096,7 +1063,6 @@ GameObject:
   - component: {fileID: 1647043913932882951}
   - component: {fileID: 4342048197728718543}
   - component: {fileID: 7666539815968191584}
-  - component: {fileID: 7996946705844024197}
   m_Layer: 5
   m_Name: OctopusBtn
   m_TagString: Untagged
@@ -1242,22 +1208,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7996946705844024197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3273750736984969699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5e94a29f61c4843bbd21ec6812e443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTitle: Octopus
-  gameHow: Olly the Octopus has gone bad! Move with left and right to avoid his attacks.
-    Shoot enough dream bubbles to turn him back.
-  gameImg: {fileID: -6242554322480655991, guid: 2146f535006ca0c4898312e392ca719b, type: 3}
 --- !u!1 &3568782361938014733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1220,6 @@ GameObject:
   - component: {fileID: 207400369730904322}
   - component: {fileID: 5209651469837200080}
   - component: {fileID: 7742855594279918142}
-  - component: {fileID: 6094169172497597048}
   m_Layer: 5
   m_Name: DescriptionBtn
   m_TagString: Untagged
@@ -1376,7 +1325,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 5209651469837200080}
+  m_TargetGraphic: {fileID: 1681006936631583724}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1402,7 +1351,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: -100
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1434358672307754890}
         m_TargetAssemblyTypeName: SCR_MainMenuBTN, Assembly-CSharp
@@ -1416,21 +1365,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6094169172497597048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568782361938014733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5e94a29f61c4843bbd21ec6812e443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTitle: Archeology
-  gameHow: 
-  gameImg: {fileID: -1161900257817460288, guid: d065cca3754eac94a9d417495cafe6b7, type: 3}
 --- !u!1 &4222245327940061889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,7 +1618,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 7615214781746675744}
+  m_TargetGraphic: {fileID: 7324976579774342175}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1979,7 +1913,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 462733676288462507}
+  m_TargetGraphic: {fileID: 1471480335640457213}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2472,7 +2406,6 @@ GameObject:
   - component: {fileID: 6040697217682552681}
   - component: {fileID: 1471480335640457213}
   - component: {fileID: 6810402153024888810}
-  - component: {fileID: 3499099414480270636}
   m_Layer: 5
   m_Name: DragonBtn
   m_TagString: Untagged
@@ -2618,22 +2551,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3499099414480270636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6985899214001437597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5e94a29f61c4843bbd21ec6812e443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTitle: Dragon
-  gameHow: Dragons are all over the place. Try to find the right one from all the
-    others.
-  gameImg: {fileID: -2340338500261597623, guid: 7973193953e94e1449512a85da548fb6, type: 3}
 --- !u!1 &8261580999691689065
 GameObject:
   m_ObjectHideFlags: 0
