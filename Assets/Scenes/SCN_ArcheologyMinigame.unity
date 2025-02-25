@@ -1886,6 +1886,18 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.26966885
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.28339925
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.8490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
       propertyPath: m_fontSizeBase
       value: 90
       objectReference: {fileID: 0}
@@ -4154,7 +4166,7 @@ MonoBehaviour:
   playerPosition: {x: 0, y: 0}
   minePosition: {x: 0, y: 0}
   points: 0
-  time: 90.5
+  time: 100
   running: 0
   ScoreTXT: {fileID: 1056094462}
   TimeTXT: {fileID: 69850240}
