@@ -12,6 +12,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	[SerializeField] private float birdTimerLength = 5.0f;
     [SerializeField] private AudioSource hitCloud_SFX;
 	[SerializeField] private AudioSource collideBird_SFX;
+	[SerializeField] private AudioSource collideBird2_SFX;
 
     private float birdTimer;
 
@@ -97,7 +98,8 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 
 	public void DamageShip()
 	{
-		health -= 1;
+        collideBird2_SFX.Play();
+        health -= 1;
 		if (health <= 0)
 		{
 			health = 0;
