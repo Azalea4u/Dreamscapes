@@ -62,4 +62,6 @@ public class Scr_Bullet : MonoBehaviour {
         //ps.Play();
         yield return new WaitForSeconds(0.2f);
     }
+
+    //not used so don't worry =)
 }

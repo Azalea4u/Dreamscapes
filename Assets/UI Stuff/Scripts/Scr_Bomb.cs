@@ -24,4 +24,6 @@ public class Scr_Bomb : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+
+	//revert octo enemy if hits player
 }
