@@ -1,30 +1,40 @@
+using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SCR_Tutorial : MonoBehaviour {
 	[SerializeField] GameObject tutorialContainer;
-	[SerializeField] string tutorialText;
 
 	[Header("Pause")]
 	[SerializeField] private GameObject Pause_BTN;
+	[SerializeField] private GameObject Tutorial_BTN;
 
-	void Start() {
-		Pause_BTN.SetActive(false);
-		GameManager.instance.PauseGame(true);
-		//Time.timeScale = 0;
-		tutorialContainer.SetActive(true);
-		displayText(tutorialText);
+	void Start()
+	{
+        GameManager.instance.PauseGame(false);
+		GameManager.instance.IsGamePaused = true;
+        StartCoroutine(WaitToClose());
 	}
 
-	private void displayText(string text) {
-		tutorialContainer.GetComponentInChildren<TextMeshProUGUI>().text = text;
-	}
-
-	public void close() {
+	// Attached to the Tutorial_BTN's OnClick to close Tutorial gameobject
+	public void close()
+	{
 		tutorialContainer.SetActive(false);
-		Pause_BTN.SetActive(true);
-		GameManager.instance.PauseGame(false);
-		//Time.timeScale = 1;
+        Pause_BTN.GetComponent<Button>().interactable = true;
+        GameManager.instance.PauseGame(false);
 	}
+
+	// To prevent the screen to close when someone is spamming the screen
+	private IEnumerator WaitToClose()	{
+
+        Pause_BTN.GetComponent<Button>().interactable = false;
+		Tutorial_BTN.GetComponent<Button>().interactable = false;
+
+        yield return new WaitForSeconds(0.25f);
+
+        Tutorial_BTN.GetComponent<Button>().interactable = true;
+
+        GameManager.instance.PauseGame(true);
+    }
 }

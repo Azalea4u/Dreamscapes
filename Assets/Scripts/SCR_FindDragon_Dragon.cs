@@ -7,6 +7,7 @@ public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
     public edgeType edgeInteraction = edgeType.BOUNCE;
 	[SerializeField] private SpriteRenderer sprite;
 	public bool isWanted = false;
+	public bool active = true;
 
     // helps with defining how the dragon should act when contacting an edge
     public enum edgeType
@@ -23,7 +24,7 @@ public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
 
 	void Update()
 	{
-		if (speed == Vector2.zero)
+		if (!active)
 		{
 			return;
 		}
@@ -82,19 +83,29 @@ public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
 		this.sprite.sprite = sprite;
 	}
 
+	public void DeactivateDragon()
+	{
+		active = false;
+		speed = Vector2.zero;
+		if (!isWanted)
+		{
+			transform.position = Vector3.one * 10;
+		}
+	}
+
+	public void ActivateDragon()
+	{
+		active = true;
+	}
+
 	public void SetWanted(bool wanted)
 	{
 		isWanted = wanted;
 	}
 
-	public void DragonPressed()
-	{
-		SCR_FindDragon_Manager.instance.DragonPressed(isWanted, this);
-	}
-
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		if (speed != Vector2.zero)
+		if (active)
 		{
 			SCR_FindDragon_Manager.instance.DragonPressed(isWanted, this);
 		}

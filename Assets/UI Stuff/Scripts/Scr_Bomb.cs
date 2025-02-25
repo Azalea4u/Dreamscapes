@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class Scr_Bomb : MonoBehaviour {
-    [SerializeField] int dmg;
 	[SerializeField] float speed;
+	[SerializeField] Transform visuals;
     Rigidbody2D rb;
 
     void Start() {
@@ -15,11 +15,12 @@ public class Scr_Bomb : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+		visuals.Rotate(Vector3.forward, Time.deltaTime * 100);
     }
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.GetComponent<Scr_OctoPlayer>()) {
-			collision.gameObject.GetComponent<Scr_OctoPlayer>().damage(dmg);
+			Scr_OctoEnemy.instance.damage(-10);
 			Destroy(gameObject);
 		}
 	}

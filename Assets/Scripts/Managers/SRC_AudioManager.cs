@@ -1,22 +1,19 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SRC_AudioManager : MonoBehaviour
 {
     public static SRC_AudioManager instance;
 
-    [Header("Game States")]
-    public AudioSource WinGame_SFX;
-    public AudioSource _GameOver_SFX;
+    public SCR_Sound[] Music_Audios, SFX_Audios;
+    public AudioSource Music_Source, SFX_Source;
 
-    [Header("UI SFX")]
-    public AudioSource Pause_SFX;
-    public AudioSource Resume_SFX;
+    public float fadeDuration = 0.75f; // Adjust as needed
 
-    [Header("Background Music")]
-    public AudioSource Archeology_BG;
-    public AudioSource Spaceship_BG;
-    public AudioSource FindingCharacter_BG;
-    public AudioSource Octopus_BG;
+    private string nextMusicName = "";
+    private bool isFading = false;
 
     private void Awake()
     {
@@ -31,34 +28,93 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
-    #region Game States
-    public void GameWon_SFX()
+    private void Start()
     {
-        WinGame_SFX.Play();
+        // play when loading MainMenu Scene
+        PlayMusic("MainTheme_Music");
     }
 
-    public void GameOver_SFX()
+    public void PlayMusic(string name)
     {
-        WinGame_SFX.Play();
-    }
-    #endregion
+        SCR_Sound sound = Array.Find(Music_Audios, x => x.Name == name);
 
-    #region UI SFX
-    public void PauseGame_SFX()
+        if (sound == null)
+        {
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            Music_Source.clip = sound.clip;
+            Music_Source.loop = true;
+            Music_Source.Play();
+        }
+    }
+
+    public void PlaySFX(string name)
     {
-        Pause_SFX.Play();
+        SCR_Sound sound = Array.Find(SFX_Audios, x => x.Name == name);
+
+        if (sound == null)
+        {
+            Debug.Log("Sound not found");
+        }
+        else
+        {
+            SFX_Source.clip = sound.clip;
+            SFX_Source.Play();
+        }
     }
 
-    public void ResumeGame_SFX()
+    public void ChangeSceneWithMusic(SCR_Loader.scenes targetScene, string newMusic)
     {
-        Resume_SFX.Play();
+        if (!isFading)
+        {
+            nextMusicName = newMusic;
+            isFading = true;
+            SCR_Loader.Load(targetScene);
+        }
     }
 
-    public void SetMute(bool mute)
+    public void OnLoadingScreenShown()
     {
-
+        StartCoroutine(FadeOutMusic());
     }
-    #endregion
 
+    private IEnumerator FadeOutMusic()
+    {
+        float startVolume = Music_Source.volume;
+        while (Music_Source.volume > 0)
+        {
+            Music_Source.volume -= startVolume * Time.deltaTime / fadeDuration;
+            yield return null;
+        }
 
+        Music_Source.Stop();
+        Music_Source.volume = startVolume; // Reset volume for next music
+
+        SCR_Loader.ContinueToTargetScene(); // Now load the actual scene
+    }
+
+    public void OnSceneLoaded()
+    {
+        if (!string.IsNullOrEmpty(nextMusicName))
+        {
+            StartCoroutine(FadeInMusic(nextMusicName));
+        }
+    }
+
+    private IEnumerator FadeInMusic(string musicName)
+    {
+        PlayMusic(musicName);
+        Music_Source.volume = 0;
+        float targetVolume = 1.0f;
+
+        while (Music_Source.volume < targetVolume)
+        {
+            Music_Source.volume += targetVolume * Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+
+        isFading = false; // Reset flag after fade-in completes
+    }
 }

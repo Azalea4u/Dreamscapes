@@ -12,23 +12,28 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 	[Header("Prefabs")]
     [SerializeField] private Transform tilePrefab;
-	[SerializeField] private Transform undertile;
 	[SerializeField] private Transform itemPrefab;
 	[SerializeField] private List<Sprite> depthSprites = new List<Sprite>();
 	[SerializeField] private List<SO_ArcheologyItem_Data> itemsData = new List<SO_ArcheologyItem_Data>();
 
 	[Header("Grid Making")]
 	[SerializeField] private SCR_ArcheologyTile[,] tileGrid;
-	[SerializeField] private List<Vector2Int> highestSpots = new List<Vector2Int>();
     [SerializeField] private Vector2Int gridSize = Vector2Int.one;
 	[SerializeField] private Vector2 tileSize = Vector2Int.one;
 	[SerializeField] private int itemAmount = 3;
 
 	[Header("Runtime Grid Values")]
 	[SerializeField] private List<SCR_ArcheologyItem> items = new List<SCR_ArcheologyItem>();
+	[SerializeField] private SCR_Archeology_Tool tool;
 	[SerializeField] private Transform player;
 	[SerializeField] private Vector2Int playerPosition;
+	[SerializeField] private Vector2Int minePosition;
 	[SerializeField] private int points;
+	[SerializeField] private float time;
+	[SerializeField] private bool running = false;
+	[SerializeField] private TextMeshProUGUI ScoreTXT;
+	[SerializeField] private TextMeshProUGUI TimeTXT;
+
 
 	[Header("Audio")]
 	[SerializeField] private AudioSource hitStoneSFX;
@@ -38,21 +43,25 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private GameObject Popup_Panel;
 	[SerializeField] private Image Artifact_IMG;
 	[SerializeField] private TextMeshProUGUI ArtifactName_TXT;
+	[SerializeField] private Button ClosePopup_BTN;
 
 	[Header("Game State")]
 	[SerializeField] private GameObject GameWin_Panel;
+	[SerializeField] private GameObject GameOver_Panel;
+	[SerializeField] private GameObject leaderboard;
 
     void Start()
     {
 		Instance = this;
 		Popup_Panel.SetActive(false);
         GameWin_Panel.SetActive(false);
+        GameOver_Panel.SetActive(false);
+		leaderboard.SetActive(false);
+		TimeTXT.text = "" + (int)time;
+		ScoreTXT.text = "Score " + (int)points;
+		running = true;
 
         tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
-
-		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
-		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
-		highestSpots.Add(new Vector2Int(Random.Range(0, gridSize.x), Random.Range(0, gridSize.y)));
 
 		// puts the grid in the middle of the screen
 		transform.position -= new Vector3(gridSize.x / (2.0f / tileSize.x), -gridSize.y / (2.0f / tileSize.y), 0.0f) - new Vector3(tileSize.x / 2.0f, -tileSize.y / 2.0f, 0);
@@ -65,7 +74,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 				SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
 				tileGrid[xpos, ypos] = tile;
 				tile.position.Set(xpos, ypos);
-				tile.layers = Random.Range(1, 7); //GetTileDepth( xpos, ypos); //
+				tile.layers = Mathf.Min(Random.Range(1, 7), 2); //GetTileDepth( xpos, ypos); //
 
 				tile.ChangeSprite(depthSprites[tile.layers]);
 
@@ -108,23 +117,24 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		playerPosition = gridSize / 2;
 		updatePlayer();
+    }
 
-	}
+    private void Update()
+    {
+		if (running)
+		{ 
+			time -= Time.deltaTime;
+			TimeTXT.text = "" + (int)time;
 
-	private int GetTileDepth(int x, int y) {
-		Vector2Int usedSpot = highestSpots[0];
-		foreach (var spot in highestSpots)
-		{
-			if (Vector2Int.Distance(new Vector2Int(x, y), spot) < Vector2Int.Distance(new Vector2Int(x, y), usedSpot))
+			if (time <= 0.0f)
 			{
-				usedSpot = spot;
+				running = false;
+				TimeTXT.text = "0";
+				ShowGameOverScreen();
 			}
 		}
+    }
 
-		int toret = (int)Vector2Int.Distance(new Vector2Int(x, y), usedSpot);
-
-		return 7 - Mathf.Clamp(toret, 0, 7);
-	}
 
 	private Vector2Int generateRandomItemPosition(SCR_ArcheologyItem item)
 	{
@@ -216,15 +226,21 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	/// <summary>
 	/// Function for the mining UI button
 	/// </summary>
+	public void MineTile()
+	{
+		minePosition = playerPosition;
+
+		Debug.Log(minePosition);
+
+		tool.StartMining(tileGrid[minePosition.x, minePosition.y].transform.position);
+	}
+	
+	/// <summary>
+	/// Function to be called when the pickaxe hits the tile
+	/// </summary>
 	public void HitTile()
 	{
-		Vector2Int hitPos = playerPosition;
-
-		// Changes the pitch in SFX
-        float minPitch = -0.15f;
-		float maxPitch = 0.5f;
-        hitStoneSFX.pitch = Random.Range(minPitch, maxPitch);
-		hitStoneSFX.Play();
+		Vector2Int hitPos = minePosition;
 
 		// Vectors for which tiles to check about the hit position
 		// z value is how much tile damage it should deal
@@ -255,6 +271,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		checkItemsUncovered();
 	}
 
+	
+
 	private void checkItemsUncovered()
 	{
 		// removes null items from a list, because right now they are destroyed
@@ -275,7 +293,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			if (uncovered)
 			{
                 // Something would happen to the item once it is gotten
-
                 RemoveItem(item);
             }
 		}
@@ -287,20 +304,31 @@ public class SCR_ArcheologyGrid : MonoBehaviour
         Artifact_IMG.sprite = item.GetSprite();
 		ArtifactName_TXT.text = item.GetItemName() + "!";
 		Popup_Panel.SetActive(true);
+		running = false;
+
+		StartCoroutine(WaitToClose());
 
 		points += item.GetPointValue();
+		ScoreTXT.text = "Score " + points;
         collectSFX.Play(); 
-        Destroy(item.gameObject);
-		GameManager.instance.PauseGame(true);
 
-		items.RemoveAll(x => !x);
+		items.Remove(item);
+        Destroy(item.gameObject);
+
 	}
 
-	public void ClosePopUp()
+	private IEnumerator WaitToClose()
 	{
-        // Remove Items
-        Popup_Panel.SetActive(false);
-		GameManager.instance.PauseGame(false);
+        ClosePopup_BTN.interactable = false;
+
+        yield return new WaitForSeconds(0.5f);
+		ClosePopup_BTN.interactable = true;
+
+        GameManager.instance.PauseGame(true);
+    }
+
+    public void ClosePopUp()
+	{
 
 		// check for if all the items are gone
 		if (items.Count == 0)
@@ -308,12 +336,29 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			// Do the win screen stuff
 			ShowGameWinScreen();
 		}
+		// Remove Items
+		running = true;
+        Popup_Panel.SetActive(false);
+		GameManager.instance.PauseGame(false);
     }
 
     private void ShowGameWinScreen()
     {
-        GameManager.instance.PauseGame(true);
-		SRC_AudioManager.instance.GameWon_SFX();
+		running = false;
+		GameManager.instance.PauseGame(true);
+		//leaderboard.SetActive(true);
+		//leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)time);
         GameWin_Panel.SetActive(true);
+		//SRC_AudioManager.instance.Play_GameWon();
+        //GameManager.instance.PauseGame(true);
+    }
+	
+	private void ShowGameOverScreen()
+	{
+		running = false;
+        GameOver_Panel.SetActive(true);
+
+        //SRC_AudioManager.instance.Play_GameWon();
+        GameManager.instance.PauseGame(true);
     }
 }
