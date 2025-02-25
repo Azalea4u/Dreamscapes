@@ -16,7 +16,6 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     int newScore;
 
-    //good luck
     [SerializeField] string fileName;
     string filePath;
 
@@ -33,20 +32,15 @@ public class Scr_LeaderBoard : MonoBehaviour {
     slotList saveSlots = new slotList();
 
     void Start() {
-        //Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "Boards", fileName + ".txt"));
-        //Directory.CreateDirectory(filePath);
-        //print(Application.streamingAssetsPath);
-        //print(Application.persistentDataPath);
-
+        //get file path, read it, and convert it to saveSlots  
         filePath = Path.Combine(Application.streamingAssetsPath, fileName + ".txt");
         using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
             using (StreamReader read = new StreamReader(stream)) {
                 saveSlots = JsonUtility.FromJson<slotList>(read.ReadToEnd());
             }
         }
-        
-        //saveSlots = JsonUtility.FromJson<slotList>(filePath);
 
+        //based on saveSlots information set the leaderboard slots
         for (int i = 0; i < slots.Length; i++) {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
             switch (saveSlots.slot[i].i) {
@@ -73,13 +67,10 @@ public class Scr_LeaderBoard : MonoBehaviour {
                     break;
             }
         }
-
-        //these are just tests do not uncomment them
-        //loser();
-        //highScore();
     }
 
 	void saveStuff() {
+        //grab info from leaderboard slots and set save slots
 		for (int i = 0; i < slots.Length; i++) {
 			saveSlots.slot[i].s = int.Parse(slots[i].scoreTxt.text);
 
@@ -108,15 +99,12 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			}
 		}
 
+        //then write to the file using saveSlots
         using (FileStream stream = new FileStream(filePath, FileMode.Create)) {
             using (StreamWriter write = new StreamWriter(stream)) {
                 write.Write(JsonUtility.ToJson(saveSlots, true));
             }
         }
-
-        //File.WriteAllText(Application.dataPath + "/StreamingAssets/" + fileName + ".txt", JsonUtility.ToJson(saveSlots));
-        //File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
-        //AssetDatabase.Refresh();
     }
 
     public void continueClick() {
@@ -172,7 +160,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
         }
     }
 
-    //leaderboard sorting is here
+    //leaderboard sorting is here, messed up sorting and "recursion" logic here
     void createSlot(Sprite img, int score, int index = 0) {
         //index; doesn't work so I just do this, theres probably an easier way...
 		for (index = index; index < slots.Length; index++) {
@@ -203,8 +191,6 @@ public class Scr_LeaderBoard : MonoBehaviour {
                         slots[index].changeSlot(sprites[5], score);
                         break;
                 }
-
-                //slots[index].changeSlot(img, score);
 
                 createSlot(tempSprite, tempScore, index + 1);
                 return;

@@ -10,4 +10,8 @@ public class Scr_BoardSlot : MonoBehaviour {
 		slotImg.sprite = img;
 		scoreTxt.text = "" + score;
 	}
+
+	/*
+	 Just controls the ui stuff for the leaderboard slots
+	 */
 }
