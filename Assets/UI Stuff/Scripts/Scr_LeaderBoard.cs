@@ -99,7 +99,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 				case "TrippyDoor_0":
 					saveSlots.slot[i].i = "trippy";
 					break;
-				case "Vintage_0":
+				case "VintageDoor_0":
 					saveSlots.slot[i].i = "vintage";
 					break;
                 case "question_0":
@@ -199,7 +199,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
                     case "TrippyDoor_0":
                         slots[index].changeSlot(sprites[4], score);
                         break;
-                    case "Vintage_0":
+                    case "VintageDoor_0":
                         slots[index].changeSlot(sprites[5], score);
                         break;
                 }

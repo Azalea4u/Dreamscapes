@@ -276,9 +276,9 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
         // Do whatever here to make the game end
         findDragon_TXT.text = "You found " + dragonsFound + "!";
-        WinScreen_Panel.SetActive(true);
-        //leaderBoard.SetActive(true);
-        //leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
+        //WinScreen_Panel.SetActive(true);
+        leaderBoard.SetActive(true);
+        leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
         StartOver_BTN.interactable = false;
         Exit_BTN.interactable = false;
         StartCoroutine(WaitBeforeInput());
