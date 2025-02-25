@@ -33,18 +33,19 @@ public class Scr_LeaderBoard : MonoBehaviour {
     slotList saveSlots = new slotList();
 
     void Start() {
-		filePath = Path.Combine(Application.persistentDataPath, "JSON-Files(Txt)", fileName + ".txt");
-		Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-		//print(Application.streamingAssetsPath);
-		//print(Application.persistentDataPath);
+        //Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "Boards", fileName + ".txt"));
+        //Directory.CreateDirectory(filePath);
+        //print(Application.streamingAssetsPath);
+        //print(Application.persistentDataPath);
 
-		using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
+        filePath = Path.Combine(Application.streamingAssetsPath, fileName + ".txt");
+        using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
             using (StreamReader read = new StreamReader(stream)) {
                 saveSlots = JsonUtility.FromJson<slotList>(read.ReadToEnd());
             }
         }
-
-        //saveSlots = JsonUtility.FromJson<slotList>(Application.dataPath + "/StreamingAssets/" + fileName + ".txt");
+        
+        //saveSlots = JsonUtility.FromJson<slotList>(filePath);
 
         for (int i = 0; i < slots.Length; i++) {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
@@ -114,9 +115,9 @@ public class Scr_LeaderBoard : MonoBehaviour {
         }
 
         //File.WriteAllText(Application.dataPath + "/StreamingAssets/" + fileName + ".txt", JsonUtility.ToJson(saveSlots));
-		//File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
-		//AssetDatabase.Refresh();
-	}
+        //File.WriteAllText(Application.dataPath + "/JSON-Files(Txt)/" + info.name + ".txt", JsonUtility.ToJson(saveSlots));
+        //AssetDatabase.Refresh();
+    }
 
     public void continueClick() {
         saveStuff();
