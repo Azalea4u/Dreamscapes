@@ -652,12 +652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26a269cbfe143843abf8cbda32d1aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 2082215936}
-  - {fileID: 2065308208}
-  - {fileID: 367500948}
-  - {fileID: 1724921896}
-  timer: 1.25
 --- !u!114 &2042251459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +992,10 @@ PrefabInstance:
     - target: {fileID: 7794341758510518980, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915103138988151921, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_text
+      value: Help Magus find treasure!
       objectReference: {fileID: 0}
     - target: {fileID: 8261580999691689065, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_Name

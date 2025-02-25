@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788647575038040472, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
       propertyPath: health
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7788647575038040472, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
       propertyPath: GameWin_Panel
