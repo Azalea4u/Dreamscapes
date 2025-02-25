@@ -21,6 +21,9 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
     [Header("Game States")]
     [SerializeField] private GameObject GameWin_Panel;
+    [SerializeField] private GameObject LeaderboardUI;
+
+	float overallTime;
 
     [Serializable] public struct spaces
 	{
@@ -36,6 +39,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		prevPos = position;
 
 		GameWin_Panel.SetActive(false);
+		LeaderboardUI.SetActive(false);
 
 		moveTimer = 1.0f;
 
@@ -57,6 +61,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		}
 
 		moveTimer -= Time.deltaTime;
+		overallTime += Time.deltaTime;
 
 		transform.position = Vector3.Lerp(availableSpaces[position].spacePosition, availableSpaces[prevPos].spacePosition, Mathf.Clamp01((moveTimer - (timeSpentMoving * 0.25f)) / (timeSpentMoving - (timeSpentMoving * 0.25f))));
 
@@ -203,7 +208,9 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	private void GameWin()
 	{
-        GameWin_Panel.SetActive(true);
+		//GameWin_Panel.SetActive(true);
+		LeaderboardUI.SetActive(true);
+		LeaderboardUI.GetComponent<Scr_LeaderBoard>().endGame((int)overallTime);
         //Destroy(gameObject);
 
        // StartCoroutine(ShowScreen());

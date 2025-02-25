@@ -27,6 +27,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	[SerializeField] public Animator shipAnimator;
 	[SerializeField] private AudioSource explosion_SFX;
 	[SerializeField] private GameObject gameOver_Panel;
+	[SerializeField] private GameObject leaderboard;
     [SerializeField] private Button StartOver_BTN;
     [SerializeField] private Button Exit_BTN;
 
@@ -47,6 +48,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
         instance = this;
 		spawnTimer = spawnTimerLength;
 		gameOver_Panel.SetActive(false);
+		leaderboard.SetActive(false);
 	}
 
 	void FixedUpdate()
@@ -131,8 +133,10 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         Destroy(spaceShip_Object.gameObject);
 		yield return new WaitForSeconds(0.5f);
-		gameOver_Panel.SetActive(true);
-        StartCoroutine(WaitBeforeInput());
+		//gameOver_Panel.SetActive(true);
+		leaderboard.SetActive(true);
+		leaderboard.GetComponent<Scr_LeaderBoard>().endGame(shipDistance);
+		StartCoroutine(WaitBeforeInput());
     }
 
     private IEnumerator WaitBeforeInput()

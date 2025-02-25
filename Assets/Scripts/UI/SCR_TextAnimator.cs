@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SCR_TextAnimator : MonoBehaviour
 {
-    // The message to be animated
+    // Text that will be animated
     [SerializeField] private string message;
 
-    // Total duration for the entire text animation (in seconds)
+    // Duration for the entire text animation (in seconds)
     [SerializeField] float stringAnimationDuration = 2f;
 
     // Reference to the TextMeshProUGUI component where text is displayed
