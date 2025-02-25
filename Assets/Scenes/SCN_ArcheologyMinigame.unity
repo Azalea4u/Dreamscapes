@@ -4130,7 +4130,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 4345644856855120510, guid: 5ca41c2210ce4694e90688294caa0103, type: 3}
   itemPrefab: {fileID: 2800464771822314399, guid: 5c5ba5b1180b2c0499a4d74279f6c8d7, type: 3}
   depthSprites:
-  - {fileID: -4787314164636214755, guid: 8b5a54e4816764248ba7b5b075df1f80, type: 3}
+  - {fileID: 8535153186601569606, guid: 39c5a28f23a71874daf7a3fc8e961716, type: 3}
   - {fileID: -6777272342625869972, guid: c4ee2dc9ba4b47742a6733d88b6a9dd7, type: 3}
   - {fileID: 3924601713935988630, guid: 1fc27664fb02eaa4aae4cb8da42d2d53, type: 3}
   - {fileID: 1933577752488344137, guid: 71ba591460a5d2842baeaaeca4381fa9, type: 3}

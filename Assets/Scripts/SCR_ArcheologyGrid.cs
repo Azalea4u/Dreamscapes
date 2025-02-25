@@ -74,7 +74,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 				SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
 				tileGrid[xpos, ypos] = tile;
 				tile.position.Set(xpos, ypos);
-				tile.layers = Mathf.Min(Random.Range(1, 7), 2); //GetTileDepth( xpos, ypos); //
+				tile.layers = Mathf.Min(Random.Range(1, 7), 2);
 
 				tile.ChangeSprite(depthSprites[tile.layers]);
 
@@ -83,13 +83,30 @@ public class SCR_ArcheologyGrid : MonoBehaviour
             }
         }
 
+		ResetGame();
+    }
+
+	private void ResetGame()
+	{
+		for (int ypos = 0; ypos < gridSize.y; ypos++)
+		{
+			for (int xpos = 0; xpos < gridSize.x; xpos++)
+			{
+				SCR_ArcheologyTile tile = tileGrid[xpos, ypos];
+				tile.layers = Mathf.Min(Random.Range(1, 7), 2);
+				tile.ChangeSprite(depthSprites[tile.layers]);
+
+				tile.hasItem = false;
+			}
+		}
+
 		// create items and place them in the grid
 		for (int i = 0; i < itemAmount; i++)
 		{
 			SCR_ArcheologyItem item = Instantiate(itemPrefab, transform).GetComponent<SCR_ArcheologyItem>();
 
 			// item data is initialized first for the use of size and volume when positioning the item
-			item.InitializeItemData(itemsData[Random.Range(0,itemsData.Count)]);
+			item.InitializeItemData(itemsData[Random.Range(0, itemsData.Count)]);
 
 			item.position = generateRandomItemPosition(item);
 
@@ -112,12 +129,12 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			// item setup and list additioons should only happen after a viable spot is found
 			item.SetupItem(tileSize);
 			items.Add(item);
-			item.transform.position = tileGrid[item.position.x,item.position.y].transform.position;
+			item.transform.position = tileGrid[item.position.x, item.position.y].transform.position;
 		}
 
 		playerPosition = gridSize / 2;
 		updatePlayer();
-    }
+	}
 
     private void Update()
     {
@@ -230,8 +247,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	{
 		minePosition = playerPosition;
 
-		Debug.Log(minePosition);
-
 		tool.StartMining(tileGrid[minePosition.x, minePosition.y].transform.position);
 	}
 	
@@ -276,10 +291,11 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	private void checkItemsUncovered()
 	{
 		// removes null items from a list, because right now they are destroyed
-		items.RemoveAll(x => !x);
+		//items.RemoveAll(x => !x);
 
-		foreach (var item in items)
+		for (int i = 0; i< items.Count; i++)
 		{
+			SCR_ArcheologyItem item = items[i];
 			bool uncovered = true;
 			foreach(var pos in item.GetItemGridPositions())
 			{
@@ -294,6 +310,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			{
                 // Something would happen to the item once it is gotten
                 RemoveItem(item);
+				i--;
             }
 		}
 	}
@@ -314,7 +331,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 		items.Remove(item);
         Destroy(item.gameObject);
-
 	}
 
 	private IEnumerator WaitToClose()
@@ -334,7 +350,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		if (items.Count == 0)
 		{
 			// Do the win screen stuff
-			ShowGameWinScreen();
+			//ShowGameWinScreen();
+			ResetGame();
 		}
 		// Remove Items
 		running = true;
