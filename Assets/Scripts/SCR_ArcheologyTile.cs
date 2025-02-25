@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class SCR_ArcheologyTile : MonoBehaviour
+public class SCR_ArcheologyTile : MonoBehaviour , IPointerDownHandler
 {
 	[SerializeField] private SpriteRenderer visuals;
 	public Vector2Int position = Vector2Int.zero;
@@ -20,5 +21,11 @@ public class SCR_ArcheologyTile : MonoBehaviour
 	public void ChangeSprite(Sprite newsprite)
 	{
 		visuals.sprite = newsprite;
+	}
+
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		SCR_ArcheologyGrid.Instance.SetPlayerPosition(position);
+		SCR_ArcheologyGrid.Instance.MineTile();
 	}
 }

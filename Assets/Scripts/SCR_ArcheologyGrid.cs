@@ -230,6 +230,36 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		}
 		updatePlayer();
 	}
+
+	/// <summary>
+	/// Sets player position to a given position
+	/// </summary>
+	/// <param name="position">new position</param>
+	public void SetPlayerPosition(Vector2Int newPos)
+	{
+		Vector2Int posToSet = newPos;
+
+		if (posToSet.x < 0)
+		{
+			posToSet.x = 0;
+		} else if (posToSet.x >= gridSize.x)
+		{
+			posToSet.x = gridSize.x - 1;
+		}
+
+		if (posToSet.y < 0)
+		{
+			posToSet.y = 0;
+		}
+		else if (posToSet.y >= gridSize.y)
+		{
+			posToSet.y = gridSize.y - 1;
+		}
+
+		playerPosition = posToSet;
+
+		updatePlayer();
+	}
     #endregion
 
     /// <summary>
