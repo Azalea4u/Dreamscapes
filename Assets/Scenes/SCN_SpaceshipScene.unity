@@ -318,6 +318,7 @@ MonoBehaviour:
   shipAnimator: {fileID: 166821050}
   explosion_SFX: {fileID: 24747035}
   gameOver_Panel: {fileID: 201795849}
+  leaderboard: {fileID: 1530596553}
   StartOver_BTN: {fileID: 7036368810734461086}
   Exit_BTN: {fileID: 7036368810734461085}
   distance_TXT: {fileID: 1615382362416989292}
@@ -2793,6 +2794,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
+--- !u!1 &1530596553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1233208824997034105, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
+  m_PrefabInstance: {fileID: 1530596552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1612675972
 PrefabInstance:
   m_ObjectHideFlags: 0

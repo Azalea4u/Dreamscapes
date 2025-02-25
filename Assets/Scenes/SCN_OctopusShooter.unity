@@ -420,6 +420,10 @@ PrefabInstance:
       propertyPath: GameWin_Panel
       value: 
       objectReference: {fileID: 490563998}
+    - target: {fileID: 7788647575038040472, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
+      propertyPath: LeaderboardUI
+      value: 
+      objectReference: {fileID: 1276132204}
     - target: {fileID: 8256067036638721925, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -1678,6 +1682,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
+--- !u!1 &1276132204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1233208824997034105, guid: 973236ed64574394aae0b2bf185b6f3b, type: 3}
+  m_PrefabInstance: {fileID: 1276132203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1395392650
 GameObject:
   m_ObjectHideFlags: 0
