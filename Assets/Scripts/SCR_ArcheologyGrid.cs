@@ -34,7 +34,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI ScoreTXT;
 	[SerializeField] private TextMeshProUGUI TimeTXT;
 
-
 	[Header("Audio")]
 	[SerializeField] private AudioSource hitStoneSFX;
 	[SerializeField] private AudioSource collectSFX;
@@ -346,9 +345,9 @@ public class SCR_ArcheologyGrid : MonoBehaviour
     {
 		running = false;
 		GameManager.instance.PauseGame(true);
-		//leaderboard.SetActive(true);
-		//leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)time);
-        GameWin_Panel.SetActive(true);
+		leaderboard.SetActive(true);
+		leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)time);
+        //GameWin_Panel.SetActive(true);
 		//SRC_AudioManager.instance.Play_GameWon();
         //GameManager.instance.PauseGame(true);
     }

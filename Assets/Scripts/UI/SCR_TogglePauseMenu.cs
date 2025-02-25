@@ -7,6 +7,7 @@ public class SCR_TogglePauseMenu : MonoBehaviour
 
     [SerializeField] GameObject PauseMenu_UI;
 
+    // OnClick for the PauseBTN to SHOW the PauseMenu_UI
     public void Open_PauseMenu()
     {
         SRC_AudioManager.instance.PlaySFX("Pause_SFX");
@@ -14,6 +15,7 @@ public class SCR_TogglePauseMenu : MonoBehaviour
         GameManager.instance.PauseGame(true);
     }
 
+    // OnClick for the PauseBTN to CLOSE the PauseMenu_UI
     public void Close_PauseMenu()
     {
         SRC_AudioManager.instance.PlaySFX("Resume_SFX");
@@ -22,12 +24,15 @@ public class SCR_TogglePauseMenu : MonoBehaviour
         GameManager.instance.PauseGame(false);
     }
     
+    // Loads up the main menu and makes sure to unpause the game so when entering another mini-game, the game will automatically work as intended
     public void Load_MainMenu()
     {
         GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
     }
 
+    // Methods attached to the StartOver btns to reload that same scene
+    #region StartOver_Methods
     public void StartOver_Spaceship()
     {
         Scr_ScreenManager.instance.RocketClick();
@@ -47,4 +52,5 @@ public class SCR_TogglePauseMenu : MonoBehaviour
     {
         Scr_ScreenManager.instance.ArcheologyClick();
     }
+    #endregion
 }

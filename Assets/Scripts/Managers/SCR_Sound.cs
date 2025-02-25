@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+// Used for Audio Manager
 [System.Serializable]
 public class SCR_Sound
 {

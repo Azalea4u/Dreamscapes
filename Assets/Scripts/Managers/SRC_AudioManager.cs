@@ -17,6 +17,7 @@ public class SRC_AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        //Singleton
         if (instance == null)
         {
             instance = this;
@@ -34,6 +35,7 @@ public class SRC_AudioManager : MonoBehaviour
         PlayMusic("MainTheme_Music");
     }
 
+    // Sets the Music Audio Source to a certain AudioClip
     public void PlayMusic(string name)
     {
         SCR_Sound sound = Array.Find(Music_Audios, x => x.Name == name);
@@ -50,6 +52,7 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
+    // Sets the SFX Audio Source to a certain AudioClip
     public void PlaySFX(string name)
     {
         SCR_Sound sound = Array.Find(SFX_Audios, x => x.Name == name);
@@ -65,6 +68,7 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
+    // Use this Method to change the bg music while changing scenes
     public void ChangeSceneWithMusic(SCR_Loader.scenes targetScene, string newMusic)
     {
         if (!isFading)
@@ -80,6 +84,7 @@ public class SRC_AudioManager : MonoBehaviour
         StartCoroutine(FadeOutMusic());
     }
 
+    // When swapping scenes, the music will fade out
     private IEnumerator FadeOutMusic()
     {
         float startVolume = Music_Source.volume;
@@ -103,6 +108,7 @@ public class SRC_AudioManager : MonoBehaviour
         }
     }
 
+    // After music has fade out, the next scene's music will fade in
     private IEnumerator FadeInMusic(string musicName)
     {
         PlayMusic(musicName);

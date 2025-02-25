@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // Makes sure if on MainMenu, that it will unpause/unfreeze the page
         if (SceneManager.GetActiveScene().name == "SCN_MainMenu")
         {
             PauseGame(false);
         }
 
+        // An easy way to leave the build
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
