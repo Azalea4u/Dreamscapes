@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: How to Play
-  stringAnimationDuration: 2
+  stringAnimationDurection: 2
   animatedText: {fileID: 8727333422224177309}
   sizeCurve:
     serializedVersion: 2
@@ -476,7 +476,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  sizeScale: 80
+  sizeScale: 100
   charAnimationDuration: 0.5
 --- !u!1 &3467935866312245661
 GameObject:

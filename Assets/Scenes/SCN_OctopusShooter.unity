@@ -364,10 +364,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 409030888836365515, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4455457413079870199, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -408,13 +404,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5825031875963508476, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 7788647575038040472, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
       propertyPath: health
-      value: 80
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7788647575038040472, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
       propertyPath: GameWin_Panel
@@ -425,16 +417,8 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8256067036638721925, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256067036638721925, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256067036638721925, guid: 29d7205b390105b49ad7b18a18449bca, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1268,10 +1252,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2350531095233298435, guid: 7886795765a7a964fb09a0771cddc87a, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3440392575866338743, guid: 7886795765a7a964fb09a0771cddc87a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1319,10 +1299,6 @@ PrefabInstance:
     - target: {fileID: 7693974837543014441, guid: 7886795765a7a964fb09a0771cddc87a, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7693974837543014441, guid: 7886795765a7a964fb09a0771cddc87a, type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

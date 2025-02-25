@@ -20,8 +20,6 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	private float spawnTimer;
 	[SerializeField] private int shipDistance;
 	public float difficultyScale = 1.0f;
-	private int prevSpawnPosIndex;
-	private int prevSpawnIndex;
 
 	[Header("Death State")]
 	[SerializeField] public Animator shipAnimator;
@@ -65,19 +63,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
 			Obstacle tospawn = getObstacleToSpawn();
 
-			if (tospawn.prefabToSpawn == null)
-			{
-				return;
-			}
-
-			int spawnIndex = UnityEngine.Random.Range(0, tospawn.spawnPositions.Length);
-			if (spawnIndex == prevSpawnPosIndex)
-			{
-				return;
-			}
-			prevSpawnPosIndex = spawnIndex;
-
-			Vector3 spawnPosition = new Vector3(tospawn.spawnPositions[spawnIndex], Camera.main.transform.position.y + 10.0f, 0.0f);
+			Vector3 spawnPosition = new Vector3(tospawn.spawnPositions[UnityEngine.Random.Range(0, tospawn.spawnPositions.Length)], Camera.main.transform.position.y + 10.0f, 0.0f);
 			Instantiate(tospawn.prefabToSpawn, spawnPosition, Quaternion.identity);
 
             spawnTimer = (spawnTimerLength / difficultyScale) + tospawn.spawnTimeDelay;
@@ -86,16 +72,14 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 
 	Obstacle getObstacleToSpawn()
 	{
-		List<int> spawnables = new List<int>();
+		List<Obstacle> spawnables = new List<Obstacle>();
 
-		for (int i = 0; i < obstaclesToSpawn.Length; i++)
+		foreach (var obstacle in obstaclesToSpawn)
 		{
-			var obstacle = obstaclesToSpawn[i];
-
 			if (obstacle.startSpawningHeight <= shipDistance &&
 				(obstacle.stopSpawningHeight == 0 || obstacle.stopSpawningHeight > shipDistance))
 			{
-				spawnables.Add(i);
+				spawnables.Add(obstacle);
 			}
 		}
 
@@ -103,14 +87,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 			return obstaclesToSpawn[0];
 		}
 
-		int tospawn = UnityEngine.Random.Range(0, spawnables.Count);
-		if (tospawn == prevSpawnIndex)
-		{
-			return new Obstacle();
-		}
-		prevSpawnIndex = tospawn;
-
-		return obstaclesToSpawn[spawnables[tospawn]];
+		return spawnables[UnityEngine.Random.Range(0, spawnables.Count)];
 	}
 
 	public SCR_SpaceGame_Ship GetSpaceship()
