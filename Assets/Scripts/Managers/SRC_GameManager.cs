@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
             PauseGame(false);
         }
 
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
