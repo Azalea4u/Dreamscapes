@@ -17,6 +17,8 @@ public class Scr_ScreenManager : MonoBehaviour {
         }
     }
 
+    // OnClick methods for the MainMenu Scene
+    #region MainMenu Button
     public void RocketClick()
     {
         GameManager.instance.PauseGame(false);
@@ -40,4 +42,5 @@ public class Scr_ScreenManager : MonoBehaviour {
         GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_OctopusShooter, "Octopus_Music");
     }
+    #endregion
 }
