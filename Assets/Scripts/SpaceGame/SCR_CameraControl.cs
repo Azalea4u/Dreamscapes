@@ -42,7 +42,7 @@ public class SCR_CameraControl : MonoBehaviour
 		// Smoothly move the camera to follow the target
 		Vector3 velocity = Vector3.zero;
 		Vector3 targetPos = SetPos(cameraTargetPos, transform.position.x, target.position.y, cameraZPosition);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 7.0f * Time.fixedDeltaTime);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, 6.0f * Time.fixedDeltaTime / SCR_SpaceGame_Manager.instance.difficultyScale);
 
         // Handle infinite scrolling background
         if (!isRepositioning)
