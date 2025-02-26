@@ -17,6 +17,11 @@ public class Scr_ScreenManager : MonoBehaviour {
         }
     }
 
+    public void MainMenu()
+    {
+        SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
+    }
+
     // OnClick methods for the MainMenu Scene
     #region MainMenu Button
     public void RocketClick()

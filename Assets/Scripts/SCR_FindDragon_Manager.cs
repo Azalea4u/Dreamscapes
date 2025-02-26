@@ -279,6 +279,6 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         StartOver_BTN.interactable = true;
         Exit_BTN.interactable = true;
 
-        GameManager.instance.PauseGame(true);
+        GameManager.instance.timeSinceTouched = 0;
     }
 }
