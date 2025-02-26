@@ -45,15 +45,13 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
     [SerializeField] private List<dragonGroup> dragonGroups = new List<dragonGroup>();
 
-    public enum difficultyScale
-    {
+    public enum difficultyScale {
         FIRST,
 		SCALING,
         RANDOM
     }
 
-    public enum spawnPattern
-    {
+    public enum spawnPattern {
         RANDOM = 0,
         GRID = 1
     }
@@ -122,14 +120,11 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
     private difficultyScale getCurrentDifficulty()
     {
-        if (dragonsFound == 0)
-        {
+        if (dragonsFound == 0) {
 			return difficultyScale.FIRST;
-		} else if (dragonsFound < dragons.Length)
-        {
+		} else if (dragonsFound < dragons.Length) {
 			return difficultyScale.SCALING;
-		} else
-        {
+		} else {
             return difficultyScale.RANDOM;
         }
     }
@@ -225,15 +220,11 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         wantedDragonVisual.sprite = dragonGroups[0].sprite;
     }
 
-    private void assignDragonGroup(SCR_FindDragon_Dragon dragon, int group)
-    {
+    private void assignDragonGroup(SCR_FindDragon_Dragon dragon, int group) {
 		dragonGroup usedgroup = dragonGroups[group];
-		if (usedgroup.copySpeed || usedgroup.pattern == spawnPattern.GRID)
-		{
+		if (usedgroup.copySpeed || usedgroup.pattern == spawnPattern.GRID) {
 			dragon.speed = usedgroup.speed;
-		}
-		else
-		{
+		} else {
 			Vector2 s = usedgroup.speed;
 			dragon.speed = new Vector2(Random.Range(-s.x, s.x), Random.Range(-s.y, s.y));
 		}
@@ -246,32 +237,30 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     public void DragonPressed(bool isWanted, SCR_FindDragon_Dragon dragon)
     {
         dragon.DeactivateDragon();
-        if (isWanted)
-        {
-            foreach (var drag in dragons)
-            {
-				drag.DeactivateDragon();
-			}
+        if (isWanted) {
+            foreach (var drag in dragons) {
+                drag.DeactivateDragon();
+            }
 
             // would put here stuff I want to happen after the dragon is found
             foundCharacter_SFX.Play();
             dragonsFound += 1;
-            timeLeft += 2;
+            timeLeft += 1;
             useTimer = false;
-			StartCoroutine(resetGameCoroutine());
+            StartCoroutine(resetGameCoroutine());
+        } else {
+            timeLeft -= 0.3f;
         }
     }
 
-    IEnumerator resetGameCoroutine()
-    {
+    IEnumerator resetGameCoroutine() {
         yield return new WaitForSeconds(2.0f);
         newRound_SFX.Play();
         resetGame();
         useTimer = true;
 	}
 
-	private void EndGame()
-    {
+	private void EndGame() {
         useTimer = false;
 
         // Do whatever here to make the game end
