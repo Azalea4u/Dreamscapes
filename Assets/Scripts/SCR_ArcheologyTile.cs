@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class SCR_ArcheologyTile : MonoBehaviour , IPointerDownHandler
 {
 	[SerializeField] private SpriteRenderer visuals;
+	[SerializeField] private ParticleSystem minedParticles;
 	public Vector2Int position = Vector2Int.zero;
 	public bool hasItem = false;
 
@@ -20,6 +21,11 @@ public class SCR_ArcheologyTile : MonoBehaviour , IPointerDownHandler
 	/// <param name="newsprite">The new sprite</param>
 	public void ChangeSprite(Sprite newsprite)
 	{
+		if (layers == 0 && visuals.sprite != newsprite)
+		{
+			minedParticles.Play();
+		}
+
 		visuals.sprite = newsprite;
 	}
 

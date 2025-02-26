@@ -285,6 +285,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		Vector2Int hitPos = minePosition;
 
 		// Vectors for which tiles to check about the hit position
+		// x and y are positions relative to hit position
 		// z value is how much tile damage it should deal
 		Vector3Int[] checks = {
 			new Vector3Int(0,0,2),
