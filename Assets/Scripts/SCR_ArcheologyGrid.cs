@@ -115,20 +115,18 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			{
 				item.position = generateRandomItemPosition(item);
 				cycles--;
-				if (cycles <= 0)
-				{
-					Destroy(item.gameObject);
-				}
 			}
-			if (item == null)
+			if (cycles <= 0)
 			{
-				continue;
+				Debug.Log("Could not place: " + item.GetItemName());
+				Destroy(item.gameObject);
+			} else
+			{
+				// item setup and list additions should only happen after a viable spot is found
+				item.SetupItem(tileSize);
+				items.Add(item);
+				item.transform.position = tileGrid[item.position.x, item.position.y].transform.position;
 			}
-
-			// item setup and list additioons should only happen after a viable spot is found
-			item.SetupItem(tileSize);
-			items.Add(item);
-			item.transform.position = tileGrid[item.position.x, item.position.y].transform.position;
 		}
 
 		playerPosition = gridSize / 2;
@@ -320,7 +318,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	private void checkItemsUncovered()
 	{
 		// removes null items from a list, because right now they are destroyed
-		//items.RemoveAll(x => !x);
 
 		for (int i = 0; i< items.Count; i++)
 		{
@@ -339,7 +336,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			{
                 // Something would happen to the item once it is gotten
                 RemoveItem(item);
-				i--;
+				return;
             }
 		}
 	}
