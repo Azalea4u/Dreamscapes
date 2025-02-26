@@ -126,9 +126,9 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		shipAnimator.Play("Explosion");
 		explosion_SFX.Play();
 		StartCoroutine(ShowGameOverScreen());
-	}
+    }
 
-	private IEnumerator ShowGameOverScreen()
+    private IEnumerator ShowGameOverScreen()
 	{
         yield return new WaitForSeconds(0.75f);
         Destroy(spaceShip_Object.gameObject);
@@ -144,8 +144,6 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         StartOver_BTN.interactable = true;
         Exit_BTN.interactable = true;
-
-        GameManager.instance.PauseGame(true);
     }
 
     private void UpdateDistanceText()
