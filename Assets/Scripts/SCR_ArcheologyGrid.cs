@@ -377,8 +377,8 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		{
 			ResetGame();
 		}
-		
-		running = true;
+		// Remove Items
+		//running = true;
         Popup_Panel.SetActive(false);
 		GameManager.instance.PauseGame(false);
     }
@@ -401,6 +401,5 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		leaderboard.SetActive(true);
 		leaderboard.GetComponent<Scr_LeaderBoard>().endGame(points);
         //SRC_AudioManager.instance.Play_GameWon();
-        GameManager.instance.PauseGame(true);
     }
 }
