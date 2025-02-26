@@ -28,6 +28,22 @@ public class Scr_OctoPlayer : MonoBehaviour {
 			return;
 		}
 
+		for (int i = 0; i < Input.touchCount; i++)
+		{
+			if (Input.GetTouch(i).phase == TouchPhase.Began)
+			{
+				Vector3 touchpos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+				if (touchpos.x < 0)
+				{
+					moveLeft();
+				}
+				else
+				{
+					moveRight();
+				}
+			}
+		}
+
 		transform.position = Vector3.Lerp(transform.position, getDesiredPosition(), Time.deltaTime * 10);
 		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, (transform.position.x - getDesiredPosition().x) * 30), Time.deltaTime * 10);
 
