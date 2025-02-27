@@ -24,6 +24,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] private GameObject LeaderboardUI;
 
 	float overallTime;
+	float freeTime;
 
     [Serializable] public struct spaces
 	{
@@ -42,6 +43,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 		moveTimer = 1.0f;
 		overallTime = 100;
+		freeTime = 22;
 
 		transform.position = availableSpaces[position].spacePosition;
 
@@ -61,7 +63,15 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		}
 
 		moveTimer -= Time.deltaTime;
-		overallTime -= Time.deltaTime;
+
+		if (freeTime > 0) {
+			freeTime -= Time.deltaTime;
+		} else if (overallTime > 0) {
+			overallTime -= Time.deltaTime;
+		} else {
+			//added this in case deltaTime makes overallTime less than 0
+			overallTime = 0;
+		}
 
 		transform.position = Vector3.Lerp(availableSpaces[position].spacePosition, availableSpaces[prevPos].spacePosition, Mathf.Clamp01((moveTimer - (timeSpentMoving * 0.25f)) / (timeSpentMoving - (timeSpentMoving * 0.25f))));
 
