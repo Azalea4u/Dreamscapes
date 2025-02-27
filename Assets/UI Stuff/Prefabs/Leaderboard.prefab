@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7819540006207840999}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterUpClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1940705304893618950}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &166565603346849352
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +537,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 712993927627936501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterDownClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6338151570296984760}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &835351765511395719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createPanel: {fileID: 6219776153375777550}
+  namePanel: {fileID: 3294960090802004214}
   continueBtn: {fileID: 7012849908185507223}
   againBtn: {fileID: 524394467875689154}
   loserBtn: {fileID: 6365138027254606599}
@@ -1075,6 +1100,10 @@ MonoBehaviour:
   - {fileID: 90900303668484573, guid: 4618c24d30318224f884842585fd4a4d, type: 3}
   - {fileID: -9146892815881049760, guid: 70d9c37355c811044a3c9e613a2c07b9, type: 3}
   - {fileID: 1409830513793316728, guid: bb593d53a2c4c944cab1c3dd31a7e25b, type: 3}
+  letters:
+  - {fileID: 2513325874596821190}
+  - {fileID: 9063673634421099567}
+  - {fileID: 4708577135516336644}
   fileName: 
 --- !u!1 &1302517404076272953
 GameObject:
@@ -1951,7 +1980,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2070104717312622716}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterUpClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7970742354498588295}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2592610175152808245
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,7 +2193,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2523731541439468949}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterUpClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6560556283398060982}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2896039408199388556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,7 +3280,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6067763964953204229}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: doneClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4275910439189109353
 GameObject:
   m_ObjectHideFlags: 0
@@ -4752,7 +4817,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1523050560135873334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterDownClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 102441699821550652}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5897768299044480009
 GameObject:
   m_ObjectHideFlags: 0
@@ -6495,7 +6572,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6412454438219111091}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterDownClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3813228663221643715}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7417574070827610953
 GameObject:
   m_ObjectHideFlags: 0
