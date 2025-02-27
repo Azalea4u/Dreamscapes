@@ -126,7 +126,7 @@ MonoBehaviour:
         m_MethodName: letterUpClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1940705304893618950}
+          m_ObjectArgument: {fileID: 4708577135516336644}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
         m_MethodName: letterDownClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6338151570296984760}
+          m_ObjectArgument: {fileID: 9063673634421099567}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1986,7 +1986,7 @@ MonoBehaviour:
         m_MethodName: letterUpClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7970742354498588295}
+          m_ObjectArgument: {fileID: 9063673634421099567}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2199,7 +2199,7 @@ MonoBehaviour:
         m_MethodName: letterUpClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6560556283398060982}
+          m_ObjectArgument: {fileID: 2513325874596821190}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4823,7 +4823,7 @@ MonoBehaviour:
         m_MethodName: letterDownClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 102441699821550652}
+          m_ObjectArgument: {fileID: 4708577135516336644}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6578,7 +6578,7 @@ MonoBehaviour:
         m_MethodName: letterDownClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3813228663221643715}
+          m_ObjectArgument: {fileID: 2513325874596821190}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0

@@ -169,19 +169,19 @@ public class Scr_LeaderBoard : MonoBehaviour {
     }
 
     public void letterUpClick(TextMeshProUGUI letter) {
-        letterUpDown(letter.text, true);
+        letterUpDown(letter, true);
     }
 
 	public void letterDownClick(TextMeshProUGUI letter) {
-        letterUpDown(letter.text, false);
+        letterUpDown(letter, false);
 	}
 
-    void letterUpDown(string letter, bool up) {
-        char c = Convert.ToChar(letter);
+    void letterUpDown(TextMeshProUGUI letter, bool up) {
+        int cn = Convert.ToChar(letter.text);
 
-        c = up ? (c == 'A') ? 'Z' : c-- : (c == 'Z') ? 'A' : c++;
+        char c = up ? (cn == 65) ? 'Z' : (char)(cn - 1) : (cn == 90) ? 'A' : (char)(cn + 1);
 
-        letter = c.ToString();
+        letter.text = c.ToString();
     }
 
 	//leaderboard sorting is here, messed up sorting and "recursion" logic here

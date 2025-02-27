@@ -31,7 +31,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		public Vector3 spacePosition;
 	}
 
-
 	void Start() {
 		instance = this;
 
@@ -42,6 +41,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		LeaderboardUI.SetActive(false);
 
 		moveTimer = 1.0f;
+		overallTime = 100;
 
 		transform.position = availableSpaces[position].spacePosition;
 
@@ -61,7 +61,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		}
 
 		moveTimer -= Time.deltaTime;
-		overallTime += Time.deltaTime;
+		overallTime -= Time.deltaTime;
 
 		transform.position = Vector3.Lerp(availableSpaces[position].spacePosition, availableSpaces[prevPos].spacePosition, Mathf.Clamp01((moveTimer - (timeSpentMoving * 0.25f)) / (timeSpentMoving - (timeSpentMoving * 0.25f))));
 
