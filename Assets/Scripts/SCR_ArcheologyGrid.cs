@@ -58,7 +58,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
         GameOver_Panel.SetActive(false);
 		leaderboard.SetActive(false);
 		TimeTXT.text = "" + (int)time;
-		ScoreTXT.text = "Score " + (int)points;
+		ScoreTXT.text = "Score\n" + (int)points;
 		running = true;
 
         tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
@@ -377,8 +377,9 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		{
 			ResetGame();
 		}
+
 		// Remove Items
-		//running = true;
+		running = true;
         Popup_Panel.SetActive(false);
 		GameManager.instance.PauseGame(false);
     }
