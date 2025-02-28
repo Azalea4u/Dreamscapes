@@ -24,14 +24,14 @@ public class Scr_LeaderBoard : MonoBehaviour {
     string filePath;
 
     [System.Serializable]
-    class slotSlot {
+    public class slotSlot {
         public string i;
         public int s;
         public string n;
     }
 
     [System.Serializable]
-    class slotList {
+    public class slotList {
         public slotSlot[] slot;
     }
     slotList saveSlots = new slotList();
