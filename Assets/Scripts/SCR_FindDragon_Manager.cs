@@ -8,15 +8,30 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 {
     public static SCR_FindDragon_Manager instance { get; private set; }
 
+    [Header("Setup Values")]
     [SerializeField] private SCR_FindDragon_Dragon[] dragons;
+    /// <summary>
+    /// available selection of dragons to be found
+    /// </summary>
     [SerializeField] private Sprite[] dragonSprites;
+	/// <summary>
+	/// how many dragon groups should be made when creating groups
+	/// </summary>
+	[SerializeField] private int groupAmount = 3;
     [SerializeField] private Vector2 _gamebounds;
     [SerializeField] private Image wantedDragonVisual;
-    [SerializeField] private List<Vector2> spawnGrid;
-	[SerializeField] private List<Vector2> spawnGridAvailable;
+    /// <summary>
+    /// positions that dragons can spawn at within the bounds of the game
+    /// </summary>
+    private List<Vector2> spawnGrid;
+    /// <summary>
+    /// available positions to spawn dragons.
+    /// </summary>
+	private List<Vector2> spawnGridAvailable;
 
-    [SerializeField] private bool useTimer = false;
-    [SerializeField] private float timeLeft = 15;
+    [Header("Runtime values")]
+    private bool useTimer = false;
+    private float timeLeft = 15;
     [SerializeField] private int dragonsFound = 0;
 
     [Header("Game State")]
@@ -43,14 +58,17 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         } 
     }
 
-    [SerializeField] private List<dragonGroup> dragonGroups = new List<dragonGroup>();
+    private List<dragonGroup> dragonGroups = new List<dragonGroup>();
 
+    // helps to define how far in the game the player is
+    // as the player finds more dragons, more dragons are spawned, up to the maximum
     public enum difficultyScale {
         FIRST,
 		SCALING,
-        RANDOM
+        DONE
     }
 
+    // helps to define how a group of dragons should be spawned
     public enum spawnPattern {
         RANDOM = 0,
         GRID = 1
@@ -61,7 +79,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     {
         public Sprite sprite;
         public Vector2 speed;
-        public bool copySpeed;
+        // if randomzieSpeed is true, speed is used as a range for randomization
+        public bool randomizeSpeed;
         public spawnPattern pattern;
         public SCR_FindDragon_Dragon.edgeType edgeType;
     }
@@ -118,6 +137,11 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		setupDragons();
 	}
 
+    /// <summary>
+    /// Gets the current difficulty scale of the game.
+    /// Difficulty is based on how far the player is in the game.
+    /// </summary>
+    /// <returns>Current difficultyScale of the game</returns>
     private difficultyScale getCurrentDifficulty()
     {
         if (dragonsFound == 0) {
@@ -125,29 +149,43 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 		} else if (dragonsFound < dragons.Length) {
 			return difficultyScale.SCALING;
 		} else {
-            return difficultyScale.RANDOM;
+            return difficultyScale.DONE;
         }
     }
 
+    /// <summary>
+    /// Creates new dragon groups to be used when setting up the dragons
+    /// </summary>
     private void createDragonGroups()
     {
         dragonGroups.Clear();
+
+        // the start and groupAmount variables are designed with larger amount of sprites to choose from in mind
+
+        // when creating groups it starts at a random location in the list
         int start = Random.Range(0,dragonSprites.Length);
-        for (int i = 0; i < 3; i++)
+
+		for (int i = 0; i < Mathf.Min(groupAmount, dragonSprites.Length); i++)
         {
 			dragonGroup newgroup = new dragonGroup();
 
             if (getCurrentDifficulty() == difficultyScale.FIRST)
             {
+				// if it is the first round of finding, the pattern is set completely on its own
+				// so we don't need any of the other values
+
+				// (start + i) % dragonSprites.Length will wrap the count around the bounds of the list
 				newgroup.sprite = dragonSprites[(start + i) % dragonSprites.Length];
-            } else
+            }
+            else
             {
 				newgroup.pattern = (spawnPattern)Random.Range(0, 2);
 				newgroup.sprite = dragonSprites[(start + i) % dragonSprites.Length];
-				newgroup.copySpeed = (Random.Range(0, 2) == 0);
-				// (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
-				if (newgroup.pattern == spawnPattern.RANDOM)
+                // the grid pattern will not move
+                if (newgroup.pattern != spawnPattern.GRID)
 				{
+				    newgroup.randomizeSpeed = Random.Range(0, 2) == 0;
+    				// (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
 					newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f));
 				}
 				newgroup.edgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
@@ -186,6 +224,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 					}
 					break;
                 case difficultyScale.SCALING:
+                    // currently is the same as difficultyScale.DONE
+                    // I would like to make it different if I have time
 					switch (dragonGroups[selectedGroup].pattern)
 					{
 						case spawnPattern.RANDOM:
@@ -198,7 +238,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 							break;
 					}
 					break;
-                case difficultyScale.RANDOM:
+                case difficultyScale.DONE:
 					switch (dragonGroups[selectedGroup].pattern)
 					{
 						case spawnPattern.RANDOM:
@@ -222,7 +262,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
     private void assignDragonGroup(SCR_FindDragon_Dragon dragon, int group) {
 		dragonGroup usedgroup = dragonGroups[group];
-		if (usedgroup.copySpeed || usedgroup.pattern == spawnPattern.GRID) {
+		if (!usedgroup.randomizeSpeed || usedgroup.pattern == spawnPattern.GRID) {
 			dragon.speed = usedgroup.speed;
 		} else {
 			Vector2 s = usedgroup.speed;
@@ -241,8 +281,6 @@ public class SCR_FindDragon_Manager : MonoBehaviour
             foreach (var drag in dragons) {
                 drag.DeactivateDragon();
             }
-
-            // would put here stuff I want to happen after the dragon is found
             foundCharacter_SFX.Play();
             dragonsFound += 1;
             timeLeft += 1;
@@ -262,10 +300,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
 	private void EndGame() {
         useTimer = false;
-
-        // Do whatever here to make the game end
         findDragon_TXT.text = "You found " + dragonsFound + "!";
-        //WinScreen_Panel.SetActive(true);
         leaderBoard.SetActive(true);
         leaderBoard.GetComponent<Scr_LeaderBoard>().endGame(dragonsFound);
         StartOver_BTN.interactable = false;
