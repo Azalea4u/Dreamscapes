@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class Scr_BoardSlot : MonoBehaviour {
     public Image slotImg;
     public TextMeshProUGUI scoreTxt;
+    public TextMeshProUGUI nameTxt;
 
-    public void changeSlot(Sprite img, int score) {
+	public void changeSlot(Sprite img, int score, string name) {
 		slotImg.sprite = img;
 		scoreTxt.text = "" + score;
+		nameTxt.text = name;
 	}
 
 	/*

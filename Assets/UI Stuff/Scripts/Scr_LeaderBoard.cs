@@ -4,29 +4,34 @@ using UnityEngine.UI;
 using System.IO;
 using UnityEditor;
 using System.Collections;
+using System;
 
 public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] GameObject createPanel;
+    [SerializeField] GameObject namePanel;
     [SerializeField] GameObject continueBtn;
     [SerializeField] GameObject againBtn;
     [SerializeField] GameObject loserBtn;
     [SerializeField] GameObject loserpanel;
     [SerializeField] Scr_BoardSlot[] slots;
     [SerializeField] Sprite[] sprites;
+    [SerializeField] TextMeshProUGUI[] letters;
 
     int newScore;
+    string newName;
 
     [SerializeField] string fileName;
     string filePath;
 
     [System.Serializable]
-    class slotSlot {
+    public class slotSlot {
         public string i;
         public int s;
+        public string n;
     }
 
     [System.Serializable]
-    class slotList {
+    public class slotList {
         public slotSlot[] slot;
     }
     slotList saveSlots = new slotList();
@@ -43,6 +48,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
         //based on saveSlots information set the leaderboard slots
         for (int i = 0; i < slots.Length; i++) {
             slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
+            slots[i].nameTxt.text = saveSlots.slot[i].n;
+
             switch (saveSlots.slot[i].i) {
                 case "cute":
                     slots[i].slotImg.sprite = sprites[0];
@@ -73,6 +80,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
         //grab info from leaderboard slots and set save slots
 		for (int i = 0; i < slots.Length; i++) {
 			saveSlots.slot[i].s = int.Parse(slots[i].scoreTxt.text);
+            saveSlots.slot[i].n = slots[i].nameTxt.text;
 
 			switch (slots[i].slotImg.sprite.name) {
 				case "CuteDoor_0":
@@ -141,65 +149,84 @@ public class Scr_LeaderBoard : MonoBehaviour {
 	}
 
     public void createClick(Image img) {
-        createSlot(img.sprite, newScore);
+        createSlot(img.sprite, newScore, newName);
 
         createPanel.SetActive(false);
         continueBtn.SetActive(true);
 		againBtn.SetActive(true);
 	}
+    
+    public void doneClick() {
+        string result = "";
 
-    //oh yeah keyboard...
-    public void letterClick(TextMeshProUGUI letter) {
-        switch (letter.text) {
-            case "Enter":
-                break;
-            case "Backspace":
-                break;
-            default:
-                break;
+        foreach (TextMeshProUGUI t in letters) {
+            result += t.text;
         }
+
+        newName = result;
+        namePanel.SetActive(false);
+        createPanel.SetActive(true);
     }
 
-    //leaderboard sorting is here, messed up sorting and "recursion" logic here
-    void createSlot(Sprite img, int score, int index = 0) {
+    public void letterUpClick(TextMeshProUGUI letter) {
+        letterUpDown(letter, true);
+    }
+
+	public void letterDownClick(TextMeshProUGUI letter) {
+        letterUpDown(letter, false);
+	}
+
+    void letterUpDown(TextMeshProUGUI letter, bool up) {
+        int cn = Convert.ToChar(letter.text);
+
+        char c = up ? (cn == 65) ? 'Z' : (char)(cn - 1) : (cn == 90) ? 'A' : (char)(cn + 1);
+
+        letter.text = c.ToString();
+    }
+
+	//leaderboard sorting is here, messed up sorting and "recursion" logic here
+	void createSlot(Sprite img, int score, string name, int index = 0) {
         //index; doesn't work so I just do this, theres probably an easier way...
 		for (index = index; index < slots.Length; index++) {
             Sprite tempSprite;
             int tempScore;
+            string tempName;
 
 			if (int.Parse(slots[index].scoreTxt.text) < score) {
                 tempSprite = slots[index].slotImg.sprite;
 				tempScore = int.Parse(slots[index].scoreTxt.text);
+                tempName = slots[index].nameTxt.text;
 
                 switch (img.name) {
                     case "CuteDoor_0":
-                        slots[index].changeSlot(sprites[0], score);
+                        slots[index].changeSlot(sprites[0], score, name);
                         break;
                     case "DwindlingDoor_0":
-                        slots[index].changeSlot(sprites[1], score);
+                        slots[index].changeSlot(sprites[1], score, name);
                         break;
                     case "PaintDoor_0":
-                        slots[index].changeSlot(sprites[2], score);
+                        slots[index].changeSlot(sprites[2], score, name);
                         break;
                     case "SpaceDoor_0":
-                        slots[index].changeSlot(sprites[3], score);
+                        slots[index].changeSlot(sprites[3], score, name);
                         break;
                     case "TrippyDoor_0":
-                        slots[index].changeSlot(sprites[4], score);
+                        slots[index].changeSlot(sprites[4], score, name);
                         break;
                     case "VintageDoor_0":
-                        slots[index].changeSlot(sprites[5], score);
+                        slots[index].changeSlot(sprites[5], score, name);
                         break;
                 }
 
-                createSlot(tempSprite, tempScore, index + 1);
+                createSlot(tempSprite, tempScore, tempName, index + 1);
                 return;
 			}
 		}
 	}
 
     void highScore() {
-        createPanel.SetActive(true);
+        //createPanel.SetActive(true);
+        namePanel.SetActive(true);
         continueBtn.SetActive(false);
         againBtn.SetActive(false);
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -57,7 +58,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
         GameOver_Panel.SetActive(false);
 		leaderboard.SetActive(false);
 		TimeTXT.text = "" + (int)time;
-		ScoreTXT.text = "Score " + (int)points;
+		ScoreTXT.text = "Score\n" + (int)points;
 		running = true;
 
         tileGrid = new SCR_ArcheologyTile[gridSize.x,gridSize.y];
@@ -73,9 +74,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 				SCR_ArcheologyTile tile = Instantiate(tilePrefab, transform).GetComponent<SCR_ArcheologyTile>();
 				tileGrid[xpos, ypos] = tile;
 				tile.position.Set(xpos, ypos);
-				tile.layers = Mathf.Min(Random.Range(1, 7), 2);
-
-				tile.ChangeSprite(depthSprites[tile.layers]);
 
 				tile.transform.localScale = tileSize;
 				tile.transform.position = new Vector2(transform.position.x + (tileSize.x * xpos), transform.position.y - (tileSize.y * ypos));
@@ -87,6 +85,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 	private void ResetGame()
 	{
+		// reset values on the grid tiles to starting values
 		for (int ypos = 0; ypos < gridSize.y; ypos++)
 		{
 			for (int xpos = 0; xpos < gridSize.x; xpos++)
@@ -109,26 +108,29 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
 			item.position = generateRandomItemPosition(item);
 
-			// if the item position generated overlaps with another, generate another one
-			int cycles = gridSize.x * gridSize.y;
-			while (itemOverlapCheck(item) && cycles > 0)
+			// if the item position generated overlaps with another, try another one
+			
+			int tries = gridSize.x * gridSize.y;
+			while (itemOverlapCheck(item) && tries > 0)
 			{
+				// I don't like continuously generating a random position, but the result feels better than other methods I have tried
 				item.position = generateRandomItemPosition(item);
-				cycles--;
-				if (cycles <= 0)
-				{
-					Destroy(item.gameObject);
-				}
-			}
-			if (item == null)
-			{
-				continue;
+
+				tries--;
 			}
 
-			// item setup and list additioons should only happen after a viable spot is found
-			item.SetupItem(tileSize);
-			items.Add(item);
-			item.transform.position = tileGrid[item.position.x, item.position.y].transform.position;
+			// if you have tried every position in the grid
+			if (tries <= 0)
+			{
+				Debug.Log("Could not place: " + item.GetItemName());
+				Destroy(item.gameObject);
+			} else
+			{
+				// item setup and list additions should only happen after a viable spot is found
+				item.SetupItem(tileSize);
+				items.Add(item);
+				item.transform.position = tileGrid[item.position.x, item.position.y].transform.position;
+			}
 		}
 
 		playerPosition = gridSize / 2;
@@ -151,7 +153,6 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		}
     }
 
-
 	private Vector2Int generateRandomItemPosition(SCR_ArcheologyItem item)
 	{
 		return new Vector2Int(Random.Range(0, gridSize.x - (item.size.x - 1)), Random.Range(0, gridSize.y - (item.size.y - 1)));
@@ -161,7 +162,9 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 	{
 		List<Vector2Int> itemVolume = item.GetItemGridPositions();
 
-		foreach (var pos in itemVolume)
+		Debug.Log(item.position);
+
+		foreach (Vector2Int pos in itemVolume)
         {
 			if (tileGrid[pos.x,pos.y].hasItem)
 			{
@@ -287,6 +290,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		Vector2Int hitPos = minePosition;
 
 		// Vectors for which tiles to check about the hit position
+		// x and y are positions relative to hit position
 		// z value is how much tile damage it should deal
 		Vector3Int[] checks = {
 			new Vector3Int(0,0,2),
@@ -303,7 +307,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			if (hitPos.x + checks[i].x < gridSize.x && hitPos.y + checks[i].y < gridSize.y && hitPos.x + checks[i].x >= 0 && hitPos.y + checks[i].y >= 0)
 			{
 				tile = tileGrid[hitPos.x + checks[i].x, hitPos.y + checks[i].y];
-				if (tile != null)
+				if (tile != null && tile.layers > 0)
 				{
 					tile.layers -= checks[i].z;
 					tile.ChangeSprite(depthSprites[tile.layers]);
@@ -311,17 +315,13 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			}
 		}
 
-		// after breaking tiles, check for uncovered items
-		checkItemsUncovered();
+		// after breaking tiles, check for and remove uncovered items
+		removeUncoveredItems();
 	}
 
 	
-
-	private void checkItemsUncovered()
+	private void removeUncoveredItems()
 	{
-		// removes null items from a list, because right now they are destroyed
-		//items.RemoveAll(x => !x);
-
 		for (int i = 0; i< items.Count; i++)
 		{
 			SCR_ArcheologyItem item = items[i];
@@ -337,15 +337,14 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			
 			if (uncovered)
 			{
-                // Something would happen to the item once it is gotten
                 RemoveItem(item);
-				i--;
+				return;
             }
 		}
 	}
 
     private void RemoveItem(SCR_ArcheologyItem item)
-    {		
+    {
 		// Pop-Up Panel
         Artifact_IMG.sprite = item.GetSprite();
 		ArtifactName_TXT.text = item.GetItemName() + "!";
@@ -374,30 +373,27 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 
     public void ClosePopUp()
 	{
-
-		// check for if all the items are gone
 		if (items.Count == 0)
 		{
-			// Do the win screen stuff
-			//ShowGameWinScreen();
 			ResetGame();
 		}
+
 		// Remove Items
-		//running = true;
+		running = true;
         Popup_Panel.SetActive(false);
 		GameManager.instance.PauseGame(false);
     }
 
-    private void ShowGameWinScreen()
-    {
-		running = false;
+  //  private void ShowGameWinScreen()
+  //  {
+		//running = false;
 		//GameManager.instance.PauseGame(true);
-		//leaderboard.SetActive(true);
-		//leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)time);
-        //GameWin_Panel.SetActive(true);
-		//SRC_AudioManager.instance.Play_GameWon();
-        //GameManager.instance.PauseGame(true);
-    }
+		////leaderboard.SetActive(true);
+		////leaderboard.GetComponent<Scr_LeaderBoard>().endGame((int)time);
+  //      //GameWin_Panel.SetActive(true);
+		////SRC_AudioManager.instance.Play_GameWon();
+  //      //GameManager.instance.PauseGame(true);
+  //  }
 	
 	private void ShowGameOverScreen()
 	{

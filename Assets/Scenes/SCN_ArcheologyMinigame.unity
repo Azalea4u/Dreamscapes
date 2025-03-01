@@ -1741,7 +1741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -12.300049, y: 15.630005}
+  m_AnchoredPosition: {x: -12.300049, y: 15.629883}
   m_SizeDelta: {x: 110, y: 120}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &735946891
@@ -1901,18 +1901,6 @@ PrefabInstance:
     - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
       propertyPath: m_fontSize
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.26966885
-      objectReference: {fileID: 0}
-    - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.28339925
-      objectReference: {fileID: 0}
-    - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.8490566
       objectReference: {fileID: 0}
     - target: {fileID: 6168558526012197452, guid: c987739e9de1bee43be5078d4b220a51, type: 3}
       propertyPath: m_fontSizeBase
@@ -4183,7 +4171,7 @@ MonoBehaviour:
   playerPosition: {x: 0, y: 0}
   minePosition: {x: 0, y: 0}
   points: 0
-  time: 100
+  time: 60.5
   running: 0
   ScoreTXT: {fileID: 1056094462}
   TimeTXT: {fileID: 69850240}

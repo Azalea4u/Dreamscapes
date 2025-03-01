@@ -6,8 +6,12 @@ public class SO_ArcheologyItem_Data : ScriptableObject
 {
 	public string Name;
 	public Sprite sprite;
-	public int points;
 	public Vector2Int size = Vector2Int.one;
+
+	/// <summary>
+	/// How many points the item is worth
+	/// </summary>
+	public int points;
 
 	/// <summary>
 	/// List of grid positions that the item covers.<br/>
