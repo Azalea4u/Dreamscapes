@@ -1741,7 +1741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -12.300049, y: 15.630005}
+  m_AnchoredPosition: {x: -12.300049, y: 15.629883}
   m_SizeDelta: {x: 110, y: 120}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &735946891
@@ -4171,7 +4171,7 @@ MonoBehaviour:
   playerPosition: {x: 0, y: 0}
   minePosition: {x: 0, y: 0}
   points: 0
-  time: 90.5
+  time: 60.5
   running: 0
   ScoreTXT: {fileID: 1056094462}
   TimeTXT: {fileID: 69850240}

@@ -287,7 +287,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
             useTimer = false;
             StartCoroutine(resetGameCoroutine());
         } else {
-            timeLeft -= 0.3f;
+            timeLeft -= 0.5f;
         }
     }
 
