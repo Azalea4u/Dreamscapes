@@ -16,12 +16,6 @@ public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
         SCROLL = 1
     }
 
-	private void Start()
-	{
-		//speed = new Vector2(Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f));
-		//edgeInteraction = (edgeType)Random.Range(0, 2);
-	}
-
 	void Update()
 	{
 		if (!active)

@@ -6,26 +6,36 @@ using UnityEngine.SceneManagement;
 public class Scr_OctoEnemy : MonoBehaviour {
 	public static Scr_OctoEnemy instance { get; private set; }
 
-	[SerializeField] Scr_OctoPlayer player;
-    [SerializeField] int health = 100;
-	[SerializeField] int _health;
+	Scr_OctoPlayer player;
+	
+	[Header("Setup Values")]
+	[SerializeField] int health = 100;
+	int _health;
     [SerializeField] GameObject shootFab;
     [SerializeField] GameObject tentacleFab;
-    [SerializeField] float moveTimer;
-	float timeSpentMoving;
 	[SerializeField] spaces[] availableSpaces = new spaces[5];
-	[SerializeField] int position = 2;
+
+
+	[Header("Runtime Values")]
+    float moveTimer;
+	float timeSpentMoving;
+	// prev position is used to allow Poly to move to its new position smoothly
 	int prevPos;
+	[SerializeField] int position = 2;
 	[SerializeField] SpriteRenderer spriteRenderer;
-	[SerializeField] Scr_Tentacle tentacleRef;
+	// to track if a tentacle is spawned in
+	// also helpful for updating the material
+	Scr_Tentacle tentacleRef;
 
     [Header("Game States")]
     [SerializeField] private GameObject GameWin_Panel;
     [SerializeField] private GameObject LeaderboardUI;
 
+	// timers used for leaderboard score
 	float overallTime;
 	float freeTime;
 
+	// A space tracks what is within it (Tentacle or Bubble) for helping with AI decisions
     [Serializable] public struct spaces
 	{
 		public GameObject somethingHereRef;
@@ -56,14 +66,9 @@ public class Scr_OctoEnemy : MonoBehaviour {
 			return;
 		}
 
-		spriteRenderer.material.SetFloat("_Strength", GetHealthPercent());
-		if (tentacleRef != null)
-		{
-			tentacleRef.UpdateGreyscale(GetHealthPercent());
-		}
-
 		moveTimer -= Time.deltaTime;
 
+		// the leaderboard score will be 100/100 as long as you defeat Poly within the time given by freeTime
 		if (freeTime > 0) {
 			freeTime -= Time.deltaTime;
 		} else if (overallTime > 0) {
@@ -75,6 +80,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 		transform.position = Vector3.Lerp(availableSpaces[position].spacePosition, availableSpaces[prevPos].spacePosition, Mathf.Clamp01((moveTimer - (timeSpentMoving * 0.25f)) / (timeSpentMoving - (timeSpentMoving * 0.25f))));
 
+		// The Enemy AI is decided here upon move timer expiring
 		if (moveTimer <= 0)
 		{
 			prevPos = position;
@@ -146,8 +152,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		{
 			position = 0;
 		}
-
-		//transform.position = availableSpaces[position].spacePosition;
 	}
 
 	public void moveRight()
@@ -157,13 +161,11 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		{
 			position = availableSpaces.Length - 1;
 		}
-
-		//transform.position = availableSpaces[position].spacePosition;
 	}
 
 	public float GetHealthPercent()
 	{
-		return 1.0f - Mathf.Sqrt((float)_health / health);
+		return Mathf.Sqrt((float)_health / health);
 	}
 
 	public void moveRandomLeftRight()
@@ -193,12 +195,29 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		_health = Mathf.Clamp(_health, 0, health);
         if (d > 0)
         {
+			// if the damage is above 0, it should flash white to indicate damage
 			damageFlicker();
 			if (tentacleRef != null)
 			{
 				tentacleRef.DamageFlicker();
 			}
+		} else if (d < 0)
+		{
+			// if the damage is less that 0, it should flash black to indicate dwindling taking over
+			damageDark();
+			if (tentacleRef != null)
+			{
+				tentacleRef.DamageDark();
+			}
 		}
+
+		// sets the strength of the greyscale
+		spriteRenderer.material.SetFloat("_Strength", 1.0f - GetHealthPercent());
+		if (tentacleRef != null)
+		{
+			tentacleRef.UpdateGreyscale(1.0f - GetHealthPercent());
+		}
+
 		if (_health <= 0) {
 			GameWin();
         }
@@ -214,6 +233,18 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(Time.deltaTime * 6);
 		spriteRenderer.material.SetInt("_Flash", 0);
+	}
+
+	private void damageDark()
+	{
+		spriteRenderer.material.SetInt("_Dark", 1);
+		StartCoroutine(Dark());
+	}
+
+	private IEnumerator Dark()
+	{
+		yield return new WaitForSeconds(Time.deltaTime * 6);
+		spriteRenderer.material.SetInt("_Dark", 0);
 	}
 
 	private void GameWin()

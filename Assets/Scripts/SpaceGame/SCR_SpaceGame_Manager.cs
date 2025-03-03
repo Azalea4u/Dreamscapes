@@ -2,11 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.Playables;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SCR_SpaceGame_Manager : MonoBehaviour
@@ -17,10 +13,10 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 	[SerializeField] private SCR_SpaceGame_Ship spaceship;
     [SerializeField] private Obstacle[] obstaclesToSpawn;
     [SerializeField] private float spawnTimerLength = 2.0f;
-	private float spawnTimer;
 	[SerializeField] private int shipDistance;
 	public float difficultyScale = 1.0f;
-	private int prevSpawnPosIndex;
+	private float spawnTimer;
+	// the index of obstaclesToSpawn[] that was spawned last so you don't get a bunch of repeats
 	private int prevSpawnIndex;
 
 	[Header("Death State")]
@@ -34,7 +30,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
     [Serializable] struct Obstacle
 	{
 		public int startSpawningHeight;
-		public int stopSpawningHeight; // if the stop heigh it 0, then it will always spawn
+		public int stopSpawningHeight; // if the stop height is 0, then the obstacle will always be able to spawn
 		public GameObject prefabToSpawn;
 		public float[] spawnPositions;
 		public float spawnTimeDelay;
@@ -63,21 +59,18 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)
         {
+			// difficulty is updated when an entity spawns because I don't want things to change mid obstacle encounter.
 			difficultyScale = Mathf.Clamp(1.0f + (0.05f * (shipDistance / 100)), 1.0f, 2.0f);
 
 			Obstacle tospawn = getObstacleToSpawn();
 
+			// tospawn.prefabToSpawn is only null when the gotten obstacle is the same as the previously spawned one
 			if (tospawn.prefabToSpawn == null)
 			{
 				return;
 			}
 
 			int spawnIndex = UnityEngine.Random.Range(0, tospawn.spawnPositions.Length);
-			if (spawnIndex == prevSpawnPosIndex)
-			{
-				return;
-			}
-			prevSpawnPosIndex = spawnIndex;
 
 			Vector3 spawnPosition = new Vector3(tospawn.spawnPositions[spawnIndex], Camera.main.transform.position.y + 10.0f, 0.0f);
 			Instantiate(tospawn.prefabToSpawn, spawnPosition, Quaternion.identity);
@@ -86,6 +79,10 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Gets an obstacle from the obstaclesToSpawn list that is valid to spawn at the spaceships current height
+	/// </summary>
+	/// <returns>A spawnable obstacle<br/>Will return an empty obstacle if there are no valid spawns</returns>
 	Obstacle getObstacleToSpawn()
 	{
 		List<int> spawnables = new List<int>();
@@ -102,7 +99,7 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		}
 
 		if (spawnables.Count == 0) {
-			return obstaclesToSpawn[0];
+			return new Obstacle();
 		}
 
 		int tospawn = UnityEngine.Random.Range(0, spawnables.Count);
@@ -115,6 +112,10 @@ public class SCR_SpaceGame_Manager : MonoBehaviour
 		return obstaclesToSpawn[spawnables[tospawn]];
 	}
 
+	/// <summary>
+	///	Getter function for the spaceship MonoBehaviour
+	/// </summary>
+	/// <returns>The spaceship MonoBehaviour</returns>
 	public SCR_SpaceGame_Ship GetSpaceship()
 	{
 		return spaceship;
