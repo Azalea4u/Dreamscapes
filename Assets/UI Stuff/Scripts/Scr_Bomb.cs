@@ -3,7 +3,6 @@ using UnityEngine;
 public class Scr_Bomb : MonoBehaviour {
 	[SerializeField] float speed;
 	[SerializeField] Transform visuals;
-	[SerializeField] ParticleSystem ps;
     Rigidbody2D rb;
 
     void Start() {
@@ -12,23 +11,18 @@ public class Scr_Bomb : MonoBehaviour {
 	}
 
     void Update() {
+		// -6.0f is off the screen on the bottom
 		if (transform.position.y <= -6.0f)
 		{
 			Destroy(gameObject);
 		}
-		visuals.Rotate(Vector3.forward, Time.deltaTime * 100);
+		visuals.Rotate(Vector3.forward, Time.deltaTime * 200);
     }
 
-	private void OnTriggerEnter2D(Collider2D collision) 
-	{
-        Instantiate(ps, collision.transform);
-        ps.Play(); 
-
-        if (collision.gameObject.GetComponent<Scr_OctoPlayer>()) {
-			Scr_OctoEnemy.instance.damage(-10);
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.GetComponent<Scr_OctoPlayer>()) {
+			Scr_OctoEnemy.instance.damage(-3);
 			Destroy(gameObject);
 		}
 	}
-
-	//revert octo enemy if hits player
 }
