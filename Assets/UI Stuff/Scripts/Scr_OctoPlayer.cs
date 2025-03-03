@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 
 public class Scr_OctoPlayer : MonoBehaviour {
-    [SerializeField] GameObject projPrefab;
     Rigidbody2D rb;
 	// the player is limited to 5 different positions -2, -1, 0, 1, 2
     public int position = 0;
 	// tracks which direction the player has moved for when they get hit by a tentacle. they need to move back
     bool lastMovedLeft = false;
+
+	[Header("Projectile Values")]
+    [SerializeField] GameObject projPrefab;
 	[SerializeField] float shootDelay = 0.5f;
 	float shootTimer;
 
@@ -46,6 +48,7 @@ public class Scr_OctoPlayer : MonoBehaviour {
 			}
 		}
 
+		// move and rotate the ship towards where it is going
 		transform.position = Vector3.Lerp(transform.position, getDesiredPosition(), Time.deltaTime * 10);
 		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, (transform.position.x - getDesiredPosition().x) * 30), Time.deltaTime * 10);
 

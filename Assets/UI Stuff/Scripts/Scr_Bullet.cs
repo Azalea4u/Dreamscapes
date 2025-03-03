@@ -26,7 +26,7 @@ public class Scr_Bullet : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other) 
     {
-
+        // separation of enemy layer and tag is for bullets to be destroyed by the tentacle but not damage poly
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             Instantiate(ps, other.transform);

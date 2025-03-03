@@ -13,9 +13,13 @@ public class Scr_Tentacle : MonoBehaviour
 	void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+		// all motions that happen are entirely controlled by the animation player
         anims.Play("TentacleAttack");
     }
 
+
+	// These functions are to align the greyscale and flashing with the real Poly
     public void UpdateGreyscale( float value)
     {
         spriteRenderer.material.SetFloat("_Strength", value);
