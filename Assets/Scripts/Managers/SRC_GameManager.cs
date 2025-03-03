@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,8 +8,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game State")]
     [SerializeField] public bool IsGamePaused = false;
-
-    public float timeSinceTouched;
+    public float timesinceTouched;
 
     private void Awake()
     {
@@ -33,19 +31,24 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
         // Makes sure if on MainMenu, that it will unpause/unfreeze the page
-        if (SceneManager.GetActiveScene().name == "SCN_MainMenu")
+        if (SceneManager.GetActiveScene().name == "SCN_MainMenu" || (SceneManager.GetActiveScene().name == "SCN_Loading"))
         {
             PauseGame(false);
-            timeSinceTouched = 0;
+            timesinceTouched = 0;
         }
         else if ((SceneManager.GetActiveScene().name != "SCN_MainMenu") || (SceneManager.GetActiveScene().name != "SCN_Loading"))
         {
-            if (Input.touchCount == 0)
+            if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
             {
-                timeSinceTouched = Time.timeSinceLevelLoad;
-                Debug.Log(timeSinceTouched);
+                Debug.Log("Mouse Clicked");
+                timesinceTouched = 0;
+            }
+            else //if (Input.touchCount <= 0 || !Input.GetMouseButtonDown(0))
+            {
+                timesinceTouched += Time.deltaTime;
+                Debug.Log((int)timesinceTouched);
 
-                if (timeSinceTouched >= 30)
+                if (timesinceTouched >= 30)
                 {
                     BackToMainMenu();
                 }
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
     // in case some bozo walks away in the middle of the game
     public void BackToMainMenu()
     {
-        timeSinceTouched = 0;
+        timesinceTouched = 0;
         Scr_ScreenManager.instance.MainMenu();
     }
 }
