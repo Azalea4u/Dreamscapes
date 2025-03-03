@@ -16,18 +16,17 @@ public class Scr_Bullet : MonoBehaviour {
     }
 
     void Update() {
+        // 6.0f is off the screen on the top
 		if (transform.position.y >= 6.0f)
 		{
-            //StartCoroutine(WaitForParticles());
             Destroy(gameObject);
-            //Instantiate(ps, visuals.position, Quaternion.identity);
         }
-        visuals.Rotate(Vector3.forward, Time.deltaTime * -100);
+        visuals.Rotate(Vector3.forward, Time.deltaTime * -200);
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) 
     {
-
+        // separation of enemy layer and tag is for bullets to be destroyed by the tentacle but not damage poly
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             Instantiate(ps, other.transform);
@@ -38,30 +37,7 @@ public class Scr_Bullet : MonoBehaviour {
                 other.GetComponent<Scr_OctoEnemy>().damage(1);
             }
 
-            StartCoroutine(WaitForParticles());
             Destroy(gameObject);
         }
-
-        //ps.Play();
-        //if (other.GetComponent<Scr_Bomb>())
-        //{
-        //    //StartCoroutine(WaitForParticles());
-        //    Destroy(gameObject);
-        //}
-        //if (other.GetComponents<Scr_OctoEnemy>().Length > 0) {
-        //
-        //    //StartCoroutine(WaitForParticles());
-        //    other.GetComponent<Scr_OctoEnemy>().damage(1);
-        //
-        //    Destroy(gameObject);
-        //}
 	}
-
-    private IEnumerator WaitForParticles()
-    {
-        //ps.Play();
-        yield return new WaitForSeconds(0.2f);
-    }
-
-    //not used so don't worry =)
 }

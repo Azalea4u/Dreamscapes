@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2615803183947834024}
   - component: {fileID: 8599792239295851838}
   - component: {fileID: 681475813043497289}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1423270875263426255}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8872012141440558699}
   - component: {fileID: 2512112051490980000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 849405322804362599}
   - component: {fileID: 7550446484688330375}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WaterVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 8084332657456701799}
   - component: {fileID: 6529029614960375008}
   - component: {fileID: 6696291541849951458}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7436276523773564943}
   - component: {fileID: 1494447380523414108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: mask1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
