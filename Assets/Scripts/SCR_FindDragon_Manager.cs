@@ -23,11 +23,11 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     /// <summary>
     /// positions that dragons can spawn at within the bounds of the game
     /// </summary>
-    private List<Vector2> spawnGrid;
+    private List<Vector2> spawnGrid = new List<Vector2>();
     /// <summary>
     /// available positions to spawn dragons.
     /// </summary>
-	private List<Vector2> spawnGridAvailable;
+	private List<Vector2> spawnGridAvailable = new List<Vector2>();
 
     [Header("Runtime values")]
     private bool useTimer = false;

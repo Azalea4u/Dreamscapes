@@ -91,7 +91,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 			for (int xpos = 0; xpos < gridSize.x; xpos++)
 			{
 				SCR_ArcheologyTile tile = tileGrid[xpos, ypos];
-				tile.layers = Mathf.Min(Random.Range(1, 7), 2);
+				tile.layers = Mathf.Min(Random.Range(1, 7), 2 + (points/60));
 				tile.ChangeSprite(depthSprites[tile.layers]);
 
 				tile.hasItem = false;

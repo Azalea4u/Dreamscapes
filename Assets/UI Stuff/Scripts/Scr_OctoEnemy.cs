@@ -15,7 +15,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
     [SerializeField] GameObject tentacleFab;
 	[SerializeField] spaces[] availableSpaces = new spaces[5];
 
-
 	[Header("Runtime Values")]
     float moveTimer;
 	float timeSpentMoving;
@@ -33,7 +32,6 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	// timers used for leaderboard score
 	float overallTime;
-	float freeTime;
 
 	// A space tracks what is within it (Tentacle or Bubble) for helping with AI decisions
     [Serializable] public struct spaces
@@ -52,8 +50,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		LeaderboardUI.SetActive(false);
 
 		moveTimer = 1.0f;
-		overallTime = 100;
-		freeTime = 22;
+		overallTime = 0;
 
 		transform.position = availableSpaces[position].spacePosition;
 
@@ -67,16 +64,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 		}
 
 		moveTimer -= Time.deltaTime;
-
-		// the leaderboard score will be 100/100 as long as you defeat Poly within the time given by freeTime
-		if (freeTime > 0) {
-			freeTime -= Time.deltaTime;
-		} else if (overallTime > 0) {
-			overallTime -= Time.deltaTime;
-		} else {
-			//added this in case deltaTime makes overallTime less than 0
-			overallTime = 0;
-		}
+		overallTime += Time.deltaTime;
 
 		transform.position = Vector3.Lerp(availableSpaces[position].spacePosition, availableSpaces[prevPos].spacePosition, Mathf.Clamp01((moveTimer - (timeSpentMoving * 0.25f)) / (timeSpentMoving - (timeSpentMoving * 0.25f))));
 
@@ -251,7 +239,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	{
 		//GameWin_Panel.SetActive(true);
 		LeaderboardUI.SetActive(true);
-		LeaderboardUI.GetComponent<Scr_LeaderBoard>().endGame((int)overallTime);
+		LeaderboardUI.GetComponent<Scr_LeaderBoard>().endGameReverse((int)overallTime);
         //Destroy(gameObject);
 
        // StartCoroutine(ShowScreen());

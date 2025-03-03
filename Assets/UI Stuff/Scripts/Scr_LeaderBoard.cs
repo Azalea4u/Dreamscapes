@@ -19,6 +19,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
     int newScore;
     string newName;
+    bool reverse;
 
     [SerializeField] string fileName;
     string filePath;
@@ -37,6 +38,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
     slotList saveSlots = new slotList();
 
     void Start() {
+        reverse = false;
+
         //get file path, read it, and convert it to saveSlots  
         filePath = Path.Combine(Application.streamingAssetsPath, fileName + ".txt");
         using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
@@ -149,7 +152,11 @@ public class Scr_LeaderBoard : MonoBehaviour {
 	}
 
     public void createClick(Image img) {
-        createSlot(img.sprite, newScore, newName);
+        if (reverse) {
+            createSlotReverse(img.sprite, newScore, newName);
+        } else {
+            createSlot(img.sprite, newScore, newName);
+        }
 
         createPanel.SetActive(false);
         continueBtn.SetActive(true);
@@ -224,7 +231,46 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		}
 	}
 
-    void highScore() {
+	void createSlotReverse(Sprite img, int score, string name, int index = 0) {
+		//index; doesn't work so I just do this, theres probably an easier way...
+		for (index = index; index < slots.Length; index++) {
+			Sprite tempSprite;
+			int tempScore;
+			string tempName;
+
+			if (int.Parse(slots[index].scoreTxt.text) > score) {
+				tempSprite = slots[index].slotImg.sprite;
+				tempScore = int.Parse(slots[index].scoreTxt.text);
+				tempName = slots[index].nameTxt.text;
+
+				switch (img.name) {
+					case "CuteDoor_0":
+						slots[index].changeSlot(sprites[0], score, name);
+						break;
+					case "DwindlingDoor_0":
+						slots[index].changeSlot(sprites[1], score, name);
+						break;
+					case "PaintDoor_0":
+						slots[index].changeSlot(sprites[2], score, name);
+						break;
+					case "SpaceDoor_0":
+						slots[index].changeSlot(sprites[3], score, name);
+						break;
+					case "TrippyDoor_0":
+						slots[index].changeSlot(sprites[4], score, name);
+						break;
+					case "VintageDoor_0":
+						slots[index].changeSlot(sprites[5], score, name);
+						break;
+				}
+
+				createSlot(tempSprite, tempScore, tempName, index + 1);
+				return;
+			}
+		}
+	}
+
+	void highScore() {
         //createPanel.SetActive(true);
         namePanel.SetActive(true);
         continueBtn.SetActive(false);
@@ -250,4 +296,19 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
         loser();
     }
+
+	public void endGameReverse(int score) {
+		Start();
+
+		newScore = score;
+		foreach (Scr_BoardSlot slot in slots) {
+			if (int.Parse(slot.scoreTxt.text) > score) {
+                reverse = true;
+				highScore();
+				return;
+			}
+		}
+
+		loser();
+	}
 }
