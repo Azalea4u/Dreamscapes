@@ -12,6 +12,7 @@ public class SCR_TogglePauseMenu : MonoBehaviour
     {
         SRC_AudioManager.instance.PlaySFX("Pause_SFX");
         PauseMenu_UI.SetActive(true);
+        GameManager.instance.IsGamePaused = true;
         GameManager.instance.PauseGame(true);
     }
 
