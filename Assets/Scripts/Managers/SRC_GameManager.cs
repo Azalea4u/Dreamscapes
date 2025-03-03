@@ -38,23 +38,28 @@ public class GameManager : MonoBehaviour
         }
         else if ((SceneManager.GetActiveScene().name != "SCN_MainMenu") || (SceneManager.GetActiveScene().name != "SCN_Loading"))
         {
-            if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
-            {
-                Debug.Log("Mouse Clicked");
-                timesinceTouched = 0;
-            }
-            else //if (Input.touchCount <= 0 || !Input.GetMouseButtonDown(0))
-            {
-                timesinceTouched += Time.deltaTime;
-                Debug.Log((int)timesinceTouched);
-
-                if (timesinceTouched >= 30)
-                {
-                    BackToMainMenu();
-                }
-            }
+            GoToMainMenu();
         }
 
+    }
+
+    public void GoToMainMenu()
+    {
+        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        {
+            Debug.Log("Mouse Clicked");
+            timesinceTouched = 0;
+        }
+        else //if (Input.touchCount <= 0 || !Input.GetMouseButtonDown(0))
+        {
+            timesinceTouched += Time.unscaledDeltaTime;
+            Debug.Log((int)timesinceTouched);
+
+            if (timesinceTouched >= 30)
+            {
+                BackToMainMenu();
+            }
+        }
     }
 
     // Pauses the Game from any script
