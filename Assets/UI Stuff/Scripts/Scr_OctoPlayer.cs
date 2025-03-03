@@ -4,7 +4,9 @@ using UnityEngine;
 public class Scr_OctoPlayer : MonoBehaviour {
     [SerializeField] GameObject projPrefab;
     Rigidbody2D rb;
+	// the player is limited to 5 different positions -2, -1, 0, 1, 2
     public int position = 0;
+	// tracks which direction the player has moved for when they get hit by a tentacle. they need to move back
     bool lastMovedLeft = false;
 	[SerializeField] float shootDelay = 0.5f;
 	float shootTimer;
@@ -23,7 +25,7 @@ public class Scr_OctoPlayer : MonoBehaviour {
 
 	private void Update()
 	{
-		if (Scr_OctoEnemy.instance.GetHealthPercent() >= 1.0f)
+		if (Scr_OctoEnemy.instance.GetHealthPercent() <= 0.0f)
 		{
 			return;
 		}

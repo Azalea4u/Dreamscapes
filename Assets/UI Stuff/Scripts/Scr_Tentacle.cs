@@ -16,11 +16,6 @@ public class Scr_Tentacle : MonoBehaviour
         anims.Play("TentacleAttack");
     }
 
-    void Update()
-    {
-//        water.transform.Rotate(Vector3.forward, 30 * Time.deltaTime);
-    }
-
     public void UpdateGreyscale( float value)
     {
         spriteRenderer.material.SetFloat("_Strength", value);
@@ -41,7 +36,21 @@ public class Scr_Tentacle : MonoBehaviour
 		waterRenderer.material.SetInt("_Flash", 0);
 	}
 
-    void Die()
+	public void DamageDark()
+	{
+		spriteRenderer.material.SetInt("_Dark", 1);
+		waterRenderer.material.SetInt("_Dark", 1);
+		StartCoroutine(Dark());
+	}
+
+	private IEnumerator Dark()
+	{
+		yield return new WaitForSeconds(Time.deltaTime * 6);
+		spriteRenderer.material.SetInt("_Dark", 0);
+		waterRenderer.material.SetInt("_Dark", 0);
+	}
+
+	void Die()
     {
         Destroy(gameObject);
     }

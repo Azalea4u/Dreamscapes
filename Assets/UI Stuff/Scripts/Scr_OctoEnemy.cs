@@ -56,10 +56,10 @@ public class Scr_OctoEnemy : MonoBehaviour {
 			return;
 		}
 
-		spriteRenderer.material.SetFloat("_Strength", GetHealthPercent());
+		spriteRenderer.material.SetFloat("_Strength", 1.0f - GetHealthPercent());
 		if (tentacleRef != null)
 		{
-			tentacleRef.UpdateGreyscale(GetHealthPercent());
+			tentacleRef.UpdateGreyscale(1.0f - GetHealthPercent());
 		}
 
 		moveTimer -= Time.deltaTime;
@@ -163,7 +163,7 @@ public class Scr_OctoEnemy : MonoBehaviour {
 
 	public float GetHealthPercent()
 	{
-		return 1.0f - Mathf.Sqrt((float)_health / health);
+		return Mathf.Sqrt((float)_health / health);
 	}
 
 	public void moveRandomLeftRight()
@@ -198,6 +198,13 @@ public class Scr_OctoEnemy : MonoBehaviour {
 			{
 				tentacleRef.DamageFlicker();
 			}
+		} else if (d < 0)
+		{
+			damageDark();
+			if (tentacleRef != null)
+			{
+				tentacleRef.DamageDark();
+			}
 		}
 		if (_health <= 0) {
 			GameWin();
@@ -214,6 +221,18 @@ public class Scr_OctoEnemy : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(Time.deltaTime * 6);
 		spriteRenderer.material.SetInt("_Flash", 0);
+	}
+
+	private void damageDark()
+	{
+		spriteRenderer.material.SetInt("_Dark", 1);
+		StartCoroutine(Dark());
+	}
+
+	private IEnumerator Dark()
+	{
+		yield return new WaitForSeconds(Time.deltaTime * 6);
+		spriteRenderer.material.SetInt("_Dark", 0);
 	}
 
 	private void GameWin()
