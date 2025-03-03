@@ -2258,22 +2258,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4311eb7fb63ee604996f04240d1d7e45, type: 3}
   - {fileID: 21300000, guid: c4c34286c77179b4ea044c83787567b6, type: 3}
   - {fileID: 21300000, guid: 2f3918882ac91a24292a286d8c8873c6, type: 3}
-  health: 3
   birdVisuals:
   - {fileID: 3320910687219996754}
   - {fileID: 2073892761}
   - {fileID: 1809423970}
-  birds: 0
-  birdTimerLength: 5
   hitCloud_SFX: {fileID: 985616892}
   collideBird_SFX: {fileID: 985616891}
   collideBird2_SFX: {fileID: 985616893}
+  health: 3
+  birds: 0
+  birdTimerLength: 5
   shipPosition: 0
-  shipVelocity: 0
   shipBounds: 2.5
-  shipAscentSpeed: 5
+  shipVelocity: 0
   shipMovementSpeed: 3
-  usedAscentSpeed: 0
+  shipAscentSpeed: 5
 --- !u!82 &985616891
 AudioSource:
   m_ObjectHideFlags: 0
