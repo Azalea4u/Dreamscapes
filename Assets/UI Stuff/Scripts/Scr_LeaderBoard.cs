@@ -119,15 +119,11 @@ public class Scr_LeaderBoard : MonoBehaviour {
     }
 
     public void continueClick() {
-        saveStuff();
-        
         GameManager.instance.PauseGame(false);
         SRC_AudioManager.instance.ChangeSceneWithMusic(SCR_Loader.scenes.SCN_MainMenu, "MainTheme_Music");
 	}
 
     public void againClick() {
-        saveStuff();
-
         switch (fileName) {
             case "Archeology":
                 Scr_ScreenManager.instance.ArcheologyClick();
@@ -161,6 +157,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
         createPanel.SetActive(false);
         continueBtn.SetActive(true);
 		againBtn.SetActive(true);
+
+        saveStuff();
 	}
     
     public void doneClick() {
@@ -238,9 +236,10 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			int tempScore;
 			string tempName;
 
-			if ((int.Parse(slots[index].scoreTxt.text) > score) || (int.Parse(slots[index].scoreTxt.text) == 0)) {
+			if ((int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1)) > score) 
+                || (int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1)) == 0)) {
 				tempSprite = slots[index].slotImg.sprite;
-				tempScore = int.Parse(slots[index].scoreTxt.text);
+				tempScore = int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1));
 				tempName = slots[index].nameTxt.text;
 
 				switch (img.name) {
@@ -302,7 +301,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
 		newScore = score;
 		foreach (Scr_BoardSlot slot in slots) {
-			if ((int.Parse(slot.scoreTxt.text) > score) || (int.Parse(slot.scoreTxt.text) == 0)) {
+			if ((int.Parse(slot.scoreTxt.text.Remove(slot.scoreTxt.text.Length - 1)) > score) 
+                || (int.Parse(slot.scoreTxt.text.Remove(slot.scoreTxt.text.Length - 1)) == 0)) {
                 reverse = true;
 				highScore();
 				return;
