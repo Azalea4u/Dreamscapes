@@ -48,16 +48,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0, y: -1, z: 0}
-  usedSpeed: {x: 0, y: 0, z: 0}
   faceTowardsCenter: 0
   moveTowardsPlayer: 0
-  moveWith: {fileID: 0}
   moveTowards: {fileID: 0}
   moveSpeed: 0
+  moveWith: {fileID: 0}
   doesDamage: 1
   birdSlowdown: 0
   slowDownMovement: 0
-  bounce: 0
+  bounce: 1
   destroyOnHit: 0
   destroyHeight: 0
 --- !u!61 &166274999399084194
