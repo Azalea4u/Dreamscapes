@@ -186,7 +186,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     void letterUpDown(TextMeshProUGUI letter, bool up) {
         int cn = Convert.ToChar(letter.text);
 
-        char c = up ? (cn == 65) ? 'Z' : (char)(cn - 1) : (cn == 90) ? 'A' : (char)(cn + 1);
+        char c = up ? (cn == 33) ? '~' : (char)(cn - 1) : (cn == 126) ? '!' : (char)(cn + 1);
 
         letter.text = c.ToString();
     }
@@ -264,7 +264,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 						break;
 				}
 
-				createSlot(tempSprite, tempScore, tempName, index + 1);
+				createSlotReverse(tempSprite, tempScore, tempName, index + 1);
 				return;
 			}
 		}
