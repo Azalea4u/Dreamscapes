@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
-            Debug.Log("Mouse Clicked");
+            //Debug.Log("Mouse Clicked");
             timesinceTouched = 0;
         }
         else //if (Input.touchCount <= 0 || !Input.GetMouseButtonDown(0))

@@ -237,7 +237,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			string tempName;
 
 			if ((int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1)) > score) 
-                || (int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1)) == 0)) {
+                || (int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1)) == 0))
+            {
 				tempSprite = slots[index].slotImg.sprite;
 				tempScore = int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1));
 				tempName = slots[index].nameTxt.text;
