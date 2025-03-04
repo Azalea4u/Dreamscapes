@@ -13,6 +13,12 @@ public class Scr_BoardSlot : MonoBehaviour {
 		nameTxt.text = name;
 	}
 
+	public void changeSlotTime(Sprite img, int score, string name) {
+		slotImg.sprite = img;
+		scoreTxt.text = "" + score + "s";
+		nameTxt.text = name;
+	}
+
 	/*
 	 Just controls the ui stuff for the leaderboard slots
 	 */
