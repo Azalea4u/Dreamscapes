@@ -640,18 +640,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2407378660116858463, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
   m_PrefabInstance: {fileID: 1066447629895569738}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2042251458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042251453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26a269cbfe143843abf8cbda32d1aa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2042251459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,6 +901,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3182918604485487330, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_Color.r
+      value: 0.98039216
+      objectReference: {fileID: 0}
     - target: {fileID: 5303630748354015082, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -949,6 +941,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 665584387}
+    - target: {fileID: 6316346916347975478, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6529043071045486217, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1006,10 +1002,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2407378660116858463, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 2042251458}
-    - targetCorrespondingSourceObject: {fileID: 2407378660116858463, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
-      insertIndex: 3
+      insertIndex: 2
       addedObject: {fileID: 2042251459}
     - targetCorrespondingSourceObject: {fileID: 2988241437115136333, guid: 7a492301f0c99cd4abc35205642b56cb, type: 3}
       insertIndex: 1
