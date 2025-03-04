@@ -14,6 +14,8 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	[Header("Runtime Values")]
 	[SerializeField] private int health = 3;
 	[SerializeField] private int birds = 0;
+	// used for shaking birds off if you move left and right rapidly
+	private bool shipMoveLeft = false;
 	[SerializeField] private float birdTimerLength = 5.0f;
     private float birdTimer;
 
@@ -73,13 +75,23 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 		// The ship itself checks for touch input instead of getting input from buttons because It makes it feel more consistant
 		for (int i = 0; i < Input.touchCount; i++)
 		{
+			bool prevLeft = shipMoveLeft;
 			Vector3 touchpos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+			
 			if (touchpos.x < 0)
 			{
 				MoveLeft();
 			} else
 			{
 				MoveRight();
+			}
+
+			if (birdTimer > 0)
+			{
+				if (Input.GetTouch(i).phase == TouchPhase.Began && prevLeft != shipMoveLeft)
+				{
+					birdTimer -= 0.25f;
+				}
 			}
 		}
 
@@ -101,11 +113,15 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 	public void MoveLeft()
 	{
 		shipVelocity -= shipMovementSpeed * Time.deltaTime * 5.0f;
+
+		shipMoveLeft = true;
 	}
 
 	public void MoveRight()
 	{
 		shipVelocity += shipMovementSpeed * Time.deltaTime * 5.0f;
+
+		shipMoveLeft = false;
 	}
 
 	/// <summary>

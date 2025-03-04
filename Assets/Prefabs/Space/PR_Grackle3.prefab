@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2688038394559754060}
   - component: {fileID: 992341763930194075}
   m_Layer: 0
-  m_Name: PR_Grackle2
+  m_Name: PR_Grackle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7a7bbb0d248264cad781f00009d9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: -1, z: 0}
+  speed: {x: 0, y: -3, z: 0}
   faceTowardsCenter: 0
   moveTowardsPlayer: 1
   moveTowards: {fileID: 0}
-  moveSpeed: 1
+  moveSpeed: 5
   moveWith: {fileID: 0}
   doesDamage: 1
   birdSlowdown: 0
