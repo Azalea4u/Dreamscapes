@@ -18,6 +18,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     [SerializeField] TextMeshProUGUI[] letters;
 
     int newScore;
+    int actScore;
     string newName;
     bool reverse;
 
@@ -82,7 +83,18 @@ public class Scr_LeaderBoard : MonoBehaviour {
 	void saveStuff() {
         //grab info from leaderboard slots and set save slots
 		for (int i = 0; i < slots.Length; i++) {
-			saveSlots.slot[i].s = int.Parse(slots[i].scoreTxt.text);
+
+            actScore = 0;
+            if (slots[i].scoreTxt.text.Contains('s'))
+            {
+                actScore = int.Parse(slots[i].scoreTxt.text.TrimEnd('s'));
+            }
+            else {
+                actScore = int.Parse(slots[i].scoreTxt.text);
+            
+            }
+
+			saveSlots.slot[i].s = actScore;
             saveSlots.slot[i].n = slots[i].nameTxt.text;
 
 			switch (slots[i].slotImg.sprite.name) {
@@ -235,11 +247,21 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			Sprite tempSprite;
 			int tempScore;
 			string tempName;
+            actScore = 0;
 
-			if ((int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1)) > score) 
-                || (int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1)) == 0)) {
+            if (slots[index].scoreTxt.text.Contains('s'))
+            {
+                actScore = int.Parse(slots[index].scoreTxt.text.TrimEnd('s'));
+            }
+            else {
+                actScore = int.Parse(slots[index].scoreTxt.text);
+            
+            }
+
+			if ((actScore > score) 
+                || (actScore == 0)) {
 				tempSprite = slots[index].slotImg.sprite;
-				tempScore = int.Parse(slots[index].scoreTxt.text.Remove(slots[index].scoreTxt.text.Length - 1));
+                tempScore = actScore;
 				tempName = slots[index].nameTxt.text;
 
 				switch (img.name) {
@@ -301,8 +323,16 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
 		newScore = score;
 		foreach (Scr_BoardSlot slot in slots) {
-			if ((int.Parse(slot.scoreTxt.text.Remove(slot.scoreTxt.text.Length - 1)) > score) 
-                || (int.Parse(slot.scoreTxt.text.Remove(slot.scoreTxt.text.Length - 1)) == 0)) {
+            actScore = 0;
+            if (slot.scoreTxt.text.Contains('s'))
+            {
+                actScore = int.Parse(slot.scoreTxt.text.TrimEnd('s'));
+            }
+            else {
+                actScore = int.Parse(slot.scoreTxt.text);
+            
+            }
+			if ((actScore > score) || (actScore == 0)) {
                 reverse = true;
 				highScore();
 				return;
