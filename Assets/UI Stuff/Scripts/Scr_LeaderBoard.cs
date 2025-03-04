@@ -238,29 +238,29 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			int tempScore;
 			string tempName;
 
-			if (int.Parse(slots[index].scoreTxt.text) > score) {
+			if ((int.Parse(slots[index].scoreTxt.text) > score) || (int.Parse(slots[index].scoreTxt.text) == 0)) {
 				tempSprite = slots[index].slotImg.sprite;
 				tempScore = int.Parse(slots[index].scoreTxt.text);
 				tempName = slots[index].nameTxt.text;
 
 				switch (img.name) {
 					case "CuteDoor_0":
-						slots[index].changeSlot(sprites[0], score, name);
+						slots[index].changeSlotTime(sprites[0], score, name);
 						break;
 					case "DwindlingDoor_0":
-						slots[index].changeSlot(sprites[1], score, name);
+						slots[index].changeSlotTime(sprites[1], score, name);
 						break;
 					case "PaintDoor_0":
-						slots[index].changeSlot(sprites[2], score, name);
+						slots[index].changeSlotTime(sprites[2], score, name);
 						break;
 					case "SpaceDoor_0":
-						slots[index].changeSlot(sprites[3], score, name);
+						slots[index].changeSlotTime(sprites[3], score, name);
 						break;
 					case "TrippyDoor_0":
-						slots[index].changeSlot(sprites[4], score, name);
+						slots[index].changeSlotTime(sprites[4], score, name);
 						break;
 					case "VintageDoor_0":
-						slots[index].changeSlot(sprites[5], score, name);
+						slots[index].changeSlotTime(sprites[5], score, name);
 						break;
 				}
 
@@ -302,7 +302,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
 
 		newScore = score;
 		foreach (Scr_BoardSlot slot in slots) {
-			if (int.Parse(slot.scoreTxt.text) > score) {
+			if ((int.Parse(slot.scoreTxt.text) > score) || (int.Parse(slot.scoreTxt.text) == 0)) {
                 reverse = true;
 				highScore();
 				return;
