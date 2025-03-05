@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SRC_AudioManager : MonoBehaviour
 {
     public static SRC_AudioManager instance;
+    public static SCR_MainMenuBTN mmb;
 
     public SCR_Sound[] Music_Audios, SFX_Audios;
     public AudioSource Music_Source, SFX_Source;
@@ -14,12 +16,14 @@ public class SRC_AudioManager : MonoBehaviour
 
     private string nextMusicName = "";
     private bool isFading = false;
+    public bool playing = false;
 
     private void Awake()
     {
         //Singleton
         if (instance == null)
         {
+            
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -33,6 +37,8 @@ public class SRC_AudioManager : MonoBehaviour
     {
         // play when loading MainMenu Scene
         PlayMusic("MainTheme_Music");
+        Music_Source.mute = false;
+        
     }
 
     // Sets the Music Audio Source to a certain AudioClip
@@ -50,6 +56,19 @@ public class SRC_AudioManager : MonoBehaviour
             Music_Source.loop = true;
             Music_Source.Play();
         }
+    }
+    public bool PauseMusic(bool Paused)
+    {
+        if(!Paused)
+        {
+            Music_Source.mute = false;
+        }
+        else
+        {
+            Music_Source.mute = true;
+        }
+
+        return playing = !Paused;
     }
 
     // Sets the SFX Audio Source to a certain AudioClip
