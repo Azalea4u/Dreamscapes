@@ -38,35 +38,35 @@ public class Scr_LeaderBoard : MonoBehaviour {
     }
     slotList saveSlots = new slotList();
 
-    void Start() {
-        reverse = false;
+    void Starter() {
+		reverse = false;
 
-        //get file path, read it, and convert it to saveSlots  
-        filePath = Path.Combine(Application.streamingAssetsPath, fileName + ".txt");
-        using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
-            using (StreamReader read = new StreamReader(stream)) {
-                saveSlots = JsonUtility.FromJson<slotList>(read.ReadToEnd());
-            }
-        }
+		//get file path, read it, and convert it to saveSlots  
+		filePath = Path.Combine(Application.streamingAssetsPath, fileName + ".txt");
+		using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
+			using (StreamReader read = new StreamReader(stream)) {
+				saveSlots = JsonUtility.FromJson<slotList>(read.ReadToEnd());
+			}
+		}
 
-        //based on saveSlots information set the leaderboard slots
-        for (int i = 0; i < slots.Length; i++) {
-            slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
-            slots[i].nameTxt.text = saveSlots.slot[i].n;
+		//based on saveSlots information set the leaderboard slots
+		for (int i = 0; i < slots.Length; i++) {
+			slots[i].scoreTxt.text = "" + saveSlots.slot[i].s;
+			slots[i].nameTxt.text = saveSlots.slot[i].n;
 
-            switch (saveSlots.slot[i].i) {
-                case "cute":
-                    slots[i].slotImg.sprite = sprites[0];
-                    break;
-                case "dwindling":
-                    slots[i].slotImg.sprite = sprites[1];
-                    break;
-                case "paint":
-                    slots[i].slotImg.sprite = sprites[2];
-                    break;
-                case "space":
-                    slots[i].slotImg.sprite = sprites[3];
-                    break;
+			switch (saveSlots.slot[i].i) {
+				case "cute":
+					slots[i].slotImg.sprite = sprites[0];
+					break;
+				case "dwindling":
+					slots[i].slotImg.sprite = sprites[1];
+					break;
+				case "paint":
+					slots[i].slotImg.sprite = sprites[2];
+					break;
+				case "space":
+					slots[i].slotImg.sprite = sprites[3];
+					break;
 				case "trippy":
 					slots[i].slotImg.sprite = sprites[4];
 					break;
@@ -74,11 +74,53 @@ public class Scr_LeaderBoard : MonoBehaviour {
 					slots[i].slotImg.sprite = sprites[5];
 					break;
 				default:
-                    slots[i].slotImg.sprite = sprites[6];
-                    break;
-            }
-        }
-    }
+					slots[i].slotImg.sprite = sprites[6];
+					break;
+			}
+		}
+	}
+
+    void Reverser() {
+		reverse = true;
+
+		//get file path, read it, and convert it to saveSlots  
+		filePath = Path.Combine(Application.streamingAssetsPath, fileName + ".txt");
+		using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
+			using (StreamReader read = new StreamReader(stream)) {
+				saveSlots = JsonUtility.FromJson<slotList>(read.ReadToEnd());
+			}
+		}
+
+		//based on saveSlots information set the leaderboard slots
+		for (int i = 0; i < slots.Length; i++) {
+			slots[i].scoreTxt.text = "" + saveSlots.slot[i].s + "s";
+			slots[i].nameTxt.text = saveSlots.slot[i].n;
+
+			switch (saveSlots.slot[i].i) {
+				case "cute":
+					slots[i].slotImg.sprite = sprites[0];
+					break;
+				case "dwindling":
+					slots[i].slotImg.sprite = sprites[1];
+					break;
+				case "paint":
+					slots[i].slotImg.sprite = sprites[2];
+					break;
+				case "space":
+					slots[i].slotImg.sprite = sprites[3];
+					break;
+				case "trippy":
+					slots[i].slotImg.sprite = sprites[4];
+					break;
+				case "vintage":
+					slots[i].slotImg.sprite = sprites[5];
+					break;
+				default:
+					slots[i].slotImg.sprite = sprites[6];
+					break;
+			}
+		}
+	}
 
 	void saveStuff() {
         //grab info from leaderboard slots and set save slots
@@ -193,8 +235,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     void letterUpDown(TextMeshProUGUI letter, bool up) {
         int cn = Convert.ToChar(letter.text);
 
-        char c = up ? (cn == 48) ? 'z' : (cn == 97) ? 'Z' : (char)(cn - 1) : (cn == 122) ? '0' : (cn == 90) ? 'a' : (char)(cn + 1);
-        //char c = up ? (cn == 48) ? 'z' : (char)(cn - 1) : (cn == 122) ? '0' : (char)(cn + 1);
+        char c = up ? (cn == 48) ? 'z' : (cn == 97) ? 'Z' : (cn == 65) ? '9' : (char)(cn - 1) : (cn == 122) ? '0' : (cn == 90) ? 'a' : (cn == 57) ? 'A' : (char)(cn + 1);
 
         letter.text = c.ToString();
     }
@@ -300,7 +341,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     }
 
     public void endGame(int score) {
-        Start();
+		Starter();
 
         newScore = score;
         foreach (Scr_BoardSlot slot in slots) {
@@ -314,7 +355,7 @@ public class Scr_LeaderBoard : MonoBehaviour {
     }
 
 	public void endGameReverse(int score) {
-		Start();
+		Reverser();
 
 		newScore = score;
 		foreach (Scr_BoardSlot slot in slots) {
@@ -328,7 +369,6 @@ public class Scr_LeaderBoard : MonoBehaviour {
             }
 
 			if ((actScore > score) || (actScore == 0)) {
-                reverse = true;
 				highScore();
 				return;
 			}
