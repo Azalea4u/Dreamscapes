@@ -100,6 +100,7 @@ public class SRC_AudioManager : MonoBehaviour
         SCR_Loader.ContinueToTargetScene(); // Now load the actual scene
     }
 
+    // When the scene is loaded, checks if nextMusicName isn't null before fading in the new bg music
     public void OnSceneLoaded()
     {
         if (!string.IsNullOrEmpty(nextMusicName))
@@ -117,7 +118,7 @@ public class SRC_AudioManager : MonoBehaviour
 
         while (Music_Source.volume < targetVolume)
         {
-            Music_Source.volume += targetVolume * Time.deltaTime / fadeDuration;
+            Music_Source.volume += targetVolume * Time.unscaledDeltaTime / fadeDuration;
             yield return null;
         }
 

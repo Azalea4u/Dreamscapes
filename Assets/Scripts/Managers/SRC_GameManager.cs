@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             PauseGame(false);
             timesinceTouched = 0;
         }
-        else if ((SceneManager.GetActiveScene().name != "SCN_MainMenu") || (SceneManager.GetActiveScene().name != "SCN_Loading"))
+        else if ((SceneManager.GetActiveScene().name != "SCN_MainMenu") && (SceneManager.GetActiveScene().name != "SCN_Loading"))
         {
             GoToMainMenu();
         }
@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
     public void BackToMainMenu()
     {
         Scr_ScreenManager.instance.MainMenu();
-        Add_WaitTime(1.0f);
         timesinceTouched = 0;
     }
 }
