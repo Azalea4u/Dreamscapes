@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             PauseGame(false);
             timesinceTouched = 0;
         }
-        else if ((SceneManager.GetActiveScene().name != "SCN_MainMenu") || (SceneManager.GetActiveScene().name != "SCN_Loading"))
+        else if ((SceneManager.GetActiveScene().name != "SCN_MainMenu") && (SceneManager.GetActiveScene().name != "SCN_Loading"))
         {
             GoToMainMenu();
         }
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         else //if (Input.touchCount <= 0 || !Input.GetMouseButtonDown(0))
         {
             timesinceTouched += Time.unscaledDeltaTime;
-            Debug.Log((int)timesinceTouched);
+            //Debug.Log((int)timesinceTouched);
 
             if (timesinceTouched >= 30)
             {
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     // in case some bozo walks away in the middle of the game
     public void BackToMainMenu()
     {
-        timesinceTouched = 0;
         Scr_ScreenManager.instance.MainMenu();
+        timesinceTouched = 0;
     }
 }
