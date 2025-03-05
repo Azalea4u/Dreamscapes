@@ -6,19 +6,19 @@
             "n": "SAM"
         },
         {
+            "i": "trippy",
+            "s": 21,
+            "n": "AAA"
+        },
+        {
+            "i": "space",
+            "s": 19,
+            "n": "AAA"
+        },
+        {
             "i": "paint",
             "s": 18,
             "n": "SAD"
-        },
-        {
-            "i": "space",
-            "s": 1,
-            "n": "BOP"
-        },
-        {
-            "i": "space",
-            "s": 1,
-            "n": "AAA"
         },
         {
             "i": "paint",
