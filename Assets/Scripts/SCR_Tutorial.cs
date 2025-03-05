@@ -17,16 +17,20 @@ public class SCR_Tutorial : MonoBehaviour {
         StartCoroutine(WaitToClose());
 	}
 
-	// Attached to the Tutorial_BTN's OnClick to close Tutorial gameobject
-	public void close()
-	{
-		tutorialContainer.SetActive(false);
+    // Attached to the Tutorial_BTN's OnClick to close Tutorial gameobject
+    public void close()
+    {
+        tutorialContainer.SetActive(false);
         Pause_BTN.GetComponent<Button>().interactable = true;
         GameManager.instance.PauseGame(false);
-	}
 
-	// To prevent the screen to close when someone is spamming the screen
-	private IEnumerator WaitToClose()	{
+        // Trigger music fade-in after tutorial closes
+        SRC_AudioManager.instance.OnSceneLoaded();
+    }
+
+
+    // To prevent the screen to close when someone is spamming the screen
+    private IEnumerator WaitToClose()	{
 
         Pause_BTN.GetComponent<Button>().interactable = false;
 		Tutorial_BTN.GetComponent<Button>().interactable = false;
