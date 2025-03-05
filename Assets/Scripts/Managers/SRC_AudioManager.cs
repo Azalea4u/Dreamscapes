@@ -13,7 +13,7 @@ public class SRC_AudioManager : MonoBehaviour
     public float fadeDuration = 0.75f; // Adjust as needed
 
     private string nextMusicName = "";
-    private bool isFading = false;
+    [SerializeField] public bool isMusicFading = false;
 
     private void Awake()
     {
@@ -71,10 +71,10 @@ public class SRC_AudioManager : MonoBehaviour
     // Use this Method to change the bg music while changing scenes
     public void ChangeSceneWithMusic(SCR_Loader.scenes targetScene, string newMusic)
     {
-        if (!isFading)
+        if (!isMusicFading)
         {
             nextMusicName = newMusic;
-            isFading = true;
+            isMusicFading = true;
             SCR_Loader.Load(targetScene);
         }
     }
@@ -121,6 +121,6 @@ public class SRC_AudioManager : MonoBehaviour
             yield return null;
         }
 
-        isFading = false; // Reset flag after fade-in completes
+        isMusicFading = false;
     }
 }

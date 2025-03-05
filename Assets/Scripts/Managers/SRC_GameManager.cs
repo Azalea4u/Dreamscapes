@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         else //if (Input.touchCount <= 0 || !Input.GetMouseButtonDown(0))
         {
             timesinceTouched += Time.unscaledDeltaTime;
-            Debug.Log((int)timesinceTouched);
+            //Debug.Log((int)timesinceTouched);
 
             if (timesinceTouched >= 30)
             {
@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
     // in case some bozo walks away in the middle of the game
     public void BackToMainMenu()
     {
-        timesinceTouched = 0;
         Scr_ScreenManager.instance.MainMenu();
+        Add_WaitTime(1.0f);
+        timesinceTouched = 0;
     }
 }

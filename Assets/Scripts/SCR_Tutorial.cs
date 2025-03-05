@@ -13,7 +13,7 @@ public class SCR_Tutorial : MonoBehaviour {
 	void Start()
 	{
         GameManager.instance.PauseGame(false);
-		GameManager.instance.IsGamePaused = true;
+		//GameManager.instance.IsGamePaused = true;
         StartCoroutine(WaitToClose());
 	}
 
