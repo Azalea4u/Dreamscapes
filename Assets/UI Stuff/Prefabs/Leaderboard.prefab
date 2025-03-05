@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6077535428697893778}
   - component: {fileID: 7819540006207840999}
   - component: {fileID: 5887689242601474228}
+  - component: {fileID: 3331423058175133097}
   m_Layer: 5
   m_Name: UpBtn
   m_TagString: Untagged
@@ -119,6 +120,33 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7819540006207840999}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterUpClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4708577135516336644}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3331423058175133097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71429973946488467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f365624153951964ba4aab097fe70dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7922429346805528119}
@@ -429,6 +457,7 @@ GameObject:
   - component: {fileID: 2285024088210782284}
   - component: {fileID: 712993927627936501}
   - component: {fileID: 4041291484860810151}
+  - component: {fileID: 583267190324904985}
   m_Layer: 5
   m_Name: DownBtn
   m_TagString: Untagged
@@ -536,6 +565,33 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 712993927627936501}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterDownClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9063673634421099567}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &583267190324904985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774310584553148886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f365624153951964ba4aab097fe70dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7922429346805528119}
@@ -1872,6 +1928,7 @@ GameObject:
   - component: {fileID: 7926609527065781941}
   - component: {fileID: 2070104717312622716}
   - component: {fileID: 3090695589128212132}
+  - component: {fileID: 8311033082214437000}
   m_Layer: 5
   m_Name: UpBtn
   m_TagString: Untagged
@@ -1993,6 +2050,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8311033082214437000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095543617235903169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f365624153951964ba4aab097fe70dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterUpClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9063673634421099567}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2592610175152808245
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2169,7 @@ GameObject:
   - component: {fileID: 8840625961142199280}
   - component: {fileID: 2523731541439468949}
   - component: {fileID: 5191003739169454391}
+  - component: {fileID: 1212860986961109651}
   m_Layer: 5
   m_Name: UpBtn
   m_TagString: Untagged
@@ -2192,6 +2277,33 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2523731541439468949}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterUpClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2513325874596821190}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1212860986961109651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778942175002294049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f365624153951964ba4aab097fe70dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7922429346805528119}
@@ -4709,6 +4821,7 @@ GameObject:
   - component: {fileID: 2730673515031124138}
   - component: {fileID: 1523050560135873334}
   - component: {fileID: 3808291393286562017}
+  - component: {fileID: 424424788747377328}
   m_Layer: 5
   m_Name: DownBtn
   m_TagString: Untagged
@@ -4816,6 +4929,33 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1523050560135873334}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterDownClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4708577135516336644}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &424424788747377328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5817621047661740716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f365624153951964ba4aab097fe70dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7922429346805528119}
@@ -6464,6 +6604,7 @@ GameObject:
   - component: {fileID: 6994272059018425629}
   - component: {fileID: 6412454438219111091}
   - component: {fileID: 2608363130741853876}
+  - component: {fileID: 8978108924960020513}
   m_Layer: 5
   m_Name: DownBtn
   m_TagString: Untagged
@@ -6571,6 +6712,33 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6412454438219111091}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7922429346805528119}
+        m_TargetAssemblyTypeName: Scr_LeaderBoard, Assembly-CSharp
+        m_MethodName: letterDownClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2513325874596821190}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8978108924960020513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7186327718952780540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f365624153951964ba4aab097fe70dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7922429346805528119}

@@ -85,13 +85,10 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		for (int i = 0; i < slots.Length; i++) {
 
             actScore = 0;
-            if (slots[i].scoreTxt.text.Contains('s'))
-            {
+            if (slots[i].scoreTxt.text.Contains('s')) {
                 actScore = int.Parse(slots[i].scoreTxt.text.TrimEnd('s'));
-            }
-            else {
+            } else {
                 actScore = int.Parse(slots[i].scoreTxt.text);
-            
             }
 
 			saveSlots.slot[i].s = actScore;
@@ -196,7 +193,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
     void letterUpDown(TextMeshProUGUI letter, bool up) {
         int cn = Convert.ToChar(letter.text);
 
-        char c = up ? (cn == 33) ? '~' : (char)(cn - 1) : (cn == 126) ? '!' : (char)(cn + 1);
+        char c = up ? (cn == 48) ? 'z' : (cn == 97) ? 'Z' : (char)(cn - 1) : (cn == 122) ? '0' : (cn == 90) ? 'a' : (char)(cn + 1);
+        //char c = up ? (cn == 48) ? 'z' : (char)(cn - 1) : (cn == 122) ? '0' : (char)(cn + 1);
 
         letter.text = c.ToString();
     }
@@ -249,13 +247,10 @@ public class Scr_LeaderBoard : MonoBehaviour {
 			string tempName;
             actScore = 0;
 
-            if (slots[index].scoreTxt.text.Contains('s'))
-            {
+            if (slots[index].scoreTxt.text.Contains('s')) {
                 actScore = int.Parse(slots[index].scoreTxt.text.TrimEnd('s'));
-            }
-            else {
+            } else {
                 actScore = int.Parse(slots[index].scoreTxt.text);
-            
             }
 
 			if ((actScore > score) 
@@ -324,14 +319,14 @@ public class Scr_LeaderBoard : MonoBehaviour {
 		newScore = score;
 		foreach (Scr_BoardSlot slot in slots) {
             actScore = 0;
-            if (slot.scoreTxt.text.Contains('s'))
-            {
+
+            if (slot.scoreTxt.text.Contains('s')) {
                 actScore = int.Parse(slot.scoreTxt.text.TrimEnd('s'));
-            }
-            else {
+            } else {
                 actScore = int.Parse(slot.scoreTxt.text);
             
             }
+
 			if ((actScore > score) || (actScore == 0)) {
                 reverse = true;
 				highScore();
