@@ -3,10 +3,12 @@ using UnityEngine.EventSystems;
 
 public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
 {
+	[SerializeField] private SpriteRenderer sprite;
+	[SerializeField] private Animator animator;
     public Vector2 speed = Vector2.one;
     public edgeType edgeInteraction = edgeType.BOUNCE;
-	[SerializeField] private SpriteRenderer sprite;
 	public bool isWanted = false;
+
 	public bool active = true;
 
     // helps with defining how the dragon should act when contacting an edge
@@ -83,13 +85,18 @@ public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
 		speed = Vector2.zero;
 		if (!isWanted)
 		{
-			transform.position = Vector3.one * 10;
+			//transform.position = Vector3.one * 10;
+			animator.SetTrigger("NotWanted");
+		} else
+		{
+			animator.SetTrigger("Wanted");
 		}
 	}
 
 	public void ActivateDragon()
 	{
 		active = true;
+		animator.SetTrigger("Reset");
 	}
 
 	public void SetWanted(bool wanted)

@@ -279,7 +279,10 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         dragon.DeactivateDragon();
         if (isWanted) {
             foreach (var drag in dragons) {
-                drag.DeactivateDragon();
+                if (drag.active)
+                {
+                    drag.DeactivateDragon();
+                }
             }
             foundCharacter_SFX.Play();
             dragonsFound += 1;
