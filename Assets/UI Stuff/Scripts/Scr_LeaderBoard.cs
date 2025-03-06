@@ -235,8 +235,8 @@ public class Scr_LeaderBoard : MonoBehaviour {
     void letterUpDown(TextMeshProUGUI letter, bool up) {
         int cn = Convert.ToChar(letter.text);
 
-        char c = up ? (cn == 48) ? 'z' : (cn == 97) ? 'Z' : (cn == 65) ? '9' : (char)(cn - 1) : (cn == 122) ? '0' : (cn == 90) ? 'a' : (cn == 57) ? 'A' : (char)(cn + 1);
-
+		char c = up ? (cn == 48) ? 'Z' : (cn == 65) ? '9' : (char)(cn - 1) : (cn == 90) ? '0' : (cn == 57) ? 'A' : (char)(cn + 1);
+        
         letter.text = c.ToString();
     }
 
