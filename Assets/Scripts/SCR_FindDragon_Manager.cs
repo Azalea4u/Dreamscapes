@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static SCR_FindDragon_Dragon;
 
 public class SCR_FindDragon_Manager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	[SerializeField] private int groupAmount = 3;
     [SerializeField] private Vector2 _gamebounds;
     [SerializeField] private Image wantedDragonVisual;
+    [SerializeField] private ParticleSystem foundParticles;
     /// <summary>
     /// positions that dragons can spawn at within the bounds of the game
     /// </summary>
@@ -59,19 +61,26 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     }
 
     private List<dragonGroup> dragonGroups = new List<dragonGroup>();
+    [SerializeField] private spawnPattern currentPattern;
 
     // helps to define how far in the game the player is
     // as the player finds more dragons, more dragons are spawned, up to the maximum
     public enum difficultyScale {
         FIRST,
-		SCALING,
+        EARLY,
+		LATE,
         DONE
     }
 
-    // helps to define how a group of dragons should be spawned
+    // helps to define how a groups of dragons should be spawned
     public enum spawnPattern {
-        RANDOM = 0,
-        GRID = 1
+        RANDOM,
+        MOVING,
+        NOT_MOVING,
+        GRID,
+        GRID_MOVING,
+        GRID_MOVING_RANDOM,
+        Count
     }
 
     // helper struct for organizing groups of dragons
@@ -81,8 +90,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
         public Vector2 speed;
         // if randomzieSpeed is true, speed is used as a range for randomization
         public bool randomizeSpeed;
-        public spawnPattern pattern;
-        public SCR_FindDragon_Dragon.edgeType edgeType;
+		public spawnPattern pattern;
+		public SCR_FindDragon_Dragon.edgeType edgeType;
     }
 
 	private void Start()
@@ -132,6 +141,8 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 	private void resetGame()
     {
         spawnGridAvailable = new List<Vector2>(spawnGrid);
+        foundParticles.transform.position = Vector3.one * 10;
+		currentPattern = (spawnPattern)Random.Range(0, (int)spawnPattern.Count);
 
 		createDragonGroups();
 		setupDragons();
@@ -144,11 +155,20 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     /// <returns>Current difficultyScale of the game</returns>
     private difficultyScale getCurrentDifficulty()
     {
-        if (dragonsFound == 0) {
-			return difficultyScale.FIRST;
-		} else if (dragonsFound < dragons.Length) {
-			return difficultyScale.SCALING;
-		} else {
+        if (dragonsFound == 0)
+        {
+            return difficultyScale.FIRST;
+        }
+        else if (dragonsFound <= dragons.Length / 2)
+        {
+            return difficultyScale.EARLY;
+        }
+        else if (dragonsFound > dragons.Length / 2)
+        {
+            return difficultyScale.LATE;
+        }
+        else
+        {
             return difficultyScale.DONE;
         }
     }
@@ -159,37 +179,66 @@ public class SCR_FindDragon_Manager : MonoBehaviour
     private void createDragonGroups()
     {
         dragonGroups.Clear();
+        spawnPattern usedPattern = currentPattern;
+        Vector2 gridspeed = Vector2.zero;
+		edgeType usedEdgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
+        difficultyScale difficulty = getCurrentDifficulty();
 
-        // the start and groupAmount variables are designed with larger amount of sprites to choose from in mind
+		// the start and groupAmount variables are designed with larger amount of sprites to choose from in mind
 
-        // when creating groups it starts at a random location in the list
-        int start = Random.Range(0,dragonSprites.Length);
+		// when creating groups it starts at a random location in the list
+		int start = Random.Range(0,dragonSprites.Length);
 
 		for (int i = 0; i < Mathf.Min(groupAmount, dragonSprites.Length); i++)
         {
 			dragonGroup newgroup = new dragonGroup();
+            Vector2 randSpeed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f));
 
-            if (getCurrentDifficulty() == difficultyScale.FIRST)
+			// if it is the first round of finding, the pattern is set completely on its own
+			// so we don't need any of the other values
+			if (difficulty != difficultyScale.FIRST)
             {
-				// if it is the first round of finding, the pattern is set completely on its own
-				// so we don't need any of the other values
-
-				// (start + i) % dragonSprites.Length will wrap the count around the bounds of the list
-				newgroup.sprite = dragonSprites[(start + i) % dragonSprites.Length];
-            }
-            else
-            {
-				newgroup.pattern = (spawnPattern)Random.Range(0, 2);
-				newgroup.sprite = dragonSprites[(start + i) % dragonSprites.Length];
-                // the grid pattern will not move
-                if (newgroup.pattern != spawnPattern.GRID)
+				if (difficulty == difficultyScale.DONE && currentPattern == spawnPattern.RANDOM)
 				{
-				    newgroup.randomizeSpeed = Random.Range(0, 2) == 0;
-    				// (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
-					newgroup.speed = new Vector2((Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f), (Random.Range(0, 2) * 2 - 1) * Random.Range(0.25f, 0.75f));
+					usedPattern = (spawnPattern)Random.Range(1, (int)spawnPattern.Count);
+                    usedEdgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
 				}
-				newgroup.edgeType = (SCR_FindDragon_Dragon.edgeType)Random.Range(0, 2);
+
+                switch (usedPattern)
+                {
+                    case spawnPattern.GRID:
+                    case spawnPattern.NOT_MOVING:
+                        if (difficulty == difficultyScale.EARLY)
+                        {
+							newgroup.speed = randSpeed;
+						}
+                        break;
+					case spawnPattern.MOVING:
+						newgroup.randomizeSpeed = Random.Range(0, 2) == 0;
+						// (Random.Range(0, 2) * 2 - 1) gets a random number of -1 or 1
+						newgroup.speed = randSpeed;
+						break;
+                    case spawnPattern.GRID_MOVING:
+						if (difficulty != difficultyScale.EARLY)
+						{
+							if (gridspeed == Vector2.zero)
+							{
+								gridspeed = randSpeed;
+							}
+							newgroup.speed = gridspeed;
+						}
+						break;
+                    case spawnPattern.GRID_MOVING_RANDOM:
+						newgroup.speed = randSpeed;
+						break;
+                }
+
+				newgroup.edgeType = usedEdgeType;
+                newgroup.pattern = usedPattern;
 			}
+
+			// (start + i) % dragonSprites.Length will wrap i around the bounds of the list
+			newgroup.sprite = dragonSprites[(start + i) % dragonSprites.Length];
 
 			dragonGroups.Add(newgroup);
 		}
@@ -223,35 +272,24 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 							break;
 					}
 					break;
-                case difficultyScale.SCALING:
-                    // currently is the same as difficultyScale.DONE
-                    // I would like to make it different if I have time
-					switch (dragonGroups[selectedGroup].pattern)
-					{
-						case spawnPattern.RANDOM:
-							dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
-							break;
-
-						case spawnPattern.GRID:
-							dragon.transform.position = (Vector3)spawnGridAvailable[gridpos];
-							spawnGridAvailable.RemoveAt(gridpos);
-							break;
-					}
-					break;
+                case difficultyScale.EARLY:
+					dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
+                    break;
+				case difficultyScale.LATE:
                 case difficultyScale.DONE:
 					switch (dragonGroups[selectedGroup].pattern)
 					{
-						case spawnPattern.RANDOM:
-							dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
-							break;
-
+						case spawnPattern.GRID_MOVING:
 						case spawnPattern.GRID:
 							dragon.transform.position = (Vector3)spawnGridAvailable[gridpos];
 							spawnGridAvailable.RemoveAt(gridpos);
 							break;
+						default:
+							dragon.transform.position = new Vector3(Random.Range(bounds.x, bounds.z), Random.Range(bounds.y, bounds.w), 0);
+							break;
 					}
 					break;
-            }
+			}
 
             assignDragonGroup(dragon, selectedGroup);
 		}
@@ -284,9 +322,11 @@ public class SCR_FindDragon_Manager : MonoBehaviour
                     drag.DeactivateDragon();
                 }
             }
-            foundCharacter_SFX.Play();
+			foundParticles.transform.position = dragon.transform.position;
+            foundParticles.Play();
+			foundCharacter_SFX.Play();
             dragonsFound += 1;
-            timeLeft += 1;
+            timeLeft += 1.5f;
             useTimer = false;
             StartCoroutine(resetGameCoroutine());
         } else {
@@ -319,4 +359,10 @@ public class SCR_FindDragon_Manager : MonoBehaviour
 
         GameManager.instance.timesinceTouched = 0;
     }
+
+	private void OnDrawGizmosSelected()
+	{
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, new Vector3(_gamebounds.x, _gamebounds.y) * 2);
+	}
 }
