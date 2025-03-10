@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8b5a54e4816764248ba7b5b075df1f80
+guid: 7b034dd7499fe3c4f9752ce80fadda44
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4787314164636214755
-    second: EmptyDirtPlotTile_0
+      213: -1344713568967785903
+    second: DirtHoleTile_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EmptyDirtPlotTile_0
+      name: DirtHoleTile_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1a99aca12b009db0800000000000000
-      internalID: -4787314164636214755
+      spriteID: 1520705322e965de0800000000000000
+      internalID: -1344713568967785903
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EmptyDirtPlotTile_0: -4787314164636214755
+      DirtHoleTile_0: -1344713568967785903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
