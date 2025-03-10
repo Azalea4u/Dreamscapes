@@ -85,8 +85,8 @@ public class SCR_FindDragon_Dragon : MonoBehaviour, IPointerDownHandler
 		speed = Vector2.zero;
 		if (!isWanted)
 		{
-			//transform.position = Vector3.one * 10;
-			animator.SetTrigger("NotWanted");
+			transform.position = Vector3.one * 10;
+			//animator.SetTrigger("NotWanted");
 		} else
 		{
 			animator.SetTrigger("Wanted");
