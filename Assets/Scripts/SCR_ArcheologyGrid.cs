@@ -354,7 +354,7 @@ public class SCR_ArcheologyGrid : MonoBehaviour
 		StartCoroutine(WaitToClose());
 
 		points += item.GetPointValue();
-		ScoreTXT.text = "Score " + points;
+		ScoreTXT.text = "Score \n" + points;
         collectSFX.Play(); 
 
 		items.Remove(item);
