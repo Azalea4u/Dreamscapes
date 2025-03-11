@@ -26,6 +26,5 @@ public class SCR_MainMenuBTN : MonoBehaviour
     public void Mutebutton()
     {
         SRC_AudioManager.instance.playing = SRC_AudioManager.instance.PauseMusic(SRC_AudioManager.instance.playing);
-
     }
 }

@@ -15,7 +15,7 @@ public class SRC_AudioManager : MonoBehaviour
     public float fadeDuration = 0.75f; // Adjust as needed
 
     private string nextMusicName = "";
-    public bool playing = false;
+    public bool playing = true;
     [SerializeField] public bool isMusicFading = false;
 
     private void Awake()
