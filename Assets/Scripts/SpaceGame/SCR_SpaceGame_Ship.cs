@@ -90,7 +90,7 @@ public class SCR_SpaceGame_Ship : MonoBehaviour
 			{
 				if (Input.GetTouch(i).phase == TouchPhase.Began && prevLeft != shipMoveLeft)
 				{
-					birdTimer -= 0.25f;
+					birdTimer -= 0.15f;
 				}
 			}
 		}
